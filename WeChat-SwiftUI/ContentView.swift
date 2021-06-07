@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  WeChat-SwiftUI
-//
-//  Created by Lebron on 2021/6/7.
-//
-
 import SwiftUI
 
 struct ContentView: View {

@@ -10,7 +10,6 @@
 		FDCC721B266E254D00A48140 /* WeChat_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */; };
 		FDCC721D266E254D00A48140 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC721C266E254D00A48140 /* ContentView.swift */; };
 		FDCC721F266E254E00A48140 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDCC721E266E254E00A48140 /* Assets.xcassets */; };
-		FDCC7222266E254E00A48140 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDCC7221266E254E00A48140 /* Preview Assets.xcassets */; };
 		FDCC722D266E254E00A48140 /* WeChat_SwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC722C266E254E00A48140 /* WeChat_SwiftUITests.swift */; };
 		FDCC7238266E254E00A48140 /* WeChat_SwiftUIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC7237266E254E00A48140 /* WeChat_SwiftUIUITests.swift */; };
 /* End PBXBuildFile section */
@@ -37,7 +36,6 @@
 		FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeChat_SwiftUIApp.swift; sourceTree = "<group>"; };
 		FDCC721C266E254D00A48140 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FDCC721E266E254E00A48140 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		FDCC7221266E254E00A48140 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FDCC7223266E254E00A48140 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FDCC7228266E254E00A48140 /* WeChat-SwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WeChat-SwiftUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDCC722C266E254E00A48140 /* WeChat_SwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeChat_SwiftUITests.swift; sourceTree = "<group>"; };
@@ -95,21 +93,17 @@
 		FDCC7219266E254D00A48140 /* WeChat-SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */,
-				FDCC721C266E254D00A48140 /* ContentView.swift */,
-				FDCC721E266E254E00A48140 /* Assets.xcassets */,
 				FDCC7223266E254E00A48140 /* Info.plist */,
-				FDCC7220266E254E00A48140 /* Preview Content */,
+				FDCC721C266E254D00A48140 /* ContentView.swift */,
+				FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */,
+				FDCC721E266E254E00A48140 /* Assets.xcassets */,
+				FDCC7245266E680800A48140 /* API */,
+				FDCC7247266E6AF700A48140 /* Configs */,
+				FDCC7246266E6AE600A48140 /* DataModels */,
+				FDCC7249266E6B2100A48140 /* Library */,
+				FDCC7248266E6AFD00A48140 /* Views */,
 			);
 			path = "WeChat-SwiftUI";
-			sourceTree = "<group>";
-		};
-		FDCC7220266E254E00A48140 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				FDCC7221266E254E00A48140 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		FDCC722B266E254E00A48140 /* WeChat-SwiftUITests */ = {
@@ -128,6 +122,41 @@
 				FDCC7239266E254E00A48140 /* Info.plist */,
 			);
 			path = "WeChat-SwiftUIUITests";
+			sourceTree = "<group>";
+		};
+		FDCC7245266E680800A48140 /* API */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		FDCC7246266E6AE600A48140 /* DataModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataModels;
+			sourceTree = "<group>";
+		};
+		FDCC7247266E6AF700A48140 /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Configs;
+			sourceTree = "<group>";
+		};
+		FDCC7248266E6AFD00A48140 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FDCC7249266E6B2100A48140 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Library;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,7 +262,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FDCC7222266E254E00A48140 /* Preview Assets.xcassets in Resources */,
 				FDCC721F266E254E00A48140 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,7 +446,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"WeChat-SwiftUI/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = PDS2N83HDN;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "WeChat-SwiftUI/Info.plist";
@@ -440,7 +468,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"WeChat-SwiftUI/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = PDS2N83HDN;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "WeChat-SwiftUI/Info.plist";
