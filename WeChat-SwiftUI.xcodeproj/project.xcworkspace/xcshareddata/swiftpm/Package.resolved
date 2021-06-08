@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Kickstarter-Prelude",
+        "repositoryURL": "https://github.com/Lebron1992/Kickstarter-Prelude.git",
+        "state": {
+          "branch": null,
+          "revision": "7dfaa2a8d2aa5768aceb9f8114b6a0b91957dee5",
+          "version": "0.0.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
