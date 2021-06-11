@@ -1,0 +1,36 @@
+cyclomatic_complexity:
+  warning: 20
+  error: 30
+
+disabled_rules: # rule identifiers to exclude from running
+  - type_name
+  - large_tuple
+  - identifier_name
+  - function_parameter_count
+
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Pods
+  - Carthage
+
+function_body_length:
+  warning: 75
+  error: 100
+
+file_length:
+  warning: 800
+  error: 1000
+
+identifier_name:
+  excluded: id # id is allowed
+
+included:
+  - ./
+
+nesting:
+ type_level:
+  warning: 4
+  error: 5
+
+type_body_length:
+  warning: 400
+  error: 500
