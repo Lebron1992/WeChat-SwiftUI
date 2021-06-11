@@ -36,6 +36,13 @@
 		FDCC72872671AD7B00A48140 /* TryDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC72862671AD7B00A48140 /* TryDecodable.swift */; };
 		FDCC72892671C14800A48140 /* AppEnvironmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC72882671C14800A48140 /* AppEnvironmentTests.swift */; };
 		FDCC728C2671C34200A48140 /* UserTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC728B2671C34200A48140 /* UserTemplates.swift */; };
+		FDCC7290267343A800A48140 /* Service+RequestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC728F267343A800A48140 /* Service+RequestHelpers.swift */; };
+		FDCC72922673448A00A48140 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC72912673448A00A48140 /* Route.swift */; };
+		FDCC7297267348A600A48140 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC7296267348A600A48140 /* Constants.swift */; };
+		FDCC7299267348D300A48140 /* NetworkingHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC7298267348D300A48140 /* NetworkingHelpers.swift */; };
+		FDCC729B2673494B00A48140 /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC729A2673494B00A48140 /* Loadable.swift */; };
+		FDCC729D2673496800A48140 /* CancelBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC729C2673496800A48140 /* CancelBag.swift */; };
+		FDCC729F2673499700A48140 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC729E2673499700A48140 /* APIError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +97,13 @@
 		FDCC72862671AD7B00A48140 /* TryDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryDecodable.swift; sourceTree = "<group>"; };
 		FDCC72882671C14800A48140 /* AppEnvironmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironmentTests.swift; sourceTree = "<group>"; };
 		FDCC728B2671C34200A48140 /* UserTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTemplates.swift; sourceTree = "<group>"; };
+		FDCC728F267343A800A48140 /* Service+RequestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Service+RequestHelpers.swift"; sourceTree = "<group>"; };
+		FDCC72912673448A00A48140 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		FDCC7296267348A600A48140 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FDCC7298267348D300A48140 /* NetworkingHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingHelpers.swift; sourceTree = "<group>"; };
+		FDCC729A2673494B00A48140 /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
+		FDCC729C2673496800A48140 /* CancelBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelBag.swift; sourceTree = "<group>"; };
+		FDCC729E2673499700A48140 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +192,7 @@
 				FDCC7254266F212B00A48140 /* ServerConfigTests.swift */,
 				FDCC724E266F1A3400A48140 /* ServerConfigType.swift */,
 				FDCC7264266F5C5B00A48140 /* Service.swift */,
+				FDCC728F267343A800A48140 /* Service+RequestHelpers.swift */,
 				FDCC7268266F62C900A48140 /* ServiceTests.swift */,
 				FDCC724C266F19CF00A48140 /* ServiceType.swift */,
 				FDCC726A266F650F00A48140 /* ServiceTypeTests.swift */,
@@ -189,9 +204,9 @@
 		FDCC7246266E6AE600A48140 /* DataModels */ = {
 			isa = PBXGroup;
 			children = (
-				FDCC728A2671C33400A48140 /* Templates */,
-				FDCC726E2670882D00A48140 /* User.swift */,
 				FDCC727D2671A6E200A48140 /* AccessTokenEnvelope.swift */,
+				FDCC726E2670882D00A48140 /* User.swift */,
+				FDCC728A2671C33400A48140 /* Templates */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -216,11 +231,14 @@
 			children = (
 				FDCC727B2671A4DC00A48140 /* AppEnvironment.swift */,
 				FDCC72882671C14800A48140 /* AppEnvironmentTests.swift */,
+				FDCC729C2673496800A48140 /* CancelBag.swift */,
+				FDCC7296267348A600A48140 /* Constants.swift */,
 				FDCC724A266F190700A48140 /* Environment.swift */,
 				FDCC72732671087A00A48140 /* EnvironmentTests.swift */,
 				FDCC727F2671A99400A48140 /* KeyValueStoreType.swift */,
 				FDCC7266266F5CF600A48140 /* Language.swift */,
 				FDCC7278267109D500A48140 /* LanguageTests.swift */,
+				FDCC729A2673494B00A48140 /* Loadable.swift */,
 				FDCC72862671AD7B00A48140 /* TryDecodable.swift */,
 				FDCC72812671AC1800A48140 /* Extensions */,
 			);
@@ -230,9 +248,12 @@
 		FDCC7256266F26C900A48140 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				FDCC729E2673499700A48140 /* APIError.swift */,
 				FDCC7250266F1B2E00A48140 /* EnvironmentType.swift */,
-				FDCC7257266F26D200A48140 /* OauthToken.swift */,
 				FDCC725E266F4DFF00A48140 /* Method.swift */,
+				FDCC7298267348D300A48140 /* NetworkingHelpers.swift */,
+				FDCC7257266F26D200A48140 /* OauthToken.swift */,
+				FDCC72912673448A00A48140 /* Route.swift */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -431,17 +452,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				FDCC728C2671C34200A48140 /* UserTemplates.swift in Sources */,
+				FDCC729D2673496800A48140 /* CancelBag.swift in Sources */,
 				FDCC726F2670882D00A48140 /* User.swift in Sources */,
 				FDCC725F266F4DFF00A48140 /* Method.swift in Sources */,
 				FDCC727E2671A6E200A48140 /* AccessTokenEnvelope.swift in Sources */,
 				FDCC721D266E254D00A48140 /* ContentView.swift in Sources */,
+				FDCC729B2673494B00A48140 /* Loadable.swift in Sources */,
+				FDCC7299267348D300A48140 /* NetworkingHelpers.swift in Sources */,
 				FDCC7258266F26D200A48140 /* OauthToken.swift in Sources */,
+				FDCC7297267348A600A48140 /* Constants.swift in Sources */,
 				FDCC72872671AD7B00A48140 /* TryDecodable.swift in Sources */,
 				FDCC724F266F1A3400A48140 /* ServerConfigType.swift in Sources */,
 				FDCC7253266F1FB800A48140 /* Secrets.swift in Sources */,
 				FDCC72802671A99400A48140 /* KeyValueStoreType.swift in Sources */,
 				FDCC724B266F190700A48140 /* Environment.swift in Sources */,
 				FDCC727C2671A4DC00A48140 /* AppEnvironment.swift in Sources */,
+				FDCC72922673448A00A48140 /* Route.swift in Sources */,
 				FDCC7251266F1B2E00A48140 /* EnvironmentType.swift in Sources */,
 				FDCC7265266F5C5B00A48140 /* Service.swift in Sources */,
 				FDCC72832671AC2B00A48140 /* Encodable+Dictionary.swift in Sources */,
@@ -449,6 +475,8 @@
 				FDCC724D266F19CF00A48140 /* ServiceType.swift in Sources */,
 				FDCC7267266F5CF600A48140 /* Language.swift in Sources */,
 				FDCC726D266F70EA00A48140 /* MockService.swift in Sources */,
+				FDCC7290267343A800A48140 /* Service+RequestHelpers.swift in Sources */,
+				FDCC729F2673499700A48140 /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
