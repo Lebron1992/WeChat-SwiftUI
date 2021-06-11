@@ -11,13 +11,18 @@ struct Environment {
   /// 用户的当前语言，用于确定要加载哪个本地化字符串包。
   let language: Language
 
+  /// 用户默认的 key-value 存储，默认是 `UserDefaults.standard`。
+  let userDefaults: KeyValueStoreType
+
   init(
     apiService: ServiceType = Service(),
     currentUser: User? = nil,
-    language: Language = Language(languageStrings: Locale.preferredLanguages) ?? .zh
+    language: Language = Language(languageStrings: Locale.preferredLanguages) ?? .zh,
+    userDefaults: KeyValueStoreType = UserDefaults.standard
     ) {
     self.apiService = apiService
     self.currentUser = currentUser
     self.language = language
+    self.userDefaults = userDefaults
   }
 }

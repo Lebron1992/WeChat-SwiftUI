@@ -28,6 +28,14 @@
 		FDCC72752671087E00A48140 /* EnvironmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC72732671087A00A48140 /* EnvironmentTests.swift */; };
 		FDCC72772671097D00A48140 /* TestExamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC72762671097D00A48140 /* TestExamples.swift */; };
 		FDCC727A267109D700A48140 /* LanguageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC7278267109D500A48140 /* LanguageTests.swift */; };
+		FDCC727C2671A4DC00A48140 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC727B2671A4DC00A48140 /* AppEnvironment.swift */; };
+		FDCC727E2671A6E200A48140 /* AccessTokenEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC727D2671A6E200A48140 /* AccessTokenEnvelope.swift */; };
+		FDCC72802671A99400A48140 /* KeyValueStoreType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC727F2671A99400A48140 /* KeyValueStoreType.swift */; };
+		FDCC72832671AC2B00A48140 /* Encodable+Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC72822671AC2B00A48140 /* Encodable+Dictionary.swift */; };
+		FDCC72852671AC7200A48140 /* Encodable+DictionaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC72842671AC7200A48140 /* Encodable+DictionaryTests.swift */; };
+		FDCC72872671AD7B00A48140 /* TryDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC72862671AD7B00A48140 /* TryDecodable.swift */; };
+		FDCC72892671C14800A48140 /* AppEnvironmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC72882671C14800A48140 /* AppEnvironmentTests.swift */; };
+		FDCC728C2671C34200A48140 /* UserTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC728B2671C34200A48140 /* UserTemplates.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +82,14 @@
 		FDCC72732671087A00A48140 /* EnvironmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentTests.swift; sourceTree = "<group>"; };
 		FDCC72762671097D00A48140 /* TestExamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestExamples.swift; sourceTree = "<group>"; };
 		FDCC7278267109D500A48140 /* LanguageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageTests.swift; sourceTree = "<group>"; };
+		FDCC727B2671A4DC00A48140 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		FDCC727D2671A6E200A48140 /* AccessTokenEnvelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenEnvelope.swift; sourceTree = "<group>"; };
+		FDCC727F2671A99400A48140 /* KeyValueStoreType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueStoreType.swift; sourceTree = "<group>"; };
+		FDCC72822671AC2B00A48140 /* Encodable+Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Dictionary.swift"; sourceTree = "<group>"; };
+		FDCC72842671AC7200A48140 /* Encodable+DictionaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+DictionaryTests.swift"; sourceTree = "<group>"; };
+		FDCC72862671AD7B00A48140 /* TryDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryDecodable.swift; sourceTree = "<group>"; };
+		FDCC72882671C14800A48140 /* AppEnvironmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironmentTests.swift; sourceTree = "<group>"; };
+		FDCC728B2671C34200A48140 /* UserTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTemplates.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,7 +189,9 @@
 		FDCC7246266E6AE600A48140 /* DataModels */ = {
 			isa = PBXGroup;
 			children = (
+				FDCC728A2671C33400A48140 /* Templates */,
 				FDCC726E2670882D00A48140 /* User.swift */,
+				FDCC727D2671A6E200A48140 /* AccessTokenEnvelope.swift */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -196,10 +214,15 @@
 		FDCC7249266E6B2100A48140 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				FDCC727B2671A4DC00A48140 /* AppEnvironment.swift */,
+				FDCC72882671C14800A48140 /* AppEnvironmentTests.swift */,
 				FDCC724A266F190700A48140 /* Environment.swift */,
-				FDCC7266266F5CF600A48140 /* Language.swift */,
 				FDCC72732671087A00A48140 /* EnvironmentTests.swift */,
+				FDCC727F2671A99400A48140 /* KeyValueStoreType.swift */,
+				FDCC7266266F5CF600A48140 /* Language.swift */,
 				FDCC7278267109D500A48140 /* LanguageTests.swift */,
+				FDCC72862671AD7B00A48140 /* TryDecodable.swift */,
+				FDCC72812671AC1800A48140 /* Extensions */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -212,6 +235,23 @@
 				FDCC725E266F4DFF00A48140 /* Method.swift */,
 			);
 			path = Lib;
+			sourceTree = "<group>";
+		};
+		FDCC72812671AC1800A48140 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FDCC72822671AC2B00A48140 /* Encodable+Dictionary.swift */,
+				FDCC72842671AC7200A48140 /* Encodable+DictionaryTests.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FDCC728A2671C33400A48140 /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+				FDCC728B2671C34200A48140 /* UserTemplates.swift */,
+			);
+			path = Templates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,15 +389,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDCC728C2671C34200A48140 /* UserTemplates.swift in Sources */,
 				FDCC726F2670882D00A48140 /* User.swift in Sources */,
 				FDCC725F266F4DFF00A48140 /* Method.swift in Sources */,
+				FDCC727E2671A6E200A48140 /* AccessTokenEnvelope.swift in Sources */,
 				FDCC721D266E254D00A48140 /* ContentView.swift in Sources */,
 				FDCC7258266F26D200A48140 /* OauthToken.swift in Sources */,
+				FDCC72872671AD7B00A48140 /* TryDecodable.swift in Sources */,
 				FDCC724F266F1A3400A48140 /* ServerConfigType.swift in Sources */,
 				FDCC7253266F1FB800A48140 /* Secrets.swift in Sources */,
+				FDCC72802671A99400A48140 /* KeyValueStoreType.swift in Sources */,
 				FDCC724B266F190700A48140 /* Environment.swift in Sources */,
+				FDCC727C2671A4DC00A48140 /* AppEnvironment.swift in Sources */,
 				FDCC7251266F1B2E00A48140 /* EnvironmentType.swift in Sources */,
 				FDCC7265266F5C5B00A48140 /* Service.swift in Sources */,
+				FDCC72832671AC2B00A48140 /* Encodable+Dictionary.swift in Sources */,
 				FDCC721B266E254D00A48140 /* WeChat_SwiftUIApp.swift in Sources */,
 				FDCC724D266F19CF00A48140 /* ServiceType.swift in Sources */,
 				FDCC7267266F5CF600A48140 /* Language.swift in Sources */,
@@ -374,6 +420,8 @@
 				FDCC72752671087E00A48140 /* EnvironmentTests.swift in Sources */,
 				FDCC7269266F62C900A48140 /* ServiceTests.swift in Sources */,
 				FDCC726B266F650F00A48140 /* ServiceTypeTests.swift in Sources */,
+				FDCC72852671AC7200A48140 /* Encodable+DictionaryTests.swift in Sources */,
+				FDCC72892671C14800A48140 /* AppEnvironmentTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

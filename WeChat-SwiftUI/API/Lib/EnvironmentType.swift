@@ -1,4 +1,4 @@
-enum EnvironmentType {
-  case production
-  case staging
+enum EnvironmentType: String {
+  case production = "Production"
+  case staging    = "Staging"
 }

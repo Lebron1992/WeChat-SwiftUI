@@ -33,4 +33,13 @@ struct ServerConfig: ServerConfigType {
     self.apiBaseUrl = apiBaseUrl
     self.environment = environment
   }
+
+  static func config(for environment: EnvironmentType) -> ServerConfigType {
+    switch environment {
+    case .staging:
+      return ServerConfig.staging
+    case .production:
+      return ServerConfig.production
+    }
+  }
 }

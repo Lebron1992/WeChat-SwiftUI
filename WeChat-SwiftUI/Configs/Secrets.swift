@@ -3,8 +3,8 @@ enum Secrets {
 
   enum Api {
     enum Endpoint {
-      static let production = "http://api.wechat.com"
-      static let staging = "http://api-staging.wechat.com"
+      static let production = "https://api.wechat.com"
+      static let staging = "https://api-staging.wechat.com"
     }
   }
 }
