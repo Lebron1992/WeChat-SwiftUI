@@ -10,11 +10,11 @@ extension APIError: LocalizedError {
   var errorDescription: String? {
     switch self {
     case .internalServerError:
-      return "内部服务器错误"
+      return Strings.api_error_internal_server_error()
     case let .invalidURL(url):
-      return "无效的 URL: \(url)"
+      return Strings.api_error_invalid_url(url: url)
     case let .unexpectedResponse(response):
-      return "出乎意料的响应: \(response)"
+      return Strings.api_error_unexpected_response(response: "\(response)")
     }
   }
 }

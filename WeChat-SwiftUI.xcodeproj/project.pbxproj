@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FD1E4CC726745E7000BD2C34 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FD1E4CC926745E7000BD2C34 /* Localizable.strings */; };
+		FD1E4CE92674780600BD2C34 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4CE82674780600BD2C34 /* Strings.swift */; };
+		FD1E4CEB2674A47200BD2C34 /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4CEA2674A47200BD2C34 /* LocalizedString.swift */; };
 		FDCC721B266E254D00A48140 /* WeChat_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */; };
 		FDCC721D266E254D00A48140 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC721C266E254D00A48140 /* ContentView.swift */; };
 		FDCC721F266E254E00A48140 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDCC721E266E254E00A48140 /* Assets.xcassets */; };
@@ -63,6 +66,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FD1E4CC826745E7000BD2C34 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		FD1E4CCA26745E7300BD2C34 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FD1E4CE82674780600BD2C34 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		FD1E4CEA2674A47200BD2C34 /* LocalizedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
 		FDCC7217266E254D00A48140 /* WeChat-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WeChat-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeChat_SwiftUIApp.swift; sourceTree = "<group>"; };
 		FDCC721C266E254D00A48140 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -132,6 +139,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FD8ADB2C2674576300ACD596 /* Locales */ = {
+			isa = PBXGroup;
+			children = (
+				FD1E4CC926745E7000BD2C34 /* Localizable.strings */,
+			);
+			path = Locales;
+			sourceTree = "<group>";
+		};
 		FDCC720E266E254D00A48140 = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +178,7 @@
 				FDCC7247266E6AF700A48140 /* Configs */,
 				FDCC7246266E6AE600A48140 /* DataModels */,
 				FDCC7249266E6B2100A48140 /* Library */,
+				FD8ADB2C2674576300ACD596 /* Locales */,
 				FDCC7248266E6AFD00A48140 /* Views */,
 			);
 			path = "WeChat-SwiftUI";
@@ -239,6 +255,8 @@
 				FDCC7266266F5CF600A48140 /* Language.swift */,
 				FDCC7278267109D500A48140 /* LanguageTests.swift */,
 				FDCC729A2673494B00A48140 /* Loadable.swift */,
+				FD1E4CEA2674A47200BD2C34 /* LocalizedString.swift */,
+				FD1E4CE82674780600BD2C34 /* Strings.swift */,
 				FDCC72862671AD7B00A48140 /* TryDecodable.swift */,
 				FDCC72812671AC1800A48140 /* Extensions */,
 			);
@@ -365,6 +383,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hans",
 				Base,
 			);
 			mainGroup = FDCC720E266E254D00A48140;
@@ -388,6 +407,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FDCC721F266E254E00A48140 /* Assets.xcassets in Resources */,
+				FD1E4CC726745E7000BD2C34 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +481,8 @@
 				FDCC7299267348D300A48140 /* NetworkingHelpers.swift in Sources */,
 				FDCC7258266F26D200A48140 /* OauthToken.swift in Sources */,
 				FDCC7297267348A600A48140 /* Constants.swift in Sources */,
+				FD1E4CEB2674A47200BD2C34 /* LocalizedString.swift in Sources */,
+				FD1E4CE92674780600BD2C34 /* Strings.swift in Sources */,
 				FDCC72872671AD7B00A48140 /* TryDecodable.swift in Sources */,
 				FDCC724F266F1A3400A48140 /* ServerConfigType.swift in Sources */,
 				FDCC7253266F1FB800A48140 /* Secrets.swift in Sources */,
@@ -517,11 +539,24 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		FD1E4CC926745E7000BD2C34 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FD1E4CC826745E7000BD2C34 /* zh-Hans */,
+				FD1E4CCA26745E7300BD2C34 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		FDCC723A266E254E00A48140 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -583,6 +618,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

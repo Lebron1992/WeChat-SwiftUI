@@ -1,0 +1,22 @@
+{
+  "locales": {
+    "en": {
+      "api": {
+        "error": {
+          "internal_server_error": "Internal server error",
+          "invalid_url": "Invalid URL: %{url}",
+          "unexpected_response": "Unexpected response: %{response}"
+        }
+      }
+    },
+    "zh": {
+      "api": {
+        "error": {
+          "internal_server_error": "内部服务器错误",
+          "invalid_url": "无效的 URL：%{url}",
+          "unexpected_response": "出乎意料的响应：%{response}"
+        }
+      }
+    }
+  }
+}
