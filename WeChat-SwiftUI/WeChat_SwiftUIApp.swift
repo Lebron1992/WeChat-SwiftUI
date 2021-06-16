@@ -1,10 +1,13 @@
 import SwiftUI
+import SwiftUIRedux
 
 @main
 struct WeChat_SwiftUIApp: App {
   var body: some Scene {
     WindowGroup {
-      ContentView()
+        StoreProvider(store: store) {
+            ContentView()
+        }
     }
   }
 }

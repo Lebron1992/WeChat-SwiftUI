@@ -9,6 +9,15 @@
           "revision": "7dfaa2a8d2aa5768aceb9f8114b6a0b91957dee5",
           "version": "0.0.1"
         }
+      },
+      {
+        "package": "SwiftUIRedux",
+        "repositoryURL": "https://github.com/Lebron1992/SwiftUIRedux.git",
+        "state": {
+          "branch": null,
+          "revision": "2b8ab50376838da58cddb2eb494a3c28a93a0aee",
+          "version": "0.0.6"
+        }
       }
     ]
   },
