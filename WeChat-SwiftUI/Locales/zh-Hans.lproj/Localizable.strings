@@ -1,3 +1,7 @@
 "api.error.internal_server_error" = "内部服务器错误";
 "api.error.invalid_url" = "无效的 URL：%{url}";
 "api.error.unexpected_response" = "出乎意料的响应：%{response}";
+"tabbar.chats" = "聊天";
+"tabbar.contacts" = "联系人";
+"tabbar.discover" = "发现";
+"tabbar.me" = "我";

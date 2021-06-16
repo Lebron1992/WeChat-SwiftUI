@@ -49,4 +49,60 @@ public enum Strings {
       substitutions: ["response": response]
     )
   }
+  /**
+   "Chats"
+
+   - **en**: "Chats"
+   - **zh**: "聊天"
+  */
+  public static func tabbar_chats() -> String {
+    return localizedString(
+      key: "tabbar.chats",
+      defaultValue: "Chats",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "Contacts"
+
+   - **en**: "Contacts"
+   - **zh**: "联系人"
+  */
+  public static func tabbar_contacts() -> String {
+    return localizedString(
+      key: "tabbar.contacts",
+      defaultValue: "Contacts",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "Discover"
+
+   - **en**: "Discover"
+   - **zh**: "发现"
+  */
+  public static func tabbar_discover() -> String {
+    return localizedString(
+      key: "tabbar.discover",
+      defaultValue: "Discover",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "Me"
+
+   - **en**: "Me"
+   - **zh**: "我"
+  */
+  public static func tabbar_me() -> String {
+    return localizedString(
+      key: "tabbar.me",
+      defaultValue: "Me",
+      count: nil,
+      substitutions: [:]
+    )
+  }
 }

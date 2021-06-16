@@ -14,8 +14,16 @@
 		FD88273C2679A37600BBEAB6 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88273B2679A37600BBEAB6 /* AppState.swift */; };
 		FD88273E2679A3C300BBEAB6 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88273D2679A3C300BBEAB6 /* AppReducer.swift */; };
 		FD8827402679A40600BBEAB6 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88273F2679A40600BBEAB6 /* Store.swift */; };
+		FD8827422679A75B00BBEAB6 /* RootState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8827412679A75B00BBEAB6 /* RootState.swift */; };
+		FD8827442679A80900BBEAB6 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8827432679A80900BBEAB6 /* TabBarItem.swift */; };
+		FD8827462679A98D00BBEAB6 /* RootReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8827452679A98D00BBEAB6 /* RootReducer.swift */; };
+		FD8827482679A9BF00BBEAB6 /* RootActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8827472679A9BF00BBEAB6 /* RootActions.swift */; };
+		FD88274E2679D86D00BBEAB6 /* ChatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88274D2679D86D00BBEAB6 /* ChatsView.swift */; };
+		FD8827502679D88F00BBEAB6 /* ContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88274F2679D88F00BBEAB6 /* ContactsView.swift */; };
+		FD8827522679D89C00BBEAB6 /* DiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8827512679D89C00BBEAB6 /* DiscoverView.swift */; };
+		FD8827542679D8A600BBEAB6 /* MeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8827532679D8A600BBEAB6 /* MeView.swift */; };
 		FDCC721B266E254D00A48140 /* WeChat_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */; };
-		FDCC721D266E254D00A48140 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC721C266E254D00A48140 /* ContentView.swift */; };
+		FDCC721D266E254D00A48140 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC721C266E254D00A48140 /* RootView.swift */; };
 		FDCC721F266E254E00A48140 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDCC721E266E254E00A48140 /* Assets.xcassets */; };
 		FDCC724B266F190700A48140 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC724A266F190700A48140 /* Environment.swift */; };
 		FDCC724D266F19CF00A48140 /* ServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC724C266F19CF00A48140 /* ServiceType.swift */; };
@@ -77,9 +85,17 @@
 		FD88273B2679A37600BBEAB6 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		FD88273D2679A3C300BBEAB6 /* AppReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
 		FD88273F2679A40600BBEAB6 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		FD8827412679A75B00BBEAB6 /* RootState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootState.swift; sourceTree = "<group>"; };
+		FD8827432679A80900BBEAB6 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
+		FD8827452679A98D00BBEAB6 /* RootReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootReducer.swift; sourceTree = "<group>"; };
+		FD8827472679A9BF00BBEAB6 /* RootActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootActions.swift; sourceTree = "<group>"; };
+		FD88274D2679D86D00BBEAB6 /* ChatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsView.swift; sourceTree = "<group>"; };
+		FD88274F2679D88F00BBEAB6 /* ContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsView.swift; sourceTree = "<group>"; };
+		FD8827512679D89C00BBEAB6 /* DiscoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverView.swift; sourceTree = "<group>"; };
+		FD8827532679D8A600BBEAB6 /* MeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeView.swift; sourceTree = "<group>"; };
 		FDCC7217266E254D00A48140 /* WeChat-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WeChat-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeChat_SwiftUIApp.swift; sourceTree = "<group>"; };
-		FDCC721C266E254D00A48140 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		FDCC721C266E254D00A48140 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		FDCC721E266E254E00A48140 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FDCC7223266E254E00A48140 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FDCC7228266E254E00A48140 /* WeChat-SwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WeChat-SwiftUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -162,6 +178,7 @@
 		FD8827372679A25400BBEAB6 /* Actions */ = {
 			isa = PBXGroup;
 			children = (
+				FD8827472679A9BF00BBEAB6 /* RootActions.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -169,6 +186,7 @@
 		FD8827382679A25F00BBEAB6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FD8827432679A80900BBEAB6 /* TabBarItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -177,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				FD88273D2679A3C300BBEAB6 /* AppReducer.swift */,
+				FD8827452679A98D00BBEAB6 /* RootReducer.swift */,
 			);
 			path = Reducers;
 			sourceTree = "<group>";
@@ -185,8 +204,41 @@
 			isa = PBXGroup;
 			children = (
 				FD88273B2679A37600BBEAB6 /* AppState.swift */,
+				FD8827412679A75B00BBEAB6 /* RootState.swift */,
 			);
 			path = State;
+			sourceTree = "<group>";
+		};
+		FD8827492679D82C00BBEAB6 /* Chats */ = {
+			isa = PBXGroup;
+			children = (
+				FD88274D2679D86D00BBEAB6 /* ChatsView.swift */,
+			);
+			path = Chats;
+			sourceTree = "<group>";
+		};
+		FD88274A2679D83400BBEAB6 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				FD88274F2679D88F00BBEAB6 /* ContactsView.swift */,
+			);
+			path = Contacts;
+			sourceTree = "<group>";
+		};
+		FD88274B2679D84100BBEAB6 /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				FD8827512679D89C00BBEAB6 /* DiscoverView.swift */,
+			);
+			path = Discover;
+			sourceTree = "<group>";
+		};
+		FD88274C2679D84F00BBEAB6 /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				FD8827532679D8A600BBEAB6 /* MeView.swift */,
+			);
+			path = Me;
 			sourceTree = "<group>";
 		};
 		FD8ADB2C2674576300ACD596 /* Locales */ = {
@@ -221,7 +273,6 @@
 			isa = PBXGroup;
 			children = (
 				FDCC7223266E254E00A48140 /* Info.plist */,
-				FDCC721C266E254D00A48140 /* ContentView.swift */,
 				FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */,
 				FDCC721E266E254E00A48140 /* Assets.xcassets */,
 				FDCC7245266E680800A48140 /* API */,
@@ -289,6 +340,11 @@
 		FDCC7248266E6AFD00A48140 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FDCC721C266E254D00A48140 /* RootView.swift */,
+				FD8827492679D82C00BBEAB6 /* Chats */,
+				FD88274A2679D83400BBEAB6 /* Contacts */,
+				FD88274B2679D84100BBEAB6 /* Discover */,
+				FD88274C2679D84F00BBEAB6 /* Me */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -529,16 +585,19 @@
 				FDCC726F2670882D00A48140 /* User.swift in Sources */,
 				FDCC725F266F4DFF00A48140 /* Method.swift in Sources */,
 				FDCC727E2671A6E200A48140 /* AccessTokenEnvelope.swift in Sources */,
-				FDCC721D266E254D00A48140 /* ContentView.swift in Sources */,
+				FDCC721D266E254D00A48140 /* RootView.swift in Sources */,
 				FDCC729B2673494B00A48140 /* Loadable.swift in Sources */,
 				FDCC7299267348D300A48140 /* NetworkingHelpers.swift in Sources */,
 				FDCC7258266F26D200A48140 /* OauthToken.swift in Sources */,
 				FDCC7297267348A600A48140 /* Constants.swift in Sources */,
 				FD1E4CEB2674A47200BD2C34 /* LocalizedString.swift in Sources */,
 				FD1E4CE92674780600BD2C34 /* Strings.swift in Sources */,
+				FD8827542679D8A600BBEAB6 /* MeView.swift in Sources */,
 				FDCC72872671AD7B00A48140 /* TryDecodable.swift in Sources */,
 				FDCC724F266F1A3400A48140 /* ServerConfigType.swift in Sources */,
 				FDCC7253266F1FB800A48140 /* Secrets.swift in Sources */,
+				FD8827442679A80900BBEAB6 /* TabBarItem.swift in Sources */,
+				FD8827422679A75B00BBEAB6 /* RootState.swift in Sources */,
 				FDCC72802671A99400A48140 /* KeyValueStoreType.swift in Sources */,
 				FDCC724B266F190700A48140 /* Environment.swift in Sources */,
 				FDCC727C2671A4DC00A48140 /* AppEnvironment.swift in Sources */,
@@ -546,10 +605,15 @@
 				FDCC7251266F1B2E00A48140 /* EnvironmentType.swift in Sources */,
 				FDCC7265266F5C5B00A48140 /* Service.swift in Sources */,
 				FDCC72832671AC2B00A48140 /* Encodable+Dictionary.swift in Sources */,
+				FD88274E2679D86D00BBEAB6 /* ChatsView.swift in Sources */,
 				FDCC721B266E254D00A48140 /* WeChat_SwiftUIApp.swift in Sources */,
 				FDCC724D266F19CF00A48140 /* ServiceType.swift in Sources */,
+				FD8827522679D89C00BBEAB6 /* DiscoverView.swift in Sources */,
+				FD8827502679D88F00BBEAB6 /* ContactsView.swift in Sources */,
 				FD88273E2679A3C300BBEAB6 /* AppReducer.swift in Sources */,
 				FDCC7267266F5CF600A48140 /* Language.swift in Sources */,
+				FD8827462679A98D00BBEAB6 /* RootReducer.swift in Sources */,
+				FD8827482679A9BF00BBEAB6 /* RootActions.swift in Sources */,
 				FD88273C2679A37600BBEAB6 /* AppState.swift in Sources */,
 				FD8827402679A40600BBEAB6 /* Store.swift in Sources */,
 				FDCC726D266F70EA00A48140 /* MockService.swift in Sources */,
