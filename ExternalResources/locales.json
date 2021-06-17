@@ -13,6 +13,11 @@
         "contacts": "Contacts",
         "discover": "Discover",
         "me": "Me"
+      },
+      "general": {
+        "an_error_occured": "An Error Occured",
+        "retry": "Retry",
+        "something_went_wrong": "Something went wrong"
       }
     },
     "zh": {
@@ -28,6 +33,11 @@
         "contacts": "联系人",
         "discover": "发现",
         "me": "我"
+      },
+      "general": {
+        "an_error_occured": "发生了一个错误",
+        "retry": "重试",
+        "something_went_wrong": "出了点问题"
       }
     }
   }

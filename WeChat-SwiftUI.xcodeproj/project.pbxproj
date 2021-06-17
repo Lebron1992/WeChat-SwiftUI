@@ -22,6 +22,12 @@
 		FD8827502679D88F00BBEAB6 /* ContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88274F2679D88F00BBEAB6 /* ContactsView.swift */; };
 		FD8827522679D89C00BBEAB6 /* DiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8827512679D89C00BBEAB6 /* DiscoverView.swift */; };
 		FD8827542679D8A600BBEAB6 /* MeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8827532679D8A600BBEAB6 /* MeView.swift */; };
+		FD882759267AF24500BBEAB6 /* ContactsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD882758267AF24500BBEAB6 /* ContactsList.swift */; };
+		FD88275B267AF27200BBEAB6 /* ContactsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88275A267AF27200BBEAB6 /* ContactsState.swift */; };
+		FD88275D267AF2C300BBEAB6 /* ContactsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88275C267AF2C300BBEAB6 /* ContactsReducer.swift */; };
+		FD88275F267AF2EB00BBEAB6 /* ContactsActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88275E267AF2EB00BBEAB6 /* ContactsActions.swift */; };
+		FD882762267AFAAF00BBEAB6 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD882761267AFAAF00BBEAB6 /* ActivityIndicatorView.swift */; };
+		FD882764267AFAD000BBEAB6 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD882763267AFAD000BBEAB6 /* ErrorView.swift */; };
 		FDCC721B266E254D00A48140 /* WeChat_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */; };
 		FDCC721D266E254D00A48140 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC721C266E254D00A48140 /* RootView.swift */; };
 		FDCC721F266E254E00A48140 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDCC721E266E254E00A48140 /* Assets.xcassets */; };
@@ -93,6 +99,12 @@
 		FD88274F2679D88F00BBEAB6 /* ContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsView.swift; sourceTree = "<group>"; };
 		FD8827512679D89C00BBEAB6 /* DiscoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverView.swift; sourceTree = "<group>"; };
 		FD8827532679D8A600BBEAB6 /* MeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeView.swift; sourceTree = "<group>"; };
+		FD882758267AF24500BBEAB6 /* ContactsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsList.swift; sourceTree = "<group>"; };
+		FD88275A267AF27200BBEAB6 /* ContactsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsState.swift; sourceTree = "<group>"; };
+		FD88275C267AF2C300BBEAB6 /* ContactsReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsReducer.swift; sourceTree = "<group>"; };
+		FD88275E267AF2EB00BBEAB6 /* ContactsActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsActions.swift; sourceTree = "<group>"; };
+		FD882761267AFAAF00BBEAB6 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
+		FD882763267AFAD000BBEAB6 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		FDCC7217266E254D00A48140 /* WeChat-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WeChat-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeChat_SwiftUIApp.swift; sourceTree = "<group>"; };
 		FDCC721C266E254D00A48140 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -178,6 +190,7 @@
 		FD8827372679A25400BBEAB6 /* Actions */ = {
 			isa = PBXGroup;
 			children = (
+				FD88275E267AF2EB00BBEAB6 /* ContactsActions.swift */,
 				FD8827472679A9BF00BBEAB6 /* RootActions.swift */,
 			);
 			path = Actions;
@@ -195,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				FD88273D2679A3C300BBEAB6 /* AppReducer.swift */,
+				FD88275C267AF2C300BBEAB6 /* ContactsReducer.swift */,
 				FD8827452679A98D00BBEAB6 /* RootReducer.swift */,
 			);
 			path = Reducers;
@@ -204,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				FD88273B2679A37600BBEAB6 /* AppState.swift */,
+				FD88275A267AF27200BBEAB6 /* ContactsState.swift */,
 				FD8827412679A75B00BBEAB6 /* RootState.swift */,
 			);
 			path = State;
@@ -220,6 +235,7 @@
 		FD88274A2679D83400BBEAB6 /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
+				FD882758267AF24500BBEAB6 /* ContactsList.swift */,
 				FD88274F2679D88F00BBEAB6 /* ContactsView.swift */,
 			);
 			path = Contacts;
@@ -239,6 +255,15 @@
 				FD8827532679D8A600BBEAB6 /* MeView.swift */,
 			);
 			path = Me;
+			sourceTree = "<group>";
+		};
+		FD882760267AFAA300BBEAB6 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				FD882761267AFAAF00BBEAB6 /* ActivityIndicatorView.swift */,
+				FD882763267AFAD000BBEAB6 /* ErrorView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		FD8ADB2C2674576300ACD596 /* Locales */ = {
@@ -340,6 +365,7 @@
 		FDCC7248266E6AFD00A48140 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FD882760267AFAA300BBEAB6 /* Components */,
 				FDCC721C266E254D00A48140 /* RootView.swift */,
 				FD8827492679D82C00BBEAB6 /* Chats */,
 				FD88274A2679D83400BBEAB6 /* Contacts */,
@@ -580,6 +606,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD882759267AF24500BBEAB6 /* ContactsList.swift in Sources */,
 				FDCC728C2671C34200A48140 /* UserTemplates.swift in Sources */,
 				FDCC729D2673496800A48140 /* CancelBag.swift in Sources */,
 				FDCC726F2670882D00A48140 /* User.swift in Sources */,
@@ -600,9 +627,11 @@
 				FD8827422679A75B00BBEAB6 /* RootState.swift in Sources */,
 				FDCC72802671A99400A48140 /* KeyValueStoreType.swift in Sources */,
 				FDCC724B266F190700A48140 /* Environment.swift in Sources */,
+				FD88275D267AF2C300BBEAB6 /* ContactsReducer.swift in Sources */,
 				FDCC727C2671A4DC00A48140 /* AppEnvironment.swift in Sources */,
 				FDCC72922673448A00A48140 /* Route.swift in Sources */,
 				FDCC7251266F1B2E00A48140 /* EnvironmentType.swift in Sources */,
+				FD882764267AFAD000BBEAB6 /* ErrorView.swift in Sources */,
 				FDCC7265266F5C5B00A48140 /* Service.swift in Sources */,
 				FDCC72832671AC2B00A48140 /* Encodable+Dictionary.swift in Sources */,
 				FD88274E2679D86D00BBEAB6 /* ChatsView.swift in Sources */,
@@ -617,8 +646,11 @@
 				FD88273C2679A37600BBEAB6 /* AppState.swift in Sources */,
 				FD8827402679A40600BBEAB6 /* Store.swift in Sources */,
 				FDCC726D266F70EA00A48140 /* MockService.swift in Sources */,
+				FD882762267AFAAF00BBEAB6 /* ActivityIndicatorView.swift in Sources */,
+				FD88275B267AF27200BBEAB6 /* ContactsState.swift in Sources */,
 				FDCC7290267343A800A48140 /* Service+RequestHelpers.swift in Sources */,
 				FDCC729F2673499700A48140 /* APIError.swift in Sources */,
+				FD88275F267AF2EB00BBEAB6 /* ContactsActions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

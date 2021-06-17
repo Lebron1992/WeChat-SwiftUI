@@ -2,7 +2,10 @@ import SwiftUI
 
 struct MeView: View {
   var body: some View {
-    Text("MeView!")
+    NavigationView {
+      Text("MeView!")
+        .navigationBarHidden(true)
+    }
   }
 }
 

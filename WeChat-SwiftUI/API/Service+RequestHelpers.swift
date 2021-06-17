@@ -8,7 +8,7 @@ extension Service {
     let properties = route.requestProperties
     print("\(properties.method): \(properties.query)")
 
-    guard let URL = URL(string: properties.path, relativeTo: serverConfig.apiBaseUrl) else {
+    guard let URL = URL(string: "\(serverConfig.apiBaseUrl.absoluteString)\(properties.path)") else {
       let error = APIError.invalidURL(serverConfig.apiBaseUrl.absoluteString + properties.path)
       return Fail<M, Error>(error: error).eraseToAnyPublisher()
     }

@@ -1,3 +1,4 @@
+import Combine
 import Foundation
 
 struct Service: ServiceType {
@@ -24,5 +25,9 @@ struct Service: ServiceType {
       serverConfig: self.serverConfig,
       oauthToken: nil
     )
+  }
+
+  func loadContacts() -> AnyPublisher<[User], Error> {
+    request(.loadContacts)
   }
 }

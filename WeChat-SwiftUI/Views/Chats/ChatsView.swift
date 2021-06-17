@@ -2,8 +2,10 @@ import SwiftUI
 
 struct ChatsView: View {
   var body: some View {
-    Text("ChatsView!")
-      .navigationBarTitle(Strings.tabbar_chats(), displayMode: .inline)
+    NavigationView {
+      Text("ChatsView!")
+        .navigationBarTitle(Strings.tabbar_chats(), displayMode: .inline)
+    }
   }
 }
 

@@ -1,12 +1,12 @@
 /// 数据请求的列表
 enum Route {
-  case route
+  case loadContacts
 
   var requestProperties:
     (method: Method, path: String, query: [String: Any]) {
     switch self {
-    case .route:
-      return (.GET, "/v1/route", [:])
+    case .loadContacts:
+      return (.GET, "/users/contacts.json", [:])
     }
   }
 }

@@ -1,3 +1,4 @@
+import Combine
 import Foundation
 
 struct MockService: ServiceType {
@@ -24,5 +25,18 @@ struct MockService: ServiceType {
       serverConfig: self.serverConfig,
       oauthToken: nil
     )
+  }
+
+  func loadContacts() -> AnyPublisher<[User], Error> {
+    publisher(data: [User.template])
+  }
+}
+
+extension MockService {
+  private func publisher<T>(data: T) -> AnyPublisher<T, Error> {
+    Just<Void>
+      .withErrorType(Error.self)
+      .map { data }
+      .eraseToAnyPublisher()
   }
 }

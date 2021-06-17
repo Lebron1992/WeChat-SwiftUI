@@ -1,3 +1,4 @@
+import Combine
 import Foundation
 import Kickstarter_Prelude
 
@@ -16,6 +17,9 @@ protocol ServiceType {
 
   /// 返回把 oauthToken 设置为 nil 的 service。
   func logout() -> Self
+
+  /// 获取联系人
+  func loadContacts() -> AnyPublisher<[User], Error>
 }
 
 func == (lhs: ServiceType, rhs: ServiceType) -> Bool {

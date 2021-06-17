@@ -14,29 +14,21 @@ struct RootView: View {
 
   var body: some View {
     TabView(selection: selectedTab) {
-      NavigationView {
-        ChatsView()
-      }
-      .tabItem({ tabItemView(for: .chats) })
-      .tag(TabBarItem.chats.rawValue)
+      ChatsView()
+        .tabItem({ tabItemView(for: .chats) })
+        .tag(TabBarItem.chats.rawValue)
 
-      NavigationView {
-        ContactsView()
-      }
-      .tabItem({ tabItemView(for: .contacts) })
-      .tag(TabBarItem.contacts.rawValue)
+      ContactsView()
+        .tabItem({ tabItemView(for: .contacts) })
+        .tag(TabBarItem.contacts.rawValue)
 
-      NavigationView {
-        DiscoverView()
-      }
-      .tabItem({ tabItemView(for: .discover) })
-      .tag(TabBarItem.discover.rawValue)
+      DiscoverView()
+        .tabItem({ tabItemView(for: .discover) })
+        .tag(TabBarItem.discover.rawValue)
 
-      NavigationView {
-        MeView()
-      }
-      .tabItem({ tabItemView(for: .me) })
-      .tag(TabBarItem.me.rawValue)
+      MeView()
+        .tabItem({ tabItemView(for: .me) })
+        .tag(TabBarItem.me.rawValue)
     }
     .accentColor(.init("tab_bar_selected")) // 设置 tab bar 选中颜色
   }
@@ -53,7 +45,6 @@ struct RootView: View {
 
 // MARK: - Helper Methods
 extension RootView {
-
   private func tabItemView(for tab: TabBarItem) -> AnyView {
     AnyView(
       VStack {

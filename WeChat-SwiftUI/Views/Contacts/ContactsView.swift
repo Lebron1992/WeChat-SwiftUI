@@ -1,9 +1,12 @@
 import SwiftUI
+import SwiftUIRedux
 
 struct ContactsView: View {
   var body: some View {
-    Text("ContactsView!")
-      .navigationBarTitle(Strings.tabbar_contacts(), displayMode: .inline)
+    NavigationView {
+      ContactsList()
+        .navigationBarTitle(Strings.tabbar_contacts(), displayMode: .inline)
+    }
   }
 }
 

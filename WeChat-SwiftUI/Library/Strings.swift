@@ -50,6 +50,48 @@ public enum Strings {
     )
   }
   /**
+   "An Error Occured"
+
+   - **en**: "An Error Occured"
+   - **zh**: "发生了一个错误"
+  */
+  public static func general_an_error_occured() -> String {
+    return localizedString(
+      key: "general.an_error_occured",
+      defaultValue: "An Error Occured",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "Retry"
+
+   - **en**: "Retry"
+   - **zh**: "重试"
+  */
+  public static func general_retry() -> String {
+    return localizedString(
+      key: "general.retry",
+      defaultValue: "Retry",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "Something went wrong"
+
+   - **en**: "Something went wrong"
+   - **zh**: "出了点问题"
+  */
+  public static func general_something_went_wrong() -> String {
+    return localizedString(
+      key: "general.something_went_wrong",
+      defaultValue: "Something went wrong",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
    "Chats"
 
    - **en**: "Chats"
