@@ -12,4 +12,18 @@ extension User {
     }
     """
   )
+
+  static let template2: User! = tryDecode(
+    """
+    {
+    "id": "4d0914d5-b04c-43f1-b37f-b2bb8d177951",
+    "avatar": "https://cdn.nba.com/headshots/nba/latest/260x190/2544.png",
+    "name": "LeBron James",
+    "wechat_id": "lebron_james",
+    "gender": "male",
+    "region": "USA",
+    "whats_up": "Hello, I'm LeBron James!"
+    }
+    """
+  )
 }

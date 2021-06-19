@@ -127,7 +127,7 @@ final class AppEnvironmentTests: XCTestCase {
     let result = userDefaults.dictionary(forKey: AppEnvironment.environmentStorageKey)!
 
     XCTAssertEqual("deadbeef", result["apiService.oauthToken.token"] as? String)
-    XCTAssertEqual(currentUser.id, (result["currentUser"] as? [String: Any])?["id"] as? String)
+    XCTAssertEqual(currentUser?.id, (result["currentUser"] as? [String: Any])?["id"] as? String)
   }
 
   func test_restoreFromEnvironment() {
