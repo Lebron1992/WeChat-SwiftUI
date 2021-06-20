@@ -1,7 +1,7 @@
 import SwiftUIRedux
 
 enum ContactsActions {
-  struct LoadContacts: AsyncAction {
+  struct LoadContacts: AsyncAction, Equatable {
     func async(dispatch: @escaping Dispatch, state: ReduxState?) {
 
       let cancelBag = CancelBag()
@@ -18,7 +18,7 @@ enum ContactsActions {
     }
   }
 
-  struct SetContacts: Action {
+  struct SetContacts: Action, Equatable {
     let contacts: Loadable<[User]>
   }
 }

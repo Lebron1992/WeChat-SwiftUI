@@ -5,12 +5,31 @@ struct MockService: ServiceType {
   let serverConfig: ServerConfigType
   let oauthToken: OauthTokenAuthType?
 
+  let loadContactsResponse: [User]?
+  let loadContactsError: Error?
+
   init(
     serverConfig: ServerConfigType,
     oauthToken: OauthTokenAuthType?
   ) {
+    self.init(
+      serverConfig: serverConfig,
+      oauthToken: oauthToken,
+      loadContactsResponse: nil
+    )
+  }
+
+  init(
+    serverConfig: ServerConfigType = ServerConfig.production,
+    oauthToken: OauthTokenAuthType? = nil,
+    loadContactsResponse: [User]?,
+    loadContactsError: Error? = nil
+  ) {
     self.serverConfig = serverConfig
     self.oauthToken = oauthToken
+
+    self.loadContactsResponse = loadContactsResponse
+    self.loadContactsError = loadContactsError
   }
 
   func login(_ oauthToken: OauthTokenAuthType) -> MockService {
@@ -28,7 +47,10 @@ struct MockService: ServiceType {
   }
 
   func loadContacts() -> AnyPublisher<[User], Error> {
-    publisher(data: [User.template])
+    if let error = loadContactsError {
+      return publisher(error: error)
+    }
+    return publisher(data: loadContactsResponse ?? [User.template])
   }
 }
 
@@ -37,6 +59,11 @@ extension MockService {
     Just<Void>
       .withErrorType(Error.self)
       .map { data }
+      .eraseToAnyPublisher()
+  }
+
+  private func publisher<T>(error: Error) -> AnyPublisher<T, Error> {
+    Fail<T, Error>(error: error)
       .eraseToAnyPublisher()
   }
 }

@@ -12,11 +12,11 @@
       },
       {
         "package": "SwiftUIRedux",
-        "repositoryURL": "https://github.com/Lebron1992/SwiftUIRedux.git",
+        "repositoryURL": "/Users/lebron/Documents/Lebron/my-projects/SwiftUIRedux",
         "state": {
           "branch": null,
-          "revision": "f5008d52603beacbcb783d73d62503b19dd69658",
-          "version": "0.0.8"
+          "revision": "f5e52895ecab757200c7bc61928f9f0d58ed7b00",
+          "version": "0.0.11"
         }
       }
     ]

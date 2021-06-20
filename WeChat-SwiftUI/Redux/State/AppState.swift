@@ -21,6 +21,13 @@ struct AppState: ReduxState {
   #endif
 }
 
+extension AppState: Equatable {
+  static func == (lhs: AppState, rhs: AppState) -> Bool {
+    lhs.contactsState == rhs.contactsState &&
+      lhs.rootState == rhs.rootState
+  }
+}
+
 #if DEBUG
 extension AppState {
   static var preview: AppState {
