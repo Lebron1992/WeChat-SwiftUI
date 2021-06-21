@@ -4,8 +4,9 @@ struct MeView: View {
   var body: some View {
     NavigationView {
       Text("MeView!")
-        .navigationBarHidden(true)
+        .navigationBarBackgroundWhite()
     }
+    .navigationViewStyle(StackNavigationViewStyle())
   }
 }
 

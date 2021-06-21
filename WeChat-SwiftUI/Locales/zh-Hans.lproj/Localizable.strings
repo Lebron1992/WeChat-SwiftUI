@@ -4,7 +4,7 @@
 "general.an_error_occured" = "发生了一个错误";
 "general.retry" = "重试";
 "general.something_went_wrong" = "出了点问题";
-"tabbar.chats" = "聊天";
-"tabbar.contacts" = "联系人";
+"tabbar.chats" = "微信";
+"tabbar.contacts" = "通讯录";
 "tabbar.discover" = "发现";
 "tabbar.me" = "我";

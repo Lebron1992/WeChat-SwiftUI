@@ -4,8 +4,11 @@ struct DiscoverView: View {
   var body: some View {
     NavigationView {
       Text("DiscoverView!")
-        .navigationBarTitle(Strings.tabbar_discover(), displayMode: .inline)
+        .navigationTitle(Strings.tabbar_discover())
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackgroundLightGray()
     }
+    .navigationViewStyle(StackNavigationViewStyle())
   }
 }
 

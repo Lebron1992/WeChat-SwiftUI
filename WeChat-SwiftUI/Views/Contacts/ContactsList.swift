@@ -45,9 +45,18 @@ private extension ContactsList {
     ZStack {
       List {
         ForEach(users) { user in
-          Text(user.name)
+          ZStack {
+            NavigationLink(destination: ContactDetail(contact: user)) {
+              EmptyView()
+            }
+            // 为了隐藏 NavigationLink 右边的箭头
+            .opacity(0.0)
+            .buttonStyle(PlainButtonStyle())
+            Text(user.name)
+          }
         }
       }
+      .listStyle(PlainListStyle())
       if showLoading {
         ActivityIndicatorView(color: .gray)
           .padding()

@@ -4,8 +4,11 @@ struct ChatsView: View {
   var body: some View {
     NavigationView {
       Text("ChatsView!")
-        .navigationBarTitle(Strings.tabbar_chats(), displayMode: .inline)
+        .navigationTitle(Strings.tabbar_chats())
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackgroundLightGray()
     }
+    .navigationViewStyle(StackNavigationViewStyle())
   }
 }
 

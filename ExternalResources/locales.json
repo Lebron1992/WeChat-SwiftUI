@@ -29,8 +29,8 @@
         }
       },
       "tabbar": {
-        "chats": "聊天",
-        "contacts": "联系人",
+        "chats": "微信",
+        "contacts": "通讯录",
         "discover": "发现",
         "me": "我"
       },

@@ -7,7 +7,19 @@ struct WeChat_SwiftUIApp: App {
     WindowGroup {
         StoreProvider(store: store) {
             RootView()
+              .onAppear(perform: styleApp)
         }
     }
+  }
+
+  private func styleApp() {
+    let backImage = UIImage(named: "icons_outlined_back")
+    let navBar = UINavigationBar.appearance()
+
+    navBar.backIndicatorImage = backImage
+    navBar.backIndicatorTransitionMaskImage = backImage
+    navBar.shadowImage = UIImage()
+    navBar.tintColor = UIColor(named: "text_primary")
+    navBar.titleTextAttributes = [.foregroundColor: navBar.tintColor as Any]
   }
 }

@@ -5,8 +5,11 @@ struct ContactsView: View {
   var body: some View {
     NavigationView {
       ContactsList()
-        .navigationBarTitle(Strings.tabbar_contacts(), displayMode: .inline)
+        .navigationTitle(Strings.tabbar_contacts())
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackgroundLightGray()
     }
+    .navigationViewStyle(StackNavigationViewStyle())
   }
 }
 

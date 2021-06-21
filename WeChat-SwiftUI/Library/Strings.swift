@@ -95,7 +95,7 @@ public enum Strings {
    "Chats"
 
    - **en**: "Chats"
-   - **zh**: "聊天"
+   - **zh**: "微信"
   */
   public static func tabbar_chats() -> String {
     return localizedString(
@@ -109,7 +109,7 @@ public enum Strings {
    "Contacts"
 
    - **en**: "Contacts"
-   - **zh**: "联系人"
+   - **zh**: "通讯录"
   */
   public static func tabbar_contacts() -> String {
     return localizedString(

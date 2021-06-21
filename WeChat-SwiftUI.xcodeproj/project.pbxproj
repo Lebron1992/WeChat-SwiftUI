@@ -33,6 +33,10 @@
 		FD882778267F1BD500BBEAB6 /* ContactsActionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD882777267F1BD500BBEAB6 /* ContactsActionsTests.swift */; };
 		FD88277B267F305800BBEAB6 /* SwiftUIRedux in Frameworks */ = {isa = PBXBuildFile; productRef = FD88277A267F305800BBEAB6 /* SwiftUIRedux */; };
 		FD88277D267F314000BBEAB6 /* RootReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88277C267F314000BBEAB6 /* RootReducerTests.swift */; };
+		FD882781267F844C00BBEAB6 /* NavigationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD882780267F844C00BBEAB6 /* NavigationConfigurator.swift */; };
+		FD882784267F888D00BBEAB6 /* NavigationBarBackgroundModifierLightGray.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD882783267F888D00BBEAB6 /* NavigationBarBackgroundModifierLightGray.swift */; };
+		FD882786267F89E000BBEAB6 /* NavigationBarBackgroundModifierWhite.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD882785267F89E000BBEAB6 /* NavigationBarBackgroundModifierWhite.swift */; };
+		FD88278E26808F5500BBEAB6 /* ContactDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88278D26808F5500BBEAB6 /* ContactDetail.swift */; };
 		FDCC721B266E254D00A48140 /* WeChat_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */; };
 		FDCC721D266E254D00A48140 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC721C266E254D00A48140 /* RootView.swift */; };
 		FDCC721F266E254E00A48140 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDCC721E266E254E00A48140 /* Assets.xcassets */; };
@@ -115,6 +119,10 @@
 		FD882772267EFA7400BBEAB6 /* MockStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStore.swift; sourceTree = "<group>"; };
 		FD882777267F1BD500BBEAB6 /* ContactsActionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsActionsTests.swift; sourceTree = "<group>"; };
 		FD88277C267F314000BBEAB6 /* RootReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootReducerTests.swift; sourceTree = "<group>"; };
+		FD882780267F844C00BBEAB6 /* NavigationConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationConfigurator.swift; sourceTree = "<group>"; };
+		FD882783267F888D00BBEAB6 /* NavigationBarBackgroundModifierLightGray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarBackgroundModifierLightGray.swift; sourceTree = "<group>"; };
+		FD882785267F89E000BBEAB6 /* NavigationBarBackgroundModifierWhite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarBackgroundModifierWhite.swift; sourceTree = "<group>"; };
+		FD88278D26808F5500BBEAB6 /* ContactDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetail.swift; sourceTree = "<group>"; };
 		FDCC7217266E254D00A48140 /* WeChat-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WeChat-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeChat_SwiftUIApp.swift; sourceTree = "<group>"; };
 		FDCC721C266E254D00A48140 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -249,6 +257,7 @@
 		FD88274A2679D83400BBEAB6 /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
+				FD88278D26808F5500BBEAB6 /* ContactDetail.swift */,
 				FD882758267AF24500BBEAB6 /* ContactsList.swift */,
 				FD88274F2679D88F00BBEAB6 /* ContactsView.swift */,
 			);
@@ -276,8 +285,18 @@
 			children = (
 				FD882761267AFAAF00BBEAB6 /* ActivityIndicatorView.swift */,
 				FD882763267AFAD000BBEAB6 /* ErrorView.swift */,
+				FD882780267F844C00BBEAB6 /* NavigationConfigurator.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		FD882782267F878500BBEAB6 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				FD882783267F888D00BBEAB6 /* NavigationBarBackgroundModifierLightGray.swift */,
+				FD882785267F89E000BBEAB6 /* NavigationBarBackgroundModifierWhite.swift */,
+			);
+			path = Modifiers;
 			sourceTree = "<group>";
 		};
 		FD8ADB2C2674576300ACD596 /* Locales */ = {
@@ -380,7 +399,6 @@
 		FDCC7248266E6AFD00A48140 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				FD882760267AFAA300BBEAB6 /* Components */,
 				FDCC721C266E254D00A48140 /* RootView.swift */,
 				FD8827492679D82C00BBEAB6 /* Chats */,
 				FD88274A2679D83400BBEAB6 /* Contacts */,
@@ -406,7 +424,9 @@
 				FD1E4CEA2674A47200BD2C34 /* LocalizedString.swift */,
 				FD1E4CE82674780600BD2C34 /* Strings.swift */,
 				FDCC72862671AD7B00A48140 /* TryDecodable.swift */,
+				FD882760267AFAA300BBEAB6 /* Components */,
 				FDCC72812671AC1800A48140 /* Extensions */,
+				FD882782267F878500BBEAB6 /* Modifiers */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -631,15 +651,18 @@
 				FDCC729B2673494B00A48140 /* Loadable.swift in Sources */,
 				FDCC7299267348D300A48140 /* NetworkingHelpers.swift in Sources */,
 				FDCC7258266F26D200A48140 /* OauthToken.swift in Sources */,
+				FD882781267F844C00BBEAB6 /* NavigationConfigurator.swift in Sources */,
 				FDCC7297267348A600A48140 /* Constants.swift in Sources */,
 				FD882773267EFA7400BBEAB6 /* MockStore.swift in Sources */,
 				FD1E4CEB2674A47200BD2C34 /* LocalizedString.swift in Sources */,
 				FD1E4CE92674780600BD2C34 /* Strings.swift in Sources */,
 				FD8827542679D8A600BBEAB6 /* MeView.swift in Sources */,
+				FD88278E26808F5500BBEAB6 /* ContactDetail.swift in Sources */,
 				FDCC72872671AD7B00A48140 /* TryDecodable.swift in Sources */,
 				FDCC724F266F1A3400A48140 /* ServerConfigType.swift in Sources */,
 				FDCC7253266F1FB800A48140 /* Secrets.swift in Sources */,
 				FD8827442679A80900BBEAB6 /* TabBarItem.swift in Sources */,
+				FD882784267F888D00BBEAB6 /* NavigationBarBackgroundModifierLightGray.swift in Sources */,
 				FD8827422679A75B00BBEAB6 /* RootState.swift in Sources */,
 				FDCC72802671A99400A48140 /* KeyValueStoreType.swift in Sources */,
 				FDCC724B266F190700A48140 /* Environment.swift in Sources */,
@@ -662,6 +685,7 @@
 				FD88273C2679A37600BBEAB6 /* AppState.swift in Sources */,
 				FD8827402679A40600BBEAB6 /* Store.swift in Sources */,
 				FDCC726D266F70EA00A48140 /* MockService.swift in Sources */,
+				FD882786267F89E000BBEAB6 /* NavigationBarBackgroundModifierWhite.swift in Sources */,
 				FD882762267AFAAF00BBEAB6 /* ActivityIndicatorView.swift in Sources */,
 				FD88275B267AF27200BBEAB6 /* ContactsState.swift in Sources */,
 				FDCC7290267343A800A48140 /* Service+RequestHelpers.swift in Sources */,
