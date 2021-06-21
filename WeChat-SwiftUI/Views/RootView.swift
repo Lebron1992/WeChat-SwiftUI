@@ -9,7 +9,7 @@ struct RootView: View {
   init() {
     // TODO: 有更好的方法？
     // 设置 tab bar 未选中颜色
-    UITabBar.appearance().unselectedItemTintColor = UIColor(named: "text_primary")
+    UITabBar.appearance().unselectedItemTintColor = .text_primary
   }
 
   var body: some View {
@@ -30,7 +30,7 @@ struct RootView: View {
         .tabItem({ tabItemView(for: .me) })
         .tag(TabBarItem.me.rawValue)
     }
-    .accentColor(.init("highlighted")) // 设置 tab bar 选中颜色
+    .accentColor(.highlighted) // 设置 tab bar 选中颜色
   }
 
   private var selectedTab: Binding<Int> {

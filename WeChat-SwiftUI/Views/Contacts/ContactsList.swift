@@ -45,14 +45,14 @@ private extension ContactsList {
     ZStack {
       List {
         ForEach(users) { user in
-          ZStack {
+          ZStack(alignment: .leading) {
             NavigationLink(destination: ContactDetail(contact: user)) {
               EmptyView()
             }
             // 为了隐藏 NavigationLink 右边的箭头
             .opacity(0.0)
             .buttonStyle(PlainButtonStyle())
-            Text(user.name)
+            ContactRow(contact: user)
           }
         }
       }

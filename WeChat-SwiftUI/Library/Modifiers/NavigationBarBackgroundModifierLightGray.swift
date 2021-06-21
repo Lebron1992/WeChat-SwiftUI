@@ -4,7 +4,7 @@ private struct NavigationBarBackgroundModifierLightGray: ViewModifier {
   func body(content: Content) -> some View {
     content
       .background(NavigationConfigurator(configure: { nav in
-        nav.navigationBar.barTintColor = UIColor(named: "bg_info_200")
+        nav.navigationBar.barTintColor = .bg_info_200
       }))
   }
 }

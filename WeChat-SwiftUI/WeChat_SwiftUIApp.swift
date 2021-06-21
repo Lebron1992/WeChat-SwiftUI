@@ -1,14 +1,22 @@
 import SwiftUI
 import SwiftUIRedux
+import URLImage
+import URLImageStore
+
+let urlImageService = URLImageService(
+  fileStore: URLImageFileStore(),
+  inMemoryStore: URLImageInMemoryStore()
+)
 
 @main
 struct WeChat_SwiftUIApp: App {
   var body: some Scene {
     WindowGroup {
-        StoreProvider(store: store) {
-            RootView()
-              .onAppear(perform: styleApp)
-        }
+      StoreProvider(store: store) {
+        RootView()
+          .environment(\.urlImageService, urlImageService)
+          .onAppear(perform: styleApp)
+      }
     }
   }
 
@@ -19,7 +27,7 @@ struct WeChat_SwiftUIApp: App {
     navBar.backIndicatorImage = backImage
     navBar.backIndicatorTransitionMaskImage = backImage
     navBar.shadowImage = UIImage()
-    navBar.tintColor = UIColor(named: "text_primary")
+    navBar.tintColor = .text_primary
     navBar.titleTextAttributes = [.foregroundColor: navBar.tintColor as Any]
   }
 }

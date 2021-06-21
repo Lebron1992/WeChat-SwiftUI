@@ -37,6 +37,10 @@
 		FD882784267F888D00BBEAB6 /* NavigationBarBackgroundModifierLightGray.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD882783267F888D00BBEAB6 /* NavigationBarBackgroundModifierLightGray.swift */; };
 		FD882786267F89E000BBEAB6 /* NavigationBarBackgroundModifierWhite.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD882785267F89E000BBEAB6 /* NavigationBarBackgroundModifierWhite.swift */; };
 		FD88278E26808F5500BBEAB6 /* ContactDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88278D26808F5500BBEAB6 /* ContactDetail.swift */; };
+		FD882790268096AC00BBEAB6 /* ContactRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88278F268096AC00BBEAB6 /* ContactRow.swift */; };
+		FD8827962680988100BBEAB6 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8827952680988100BBEAB6 /* Colors.swift */; };
+		FD88279926809C2D00BBEAB6 /* URLImageStore in Frameworks */ = {isa = PBXBuildFile; productRef = FD88279826809C2D00BBEAB6 /* URLImageStore */; };
+		FD88279B26809C2D00BBEAB6 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = FD88279A26809C2D00BBEAB6 /* URLImage */; };
 		FDCC721B266E254D00A48140 /* WeChat_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */; };
 		FDCC721D266E254D00A48140 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC721C266E254D00A48140 /* RootView.swift */; };
 		FDCC721F266E254E00A48140 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDCC721E266E254E00A48140 /* Assets.xcassets */; };
@@ -123,6 +127,8 @@
 		FD882783267F888D00BBEAB6 /* NavigationBarBackgroundModifierLightGray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarBackgroundModifierLightGray.swift; sourceTree = "<group>"; };
 		FD882785267F89E000BBEAB6 /* NavigationBarBackgroundModifierWhite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarBackgroundModifierWhite.swift; sourceTree = "<group>"; };
 		FD88278D26808F5500BBEAB6 /* ContactDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetail.swift; sourceTree = "<group>"; };
+		FD88278F268096AC00BBEAB6 /* ContactRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactRow.swift; sourceTree = "<group>"; };
+		FD8827952680988100BBEAB6 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		FDCC7217266E254D00A48140 /* WeChat-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WeChat-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeChat_SwiftUIApp.swift; sourceTree = "<group>"; };
 		FDCC721C266E254D00A48140 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -172,6 +178,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FDCC7263266F59EC00A48140 /* Kickstarter-Prelude in Frameworks */,
+				FD88279926809C2D00BBEAB6 /* URLImageStore in Frameworks */,
+				FD88279B26809C2D00BBEAB6 /* URLImage in Frameworks */,
 				FD88277B267F305800BBEAB6 /* SwiftUIRedux in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				FD88278D26808F5500BBEAB6 /* ContactDetail.swift */,
+				FD88278F268096AC00BBEAB6 /* ContactRow.swift */,
 				FD882758267AF24500BBEAB6 /* ContactsList.swift */,
 				FD88274F2679D88F00BBEAB6 /* ContactsView.swift */,
 			);
@@ -297,6 +306,14 @@
 				FD882785267F89E000BBEAB6 /* NavigationBarBackgroundModifierWhite.swift */,
 			);
 			path = Modifiers;
+			sourceTree = "<group>";
+		};
+		FD8827942680987700BBEAB6 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				FD8827952680988100BBEAB6 /* Colors.swift */,
+			);
+			path = Styles;
 			sourceTree = "<group>";
 		};
 		FD8ADB2C2674576300ACD596 /* Locales */ = {
@@ -427,6 +444,7 @@
 				FD882760267AFAA300BBEAB6 /* Components */,
 				FDCC72812671AC1800A48140 /* Extensions */,
 				FD882782267F878500BBEAB6 /* Modifiers */,
+				FD8827942680987700BBEAB6 /* Styles */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -481,6 +499,8 @@
 			packageProductDependencies = (
 				FDCC7262266F59EC00A48140 /* Kickstarter-Prelude */,
 				FD88277A267F305800BBEAB6 /* SwiftUIRedux */,
+				FD88279826809C2D00BBEAB6 /* URLImageStore */,
+				FD88279A26809C2D00BBEAB6 /* URLImage */,
 			);
 			productName = "WeChat-SwiftUI";
 			productReference = FDCC7217266E254D00A48140 /* WeChat-SwiftUI.app */;
@@ -559,6 +579,7 @@
 			packageReferences = (
 				FDCC7261266F59EC00A48140 /* XCRemoteSwiftPackageReference "Kickstarter-Prelude" */,
 				FD882779267F305800BBEAB6 /* XCRemoteSwiftPackageReference "SwiftUIRedux" */,
+				FD88279726809C2D00BBEAB6 /* XCRemoteSwiftPackageReference "url-image" */,
 			);
 			productRefGroup = FDCC7218266E254D00A48140 /* Products */;
 			projectDirPath = "";
@@ -655,12 +676,14 @@
 				FDCC7297267348A600A48140 /* Constants.swift in Sources */,
 				FD882773267EFA7400BBEAB6 /* MockStore.swift in Sources */,
 				FD1E4CEB2674A47200BD2C34 /* LocalizedString.swift in Sources */,
+				FD882790268096AC00BBEAB6 /* ContactRow.swift in Sources */,
 				FD1E4CE92674780600BD2C34 /* Strings.swift in Sources */,
 				FD8827542679D8A600BBEAB6 /* MeView.swift in Sources */,
 				FD88278E26808F5500BBEAB6 /* ContactDetail.swift in Sources */,
 				FDCC72872671AD7B00A48140 /* TryDecodable.swift in Sources */,
 				FDCC724F266F1A3400A48140 /* ServerConfigType.swift in Sources */,
 				FDCC7253266F1FB800A48140 /* Secrets.swift in Sources */,
+				FD8827962680988100BBEAB6 /* Colors.swift in Sources */,
 				FD8827442679A80900BBEAB6 /* TabBarItem.swift in Sources */,
 				FD882784267F888D00BBEAB6 /* NavigationBarBackgroundModifierLightGray.swift in Sources */,
 				FD8827422679A75B00BBEAB6 /* RootState.swift in Sources */,
@@ -1047,6 +1070,14 @@
 				minimumVersion = 0.0.11;
 			};
 		};
+		FD88279726809C2D00BBEAB6 /* XCRemoteSwiftPackageReference "url-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dmytro-anokhin/url-image.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.0;
+			};
+		};
 		FDCC7261266F59EC00A48140 /* XCRemoteSwiftPackageReference "Kickstarter-Prelude" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Lebron1992/Kickstarter-Prelude.git";
@@ -1062,6 +1093,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FD882779267F305800BBEAB6 /* XCRemoteSwiftPackageReference "SwiftUIRedux" */;
 			productName = SwiftUIRedux;
+		};
+		FD88279826809C2D00BBEAB6 /* URLImageStore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FD88279726809C2D00BBEAB6 /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImageStore;
+		};
+		FD88279A26809C2D00BBEAB6 /* URLImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FD88279726809C2D00BBEAB6 /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImage;
 		};
 		FDCC7262266F59EC00A48140 /* Kickstarter-Prelude */ = {
 			isa = XCSwiftPackageProductDependency;
