@@ -7,7 +7,7 @@ struct AppState: ReduxState {
 
   init() {
     contactsState = ContactsState(contacts: .notRequested)
-    rootState = RootState(selectedTab: .chats)
+    rootState = RootState(selectedTab: .contacts)
   }
 
   #if DEBUG

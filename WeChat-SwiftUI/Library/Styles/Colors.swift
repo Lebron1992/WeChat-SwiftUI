@@ -16,6 +16,14 @@ extension Color {
   static var text_primary: Color {
     .init("text_primary")
   }
+
+  static var text_info_100: Color {
+    .init("text_info_100")
+  }
+
+  static var text_info_200: Color {
+    .init("text_info_200")
+  }
 }
 
 extension UIColor {

@@ -21,7 +21,7 @@ struct ContactRow: View {
           .background(Color.bg_info_200)
           .cornerRadius(4)
       }
-      
+
       Text(contact.name)
         .font(.system(size: 16))
         .foregroundColor(.primary)
