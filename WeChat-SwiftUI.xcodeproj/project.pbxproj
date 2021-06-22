@@ -41,6 +41,9 @@
 		FD8827962680988100BBEAB6 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8827952680988100BBEAB6 /* Colors.swift */; };
 		FD88279926809C2D00BBEAB6 /* URLImageStore in Frameworks */ = {isa = PBXBuildFile; productRef = FD88279826809C2D00BBEAB6 /* URLImageStore */; };
 		FD88279B26809C2D00BBEAB6 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = FD88279A26809C2D00BBEAB6 /* URLImage */; };
+		FD88279D2681E1F100BBEAB6 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88279C2681E1F100BBEAB6 /* Haptics.swift */; };
+		FD88279F2681E52E00BBEAB6 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88279E2681E52E00BBEAB6 /* Color+Hex.swift */; };
+		FD8827A22681E6E700BBEAB6 /* Color+HexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8827A02681E6DC00BBEAB6 /* Color+HexTests.swift */; };
 		FDCC721B266E254D00A48140 /* WeChat_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */; };
 		FDCC721D266E254D00A48140 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC721C266E254D00A48140 /* RootView.swift */; };
 		FDCC721F266E254E00A48140 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDCC721E266E254E00A48140 /* Assets.xcassets */; };
@@ -129,6 +132,9 @@
 		FD88278D26808F5500BBEAB6 /* ContactDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetail.swift; sourceTree = "<group>"; };
 		FD88278F268096AC00BBEAB6 /* ContactRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactRow.swift; sourceTree = "<group>"; };
 		FD8827952680988100BBEAB6 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		FD88279C2681E1F100BBEAB6 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
+		FD88279E2681E52E00BBEAB6 /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
+		FD8827A02681E6DC00BBEAB6 /* Color+HexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+HexTests.swift"; sourceTree = "<group>"; };
 		FDCC7217266E254D00A48140 /* WeChat-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WeChat-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeChat_SwiftUIApp.swift; sourceTree = "<group>"; };
 		FDCC721C266E254D00A48140 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -445,6 +451,7 @@
 				FDCC72812671AC1800A48140 /* Extensions */,
 				FD882782267F878500BBEAB6 /* Modifiers */,
 				FD8827942680987700BBEAB6 /* Styles */,
+				FD88279C2681E1F100BBEAB6 /* Haptics.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -465,6 +472,8 @@
 		FDCC72812671AC1800A48140 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				FD88279E2681E52E00BBEAB6 /* Color+Hex.swift */,
+				FD8827A02681E6DC00BBEAB6 /* Color+HexTests.swift */,
 				FDCC72822671AC2B00A48140 /* Encodable+Dictionary.swift */,
 				FDCC72842671AC7200A48140 /* Encodable+DictionaryTests.swift */,
 			);
@@ -679,6 +688,7 @@
 				FD882790268096AC00BBEAB6 /* ContactRow.swift in Sources */,
 				FD1E4CE92674780600BD2C34 /* Strings.swift in Sources */,
 				FD8827542679D8A600BBEAB6 /* MeView.swift in Sources */,
+				FD88279F2681E52E00BBEAB6 /* Color+Hex.swift in Sources */,
 				FD88278E26808F5500BBEAB6 /* ContactDetail.swift in Sources */,
 				FDCC72872671AD7B00A48140 /* TryDecodable.swift in Sources */,
 				FDCC724F266F1A3400A48140 /* ServerConfigType.swift in Sources */,
@@ -697,6 +707,7 @@
 				FDCC7265266F5C5B00A48140 /* Service.swift in Sources */,
 				FDCC72832671AC2B00A48140 /* Encodable+Dictionary.swift in Sources */,
 				FD88274E2679D86D00BBEAB6 /* ChatsView.swift in Sources */,
+				FD88279D2681E1F100BBEAB6 /* Haptics.swift in Sources */,
 				FDCC721B266E254D00A48140 /* WeChat_SwiftUIApp.swift in Sources */,
 				FDCC724D266F19CF00A48140 /* ServiceType.swift in Sources */,
 				FD8827522679D89C00BBEAB6 /* DiscoverView.swift in Sources */,
@@ -730,6 +741,7 @@
 				FD882769267B499700BBEAB6 /* UserTests.swift in Sources */,
 				FDCC726B266F650F00A48140 /* ServiceTypeTests.swift in Sources */,
 				FDCC72852671AC7200A48140 /* Encodable+DictionaryTests.swift in Sources */,
+				FD8827A22681E6E700BBEAB6 /* Color+HexTests.swift in Sources */,
 				FDCC72892671C14800A48140 /* AppEnvironmentTests.swift in Sources */,
 				FD88277D267F314000BBEAB6 /* RootReducerTests.swift in Sources */,
 			);
