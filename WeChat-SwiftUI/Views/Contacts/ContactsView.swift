@@ -7,6 +7,7 @@ struct ContactsView: View {
       ContactsList()
         .navigationTitle(Strings.tabbar_contacts())
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarItems(trailing: Image("icons_outlined_add_friends"))
         .navigationBarBackgroundLightGray()
     }
     .navigationViewStyle(StackNavigationViewStyle())
