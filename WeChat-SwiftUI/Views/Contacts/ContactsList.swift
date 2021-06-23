@@ -56,7 +56,11 @@ private extension ContactsList {
             .padding()
         }
       }
-      .overlay(sectionIndexTitles(titles: contactGroups.map { $0.key }, proxy: proxy))
+      .overlay(
+        SectionIndexTitles(proxy: proxy, titles: contactGroups.map { $0.key })
+          .frame(maxWidth: .infinity, alignment: .trailing)
+          .padding(.trailing, 2)
+      )
     }
   }
 
@@ -78,12 +82,6 @@ private extension ContactsList {
       }
     }
     .listStyle(PlainListStyle())
-  }
-
-  func sectionIndexTitles(titles: [String], proxy: ScrollViewProxy) -> some View {
-    SectionIndexTitles(proxy: proxy, titles: titles)
-      .frame(maxWidth: .infinity, alignment: .trailing)
-      .padding(.trailing, 2)
   }
 }
 
@@ -118,16 +116,40 @@ private extension ContactsList {
     @State
     private var selectedTitle: String?
 
+    @State
+    private var showSelectionBubble = false
+
     var body: some View {
       VStack {
         ForEach(titles, id: \.self) { title in
-          let isSelected = selectedTitle == nil ? nil : selectedTitle! == title
-          SectionIndexTitle(
-            title: title,
-            isSelected: isSelected,
-            onTap: { scrollToTitle(title) }
-          )
-          .background(dragObserver(title: title))
+          let isSelected = isSelectedIndex(withTitle: title)
+          HStack {
+            Spacer()
+
+            SectionIndexSelectionBubble {
+              Text(title)
+                .foregroundColor(.white)
+                .font(.system(size: 25, weight: .bold))
+            }
+            .frame(width: 70, height: 50)
+            .opacity(selectionBubbleOpacityForIndex(withTitle: title))
+            .animation(showSelectionBubble ? .none : .easeOut)
+
+            SectionIndexTitle(
+              title: title,
+              isSelected: isSelected,
+              onTap: {
+                scrollToTitle(title)
+
+                showSelectionBubble = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                  showSelectionBubble = false
+                }
+              }
+            )
+            .background(dragObserver(title: title))
+          }
+          .frame(height: 16)
         }
       }
       .gesture(
@@ -135,7 +157,21 @@ private extension ContactsList {
           .updating($dragLocation) { value, state, _ in
             state = value.location
           }
+          .onEnded({ _ in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+              showSelectionBubble = false
+            }
+          })
       )
+    }
+
+    private func isSelectedIndex(withTitle title: String) -> Bool? {
+      selectedTitle == nil ? nil : selectedTitle! == title
+    }
+
+    private func selectionBubbleOpacityForIndex(withTitle title: String) -> Double {
+      let isSelected = isSelectedIndex(withTitle: title)
+      return isSelected == nil ? 0 : (isSelected! && showSelectionBubble) ? 1 : 0
     }
 
     private func dragObserver(title: String) -> some View {
@@ -148,6 +184,7 @@ private extension ContactsList {
       if geometry.frame(in: .global).contains(dragLocation) {
         DispatchQueue.main.async {
           scrollToTitle(title)
+          showSelectionBubble = true
         }
       }
       return Rectangle().fill(Color.clear)
@@ -166,6 +203,7 @@ private extension ContactsList {
   // MARK: - SectionIndexTitle
 
   struct SectionIndexTitle: View {
+
     let title: String
     let isSelected: Bool?
     let onTap: () -> Void
@@ -197,6 +235,58 @@ private extension ContactsList {
       isSelected == nil ?
         0 :
         isSelected! ? 8 : 0
+    }
+  }
+
+  // MARK: - SectionIndexSelectionBubble
+
+  struct SectionIndexSelectionBubble<Title: View>: View {
+    let title: () -> Title
+
+    var body: some View {
+      GeometryReader { geo in
+
+        let startDegree: CGFloat = 45
+        let startRadius: CGFloat = startDegree * .pi / 180
+        let height = geo.size.height
+        let radius = height * 0.5
+
+        let deltaX = cos(startRadius) * radius
+        let deltaY = sin(startRadius) * radius
+
+        HStack(spacing: -(radius - deltaX)) {
+          ZStack {
+            Path { path in
+              path.addArc(
+                center: .init(x: radius, y: radius),
+                radius: radius,
+                startAngle: Angle(degrees: 360 - Double(startDegree)),
+                endAngle: Angle(degrees: Double(startDegree)),
+                clockwise: true
+              )
+            }
+
+            title()
+          }
+          .frame(width: geo.size.height, height: geo.size.height)
+
+          Path { path in
+            let topPoint = CGPoint(x: 0, y: radius - deltaY)
+            let bottomPoint = CGPoint(x: 0, y: radius + deltaY)
+
+            let deltaX2 = tan(startRadius) * deltaY
+            let leftPoint = CGPoint(x: deltaX2, y: radius)
+
+            path.move(to: topPoint)
+            path.addLine(to: leftPoint)
+            path.addLine(to: bottomPoint)
+          }
+          .frame(height: geo.size.height)
+
+          Spacer()
+        }
+        .foregroundColor(.hex("#C9C9C9"))
+      }
     }
   }
 }
