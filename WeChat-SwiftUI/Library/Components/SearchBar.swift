@@ -42,7 +42,7 @@ struct SearchBar: View {
 
           HStack {
             Image(systemName: "magnifyingglass")
-            Text("Search")
+            Text(Strings.general_search())
               .foregroundColor(.text_info_100)
               .opacity(searchText.isEmpty ? 1 : 0)
           }
@@ -57,7 +57,7 @@ struct SearchBar: View {
       .background(Color.bg_info_200)
 
       if showCancelButton {
-        Button("Cancel") {
+        Button(Strings.general_cancel()) {
           UIApplication.shared.endEditing(true)
           self.searchText = ""
           self.showCancelButton = false

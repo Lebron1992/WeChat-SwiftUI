@@ -2,7 +2,9 @@
 "api.error.invalid_url" = "无效的 URL：%{url}";
 "api.error.unexpected_response" = "出乎意料的响应：%{response}";
 "general.an_error_occured" = "发生了一个错误";
+"general.cancel" = "取消";
 "general.retry" = "重试";
+"general.search" = "搜索";
 "general.something_went_wrong" = "出了点问题";
 "tabbar.chats" = "微信";
 "tabbar.contacts" = "通讯录";

@@ -64,6 +64,20 @@ public enum Strings {
     )
   }
   /**
+   "Cancel"
+
+   - **en**: "Cancel"
+   - **zh**: "取消"
+  */
+  public static func general_cancel() -> String {
+    return localizedString(
+      key: "general.cancel",
+      defaultValue: "Cancel",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
    "Retry"
 
    - **en**: "Retry"
@@ -73,6 +87,20 @@ public enum Strings {
     return localizedString(
       key: "general.retry",
       defaultValue: "Retry",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "Search"
+
+   - **en**: "Search"
+   - **zh**: "搜索"
+  */
+  public static func general_search() -> String {
+    return localizedString(
+      key: "general.search",
+      defaultValue: "Search",
       count: nil,
       substitutions: [:]
     )

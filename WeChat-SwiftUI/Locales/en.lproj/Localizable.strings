@@ -2,7 +2,9 @@
 "api.error.invalid_url" = "Invalid URL: %{url}";
 "api.error.unexpected_response" = "Unexpected response: %{response}";
 "general.an_error_occured" = "An Error Occured";
+"general.cancel" = "Cancel";
 "general.retry" = "Retry";
+"general.search" = "Search";
 "general.something_went_wrong" = "Something went wrong";
 "tabbar.chats" = "Chats";
 "tabbar.contacts" = "Contacts";
