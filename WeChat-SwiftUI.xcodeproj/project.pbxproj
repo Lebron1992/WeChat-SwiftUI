@@ -10,6 +10,9 @@
 		FD1E4CC726745E7000BD2C34 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FD1E4CC926745E7000BD2C34 /* Localizable.strings */; };
 		FD1E4CE92674780600BD2C34 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4CE82674780600BD2C34 /* Strings.swift */; };
 		FD1E4CEB2674A47200BD2C34 /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4CEA2674A47200BD2C34 /* LocalizedString.swift */; };
+		FD6D377326842C610087272F /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D377226842C610087272F /* SearchBar.swift */; };
+		FD6D37752684707A0087272F /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D37742684707A0087272F /* Background.swift */; };
+		FD6D37792684803E0087272F /* ResignKeyboardOnDragGestureModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D37782684803E0087272F /* ResignKeyboardOnDragGestureModifier.swift */; };
 		FD88273C2679A37600BBEAB6 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88273B2679A37600BBEAB6 /* AppState.swift */; };
 		FD88273E2679A3C300BBEAB6 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88273D2679A3C300BBEAB6 /* AppReducer.swift */; };
 		FD8827402679A40600BBEAB6 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88273F2679A40600BBEAB6 /* Store.swift */; };
@@ -104,6 +107,9 @@
 		FD1E4CCA26745E7300BD2C34 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FD1E4CE82674780600BD2C34 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		FD1E4CEA2674A47200BD2C34 /* LocalizedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
+		FD6D377226842C610087272F /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		FD6D37742684707A0087272F /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
+		FD6D37782684803E0087272F /* ResignKeyboardOnDragGestureModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResignKeyboardOnDragGestureModifier.swift; sourceTree = "<group>"; };
 		FD88273B2679A37600BBEAB6 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		FD88273D2679A3C300BBEAB6 /* AppReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
 		FD88273F2679A40600BBEAB6 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
@@ -299,8 +305,10 @@
 			isa = PBXGroup;
 			children = (
 				FD882761267AFAAF00BBEAB6 /* ActivityIndicatorView.swift */,
+				FD6D37742684707A0087272F /* Background.swift */,
 				FD882763267AFAD000BBEAB6 /* ErrorView.swift */,
 				FD882780267F844C00BBEAB6 /* NavigationConfigurator.swift */,
+				FD6D377226842C610087272F /* SearchBar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -310,6 +318,7 @@
 			children = (
 				FD882783267F888D00BBEAB6 /* NavigationBarBackgroundModifierLightGray.swift */,
 				FD882785267F89E000BBEAB6 /* NavigationBarBackgroundModifierWhite.swift */,
+				FD6D37782684803E0087272F /* ResignKeyboardOnDragGestureModifier.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -702,6 +711,8 @@
 				FD88275D267AF2C300BBEAB6 /* ContactsReducer.swift in Sources */,
 				FDCC727C2671A4DC00A48140 /* AppEnvironment.swift in Sources */,
 				FDCC72922673448A00A48140 /* Route.swift in Sources */,
+				FD6D37752684707A0087272F /* Background.swift in Sources */,
+				FD6D37792684803E0087272F /* ResignKeyboardOnDragGestureModifier.swift in Sources */,
 				FDCC7251266F1B2E00A48140 /* EnvironmentType.swift in Sources */,
 				FD882764267AFAD000BBEAB6 /* ErrorView.swift in Sources */,
 				FDCC7265266F5C5B00A48140 /* Service.swift in Sources */,
@@ -713,6 +724,7 @@
 				FD8827522679D89C00BBEAB6 /* DiscoverView.swift in Sources */,
 				FD8827502679D88F00BBEAB6 /* ContactsView.swift in Sources */,
 				FD88273E2679A3C300BBEAB6 /* AppReducer.swift in Sources */,
+				FD6D377326842C610087272F /* SearchBar.swift in Sources */,
 				FDCC7267266F5CF600A48140 /* Language.swift in Sources */,
 				FD8827462679A98D00BBEAB6 /* RootReducer.swift in Sources */,
 				FD8827482679A9BF00BBEAB6 /* RootActions.swift in Sources */,

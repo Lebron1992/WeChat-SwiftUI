@@ -1,7 +1,16 @@
 import SwiftUI
 import SwiftUIRedux
 
+/* TODO:
+ 1. section header 吸到顶部时，背景色改为白色，title 颜色改为 highlighted
+ 2. 滚动列表时，右边的索引切换到对应的 section
+*/
+
 struct ContactsList: ConnectedView {
+  init() {
+    UITableView.appearance().backgroundColor = UIColor(.bg_info_200)
+  }
+
   struct Props {
     let contacts: Loadable<[User]>
     let loadContacts: () -> Void
@@ -78,6 +87,7 @@ private extension ContactsList {
               ContactRow(contact: contact)
             }
           }
+          .listRowBackground(Color.app_white)
         }
       }
     }

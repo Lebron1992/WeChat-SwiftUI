@@ -29,5 +29,6 @@ struct WeChat_SwiftUIApp: App {
     navBar.shadowImage = UIImage()
     navBar.tintColor = .text_primary
     navBar.titleTextAttributes = [.foregroundColor: navBar.tintColor as Any]
+    navBar.isTranslucent = false
   }
 }
