@@ -21,4 +21,10 @@ final class ContactsReducerTests: XCTestCase {
     store.dispatch(action: ContactsActions.SetContacts(contacts: contacts))
     XCTAssertEqual(store.state.contactsState.contacts, contacts)
   }
+
+  func test_handleSetSearchText() {
+    let text = "hello"
+    store.dispatch(action: ContactsActions.SetSearchText(searchText: text))
+    XCTAssertEqual(store.state.contactsState.searchText, text)
+  }
 }

@@ -21,4 +21,8 @@ enum ContactsActions {
   struct SetContacts: Action, Equatable {
     let contacts: Loadable<[User]>
   }
+
+  struct SetSearchText: Action, Equatable {
+    let searchText: String
+  }
 }

@@ -7,18 +7,16 @@ import SwiftUIRedux
 */
 
 struct ContactsList: ConnectedView {
-  init() {
-    UITableView.appearance().backgroundColor = UIColor(.bg_info_200)
-  }
-
   struct Props {
     let contacts: Loadable<[User]>
+    let searchText: String
     let loadContacts: () -> Void
   }
 
   func map(state: AppState, dispatch: @escaping (Action) -> Void) -> Props {
     Props(
       contacts: state.contactsState.contacts,
+      searchText: state.contactsState.searchText,
       loadContacts: { dispatch(ContactsActions.LoadContacts()) }
     )
   }
@@ -29,31 +27,40 @@ struct ContactsList: ConnectedView {
       return AnyView(Text("").onAppear(perform: props.loadContacts))
 
     case let .isLoading(last, _):
-      return AnyView(loadingView(last))
+      return AnyView(loadingView(contacts: last, searchText: props.searchText))
 
-    case let .loaded(users):
-      return AnyView(loadedView(users, showLoading: false))
+    case let .loaded(contacts):
+      return AnyView(loadedView(contacts: contacts, searchText: props.searchText, showLoading: false))
 
     case let .failed(error):
       return AnyView(ErrorView(error: error, retryAction: props.loadContacts))
     }
+  }
+
+  init() {
+    UITableView.appearance().backgroundColor = UIColor(.bg_info_200)
   }
 }
 
 // MARK: - Display Content
 private extension ContactsList {
 
-  func loadingView(_ previouslyLoaded: [User]?) -> some View {
+  func loadingView(contacts previouslyLoaded: [User]?, searchText: String) -> some View {
     if let result = previouslyLoaded {
-      return AnyView(loadedView(result, showLoading: true))
+      return AnyView(loadedView(contacts: result, searchText: searchText, showLoading: true))
     } else {
       return AnyView(ActivityIndicatorView().padding())
     }
   }
 
-  func loadedView(_ contacts: [User], showLoading: Bool) -> some View {
+  func loadedView(contacts: [User], searchText: String, showLoading: Bool) -> some View {
 
-    let contactGroups = contacts
+    let contactGroups = contacts.filter {
+      if searchText.isEmpty {
+        return true
+      }
+      return $0.name.lowercased().contains(searchText.lowercased())
+    }
       .groupedBy { String($0.name.first ?? Character("")) }
       .sorted(by: { $0.key < $1.key })
 

@@ -27,6 +27,7 @@ struct SearchBar: View {
               self.showCancelButton = true
               onEditingChanged()
             })
+            .disableAutocorrection(true)
             .foregroundColor(.black)
             .textFieldStyle(DefaultTextFieldStyle())
             .frame(height: 30)

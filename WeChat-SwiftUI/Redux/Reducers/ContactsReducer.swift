@@ -5,6 +5,8 @@ func contactsStateReducer(state: ContactsState, action: Action) -> ContactsState
   switch action {
   case let action as ContactsActions.SetContacts:
     newState.contacts = action.contacts
+  case let action as ContactsActions.SetSearchText:
+    newState.searchText = action.searchText
   default:
     break
   }

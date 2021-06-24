@@ -3,8 +3,16 @@ import SwiftUIRedux
 
 struct ContactsView: View {
 
-  @State
-  private var searchText = ""
+  @EnvironmentObject
+  private var store: Store<AppState>
+
+  private var searchText: Binding<String> {
+    Binding(
+      get: { store.state.contactsState.searchText },
+      set: {
+        store.dispatch(action: ContactsActions.SetSearchText(searchText: $0)) }
+    )
+  }
 
   @State
   private var hideNavigationBar = false
@@ -15,7 +23,7 @@ struct ContactsView: View {
         Background(.bg_info_200) // 解决搜索框弹出时，导航栏处背景颜色不一的问题
         VStack(spacing: 0) {
           SearchBar(
-            searchText: $searchText,
+            searchText: searchText,
             onEditingChanged: {
               hideNavigationBar = true
             },
