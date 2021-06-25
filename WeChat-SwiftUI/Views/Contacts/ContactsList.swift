@@ -6,39 +6,41 @@ import SwiftUIRedux
  2. 滚动列表时，右边的索引切换到对应的 section
 */
 
-struct ContactsList: ConnectedView {
-  struct Props {
-    let contacts: Loadable<[User]>
-    let searchText: String
-    let loadContacts: () -> Void
+struct ContactsList<Header: View>: View {
+
+  let contacts: Loadable<[User]>
+  let searchText: String
+  let loadContacts: () -> Void
+  let header: () -> Header
+
+  init(
+    contacts: Loadable<[User]>,
+    searchText: String,
+    loadContacts: @escaping () -> Void,
+    header: @escaping () -> Header
+  ) {
+    self.contacts = contacts
+    self.searchText = searchText
+    self.loadContacts = loadContacts
+    self.header = header
+
+    UITableView.appearance().backgroundColor = UIColor(.bg_info_200)
   }
 
-  func map(state: AppState, dispatch: @escaping (Action) -> Void) -> Props {
-    Props(
-      contacts: state.contactsState.contacts,
-      searchText: state.contactsState.searchText,
-      loadContacts: { dispatch(ContactsActions.LoadContacts()) }
-    )
-  }
-
-  func body(props: Props) -> some View {
-    switch props.contacts {
+  var body: some View {
+    switch contacts {
     case .notRequested:
-      return AnyView(Text("").onAppear(perform: props.loadContacts))
+      return AnyView(Text("").onAppear(perform: loadContacts))
 
     case let .isLoading(last, _):
-      return AnyView(loadingView(contacts: last, searchText: props.searchText))
+      return AnyView(loadingView(contacts: last, searchText: searchText))
 
     case let .loaded(contacts):
-      return AnyView(loadedView(contacts: contacts, searchText: props.searchText, showLoading: false))
+      return AnyView(loadedView(contacts: contacts, searchText: searchText, showLoading: false))
 
     case let .failed(error):
-      return AnyView(ErrorView(error: error, retryAction: props.loadContacts))
+      return AnyView(ErrorView(error: error, retryAction: loadContacts))
     }
-  }
-
-  init() {
-    UITableView.appearance().backgroundColor = UIColor(.bg_info_200)
   }
 }
 
@@ -82,9 +84,7 @@ private extension ContactsList {
 
   func groupedContactsList(_ group: [(key: String, value: [User])]) -> some View {
     List {
-      Section {
-        ContactCategoriesList()
-      }
+      header()
       ForEach(group, id: \.key) { category, contacts in
         Section(header: SectionHeader(title: category)) {
           ForEach(contacts) { contact in
@@ -312,6 +312,11 @@ private extension ContactsList {
 
 struct ContactsList_Previews: PreviewProvider {
   static var previews: some View {
-    ContactsList()
+    ContactsList(
+      contacts: .loaded([.template, .template2]),
+      searchText: "",
+      loadContacts: {},
+      header: { EmptyView() }
+    )
   }
 }

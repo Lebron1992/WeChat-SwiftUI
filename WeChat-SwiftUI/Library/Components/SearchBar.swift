@@ -17,7 +17,7 @@ struct SearchBar: View {
   private var showCancelButton: Bool = false
 
   var body: some View {
-    HStack {
+    HStack(spacing: 5) {
       HStack {
         ZStack(alignment: showCancelButton ? .leading : .center) {
           HStack {

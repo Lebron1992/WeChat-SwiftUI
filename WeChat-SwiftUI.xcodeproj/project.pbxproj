@@ -16,6 +16,8 @@
 		FD6D37802684D6DD0087272F /* ContactCategoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D377F2684D6DD0087272F /* ContactCategoryRow.swift */; };
 		FD6D378226856E310087272F /* ContactCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D378126856E310087272F /* ContactCategory.swift */; };
 		FD6D3784268576BE0087272F /* ContactCategoriesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D3783268576BE0087272F /* ContactCategoriesList.swift */; };
+		FD6D37862685D21A0087272F /* EdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D37852685D21A0087272F /* EdgeInsets.swift */; };
+		FD6D37882685D2540087272F /* EdgeInsetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D37872685D2540087272F /* EdgeInsetsTests.swift */; };
 		FD88273C2679A37600BBEAB6 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88273B2679A37600BBEAB6 /* AppState.swift */; };
 		FD88273E2679A3C300BBEAB6 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88273D2679A3C300BBEAB6 /* AppReducer.swift */; };
 		FD8827402679A40600BBEAB6 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88273F2679A40600BBEAB6 /* Store.swift */; };
@@ -116,6 +118,8 @@
 		FD6D377F2684D6DD0087272F /* ContactCategoryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCategoryRow.swift; sourceTree = "<group>"; };
 		FD6D378126856E310087272F /* ContactCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCategory.swift; sourceTree = "<group>"; };
 		FD6D3783268576BE0087272F /* ContactCategoriesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCategoriesList.swift; sourceTree = "<group>"; };
+		FD6D37852685D21A0087272F /* EdgeInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeInsets.swift; sourceTree = "<group>"; };
+		FD6D37872685D2540087272F /* EdgeInsetsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeInsetsTests.swift; sourceTree = "<group>"; };
 		FD88273B2679A37600BBEAB6 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		FD88273D2679A3C300BBEAB6 /* AppReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
 		FD88273F2679A40600BBEAB6 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
@@ -494,6 +498,8 @@
 				FD8827A02681E6DC00BBEAB6 /* Color+HexTests.swift */,
 				FDCC72822671AC2B00A48140 /* Encodable+Dictionary.swift */,
 				FDCC72842671AC7200A48140 /* Encodable+DictionaryTests.swift */,
+				FD6D37852685D21A0087272F /* EdgeInsets.swift */,
+				FD6D37872685D2540087272F /* EdgeInsetsTests.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -726,6 +732,7 @@
 				FD6D37792684803E0087272F /* ResignKeyboardOnDragGestureModifier.swift in Sources */,
 				FDCC7251266F1B2E00A48140 /* EnvironmentType.swift in Sources */,
 				FD882764267AFAD000BBEAB6 /* ErrorView.swift in Sources */,
+				FD6D37862685D21A0087272F /* EdgeInsets.swift in Sources */,
 				FDCC7265266F5C5B00A48140 /* Service.swift in Sources */,
 				FDCC72832671AC2B00A48140 /* Encodable+Dictionary.swift in Sources */,
 				FD88274E2679D86D00BBEAB6 /* ChatsView.swift in Sources */,
@@ -768,6 +775,7 @@
 				FD8827A22681E6E700BBEAB6 /* Color+HexTests.swift in Sources */,
 				FDCC72892671C14800A48140 /* AppEnvironmentTests.swift in Sources */,
 				FD88277D267F314000BBEAB6 /* RootReducerTests.swift in Sources */,
+				FD6D37882685D2540087272F /* EdgeInsetsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
