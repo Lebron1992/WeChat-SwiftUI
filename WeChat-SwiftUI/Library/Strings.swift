@@ -50,6 +50,62 @@ public enum Strings {
     )
   }
   /**
+   "Group Chats"
+
+   - **en**: "Group Chats"
+   - **zh**: "群聊"
+  */
+  public static func contacts_group_chats() -> String {
+    return localizedString(
+      key: "contacts.group_chats",
+      defaultValue: "Group Chats",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "Official Account"
+
+   - **en**: "Official Account"
+   - **zh**: "公众号"
+  */
+  public static func contacts_offical_account() -> String {
+    return localizedString(
+      key: "contacts.offical_account",
+      defaultValue: "Official Account",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "Tags"
+
+   - **en**: "Tags"
+   - **zh**: "标签"
+  */
+  public static func contacts_tags() -> String {
+    return localizedString(
+      key: "contacts.tags",
+      defaultValue: "Tags",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "WeChat Work Contacts"
+
+   - **en**: "WeChat Work Contacts"
+   - **zh**: "WeChat Work Contacts"
+  */
+  public static func contacts_wechat_work_contacts() -> String {
+    return localizedString(
+      key: "contacts.wechat_work_contacts",
+      defaultValue: "WeChat Work Contacts",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
    "An Error Occured"
 
    - **en**: "An Error Occured"

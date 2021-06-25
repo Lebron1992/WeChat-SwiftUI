@@ -8,11 +8,11 @@
           "unexpected_response": "Unexpected response: %{response}"
         }
       },
-      "tabbar": {
-        "chats": "Chats",
-        "contacts": "Contacts",
-        "discover": "Discover",
-        "me": "Me"
+      "contacts": {
+        "group_chats": "Group Chats",
+        "tags": "Tags",
+        "offical_account": "Official Account",
+        "wechat_work_contacts": "WeChat Work Contacts"
       },
       "general": {
         "an_error_occured": "An Error Occured",
@@ -20,6 +20,12 @@
         "retry": "Retry",
         "search": "Search",
         "something_went_wrong": "Something went wrong"
+      },
+      "tabbar": {
+        "chats": "Chats",
+        "contacts": "Contacts",
+        "discover": "Discover",
+        "me": "Me"
       }
     },
     "zh": {
@@ -30,11 +36,11 @@
           "unexpected_response": "出乎意料的响应：%{response}"
         }
       },
-      "tabbar": {
-        "chats": "微信",
-        "contacts": "通讯录",
-        "discover": "发现",
-        "me": "我"
+      "contacts": {
+        "group_chats": "群聊",
+        "tags": "标签",
+        "offical_account": "公众号",
+        "wechat_work_contacts": "WeChat Work Contacts"
       },
       "general": {
         "an_error_occured": "发生了一个错误",
@@ -42,6 +48,12 @@
         "retry": "重试",
         "search": "搜索",
         "something_went_wrong": "出了点问题"
+      },
+      "tabbar": {
+        "chats": "微信",
+        "contacts": "通讯录",
+        "discover": "发现",
+        "me": "我"
       }
     }
   }

@@ -24,7 +24,7 @@ struct ContactRow: View {
 
       Text(contact.name)
         .font(.system(size: 16))
-        .foregroundColor(.primary)
+        .foregroundColor(.text_primary)
     }
   }
 
@@ -40,5 +40,6 @@ struct ContactRow: View {
 struct ContactRow_Previews: PreviewProvider {
   static var previews: some View {
     ContactRow(contact: .template)
+      .background(Color.blue)
   }
 }

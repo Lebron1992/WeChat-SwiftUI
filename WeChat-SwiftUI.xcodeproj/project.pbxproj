@@ -13,6 +13,9 @@
 		FD6D377326842C610087272F /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D377226842C610087272F /* SearchBar.swift */; };
 		FD6D37752684707A0087272F /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D37742684707A0087272F /* Background.swift */; };
 		FD6D37792684803E0087272F /* ResignKeyboardOnDragGestureModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D37782684803E0087272F /* ResignKeyboardOnDragGestureModifier.swift */; };
+		FD6D37802684D6DD0087272F /* ContactCategoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D377F2684D6DD0087272F /* ContactCategoryRow.swift */; };
+		FD6D378226856E310087272F /* ContactCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D378126856E310087272F /* ContactCategory.swift */; };
+		FD6D3784268576BE0087272F /* ContactCategoriesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D3783268576BE0087272F /* ContactCategoriesList.swift */; };
 		FD88273C2679A37600BBEAB6 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88273B2679A37600BBEAB6 /* AppState.swift */; };
 		FD88273E2679A3C300BBEAB6 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88273D2679A3C300BBEAB6 /* AppReducer.swift */; };
 		FD8827402679A40600BBEAB6 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88273F2679A40600BBEAB6 /* Store.swift */; };
@@ -110,6 +113,9 @@
 		FD6D377226842C610087272F /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		FD6D37742684707A0087272F /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		FD6D37782684803E0087272F /* ResignKeyboardOnDragGestureModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResignKeyboardOnDragGestureModifier.swift; sourceTree = "<group>"; };
+		FD6D377F2684D6DD0087272F /* ContactCategoryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCategoryRow.swift; sourceTree = "<group>"; };
+		FD6D378126856E310087272F /* ContactCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCategory.swift; sourceTree = "<group>"; };
+		FD6D3783268576BE0087272F /* ContactCategoriesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCategoriesList.swift; sourceTree = "<group>"; };
 		FD88273B2679A37600BBEAB6 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		FD88273D2679A3C300BBEAB6 /* AppReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
 		FD88273F2679A40600BBEAB6 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
@@ -239,6 +245,7 @@
 		FD8827382679A25F00BBEAB6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FD6D378126856E310087272F /* ContactCategory.swift */,
 				FD8827432679A80900BBEAB6 /* TabBarItem.swift */,
 			);
 			path = Models;
@@ -277,8 +284,10 @@
 		FD88274A2679D83400BBEAB6 /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
+				FD6D3783268576BE0087272F /* ContactCategoriesList.swift */,
 				FD88278D26808F5500BBEAB6 /* ContactDetail.swift */,
 				FD88278F268096AC00BBEAB6 /* ContactRow.swift */,
+				FD6D377F2684D6DD0087272F /* ContactCategoryRow.swift */,
 				FD882758267AF24500BBEAB6 /* ContactsList.swift */,
 				FD88274F2679D88F00BBEAB6 /* ContactsView.swift */,
 			);
@@ -695,12 +704,14 @@
 				FD882773267EFA7400BBEAB6 /* MockStore.swift in Sources */,
 				FD1E4CEB2674A47200BD2C34 /* LocalizedString.swift in Sources */,
 				FD882790268096AC00BBEAB6 /* ContactRow.swift in Sources */,
+				FD6D3784268576BE0087272F /* ContactCategoriesList.swift in Sources */,
 				FD1E4CE92674780600BD2C34 /* Strings.swift in Sources */,
 				FD8827542679D8A600BBEAB6 /* MeView.swift in Sources */,
 				FD88279F2681E52E00BBEAB6 /* Color+Hex.swift in Sources */,
 				FD88278E26808F5500BBEAB6 /* ContactDetail.swift in Sources */,
 				FDCC72872671AD7B00A48140 /* TryDecodable.swift in Sources */,
 				FDCC724F266F1A3400A48140 /* ServerConfigType.swift in Sources */,
+				FD6D37802684D6DD0087272F /* ContactCategoryRow.swift in Sources */,
 				FDCC7253266F1FB800A48140 /* Secrets.swift in Sources */,
 				FD8827962680988100BBEAB6 /* Colors.swift in Sources */,
 				FD8827442679A80900BBEAB6 /* TabBarItem.swift in Sources */,
@@ -730,6 +741,7 @@
 				FD8827482679A9BF00BBEAB6 /* RootActions.swift in Sources */,
 				FD88273C2679A37600BBEAB6 /* AppState.swift in Sources */,
 				FD8827402679A40600BBEAB6 /* Store.swift in Sources */,
+				FD6D378226856E310087272F /* ContactCategory.swift in Sources */,
 				FDCC726D266F70EA00A48140 /* MockService.swift in Sources */,
 				FD882786267F89E000BBEAB6 /* NavigationBarBackgroundModifierWhite.swift in Sources */,
 				FD882762267AFAAF00BBEAB6 /* ActivityIndicatorView.swift in Sources */,

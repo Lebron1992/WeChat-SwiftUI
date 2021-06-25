@@ -6,7 +6,11 @@ struct AppState: ReduxState {
   var rootState: RootState
 
   init() {
-    contactsState = ContactsState(contacts: .notRequested, searchText: "")
+    contactsState = ContactsState(
+      categories: ContactCategory.allCases,
+      contacts: .notRequested,
+      searchText: ""
+    )
     rootState = RootState(selectedTab: .contacts)
   }
 

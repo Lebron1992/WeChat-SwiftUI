@@ -1,6 +1,10 @@
 "api.error.internal_server_error" = "Internal server error";
 "api.error.invalid_url" = "Invalid URL: %{url}";
 "api.error.unexpected_response" = "Unexpected response: %{response}";
+"contacts.group_chats" = "Group Chats";
+"contacts.offical_account" = "Official Account";
+"contacts.tags" = "Tags";
+"contacts.wechat_work_contacts" = "WeChat Work Contacts";
 "general.an_error_occured" = "An Error Occured";
 "general.cancel" = "Cancel";
 "general.retry" = "Retry";

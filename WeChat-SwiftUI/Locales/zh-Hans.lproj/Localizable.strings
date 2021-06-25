@@ -1,6 +1,10 @@
 "api.error.internal_server_error" = "内部服务器错误";
 "api.error.invalid_url" = "无效的 URL：%{url}";
 "api.error.unexpected_response" = "出乎意料的响应：%{response}";
+"contacts.group_chats" = "群聊";
+"contacts.offical_account" = "公众号";
+"contacts.tags" = "标签";
+"contacts.wechat_work_contacts" = "WeChat Work Contacts";
 "general.an_error_occured" = "发生了一个错误";
 "general.cancel" = "取消";
 "general.retry" = "重试";

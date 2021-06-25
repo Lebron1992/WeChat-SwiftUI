@@ -82,6 +82,9 @@ private extension ContactsList {
 
   func groupedContactsList(_ group: [(key: String, value: [User])]) -> some View {
     List {
+      Section {
+        ContactCategoriesList()
+      }
       ForEach(group, id: \.key) { category, contacts in
         Section(header: SectionHeader(title: category)) {
           ForEach(contacts) { contact in
@@ -90,7 +93,6 @@ private extension ContactsList {
                 EmptyView()
               }
               .opacity(0.0) // 为了隐藏 NavigationLink 右边的箭头
-              .buttonStyle(PlainButtonStyle())
               ContactRow(contact: contact)
             }
           }
