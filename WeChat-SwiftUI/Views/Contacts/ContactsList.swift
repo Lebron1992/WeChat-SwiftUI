@@ -6,23 +6,26 @@ import SwiftUIRedux
  2. 滚动列表时，右边的索引切换到对应的 section
 */
 
-struct ContactsList<Header: View>: View {
+struct ContactsList<Contact: ContactType, Header: View, Destination: View>: View {
 
-  let contacts: Loadable<[User]>
+  let contacts: Loadable<[Contact]>
   let searchText: String
   let loadContacts: () -> Void
-  let header: () -> Header
+  let header: () -> Header?
+  let selectionDestination: (Contact) -> Destination?
 
   init(
-    contacts: Loadable<[User]>,
+    contacts: Loadable<[Contact]>,
     searchText: String,
     loadContacts: @escaping () -> Void,
-    header: @escaping () -> Header
+    header: @escaping () -> Header?,
+    selectionDestination: @escaping (Contact) -> Destination?
   ) {
     self.contacts = contacts
     self.searchText = searchText
     self.loadContacts = loadContacts
     self.header = header
+    self.selectionDestination = selectionDestination
 
     UITableView.appearance().backgroundColor = UIColor(.bg_info_200)
   }
@@ -47,7 +50,7 @@ struct ContactsList<Header: View>: View {
 // MARK: - Display Content
 private extension ContactsList {
 
-  func loadingView(contacts previouslyLoaded: [User]?, searchText: String) -> some View {
+  func loadingView(contacts previouslyLoaded: [Contact]?, searchText: String) -> some View {
     if let result = previouslyLoaded {
       return AnyView(loadedView(contacts: result, searchText: searchText, showLoading: true))
     } else {
@@ -55,15 +58,15 @@ private extension ContactsList {
     }
   }
 
-  func loadedView(contacts: [User], searchText: String, showLoading: Bool) -> some View {
+  func loadedView(contacts: [Contact], searchText: String, showLoading: Bool) -> some View {
 
     let contactGroups = contacts.filter {
       if searchText.isEmpty {
         return true
       }
-      return $0.name.lowercased().contains(searchText.lowercased())
+      return $0.match(searchText)
     }
-      .groupedBy { String($0.name.first ?? Character("")) }
+    .groupedBy { $0.index }
       .sorted(by: { $0.key < $1.key })
 
     return ScrollViewReader { proxy in
@@ -82,17 +85,19 @@ private extension ContactsList {
     }
   }
 
-  func groupedContactsList(_ group: [(key: String, value: [User])]) -> some View {
+  func groupedContactsList(_ group: [(key: String, value: [Contact])]) -> some View {
     List {
       header()
       ForEach(group, id: \.key) { category, contacts in
         Section(header: SectionHeader(title: category)) {
           ForEach(contacts) { contact in
             ZStack(alignment: .leading) {
-              NavigationLink(destination: ContactDetail(contact: contact)) {
-                EmptyView()
+              if let destination = selectionDestination(contact) {
+                NavigationLink(destination: destination) {
+                  EmptyView()
+                }
+                .opacity(0.0) // 为了隐藏 NavigationLink 右边的箭头
               }
-              .opacity(0.0) // 为了隐藏 NavigationLink 右边的箭头
               ContactRow(contact: contact)
             }
           }
@@ -313,10 +318,11 @@ private extension ContactsList {
 struct ContactsList_Previews: PreviewProvider {
   static var previews: some View {
     ContactsList(
-      contacts: .loaded([.template, .template2]),
+      contacts: .loaded([User.template, User.template2]),
       searchText: "",
       loadContacts: {},
-      header: { EmptyView() }
+      header: { EmptyView() },
+      selectionDestination: { c in Text(c.name) }
     )
   }
 }

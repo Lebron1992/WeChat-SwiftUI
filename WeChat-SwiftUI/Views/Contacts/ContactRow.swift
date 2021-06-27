@@ -1,8 +1,8 @@
 import SwiftUI
 import URLImage
 
-struct ContactRow: View {
-  let contact: User
+struct ContactRow<Contact: ContactType>: View {
+  let contact: Contact
 
   var body: some View {
     HStack(spacing: 15) {
@@ -39,7 +39,7 @@ struct ContactRow: View {
 
 struct ContactRow_Previews: PreviewProvider {
   static var previews: some View {
-    ContactRow(contact: .template)
+    ContactRow(contact: User.template)
       .background(Color.blue)
   }
 }

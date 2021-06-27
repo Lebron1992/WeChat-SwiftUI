@@ -18,6 +18,11 @@
 		FD6D3784268576BE0087272F /* ContactCategoriesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D3783268576BE0087272F /* ContactCategoriesList.swift */; };
 		FD6D37862685D21A0087272F /* EdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D37852685D21A0087272F /* EdgeInsets.swift */; };
 		FD6D37882685D2540087272F /* EdgeInsetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D37872685D2540087272F /* EdgeInsetsTests.swift */; };
+		FD6D378B26861A110087272F /* ContactType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D378A26861A110087272F /* ContactType.swift */; };
+		FD6D378D26861A6D0087272F /* OfficialAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D378C26861A6D0087272F /* OfficialAccount.swift */; };
+		FD6D378F268624520087272F /* OfficialAccountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D378E268624520087272F /* OfficialAccountTests.swift */; };
+		FD6D3791268624780087272F /* OfficialAccountTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D3790268624780087272F /* OfficialAccountTemplates.swift */; };
+		FD6D3793268625610087272F /* ContactOfficialAccountsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D3792268625610087272F /* ContactOfficialAccountsList.swift */; };
 		FD88273C2679A37600BBEAB6 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88273B2679A37600BBEAB6 /* AppState.swift */; };
 		FD88273E2679A3C300BBEAB6 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88273D2679A3C300BBEAB6 /* AppReducer.swift */; };
 		FD8827402679A40600BBEAB6 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88273F2679A40600BBEAB6 /* Store.swift */; };
@@ -120,6 +125,11 @@
 		FD6D3783268576BE0087272F /* ContactCategoriesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCategoriesList.swift; sourceTree = "<group>"; };
 		FD6D37852685D21A0087272F /* EdgeInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeInsets.swift; sourceTree = "<group>"; };
 		FD6D37872685D2540087272F /* EdgeInsetsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeInsetsTests.swift; sourceTree = "<group>"; };
+		FD6D378A26861A110087272F /* ContactType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactType.swift; sourceTree = "<group>"; };
+		FD6D378C26861A6D0087272F /* OfficialAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficialAccount.swift; sourceTree = "<group>"; };
+		FD6D378E268624520087272F /* OfficialAccountTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficialAccountTests.swift; sourceTree = "<group>"; };
+		FD6D3790268624780087272F /* OfficialAccountTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficialAccountTemplates.swift; sourceTree = "<group>"; };
+		FD6D3792268625610087272F /* ContactOfficialAccountsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactOfficialAccountsList.swift; sourceTree = "<group>"; };
 		FD88273B2679A37600BBEAB6 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		FD88273D2679A3C300BBEAB6 /* AppReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
 		FD88273F2679A40600BBEAB6 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
@@ -229,7 +239,6 @@
 				FD882772267EFA7400BBEAB6 /* MockStore.swift */,
 				FD88273F2679A40600BBEAB6 /* Store.swift */,
 				FD8827372679A25400BBEAB6 /* Actions */,
-				FD8827382679A25F00BBEAB6 /* Models */,
 				FD8827392679A26700BBEAB6 /* Reducers */,
 				FD88273A2679A26D00BBEAB6 /* State */,
 			);
@@ -244,15 +253,6 @@
 				FD8827472679A9BF00BBEAB6 /* RootActions.swift */,
 			);
 			path = Actions;
-			sourceTree = "<group>";
-		};
-		FD8827382679A25F00BBEAB6 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				FD6D378126856E310087272F /* ContactCategory.swift */,
-				FD8827432679A80900BBEAB6 /* TabBarItem.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		FD8827392679A26700BBEAB6 /* Reducers */ = {
@@ -289,9 +289,10 @@
 			isa = PBXGroup;
 			children = (
 				FD6D3783268576BE0087272F /* ContactCategoriesList.swift */,
-				FD88278D26808F5500BBEAB6 /* ContactDetail.swift */,
-				FD88278F268096AC00BBEAB6 /* ContactRow.swift */,
 				FD6D377F2684D6DD0087272F /* ContactCategoryRow.swift */,
+				FD88278D26808F5500BBEAB6 /* ContactDetail.swift */,
+				FD6D3792268625610087272F /* ContactOfficialAccountsList.swift */,
+				FD88278F268096AC00BBEAB6 /* ContactRow.swift */,
 				FD882758267AF24500BBEAB6 /* ContactsList.swift */,
 				FD88274F2679D88F00BBEAB6 /* ContactsView.swift */,
 			);
@@ -426,6 +427,11 @@
 			isa = PBXGroup;
 			children = (
 				FDCC727D2671A6E200A48140 /* AccessTokenEnvelope.swift */,
+				FD6D378126856E310087272F /* ContactCategory.swift */,
+				FD6D378A26861A110087272F /* ContactType.swift */,
+				FD6D378C26861A6D0087272F /* OfficialAccount.swift */,
+				FD6D378E268624520087272F /* OfficialAccountTests.swift */,
+				FD8827432679A80900BBEAB6 /* TabBarItem.swift */,
 				FDCC726E2670882D00A48140 /* User.swift */,
 				FD882768267B499700BBEAB6 /* UserTests.swift */,
 				FDCC728A2671C33400A48140 /* Templates */,
@@ -507,6 +513,7 @@
 		FDCC728A2671C33400A48140 /* Templates */ = {
 			isa = PBXGroup;
 			children = (
+				FD6D3790268624780087272F /* OfficialAccountTemplates.swift */,
 				FDCC728B2671C34200A48140 /* UserTemplates.swift */,
 			);
 			path = Templates;
@@ -713,6 +720,7 @@
 				FD6D3784268576BE0087272F /* ContactCategoriesList.swift in Sources */,
 				FD1E4CE92674780600BD2C34 /* Strings.swift in Sources */,
 				FD8827542679D8A600BBEAB6 /* MeView.swift in Sources */,
+				FD6D3791268624780087272F /* OfficialAccountTemplates.swift in Sources */,
 				FD88279F2681E52E00BBEAB6 /* Color+Hex.swift in Sources */,
 				FD88278E26808F5500BBEAB6 /* ContactDetail.swift in Sources */,
 				FDCC72872671AD7B00A48140 /* TryDecodable.swift in Sources */,
@@ -727,6 +735,7 @@
 				FDCC724B266F190700A48140 /* Environment.swift in Sources */,
 				FD88275D267AF2C300BBEAB6 /* ContactsReducer.swift in Sources */,
 				FDCC727C2671A4DC00A48140 /* AppEnvironment.swift in Sources */,
+				FD6D378B26861A110087272F /* ContactType.swift in Sources */,
 				FDCC72922673448A00A48140 /* Route.swift in Sources */,
 				FD6D37752684707A0087272F /* Background.swift in Sources */,
 				FD6D37792684803E0087272F /* ResignKeyboardOnDragGestureModifier.swift in Sources */,
@@ -740,6 +749,7 @@
 				FDCC721B266E254D00A48140 /* WeChat_SwiftUIApp.swift in Sources */,
 				FDCC724D266F19CF00A48140 /* ServiceType.swift in Sources */,
 				FD8827522679D89C00BBEAB6 /* DiscoverView.swift in Sources */,
+				FD6D378D26861A6D0087272F /* OfficialAccount.swift in Sources */,
 				FD8827502679D88F00BBEAB6 /* ContactsView.swift in Sources */,
 				FD88273E2679A3C300BBEAB6 /* AppReducer.swift in Sources */,
 				FD6D377326842C610087272F /* SearchBar.swift in Sources */,
@@ -753,6 +763,7 @@
 				FD882786267F89E000BBEAB6 /* NavigationBarBackgroundModifierWhite.swift in Sources */,
 				FD882762267AFAAF00BBEAB6 /* ActivityIndicatorView.swift in Sources */,
 				FD88275B267AF27200BBEAB6 /* ContactsState.swift in Sources */,
+				FD6D3793268625610087272F /* ContactOfficialAccountsList.swift in Sources */,
 				FDCC7290267343A800A48140 /* Service+RequestHelpers.swift in Sources */,
 				FDCC729F2673499700A48140 /* APIError.swift in Sources */,
 				FD88275F267AF2EB00BBEAB6 /* ContactsActions.swift in Sources */,
@@ -767,6 +778,7 @@
 				FDCC7255266F212B00A48140 /* ServerConfigTests.swift in Sources */,
 				FDCC727A267109D700A48140 /* LanguageTests.swift in Sources */,
 				FDCC72752671087E00A48140 /* EnvironmentTests.swift in Sources */,
+				FD6D378F268624520087272F /* OfficialAccountTests.swift in Sources */,
 				FD882778267F1BD500BBEAB6 /* ContactsActionsTests.swift in Sources */,
 				FDCC7269266F62C900A48140 /* ServiceTests.swift in Sources */,
 				FD882769267B499700BBEAB6 /* UserTests.swift in Sources */,

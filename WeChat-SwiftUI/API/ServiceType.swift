@@ -20,6 +20,9 @@ protocol ServiceType {
 
   /// 获取联系人
   func loadContacts() -> AnyPublisher<[User], Error>
+
+  /// 获取公众号
+  func loadOfficialAccounts() -> AnyPublisher<[OfficialAccount], Error>
 }
 
 func == (lhs: ServiceType, rhs: ServiceType) -> Bool {

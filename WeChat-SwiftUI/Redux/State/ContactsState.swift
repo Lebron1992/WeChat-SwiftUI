@@ -3,14 +3,14 @@ import Foundation
 struct ContactsState {
   var categories: [ContactCategory]
   var contacts: Loadable<[User]>
-  var searchText: String
+  var officialAccounts: Loadable<[OfficialAccount]>
 }
 
 extension ContactsState: Equatable {
   static func == (lhs: ContactsState, rhs: ContactsState) -> Bool {
     lhs.categories == rhs.categories &&
     lhs.contacts == rhs.contacts &&
-    lhs.searchText == lhs.searchText
+    lhs.officialAccounts == lhs.officialAccounts
   }
 }
 
@@ -20,7 +20,7 @@ extension ContactsState {
     ContactsState(
       categories: ContactCategory.allCases,
       contacts: .notRequested,
-      searchText: ""
+      officialAccounts: .notRequested
     )
   }
 }

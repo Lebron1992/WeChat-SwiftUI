@@ -40,4 +40,28 @@ final class ContactsActionsTests: XCTestCase {
 
     AppEnvironment.popEnvironment()
   }
+
+  func test_LoadOfficialAccounts() {
+    let accounts: [OfficialAccount] = [.template, .template2]
+    let mockService = MockService(loadOfficialAccountsResponse: accounts)
+    AppEnvironment.pushEnvironment(apiService: mockService)
+
+    mockStore.dispatch(action: ContactsActions.LoadOfficialAccounts())
+
+    XCTAssertEqual(mockStore.actions.count, 3)
+    XCTAssertEqual(
+      mockStore.actions[0] as! ContactsActions.LoadOfficialAccounts,
+      ContactsActions.LoadOfficialAccounts()
+    )
+    XCTAssertEqual(
+      mockStore.actions[1] as! ContactsActions.SetOfficialAccounts,
+      ContactsActions.SetOfficialAccounts(accounts: .isLoading(last: nil, cancelBag: CancelBag()))
+    )
+    XCTAssertEqual(
+      mockStore.actions[2] as! ContactsActions.SetOfficialAccounts,
+      ContactsActions.SetOfficialAccounts(accounts: .loaded(accounts))
+    )
+
+    AppEnvironment.popEnvironment()
+  }
 }

@@ -18,12 +18,6 @@ struct User: Codable, Identifiable {
   }
 }
 
-extension User: Equatable {
-  static func == (lhs: User, rhs: User) -> Bool {
-    lhs.id == rhs.id
-  }
-}
-
 extension User {
   enum Gender: String, Codable {
     case male
@@ -31,8 +25,27 @@ extension User {
   }
 }
 
+extension User: Equatable {
+  static func == (lhs: User, rhs: User) -> Bool {
+    lhs.id == rhs.id
+  }
+}
+
 extension User: CustomDebugStringConvertible {
   var debugDescription: String {
-    "User(id: \(self.id), name: \"\(self.name)\")"
+    "User(id: \(id), name: \"\(name)\")"
+  }
+}
+
+extension User: ContactType {
+  var index: String {
+    String(name.first ?? Character("")).uppercased()
+  }
+
+  func match(_ query: String) -> Bool {
+    if query.isEmpty {
+      return true
+    }
+    return name.lowercased().contains(query.lowercased())
   }
 }

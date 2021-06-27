@@ -9,7 +9,7 @@ struct AppState: ReduxState {
     contactsState = ContactsState(
       categories: ContactCategory.allCases,
       contacts: .notRequested,
-      searchText: ""
+      officialAccounts: .notRequested
     )
     rootState = RootState(selectedTab: .contacts)
   }

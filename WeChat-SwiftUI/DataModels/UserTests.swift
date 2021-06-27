@@ -2,16 +2,16 @@ import XCTest
 @testable import WeChat_SwiftUI
 
 final class UserTests: XCTestCase {
-  func testEquatable() {
+  func test_equatable() {
     XCTAssertEqual(User.template, User.template)
     XCTAssertNotEqual(User.template, User.template2)
   }
 
-  func testDescription() {
+  func test_description() {
     XCTAssertNotEqual("", User.template.debugDescription)
   }
 
-  func testJsonParsing() {
+  func test_jsonParsing() {
     let json = """
       {
       "id": "4d0914d5-b04c-43f1-b37f-b2bb8d177951",
@@ -34,4 +34,17 @@ final class UserTests: XCTestCase {
     XCTAssertEqual("USA", user?.region)
     XCTAssertEqual("Hello, I'm LeBron James!", user?.whatsUp)
   }
+
+    func test_index() {
+        let account = User.template
+        XCTAssertEqual(account?.index, "J")
+    }
+
+    func test_match() {
+        let account = User.template!
+
+        XCTAssertTrue(account.match("M"))
+        XCTAssertTrue(account.match("m"))
+        XCTAssertFalse(account.match("e"))
+    }
 }

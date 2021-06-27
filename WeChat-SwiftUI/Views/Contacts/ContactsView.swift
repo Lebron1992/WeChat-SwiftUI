@@ -3,30 +3,20 @@ import SwiftUIRedux
 
 struct ContactsView: ConnectedView {
 
-  @EnvironmentObject
-  private var store: Store<AppState>
+  @State
+  private var isSearching = false
 
   @State
-  private var hideNavigationBar = false
-
-  private var searchText: Binding<String> {
-    Binding(
-      get: { store.state.contactsState.searchText },
-      set: {
-        store.dispatch(action: ContactsActions.SetSearchText(searchText: $0)) }
-    )
-  }
+  private var searchText = ""
 
   struct Props {
     let contacts: Loadable<[User]>
-    let searchText: String
     let loadContacts: () -> Void
   }
 
   func map(state: AppState, dispatch: @escaping (Action) -> Void) -> Props {
     Props(
       contacts: state.contactsState.contacts,
-      searchText: state.contactsState.searchText,
       loadContacts: { dispatch(ContactsActions.LoadContacts()) }
     )
   }
@@ -38,24 +28,27 @@ struct ContactsView: ConnectedView {
 
         VStack(spacing: 0) {
           SearchBar(
-            searchText: searchText,
+            searchText: $searchText,
             onEditingChanged: {
-              hideNavigationBar = true
+              isSearching = true
             },
             onCancelButtonTapped: {
-              hideNavigationBar = false
+              isSearching = false
             }
           )
 
           ContactsList(
             contacts: props.contacts,
-            searchText: props.searchText,
+            searchText: searchText,
             loadContacts: props.loadContacts,
-            header: {
-              Section {
-                ContactCategoriesList()
-              }
-            }
+            header: { () -> ContactCategoriesList? in
+                if isSearching {
+                  return nil
+                } else {
+                  return ContactCategoriesList()
+                }
+            },
+            selectionDestination: { Text($0.name) }
           )
 
           Spacer(minLength: 0)
@@ -66,7 +59,7 @@ struct ContactsView: ConnectedView {
       .navigationBarTitleDisplayMode(.inline)
       .navigationBarItems(trailing: Image("icons_outlined_add_friends"))
       .navigationBarBackgroundLightGray()
-      .navigationBarHidden(hideNavigationBar)
+      .navigationBarHidden(isSearching)
     }
     .navigationViewStyle(StackNavigationViewStyle())
   }

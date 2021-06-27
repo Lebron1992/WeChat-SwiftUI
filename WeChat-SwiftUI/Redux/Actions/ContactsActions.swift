@@ -22,7 +22,24 @@ enum ContactsActions {
     let contacts: Loadable<[User]>
   }
 
-  struct SetSearchText: Action, Equatable {
-    let searchText: String
+  struct LoadOfficialAccounts: AsyncAction, Equatable {
+    func async(dispatch: @escaping Dispatch, state: ReduxState?) {
+
+      let cancelBag = CancelBag()
+      let last = (state as? AppState)?.contactsState.officialAccounts.value
+
+      dispatch(SetOfficialAccounts(accounts: .isLoading(last: last, cancelBag: cancelBag)))
+
+      AppEnvironment.current.apiService
+        .loadOfficialAccounts()
+        .sinkToLoadable {
+          dispatch(SetOfficialAccounts(accounts: $0))
+        }
+        .store(in: cancelBag)
+    }
+  }
+
+  struct SetOfficialAccounts: Action, Equatable {
+    let accounts: Loadable<[OfficialAccount]>
   }
 }
