@@ -24,8 +24,8 @@ func localizedString(
     .flatMap { Bundle(path: $0) }
     .flatMap { $0.localizedString(forKey: augmentedKey, value: nil, table: nil) }
     .filter {
-      //注意：`localizedStringForKey` 有一个恼人的习惯，就是在键不存在时返回键。
-      //我们过滤掉这些，希望永远不要使用与其键相等的值。
+      // 注意：`localizedStringForKey` 有一个恼人的习惯，就是在键不存在时返回键。
+      // 我们过滤掉这些，希望永远不要使用与其键相等的值。
       $0.caseInsensitiveCompare(augmentedKey) != .orderedSame
     }
     .filter { !$0.isEmpty }

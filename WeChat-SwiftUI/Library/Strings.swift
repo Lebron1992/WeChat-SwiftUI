@@ -50,6 +50,90 @@ public enum Strings {
     )
   }
   /**
+   "Edit Contact"
+
+   - **en**: "Edit Contact"
+   - **zh**: " 备注和标签"
+  */
+  public static func contact_detail_edit_contact() -> String {
+    return localizedString(
+      key: "contact_detail.edit_contact",
+      defaultValue: "Edit Contact",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "Messages"
+
+   - **en**: "Messages"
+   - **zh**: "发消息"
+  */
+  public static func contact_detail_messages() -> String {
+    return localizedString(
+      key: "contact_detail.messages",
+      defaultValue: "Messages",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "Moments"
+
+   - **en**: "Moments"
+   - **zh**: "朋友圈"
+  */
+  public static func contact_detail_moments() -> String {
+    return localizedString(
+      key: "contact_detail.moments",
+      defaultValue: "Moments",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "More"
+
+   - **en**: "More"
+   - **zh**: "更多信息"
+  */
+  public static func contact_detail_more() -> String {
+    return localizedString(
+      key: "contact_detail.more",
+      defaultValue: "More",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "Privacy"
+
+   - **en**: "Privacy"
+   - **zh**: "朋友权限"
+  */
+  public static func contact_detail_privacy() -> String {
+    return localizedString(
+      key: "contact_detail.privacy",
+      defaultValue: "Privacy",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "Voice or Video Call"
+
+   - **en**: "Voice or Video Call"
+   - **zh**: "音视频通话"
+  */
+  public static func contact_detail_voice_or_video_call() -> String {
+    return localizedString(
+      key: "contact_detail.voice_or_video_call",
+      defaultValue: "Voice or Video Call",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
    "Group Chats"
 
    - **en**: "Group Chats"
@@ -134,6 +218,20 @@ public enum Strings {
     )
   }
   /**
+   "Region"
+
+   - **en**: "Region"
+   - **zh**: "地区"
+  */
+  public static func general_region() -> String {
+    return localizedString(
+      key: "general.region",
+      defaultValue: "Region",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
    "Retry"
 
    - **en**: "Retry"
@@ -171,6 +269,20 @@ public enum Strings {
     return localizedString(
       key: "general.something_went_wrong",
       defaultValue: "Something went wrong",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "WeChat ID"
+
+   - **en**: "WeChat ID"
+   - **zh**: "微信号"
+  */
+  public static func general_wechat_id() -> String {
+    return localizedString(
+      key: "general.wechat_id",
+      defaultValue: "WeChat ID",
       count: nil,
       substitutions: [:]
     )

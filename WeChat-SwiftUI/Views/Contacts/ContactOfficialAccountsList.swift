@@ -23,7 +23,7 @@ struct ContactOfficialAccountsList: ConnectedView {
 
   func body(props: Props) -> some View {
     ZStack {
-      Background(.bg_info_200) // 解决搜索框弹出时，导航栏处背景颜色不一的问题
+      Background(.app_bg) // 解决搜索框弹出时，导航栏处背景颜色不一的问题
 
       VStack(spacing: 0) {
         SearchBar(
@@ -49,7 +49,7 @@ struct ContactOfficialAccountsList: ConnectedView {
         Spacer(minLength: 0)
       }
     }
-    .background(Color.bg_info_200)
+    .background(Color.app_bg)
     .navigationTitle(Strings.contacts_offical_account())
     .navigationBarTitleDisplayMode(.inline)
     .navigationBarItems(trailing: Image("icons_outlined_add2"))

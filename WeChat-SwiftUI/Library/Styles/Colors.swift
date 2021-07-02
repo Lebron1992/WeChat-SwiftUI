@@ -6,6 +6,10 @@ extension Color {
     .init("app_white")
   }
 
+  static var app_bg: Color {
+    .init("app_bg")
+  }
+
   static var link: Color {
     .init("link")
   }
@@ -40,8 +44,8 @@ extension Color {
 }
 
 extension UIColor {
-  static var bg_info_200: UIColor {
-    .init(named: "bg_info_200")!
+  static var app_bg: UIColor {
+    .init(named: "app_bg")!
   }
 
   static var text_primary: UIColor {

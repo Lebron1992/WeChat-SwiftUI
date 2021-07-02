@@ -26,8 +26,6 @@ struct ContactsList<Contact: ContactType, Header: View, Destination: View>: View
     self.loadContacts = loadContacts
     self.header = header
     self.selectionDestination = selectionDestination
-
-    UITableView.appearance().backgroundColor = UIColor(.bg_info_200)
   }
 
   var body: some View {
@@ -102,6 +100,7 @@ private extension ContactsList {
             }
           }
           .listRowBackground(Color.app_white)
+          .frame(height: 44)
         }
       }
     }
@@ -123,7 +122,7 @@ private extension ContactsList {
         .font(.system(size: 14, weight: .medium))
         .padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 0))
         .frame(width: UIScreen.main.bounds.width, alignment: .leading)
-        .background(Color.bg_info_200)
+        .background(Color.app_bg)
     }
   }
 

@@ -54,7 +54,7 @@ struct SearchBar: View {
       }
       .padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
       .foregroundColor(.secondary)
-      .background(Color.bg_info_200)
+      .background(Color.app_bg)
 
       if showCancelButton {
         Button(Strings.general_cancel()) {
@@ -67,7 +67,7 @@ struct SearchBar: View {
         .padding(.trailing, 5)
       }
     }
-    .background(Color.bg_info_200)
+    .background(Color.app_bg)
     .animation(.default)
   }
 }

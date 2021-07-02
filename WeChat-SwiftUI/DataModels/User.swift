@@ -22,6 +22,15 @@ extension User {
   enum Gender: String, Codable {
     case male
     case female
+
+    var iconName: String {
+      switch self {
+      case .male:
+        return "icons_filled_colorful_male"
+      case .female:
+        return "icons_filled_colorful_female"
+      }
+    }
   }
 }
 
@@ -47,5 +56,12 @@ extension User: ContactType {
       return true
     }
     return name.lowercased().contains(query.lowercased())
+  }
+}
+
+// MARK: - Getters
+extension User {
+  var isMale: Bool {
+    gender == .male
   }
 }

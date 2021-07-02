@@ -14,11 +14,10 @@ struct ContactRow<Contact: ContactType>: View {
           failure: { _, _ in avatarPlaceholder },
           content: { image in
             image
-              .resizable()
-              .aspectRatio(contentMode: .fill)
+              .resizeToFill()
               .frame(width: 40, height: 40)
           })
-          .background(Color.bg_info_200)
+          .background(Color.app_bg)
           .cornerRadius(4)
       }
 
@@ -29,10 +28,9 @@ struct ContactRow<Contact: ContactType>: View {
   }
 
   private var avatarPlaceholder: some View {
-    Image("icons_outlined_avatar")
-      .resizable()
-      .aspectRatio(contentMode: .fill)
-      .foregroundColor(.bg_info_200)
+    Image.avatarPlaceholder
+      .resizeToFill()
+      .foregroundColor(.app_bg)
       .frame(width: 40, height: 40)
   }
 }

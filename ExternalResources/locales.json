@@ -14,12 +14,22 @@
         "offical_account": "Official Account",
         "wechat_work_contacts": "WeChat Work Contacts"
       },
+      "contact_detail": {
+        "edit_contact": "Edit Contact",
+        "messages": "Messages",
+        "moments": "Moments",
+        "more": "More",
+        "privacy": "Privacy",
+        "voice_or_video_call": "Voice or Video Call"
+      },
       "general": {
         "an_error_occured": "An Error Occured",
         "cancel": "Cancel",
+        "region": "Region",
         "retry": "Retry",
         "search": "Search",
-        "something_went_wrong": "Something went wrong"
+        "something_went_wrong": "Something went wrong",
+        "wechat_id": "WeChat ID"
       },
       "tabbar": {
         "chats": "Chats",
@@ -42,12 +52,22 @@
         "offical_account": "公众号",
         "wechat_work_contacts": "WeChat Work Contacts"
       },
+      "contact_detail": {
+        "edit_contact": " 备注和标签",
+        "messages": "发消息",
+        "moments": "朋友圈",
+        "more": "更多信息",
+        "privacy": "朋友权限",
+        "voice_or_video_call": "音视频通话"
+      },
       "general": {
         "an_error_occured": "发生了一个错误",
         "cancel": "取消",
+        "region": "地区",
         "retry": "重试",
         "search": "搜索",
-        "something_went_wrong": "出了点问题"
+        "something_went_wrong": "出了点问题",
+        "wechat_id": "微信号"
       },
       "tabbar": {
         "chats": "微信",

@@ -24,7 +24,7 @@ struct ContactsView: ConnectedView {
   func body(props: Props) -> some View {
     NavigationView {
       ZStack {
-        Background(.bg_info_200) // 解决搜索框弹出时，导航栏处背景颜色不一的问题
+        Background(.app_bg) // 解决搜索框弹出时，导航栏处背景颜色不一的问题
 
         VStack(spacing: 0) {
           SearchBar(
@@ -48,13 +48,15 @@ struct ContactsView: ConnectedView {
                   return ContactCategoriesList()
                 }
             },
-            selectionDestination: { Text($0.name) }
+            selectionDestination: {
+              ContactDetail(contact: $0)
+            }
           )
 
           Spacer(minLength: 0)
         }
       }
-      .background(Color.bg_info_200)
+      .background(Color.app_bg)
       .navigationTitle(Strings.tabbar_contacts())
       .navigationBarTitleDisplayMode(.inline)
       .navigationBarItems(trailing: Image("icons_outlined_add_friends"))
@@ -62,12 +64,6 @@ struct ContactsView: ConnectedView {
       .navigationBarHidden(isSearching)
     }
     .navigationViewStyle(StackNavigationViewStyle())
-  }
-
-  init() {
-    let tableView = UITableView.appearance()
-    tableView.backgroundColor = UIColor(.bg_info_200)
-    tableView.separatorStyle = .none
   }
 }
 

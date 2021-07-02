@@ -10,6 +10,8 @@
 		FD1E4CC726745E7000BD2C34 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FD1E4CC926745E7000BD2C34 /* Localizable.strings */; };
 		FD1E4CE92674780600BD2C34 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4CE82674780600BD2C34 /* Strings.swift */; };
 		FD1E4CEB2674A47200BD2C34 /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4CEA2674A47200BD2C34 /* LocalizedString.swift */; };
+		FD424F90268B050900F11A62 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD424F8F268B050900F11A62 /* Image.swift */; };
+		FD424F92268B059B00F11A62 /* Image+ResizeToFill.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD424F91268B059B00F11A62 /* Image+ResizeToFill.swift */; };
 		FD6D377326842C610087272F /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D377226842C610087272F /* SearchBar.swift */; };
 		FD6D37752684707A0087272F /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D37742684707A0087272F /* Background.swift */; };
 		FD6D37792684803E0087272F /* ResignKeyboardOnDragGestureModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D37782684803E0087272F /* ResignKeyboardOnDragGestureModifier.swift */; };
@@ -117,6 +119,8 @@
 		FD1E4CCA26745E7300BD2C34 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FD1E4CE82674780600BD2C34 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		FD1E4CEA2674A47200BD2C34 /* LocalizedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
+		FD424F8F268B050900F11A62 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		FD424F91268B059B00F11A62 /* Image+ResizeToFill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+ResizeToFill.swift"; sourceTree = "<group>"; };
 		FD6D377226842C610087272F /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		FD6D37742684707A0087272F /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		FD6D37782684803E0087272F /* ResignKeyboardOnDragGestureModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResignKeyboardOnDragGestureModifier.swift; sourceTree = "<group>"; };
@@ -233,6 +237,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FD424F8E268B04ED00F11A62 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				FDCC7296267348A600A48140 /* Constants.swift */,
+				FD424F8F268B050900F11A62 /* Image.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		FD8827362679A24C00BBEAB6 /* Redux */ = {
 			isa = PBXGroup;
 			children = (
@@ -464,10 +477,11 @@
 			children = (
 				FDCC727B2671A4DC00A48140 /* AppEnvironment.swift */,
 				FDCC72882671C14800A48140 /* AppEnvironmentTests.swift */,
+				FD424F8E268B04ED00F11A62 /* Constants */,
 				FDCC729C2673496800A48140 /* CancelBag.swift */,
-				FDCC7296267348A600A48140 /* Constants.swift */,
 				FDCC724A266F190700A48140 /* Environment.swift */,
 				FDCC72732671087A00A48140 /* EnvironmentTests.swift */,
+				FD88279C2681E1F100BBEAB6 /* Haptics.swift */,
 				FDCC727F2671A99400A48140 /* KeyValueStoreType.swift */,
 				FDCC7266266F5CF600A48140 /* Language.swift */,
 				FDCC7278267109D500A48140 /* LanguageTests.swift */,
@@ -479,7 +493,6 @@
 				FDCC72812671AC1800A48140 /* Extensions */,
 				FD882782267F878500BBEAB6 /* Modifiers */,
 				FD8827942680987700BBEAB6 /* Styles */,
-				FD88279C2681E1F100BBEAB6 /* Haptics.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -506,6 +519,7 @@
 				FDCC72842671AC7200A48140 /* Encodable+DictionaryTests.swift */,
 				FD6D37852685D21A0087272F /* EdgeInsets.swift */,
 				FD6D37872685D2540087272F /* EdgeInsetsTests.swift */,
+				FD424F91268B059B00F11A62 /* Image+ResizeToFill.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -733,6 +747,7 @@
 				FD8827422679A75B00BBEAB6 /* RootState.swift in Sources */,
 				FDCC72802671A99400A48140 /* KeyValueStoreType.swift in Sources */,
 				FDCC724B266F190700A48140 /* Environment.swift in Sources */,
+				FD424F90268B050900F11A62 /* Image.swift in Sources */,
 				FD88275D267AF2C300BBEAB6 /* ContactsReducer.swift in Sources */,
 				FDCC727C2671A4DC00A48140 /* AppEnvironment.swift in Sources */,
 				FD6D378B26861A110087272F /* ContactType.swift in Sources */,
@@ -760,6 +775,7 @@
 				FD8827402679A40600BBEAB6 /* Store.swift in Sources */,
 				FD6D378226856E310087272F /* ContactCategory.swift in Sources */,
 				FDCC726D266F70EA00A48140 /* MockService.swift in Sources */,
+				FD424F92268B059B00F11A62 /* Image+ResizeToFill.swift in Sources */,
 				FD882786267F89E000BBEAB6 /* NavigationBarBackgroundModifierWhite.swift in Sources */,
 				FD882762267AFAAF00BBEAB6 /* ActivityIndicatorView.swift in Sources */,
 				FD88275B267AF27200BBEAB6 /* ContactsState.swift in Sources */,
