@@ -12,66 +12,50 @@ struct ContactDetail: View {
     List {
       Section {
         InfoRow()
-        NavigationLink(destination: Text("Hello")) {
-          RowTitle(Strings.contact_detail_edit_contact())
+        ForEach([TextRowItem.editContact, TextRowItem.privacy], id: \.self) { item in
+          RowTitle(item.title)
         }
-        .frame(height: 44)
-        NavigationLink(destination: Text("Hello")) {
-          RowTitle(Strings.contact_detail_privacy())
-        }
-        .frame(height: 44)
       }
-      .listRowBackground(Color.app_white)
-      .font(.system(size: 16))
 
-      SectionDivider()
-
-      Section {
-        NavigationLink(destination: Text("Hello")) {
-          RowTitle(Strings.contact_detail_moments())
+      Section(header: SectionHeader()) {
+        ForEach([TextRowItem.moment, TextRowItem.more], id: \.self) { item in
+          RowTitle(item.title)
         }
-        .frame(height: 44)
-        NavigationLink(destination: Text("Hello")) {
-          RowTitle(Strings.contact_detail_more())
-        }
-        .frame(height: 44)
       }
-      .listRowBackground(Color.app_white)
-      .font(.system(size: 16))
 
-      SectionDivider()
-
-      VStack(spacing: 0) {
-        Button {
-          print("send messages")
-        } label: {
-          HStack {
-            Image("icons_outlined_chats")
-            Text(Strings.contact_detail_messages())
-          }
+      Section(header: SectionHeader()) {
+        VStack(spacing: 0) {
+          Button {
+            print("send messages")
+          } label: {
+            HStack {
+              Image("icons_outlined_chats")
+              Text(Strings.contact_detail_messages())
+            }
             .frame(height: 52)
-        }
-
-        Color.bg_info_200
-          .frame(height: 0.8)
-
-        Button {
-          print("voice or video call")
-        } label: {
-          HStack {
-            Image("icons_outlined_videocall")
-            Text(Strings.contact_detail_voice_or_video_call())
           }
+
+          Color.bg_info_200
+            .frame(height: 0.8)
+
+          Button {
+            print("voice or video call")
+          } label: {
+            HStack {
+              Image("icons_outlined_videocall")
+              Text(Strings.contact_detail_voice_or_video_call())
+            }
             .frame(height: 52)
+          }
         }
+        .foregroundColor(.link)
+        .font(.system(size: 16, weight: .medium))
+        .buttonStyle(BorderlessButtonStyle()) // 解决：点击其中一个按钮导致两个按钮触发点击事件和 cell 被点击选中
+        .listRowInsets(.zero)
       }
-      .foregroundColor(.link)
-      .font(.system(size: 16, weight: .medium))
-      .buttonStyle(BorderlessButtonStyle()) // 解决：点击其中一个按钮导致两个按钮触发点击事件和 cell 被点击选中
-      .listRowBackground(Color.app_white)
-      .listRowInsets(.zero)
     }
-    .environment(\.defaultMinListRowHeight, 10)
+    .listRowBackground(Color.app_white)
+    .environment(\.defaultMinListHeaderHeight, 10)
   }
 }
 
@@ -117,14 +101,16 @@ private extension ContactDetail {
   }
 
   func RowTitle(_ title: String) -> some View {
-    Text(title)
-      .foregroundColor(.text_primary)
+    NavigationLink(destination: Text(title)) {
+      Text(title)
+        .foregroundColor(.text_primary)
+        .font(.system(size: 16))
+        .frame(height: 44)
+    }
   }
 
-  func SectionDivider() -> some View {
+  func SectionHeader() -> some View {
     Color.app_bg
-      .frame(height: 10)
-      .listRowBackground(Color.app_bg)
       .listRowInsets(.zero)
   }
 
@@ -133,6 +119,24 @@ private extension ContactDetail {
       .resizeToFill()
       .foregroundColor(.app_bg)
       .frame(width: 60, height: 60)
+  }
+}
+
+extension ContactDetail {
+  enum TextRowItem {
+    case editContact
+    case privacy
+    case moment
+    case more
+
+    var title: String {
+      switch self {
+      case .editContact: return Strings.contact_detail_edit_contact()
+      case .privacy:     return Strings.contact_detail_privacy()
+      case .moment:      return Strings.contact_detail_moments()
+      case .more:        return Strings.contact_detail_more()
+      }
+    }
   }
 }
 

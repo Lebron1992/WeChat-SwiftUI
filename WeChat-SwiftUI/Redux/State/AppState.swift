@@ -15,7 +15,7 @@ struct AppState: ReduxState {
     discoverState = DiscoverState(
       discoverSections: DiscoverSection.allCases
     )
-    rootState = RootState(selectedTab: .discover)
+    rootState = RootState(selectedTab: .contacts)
   }
 
   #if DEBUG
