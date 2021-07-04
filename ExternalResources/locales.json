@@ -22,6 +22,17 @@
         "privacy": "Privacy",
         "voice_or_video_call": "Voice or Video Call"
       },
+      "discover": {
+        "channels": "Channels",
+        "games": "Games",
+        "live_nearby": "Live Streams & Nearby",
+        "moments": "Moments",
+        "news": "Top Stories",
+        "scan": "Scan",
+        "search": "Search",
+        "shake": "Shake",
+        "shopping": "Shopping"
+      },
       "general": {
         "an_error_occured": "An Error Occured",
         "cancel": "Cancel",
@@ -59,6 +70,17 @@
         "more": "更多信息",
         "privacy": "朋友权限",
         "voice_or_video_call": "音视频通话"
+      },
+      "discover": {
+        "channels": "视频号",
+        "games": "游戏",
+        "live_nearby": "直播和附近",
+        "moments": "朋友圈",
+        "news": "看一看",
+        "scan": "扫一扫",
+        "search": "搜一搜",
+        "shake": "摇一摇",
+        "shopping": "购物"
       },
       "general": {
         "an_error_occured": "发生了一个错误",

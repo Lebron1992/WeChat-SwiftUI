@@ -190,6 +190,132 @@ public enum Strings {
     )
   }
   /**
+   "Channels"
+
+   - **en**: "Channels"
+   - **zh**: "视频号"
+  */
+  public static func discover_channels() -> String {
+    return localizedString(
+      key: "discover.channels",
+      defaultValue: "Channels",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "Games"
+
+   - **en**: "Games"
+   - **zh**: "游戏"
+  */
+  public static func discover_games() -> String {
+    return localizedString(
+      key: "discover.games",
+      defaultValue: "Games",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "Live Streams & Nearby"
+
+   - **en**: "Live Streams & Nearby"
+   - **zh**: "直播和附近"
+  */
+  public static func discover_live_nearby() -> String {
+    return localizedString(
+      key: "discover.live_nearby",
+      defaultValue: "Live Streams & Nearby",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "Moments"
+
+   - **en**: "Moments"
+   - **zh**: "朋友圈"
+  */
+  public static func discover_moments() -> String {
+    return localizedString(
+      key: "discover.moments",
+      defaultValue: "Moments",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "Top Stories"
+
+   - **en**: "Top Stories"
+   - **zh**: "看一看"
+  */
+  public static func discover_news() -> String {
+    return localizedString(
+      key: "discover.news",
+      defaultValue: "Top Stories",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "Scan"
+
+   - **en**: "Scan"
+   - **zh**: "扫一扫"
+  */
+  public static func discover_scan() -> String {
+    return localizedString(
+      key: "discover.scan",
+      defaultValue: "Scan",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "Search"
+
+   - **en**: "Search"
+   - **zh**: "搜一搜"
+  */
+  public static func discover_search() -> String {
+    return localizedString(
+      key: "discover.search",
+      defaultValue: "Search",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "Shake"
+
+   - **en**: "Shake"
+   - **zh**: "摇一摇"
+  */
+  public static func discover_shake() -> String {
+    return localizedString(
+      key: "discover.shake",
+      defaultValue: "Shake",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "Shopping"
+
+   - **en**: "Shopping"
+   - **zh**: "购物"
+  */
+  public static func discover_shopping() -> String {
+    return localizedString(
+      key: "discover.shopping",
+      defaultValue: "Shopping",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
    "An Error Occured"
 
    - **en**: "An Error Occured"

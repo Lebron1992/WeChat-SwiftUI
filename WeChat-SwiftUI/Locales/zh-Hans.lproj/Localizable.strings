@@ -11,6 +11,15 @@
 "contacts.offical_account" = "公众号";
 "contacts.tags" = "标签";
 "contacts.wechat_work_contacts" = "WeChat Work Contacts";
+"discover.channels" = "视频号";
+"discover.games" = "游戏";
+"discover.live_nearby" = "直播和附近";
+"discover.moments" = "朋友圈";
+"discover.news" = "看一看";
+"discover.scan" = "扫一扫";
+"discover.search" = "搜一搜";
+"discover.shake" = "摇一摇";
+"discover.shopping" = "购物";
 "general.an_error_occured" = "发生了一个错误";
 "general.cancel" = "取消";
 "general.region" = "地区";

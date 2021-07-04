@@ -3,7 +3,7 @@ import SwiftUI
 struct DiscoverView: View {
   var body: some View {
     NavigationView {
-      Text("DiscoverView!")
+      DiscoverList()
         .navigationTitle(Strings.tabbar_discover())
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackgroundLightGray()

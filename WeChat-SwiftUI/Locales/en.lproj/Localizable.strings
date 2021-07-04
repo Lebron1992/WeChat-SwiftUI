@@ -11,6 +11,15 @@
 "contacts.offical_account" = "Official Account";
 "contacts.tags" = "Tags";
 "contacts.wechat_work_contacts" = "WeChat Work Contacts";
+"discover.channels" = "Channels";
+"discover.games" = "Games";
+"discover.live_nearby" = "Live Streams & Nearby";
+"discover.moments" = "Moments";
+"discover.news" = "Top Stories";
+"discover.scan" = "Scan";
+"discover.search" = "Search";
+"discover.shake" = "Shake";
+"discover.shopping" = "Shopping";
 "general.an_error_occured" = "An Error Occured";
 "general.cancel" = "Cancel";
 "general.region" = "Region";

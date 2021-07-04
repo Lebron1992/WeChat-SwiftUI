@@ -10,6 +10,9 @@
 		FD1E4CC726745E7000BD2C34 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FD1E4CC926745E7000BD2C34 /* Localizable.strings */; };
 		FD1E4CE92674780600BD2C34 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4CE82674780600BD2C34 /* Strings.swift */; };
 		FD1E4CEB2674A47200BD2C34 /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4CEA2674A47200BD2C34 /* LocalizedString.swift */; };
+		FD1F16C1269162A6009D08DF /* DiscoverItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16C0269162A6009D08DF /* DiscoverItem.swift */; };
+		FD1F16C326918EF5009D08DF /* DiscoverState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16C226918EF5009D08DF /* DiscoverState.swift */; };
+		FD1F16C526919065009D08DF /* DiscoverList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16C426919065009D08DF /* DiscoverList.swift */; };
 		FD424F90268B050900F11A62 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD424F8F268B050900F11A62 /* Image.swift */; };
 		FD424F92268B059B00F11A62 /* Image+ResizeToFill.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD424F91268B059B00F11A62 /* Image+ResizeToFill.swift */; };
 		FD6D377326842C610087272F /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D377226842C610087272F /* SearchBar.swift */; };
@@ -119,6 +122,9 @@
 		FD1E4CCA26745E7300BD2C34 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FD1E4CE82674780600BD2C34 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		FD1E4CEA2674A47200BD2C34 /* LocalizedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
+		FD1F16C0269162A6009D08DF /* DiscoverItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverItem.swift; sourceTree = "<group>"; };
+		FD1F16C226918EF5009D08DF /* DiscoverState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverState.swift; sourceTree = "<group>"; };
+		FD1F16C426919065009D08DF /* DiscoverList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverList.swift; sourceTree = "<group>"; };
 		FD424F8F268B050900F11A62 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		FD424F91268B059B00F11A62 /* Image+ResizeToFill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+ResizeToFill.swift"; sourceTree = "<group>"; };
 		FD6D377226842C610087272F /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
@@ -285,6 +291,7 @@
 			children = (
 				FD88273B2679A37600BBEAB6 /* AppState.swift */,
 				FD88275A267AF27200BBEAB6 /* ContactsState.swift */,
+				FD1F16C226918EF5009D08DF /* DiscoverState.swift */,
 				FD8827412679A75B00BBEAB6 /* RootState.swift */,
 			);
 			path = State;
@@ -315,6 +322,7 @@
 		FD88274B2679D84100BBEAB6 /* Discover */ = {
 			isa = PBXGroup;
 			children = (
+				FD1F16C426919065009D08DF /* DiscoverList.swift */,
 				FD8827512679D89C00BBEAB6 /* DiscoverView.swift */,
 			);
 			path = Discover;
@@ -448,6 +456,7 @@
 				FDCC726E2670882D00A48140 /* User.swift */,
 				FD882768267B499700BBEAB6 /* UserTests.swift */,
 				FDCC728A2671C33400A48140 /* Templates */,
+				FD1F16C0269162A6009D08DF /* DiscoverItem.swift */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -727,6 +736,7 @@
 				FDCC7299267348D300A48140 /* NetworkingHelpers.swift in Sources */,
 				FDCC7258266F26D200A48140 /* OauthToken.swift in Sources */,
 				FD882781267F844C00BBEAB6 /* NavigationConfigurator.swift in Sources */,
+				FD1F16C1269162A6009D08DF /* DiscoverItem.swift in Sources */,
 				FDCC7297267348A600A48140 /* Constants.swift in Sources */,
 				FD882773267EFA7400BBEAB6 /* MockStore.swift in Sources */,
 				FD1E4CEB2674A47200BD2C34 /* LocalizedString.swift in Sources */,
@@ -759,12 +769,14 @@
 				FD6D37862685D21A0087272F /* EdgeInsets.swift in Sources */,
 				FDCC7265266F5C5B00A48140 /* Service.swift in Sources */,
 				FDCC72832671AC2B00A48140 /* Encodable+Dictionary.swift in Sources */,
+				FD1F16C526919065009D08DF /* DiscoverList.swift in Sources */,
 				FD88274E2679D86D00BBEAB6 /* ChatsView.swift in Sources */,
 				FD88279D2681E1F100BBEAB6 /* Haptics.swift in Sources */,
 				FDCC721B266E254D00A48140 /* WeChat_SwiftUIApp.swift in Sources */,
 				FDCC724D266F19CF00A48140 /* ServiceType.swift in Sources */,
 				FD8827522679D89C00BBEAB6 /* DiscoverView.swift in Sources */,
 				FD6D378D26861A6D0087272F /* OfficialAccount.swift in Sources */,
+				FD1F16C326918EF5009D08DF /* DiscoverState.swift in Sources */,
 				FD8827502679D88F00BBEAB6 /* ContactsView.swift in Sources */,
 				FD88273E2679A3C300BBEAB6 /* AppReducer.swift in Sources */,
 				FD6D377326842C610087272F /* SearchBar.swift in Sources */,
