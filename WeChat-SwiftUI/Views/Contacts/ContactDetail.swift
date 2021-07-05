@@ -3,6 +3,7 @@ import URLImage
 
 /* TODO:
  1. 导航栏背景改为白色
+ 2. 因为暂时无法改变 grouped list 的 footer 的高度，所以 SectionHeader 使用 cell 代替
  */
 
 struct ContactDetail: View {
@@ -18,14 +19,18 @@ struct ContactDetail: View {
       }
       .listRowBackground(Color.app_white)
 
-      Section(header: SectionHeader()) {
+      SectionHeaderBackground()
+
+      Section {
         ForEach([TextRowItem.moment, TextRowItem.more], id: \.self) { item in
           RowTitle(item.title)
         }
       }
       .listRowBackground(Color.app_white)
 
-      Section(header: SectionHeader()) {
+      SectionHeaderBackground()
+
+      Section {
         VStack(spacing: 0) {
           Button {
             print("send messages")
@@ -57,7 +62,7 @@ struct ContactDetail: View {
       }
       .listRowBackground(Color.app_white)
     }
-    .environment(\.defaultMinListHeaderHeight, 10)
+    .environment(\.defaultMinListRowHeight, 10)
   }
 }
 
@@ -73,8 +78,7 @@ private extension ContactDetail {
           failure: { _, _ in avatarPlaceholder },
           content: { image in
             image
-              .resizeToFill()
-              .frame(width: 60, height: 60)
+              .resize(.fill, .init(width: 60, height: 60))
           })
           .background(Color.app_bg)
           .cornerRadius(6)
@@ -86,8 +90,7 @@ private extension ContactDetail {
             .foregroundColor(.text_primary)
             .font(.system(size: 20, weight: .semibold))
           Image(contact.isMale ? "icons_filled_colorful_male" : "icons_filled_colorful_female")
-            .resizeToFill()
-            .frame(width: 18, height: 18)
+            .resize(.fill, .init(width: 18, height: 18))
         }
 
         Text("\(Strings.general_wechat_id()): \(contact.wechatId)")
@@ -103,24 +106,16 @@ private extension ContactDetail {
   }
 
   func RowTitle(_ title: String) -> some View {
-    NavigationLink(destination: Text(title)) {
-      Text(title)
-        .foregroundColor(.text_primary)
-        .font(.system(size: 16))
-        .frame(height: 44)
-    }
-  }
-
-  func SectionHeader() -> some View {
-    Color.app_bg
-      .listRowInsets(.zero)
+    ImageTitleRow(
+      title: title,
+      destination: { Text(title) }
+    )
   }
 
   var avatarPlaceholder: some View {
     Image.avatarPlaceholder
-      .resizeToFill()
+      .resize(.fill, .init(width: 60, height: 60))
       .foregroundColor(.app_bg)
-      .frame(width: 60, height: 60)
   }
 }
 

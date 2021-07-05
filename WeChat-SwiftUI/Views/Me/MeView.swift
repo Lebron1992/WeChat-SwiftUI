@@ -64,14 +64,14 @@ private extension MeView {
           }
           .listRowBackground(Color.app_white)
 
-          SectionHeader()
+          SectionHeaderBackground()
 
           Section {
             MeItemRow(item: .pay)
           }
           .listRowBackground(Color.app_white)
 
-          SectionHeader()
+          SectionHeaderBackground()
 
           Section {
             ForEach([MeItem.favorites, MeItem.stickerGallery], id: \.self) {
@@ -80,7 +80,7 @@ private extension MeView {
           }
           .listRowBackground(Color.app_white)
 
-          SectionHeader()
+          SectionHeaderBackground()
 
           Section {
             MeItemRow(item: .settings)
@@ -121,8 +121,7 @@ extension MeView {
             failure: { _, _ in avatarPlaceholder },
             content: { image in
               image
-                .resizeToFill()
-                .frame(width: 64, height: 64)
+                .resize(.fill, .init(width: 64, height: 64))
             })
             .background(Color.app_bg)
             .cornerRadius(6)
@@ -137,8 +136,7 @@ extension MeView {
             Text("\(Strings.general_wechat_id()): \(me.wechatId)")
               .font(.system(size: 14))
             Image("icons_outlined_qr_code")
-              .resizeToFill()
-              .frame(width: 14, height: 14)
+              .resize(.fill, .init(width: 14, height: 14))
             Spacer()
             Image(systemName: "chevron.right")
               .font(.system(size: 14, weight: .medium))
@@ -152,30 +150,16 @@ extension MeView {
 
   var avatarPlaceholder: some View {
     Image.avatarPlaceholder
-      .resizeToFill()
+      .resize(.fill, .init(width: 64, height: 64))
       .foregroundColor(.app_bg)
-      .frame(width: 64, height: 64)
   }
 
   func MeItemRow(item: MeItem) -> some View {
-    NavigationLink(
-      destination: Text(item.title),
-      label: {
-        HStack {
-          item.iconImage
-            .frame(width: 24, height: 24)
-          Text(item.title)
-            .foregroundColor(.text_primary)
-            .font(.system(size: 16))
-        }
-      })
-      .frame(height: 44)
-  }
-
-  func SectionHeader() -> some View {
-    Color.app_bg
-      .listRowInsets(.zero)
-      .frame(height: 10)
+    ImageTitleRow(
+      image: item.iconImage,
+      title: item.title,
+      destination: { Text(item.title) }
+    )
   }
 }
 
@@ -195,22 +179,17 @@ extension MeView {
       }
     }
 
-    var iconImage: some View {
+    var iconImage: ImageWrapper {
+      let size = CGSize(width: 24, height: 24)
       switch self {
       case .pay:
-        return AnyView(Image("icons_outlined_wechatpay"))
+        return .init(image: Image("icons_outlined_wechatpay"), size: size)
       case .favorites:
-        return AnyView(Image("icons_outlined_colorful_favorites"))
+        return .init(image: Image("icons_outlined_colorful_favorites"), size: size)
       case .stickerGallery:
-        return AnyView(
-          Image("icons_outlined_sticker")
-            .foregroundColor(.hex("F5C343"))
-        )
+        return .init(image: Image("icons_outlined_sticker"), size: size, foregroundColor: .hex("F5C343"))
       case .settings:
-        return AnyView(
-          Image("icons_outlined_setting")
-            .foregroundColor(.hex("3C86E6"))
-        )
+        return .init(image: Image("icons_outlined_setting"), size: size, foregroundColor: .hex("3C86E6"))
       }
     }
   }

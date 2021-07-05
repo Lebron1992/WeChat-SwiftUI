@@ -1,6 +1,10 @@
 import SwiftUI
 import SwiftUIRedux
 
+/* TODO:
+ 1. 因为暂时无法改变 grouped list 的 footer 的高度，所以 SectionHeader 使用 cell 代替
+ */
+
 struct DiscoverList: ConnectedView {
   struct Props {
     let discoverSections: [DiscoverSection]
@@ -18,46 +22,38 @@ struct DiscoverList: ConnectedView {
         DiscoverSection(section: $0)
       }
     }
-    .environment(\.defaultMinListHeaderHeight, 10)
+    .environment(\.defaultMinListRowHeight, 10)
   }
 }
 
 private extension DiscoverList {
 
   func DiscoverSection(section: DiscoverSection) -> some View {
-    let header = section.isFirstSection ? AnyView(EmptyView()) : AnyView(SectionHeader())
 
-    return Section(header: header) {
-      ForEach(section.items, id: \.self) {
-        DiscoverItemRow(item: $0)
+    let header = section.isFirstSection ? AnyView(EmptyView()) : AnyView(SectionHeaderBackground())
+
+    return Group {
+      header
+      Section {
+        ForEach(section.items, id: \.self) {
+          DiscoverItemRow(item: $0)
+            .listRowBackground(Color.app_white)
+        }
       }
-      .listRowBackground(Color.app_white)
     }
   }
 
-  func SectionHeader() -> some View {
-    Color.app_bg
-      .listRowInsets(.zero)
-  }
-
   func DiscoverItemRow(item: DiscoverItem) -> some View {
-    NavigationLink(
-      destination: Text(item.title),
-      label: {
-        HStack {
-          item.iconImage
-            .frame(width: 24, height: 24)
-          Text(item.title)
-            .foregroundColor(.text_primary)
-            .font(.system(size: 16))
-        }
-      })
-      .frame(height: 44)
+    ImageTitleRow(
+      image: item.iconImage,
+      title: item.title,
+      destination: { Text(item.title) }
+    )
   }
 }
 
 struct DiscoverList_Previews: PreviewProvider {
-    static var previews: some View {
-        DiscoverList()
-    }
+  static var previews: some View {
+    DiscoverList()
+  }
 }

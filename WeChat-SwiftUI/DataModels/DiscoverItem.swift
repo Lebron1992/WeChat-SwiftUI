@@ -30,60 +30,35 @@ enum DiscoverItem {
     }
   }
 
-  var iconImage: some View {
+  var iconImage: ImageWrapper {
+    let size = CGSize(width: 24, height: 24)
     switch self {
     case .moments:
-      return AnyView(
-        Image("icons_outlined_colorful_moment")
-          .resizeToFill()
-      )
+      return .init(image: Image("icons_outlined_colorful_moment"), size: size)
+
     case .channels:
-      return AnyView(
-        Image("icons_outlined_channel")
-          .resizeToFill()
-          .foregroundColor(.hex("#EC9F50"))
-      )
+      return .init(image: Image("icons_outlined_channel"), size: size, foregroundColor: .hex("#EC9F50"))
+
     case .scan:
-      return AnyView(
-        Image("icons_outlined_scan")
-          .resizeToFill()
-          .foregroundColor(.hex("#3C86E6"))
-      )
+      return .init(image: Image("icons_outlined_scan"), size: size, foregroundColor: .hex("#3C86E6"))
+
     case .shake:
-      return AnyView(
-        Image("icons_outlined_shake")
-          .resizeToFill()
-          .foregroundColor(.hex("#3C86E6"))
-      )
+      return .init(image: Image("icons_outlined_shake"), size: size, foregroundColor: .hex("#3C86E6"))
+
     case .news:
-      return AnyView(
-        Image("icons_outlined_news")
-          .resizeToFill()
-          .foregroundColor(.hex("#F5C343"))
-      )
+      return .init(image: Image("icons_outlined_news"), size: size, foregroundColor: .hex("#F5C343"))
+
     case .search:
-      return AnyView(
-        Image("icons_outlined_searchlogo")
-          .resizeToFill()
-          .foregroundColor(.hex("#E75D58"))
-      )
+      return .init(image: Image("icons_outlined_searchlogo"), size: size, foregroundColor: .hex("#E75D58"))
+
     case .liveNearby:
-      return AnyView(
-        Image("icons_outlined_live_nearby")
-          .resizeToFill()
-          .foregroundColor(.hex("#3C86E6"))
-      )
+      return .init(image: Image("icons_outlined_live_nearby"), size: size, foregroundColor: .hex("#3C86E6"))
+
     case .shopping:
-      return AnyView(
-        Image("icons_outlined_shop")
-          .resizeToFill()
-          .foregroundColor(.hex("#E75D58"))
-      )
+      return .init(image: Image("icons_outlined_shop"), size: size, foregroundColor: .hex("#E75D58"))
+
     case .games:
-      return AnyView(
-        Image("icons_outlined_colorful_game")
-          .resizeToFill()
-      )
+      return .init(image: Image("icons_outlined_colorful_game"), size: size)
     }
   }
 }

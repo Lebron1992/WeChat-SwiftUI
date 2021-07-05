@@ -87,17 +87,21 @@ private extension ContactsList {
     List {
       header()
       ForEach(group, id: \.key) { category, contacts in
-        Section(header: SectionHeader(title: category)) {
+        Section(header: SectionHeaderTitle(title: category)) {
           ForEach(contacts) { contact in
-            ZStack(alignment: .leading) {
-              if let destination = selectionDestination(contact) {
-                NavigationLink(destination: destination) {
-                  EmptyView()
-                }
-                .opacity(0.0) // 为了隐藏 NavigationLink 右边的箭头
-              }
-              ContactRow(contact: contact)
-            }
+            ImageTitleRow(
+              imageUrl: URL(string: contact.avatar),
+              imagePlaceholder: .init(
+                image: .avatarPlaceholder,
+                size: .init(width: 40, height: 40),
+                foregroundColor: .app_bg
+              ),
+              imageSize: .init(width: 40, height: 40),
+              imageCornerRadius: 4,
+              title: contact.name,
+              destination: { selectionDestination(contact) },
+              showRightArrow: false
+            )
           }
           .listRowBackground(Color.app_white)
           .frame(height: 44)
@@ -110,21 +114,6 @@ private extension ContactsList {
 
 // MARK: - Helper Types
 private extension ContactsList {
-
-  // MARK: - SectionHeader
-
-  struct SectionHeader: View {
-    let title: String
-
-    var body: some View {
-      Text(title)
-        .foregroundColor(.text_info_200)
-        .font(.system(size: 14, weight: .medium))
-        .padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 0))
-        .frame(width: UIScreen.main.bounds.width, alignment: .leading)
-        .background(Color.app_bg)
-    }
-  }
 
   // MARK: - SectionIndexTitles
 
