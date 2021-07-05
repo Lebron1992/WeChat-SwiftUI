@@ -2,6 +2,7 @@
 enum Route {
   case loadContacts
   case loadOfficialAccounts
+  case loadUserSelf
 
   var requestProperties:
     (method: Method, path: String, query: [String: Any]) {
@@ -11,6 +12,9 @@ enum Route {
 
     case .loadOfficialAccounts:
       return (.GET, "/official_accounts/accounts.json", [:])
+
+    case .loadUserSelf:
+      return (.GET, "/users/me.json", [:])
     }
   }
 }

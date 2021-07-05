@@ -34,4 +34,8 @@ struct Service: ServiceType {
   func loadOfficialAccounts() -> AnyPublisher<[OfficialAccount], Error> {
     request(.loadOfficialAccounts)
   }
+
+  func loadUserSelf() -> AnyPublisher<User, Error> {
+    request(.loadUserSelf)
+  }
 }

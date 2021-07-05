@@ -31,6 +31,7 @@ private extension DiscoverList {
       ForEach(section.items, id: \.self) {
         DiscoverItemRow(item: $0)
       }
+      .listRowBackground(Color.app_white)
     }
   }
 

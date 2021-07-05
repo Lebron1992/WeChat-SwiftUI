@@ -11,6 +11,9 @@ struct MockService: ServiceType {
   let loadOfficialAccountsResponse: [OfficialAccount]?
   let loadOfficialAccountsError: Error?
 
+  let loadUserSelfResponse: User?
+  let loadUserSelfError: Error?
+
   init(
     serverConfig: ServerConfigType,
     oauthToken: OauthTokenAuthType?
@@ -28,7 +31,9 @@ struct MockService: ServiceType {
     loadContactsResponse: [User]? = nil,
     loadContactsError: Error? = nil,
     loadOfficialAccountsResponse: [OfficialAccount]? = nil,
-    loadOfficialAccountsError: Error? = nil
+    loadOfficialAccountsError: Error? = nil,
+    loadUserSelfResponse: User? = nil,
+    loadUserSelfError: Error? = nil
   ) {
     self.serverConfig = serverConfig
     self.oauthToken = oauthToken
@@ -38,6 +43,9 @@ struct MockService: ServiceType {
 
     self.loadOfficialAccountsResponse = loadOfficialAccountsResponse
     self.loadOfficialAccountsError = loadOfficialAccountsError
+
+    self.loadUserSelfResponse = loadUserSelfResponse
+    self.loadUserSelfError = loadUserSelfError
   }
 
   func login(_ oauthToken: OauthTokenAuthType) -> MockService {
@@ -66,6 +74,13 @@ struct MockService: ServiceType {
       return publisher(error: error)
     }
     return publisher(data: loadOfficialAccountsResponse ?? [OfficialAccount.template])
+  }
+
+  func loadUserSelf() -> AnyPublisher<User, Error> {
+    if let error = loadUserSelfError {
+      return publisher(error: error)
+    }
+    return publisher(data: loadUserSelfResponse ?? User.template)
   }
 }
 

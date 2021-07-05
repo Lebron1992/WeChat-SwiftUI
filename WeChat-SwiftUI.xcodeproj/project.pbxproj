@@ -13,6 +13,10 @@
 		FD1F16C1269162A6009D08DF /* DiscoverItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16C0269162A6009D08DF /* DiscoverItem.swift */; };
 		FD1F16C326918EF5009D08DF /* DiscoverState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16C226918EF5009D08DF /* DiscoverState.swift */; };
 		FD1F16C526919065009D08DF /* DiscoverList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16C426919065009D08DF /* DiscoverList.swift */; };
+		FD1F16C726920781009D08DF /* MeActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16C626920781009D08DF /* MeActions.swift */; };
+		FD1F16C926920818009D08DF /* MeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16C826920818009D08DF /* MeState.swift */; };
+		FD1F16CD2692DF15009D08DF /* MeActionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16CC2692DF15009D08DF /* MeActionsTests.swift */; };
+		FD1F16CF2692E005009D08DF /* MeReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16CE2692E005009D08DF /* MeReducer.swift */; };
 		FD424F90268B050900F11A62 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD424F8F268B050900F11A62 /* Image.swift */; };
 		FD424F92268B059B00F11A62 /* Image+ResizeToFill.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD424F91268B059B00F11A62 /* Image+ResizeToFill.swift */; };
 		FD6D377326842C610087272F /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D377226842C610087272F /* SearchBar.swift */; };
@@ -125,6 +129,10 @@
 		FD1F16C0269162A6009D08DF /* DiscoverItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverItem.swift; sourceTree = "<group>"; };
 		FD1F16C226918EF5009D08DF /* DiscoverState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverState.swift; sourceTree = "<group>"; };
 		FD1F16C426919065009D08DF /* DiscoverList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverList.swift; sourceTree = "<group>"; };
+		FD1F16C626920781009D08DF /* MeActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeActions.swift; sourceTree = "<group>"; };
+		FD1F16C826920818009D08DF /* MeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeState.swift; sourceTree = "<group>"; };
+		FD1F16CC2692DF15009D08DF /* MeActionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeActionsTests.swift; sourceTree = "<group>"; };
+		FD1F16CE2692E005009D08DF /* MeReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeReducer.swift; sourceTree = "<group>"; };
 		FD424F8F268B050900F11A62 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		FD424F91268B059B00F11A62 /* Image+ResizeToFill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+ResizeToFill.swift"; sourceTree = "<group>"; };
 		FD6D377226842C610087272F /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
@@ -269,6 +277,8 @@
 			children = (
 				FD88275E267AF2EB00BBEAB6 /* ContactsActions.swift */,
 				FD882777267F1BD500BBEAB6 /* ContactsActionsTests.swift */,
+				FD1F16C626920781009D08DF /* MeActions.swift */,
+				FD1F16CC2692DF15009D08DF /* MeActionsTests.swift */,
 				FD8827472679A9BF00BBEAB6 /* RootActions.swift */,
 			);
 			path = Actions;
@@ -280,6 +290,7 @@
 				FD88273D2679A3C300BBEAB6 /* AppReducer.swift */,
 				FD88275C267AF2C300BBEAB6 /* ContactsReducer.swift */,
 				FD882770267EE4E500BBEAB6 /* ContactsReducerTests.swift */,
+				FD1F16CE2692E005009D08DF /* MeReducer.swift */,
 				FD8827452679A98D00BBEAB6 /* RootReducer.swift */,
 				FD88277C267F314000BBEAB6 /* RootReducerTests.swift */,
 			);
@@ -292,6 +303,7 @@
 				FD88273B2679A37600BBEAB6 /* AppState.swift */,
 				FD88275A267AF27200BBEAB6 /* ContactsState.swift */,
 				FD1F16C226918EF5009D08DF /* DiscoverState.swift */,
+				FD1F16C826920818009D08DF /* MeState.swift */,
 				FD8827412679A75B00BBEAB6 /* RootState.swift */,
 			);
 			path = State;
@@ -450,13 +462,13 @@
 				FDCC727D2671A6E200A48140 /* AccessTokenEnvelope.swift */,
 				FD6D378126856E310087272F /* ContactCategory.swift */,
 				FD6D378A26861A110087272F /* ContactType.swift */,
+				FD1F16C0269162A6009D08DF /* DiscoverItem.swift */,
 				FD6D378C26861A6D0087272F /* OfficialAccount.swift */,
 				FD6D378E268624520087272F /* OfficialAccountTests.swift */,
 				FD8827432679A80900BBEAB6 /* TabBarItem.swift */,
 				FDCC726E2670882D00A48140 /* User.swift */,
 				FD882768267B499700BBEAB6 /* UserTests.swift */,
 				FDCC728A2671C33400A48140 /* Templates */,
-				FD1F16C0269162A6009D08DF /* DiscoverItem.swift */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -725,6 +737,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD1F16CF2692E005009D08DF /* MeReducer.swift in Sources */,
 				FD882759267AF24500BBEAB6 /* ContactsList.swift in Sources */,
 				FDCC728C2671C34200A48140 /* UserTemplates.swift in Sources */,
 				FDCC729D2673496800A48140 /* CancelBag.swift in Sources */,
@@ -742,6 +755,7 @@
 				FD1E4CEB2674A47200BD2C34 /* LocalizedString.swift in Sources */,
 				FD882790268096AC00BBEAB6 /* ContactRow.swift in Sources */,
 				FD6D3784268576BE0087272F /* ContactCategoriesList.swift in Sources */,
+				FD1F16C726920781009D08DF /* MeActions.swift in Sources */,
 				FD1E4CE92674780600BD2C34 /* Strings.swift in Sources */,
 				FD8827542679D8A600BBEAB6 /* MeView.swift in Sources */,
 				FD6D3791268624780087272F /* OfficialAccountTemplates.swift in Sources */,
@@ -783,6 +797,7 @@
 				FDCC7267266F5CF600A48140 /* Language.swift in Sources */,
 				FD8827462679A98D00BBEAB6 /* RootReducer.swift in Sources */,
 				FD8827482679A9BF00BBEAB6 /* RootActions.swift in Sources */,
+				FD1F16C926920818009D08DF /* MeState.swift in Sources */,
 				FD88273C2679A37600BBEAB6 /* AppState.swift in Sources */,
 				FD8827402679A40600BBEAB6 /* Store.swift in Sources */,
 				FD6D378226856E310087272F /* ContactCategory.swift in Sources */,
@@ -815,6 +830,7 @@
 				FD8827A22681E6E700BBEAB6 /* Color+HexTests.swift in Sources */,
 				FDCC72892671C14800A48140 /* AppEnvironmentTests.swift in Sources */,
 				FD88277D267F314000BBEAB6 /* RootReducerTests.swift in Sources */,
+				FD1F16CD2692DF15009D08DF /* MeActionsTests.swift in Sources */,
 				FD6D37882685D2540087272F /* EdgeInsetsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

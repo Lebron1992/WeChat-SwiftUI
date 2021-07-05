@@ -27,6 +27,10 @@
 "general.search" = "搜索";
 "general.something_went_wrong" = "出了点问题";
 "general.wechat_id" = "微信号";
+"me.favorites" = " 收藏";
+"me.pay" = "支付";
+"me.settings" = "设置";
+"me.sticker_gallery" = "表情";
 "tabbar.chats" = "微信";
 "tabbar.contacts" = "通讯录";
 "tabbar.discover" = "发现";

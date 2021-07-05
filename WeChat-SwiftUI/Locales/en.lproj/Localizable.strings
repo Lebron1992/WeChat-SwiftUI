@@ -27,6 +27,10 @@
 "general.search" = "Search";
 "general.something_went_wrong" = "Something went wrong";
 "general.wechat_id" = "WeChat ID";
+"me.favorites" = "Favorites";
+"me.pay" = "Pay";
+"me.settings" = "Settings";
+"me.sticker_gallery" = "Sticker Gallery";
 "tabbar.chats" = "Chats";
 "tabbar.contacts" = "Contacts";
 "tabbar.discover" = "Discover";

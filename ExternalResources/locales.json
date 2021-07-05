@@ -42,6 +42,12 @@
         "something_went_wrong": "Something went wrong",
         "wechat_id": "WeChat ID"
       },
+      "me": {
+        "favorites": "Favorites",
+        "pay": "Pay",
+        "settings": "Settings",
+        "sticker_gallery": "Sticker Gallery"
+      },
       "tabbar": {
         "chats": "Chats",
         "contacts": "Contacts",
@@ -90,6 +96,12 @@
         "search": "搜索",
         "something_went_wrong": "出了点问题",
         "wechat_id": "微信号"
+      },
+      "me": {
+        "favorites": " 收藏",
+        "pay": "支付",
+        "settings": "设置",
+        "sticker_gallery": "表情"
       },
       "tabbar": {
         "chats": "微信",

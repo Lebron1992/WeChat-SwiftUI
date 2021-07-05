@@ -16,12 +16,14 @@ struct ContactDetail: View {
           RowTitle(item.title)
         }
       }
+      .listRowBackground(Color.app_white)
 
       Section(header: SectionHeader()) {
         ForEach([TextRowItem.moment, TextRowItem.more], id: \.self) { item in
           RowTitle(item.title)
         }
       }
+      .listRowBackground(Color.app_white)
 
       Section(header: SectionHeader()) {
         VStack(spacing: 0) {
@@ -53,8 +55,8 @@ struct ContactDetail: View {
         .buttonStyle(BorderlessButtonStyle()) // 解决：点击其中一个按钮导致两个按钮触发点击事件和 cell 被点击选中
         .listRowInsets(.zero)
       }
+      .listRowBackground(Color.app_white)
     }
-    .listRowBackground(Color.app_white)
     .environment(\.defaultMinListHeaderHeight, 10)
   }
 }

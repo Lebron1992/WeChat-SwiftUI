@@ -23,6 +23,9 @@ protocol ServiceType {
 
   /// 获取公众号
   func loadOfficialAccounts() -> AnyPublisher<[OfficialAccount], Error>
+
+  /// 获取自己的信息
+  func loadUserSelf() -> AnyPublisher<User, Error>
 }
 
 func == (lhs: ServiceType, rhs: ServiceType) -> Bool {

@@ -414,6 +414,62 @@ public enum Strings {
     )
   }
   /**
+   "Favorites"
+
+   - **en**: "Favorites"
+   - **zh**: " 收藏"
+  */
+  public static func me_favorites() -> String {
+    return localizedString(
+      key: "me.favorites",
+      defaultValue: "Favorites",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "Pay"
+
+   - **en**: "Pay"
+   - **zh**: "支付"
+  */
+  public static func me_pay() -> String {
+    return localizedString(
+      key: "me.pay",
+      defaultValue: "Pay",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "Settings"
+
+   - **en**: "Settings"
+   - **zh**: "设置"
+  */
+  public static func me_settings() -> String {
+    return localizedString(
+      key: "me.settings",
+      defaultValue: "Settings",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "Sticker Gallery"
+
+   - **en**: "Sticker Gallery"
+   - **zh**: "表情"
+  */
+  public static func me_sticker_gallery() -> String {
+    return localizedString(
+      key: "me.sticker_gallery",
+      defaultValue: "Sticker Gallery",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
    "Chats"
 
    - **en**: "Chats"
