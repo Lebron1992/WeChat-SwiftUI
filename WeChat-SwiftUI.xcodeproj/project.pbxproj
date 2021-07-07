@@ -20,6 +20,11 @@
 		FD1F16D12692F5E9009D08DF /* SectionHeaderBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16D02692F5E9009D08DF /* SectionHeaderBackground.swift */; };
 		FD1F16D32692F8FB009D08DF /* SectionHeaderTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16D22692F8FB009D08DF /* SectionHeaderTitle.swift */; };
 		FD1F16D52692FB99009D08DF /* ImageTitleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16D42692FB99009D08DF /* ImageTitleRow.swift */; };
+		FD1F16DB26943832009D08DF /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16DA26943832009D08DF /* ChatView.swift */; };
+		FD1F16DD269560AB009D08DF /* String+Height.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16DC269560AB009D08DF /* String+Height.swift */; };
+		FD1F16DF26959F83009D08DF /* ChatInputToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16DE26959F83009D08DF /* ChatInputToolBar.swift */; };
+		FD1F16E12695A6FD009D08DF /* ResignKeyboardOnTapGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16E02695A6FD009D08DF /* ResignKeyboardOnTapGesture.swift */; };
+		FD1F16E32695A743009D08DF /* UIApplication+EndEditing.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16E22695A743009D08DF /* UIApplication+EndEditing.swift */; };
 		FD424F90268B050900F11A62 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD424F8F268B050900F11A62 /* Image.swift */; };
 		FD424F92268B059B00F11A62 /* Image+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD424F91268B059B00F11A62 /* Image+Resize.swift */; };
 		FD6D377326842C610087272F /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D377226842C610087272F /* SearchBar.swift */; };
@@ -138,6 +143,11 @@
 		FD1F16D02692F5E9009D08DF /* SectionHeaderBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderBackground.swift; sourceTree = "<group>"; };
 		FD1F16D22692F8FB009D08DF /* SectionHeaderTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderTitle.swift; sourceTree = "<group>"; };
 		FD1F16D42692FB99009D08DF /* ImageTitleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTitleRow.swift; sourceTree = "<group>"; };
+		FD1F16DA26943832009D08DF /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		FD1F16DC269560AB009D08DF /* String+Height.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Height.swift"; sourceTree = "<group>"; };
+		FD1F16DE26959F83009D08DF /* ChatInputToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputToolBar.swift; sourceTree = "<group>"; };
+		FD1F16E02695A6FD009D08DF /* ResignKeyboardOnTapGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResignKeyboardOnTapGesture.swift; sourceTree = "<group>"; };
+		FD1F16E22695A743009D08DF /* UIApplication+EndEditing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+EndEditing.swift"; sourceTree = "<group>"; };
 		FD424F8F268B050900F11A62 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		FD424F91268B059B00F11A62 /* Image+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Resize.swift"; sourceTree = "<group>"; };
 		FD6D377226842C610087272F /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
@@ -316,7 +326,9 @@
 		FD8827492679D82C00BBEAB6 /* Chats */ = {
 			isa = PBXGroup;
 			children = (
+				FD1F16DE26959F83009D08DF /* ChatInputToolBar.swift */,
 				FD88274D2679D86D00BBEAB6 /* ChatsView.swift */,
+				FD1F16DA26943832009D08DF /* ChatView.swift */,
 			);
 			path = Chats;
 			sourceTree = "<group>";
@@ -372,6 +384,7 @@
 				FD882783267F888D00BBEAB6 /* NavigationBarBackgroundModifierLightGray.swift */,
 				FD882785267F89E000BBEAB6 /* NavigationBarBackgroundModifierWhite.swift */,
 				FD6D37782684803E0087272F /* ResignKeyboardOnDragGestureModifier.swift */,
+				FD1F16E02695A6FD009D08DF /* ResignKeyboardOnTapGesture.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -542,11 +555,13 @@
 			children = (
 				FD88279E2681E52E00BBEAB6 /* Color+Hex.swift */,
 				FD8827A02681E6DC00BBEAB6 /* Color+HexTests.swift */,
-				FDCC72822671AC2B00A48140 /* Encodable+Dictionary.swift */,
-				FDCC72842671AC7200A48140 /* Encodable+DictionaryTests.swift */,
 				FD6D37852685D21A0087272F /* EdgeInsets.swift */,
 				FD6D37872685D2540087272F /* EdgeInsetsTests.swift */,
+				FDCC72822671AC2B00A48140 /* Encodable+Dictionary.swift */,
+				FDCC72842671AC7200A48140 /* Encodable+DictionaryTests.swift */,
 				FD424F91268B059B00F11A62 /* Image+Resize.swift */,
+				FD1F16DC269560AB009D08DF /* String+Height.swift */,
+				FD1F16E22695A743009D08DF /* UIApplication+EndEditing.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -743,6 +758,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD1F16DB26943832009D08DF /* ChatView.swift in Sources */,
+				FD1F16E32695A743009D08DF /* UIApplication+EndEditing.swift in Sources */,
 				FD1F16CF2692E005009D08DF /* MeReducer.swift in Sources */,
 				FD882759267AF24500BBEAB6 /* ContactsList.swift in Sources */,
 				FDCC728C2671C34200A48140 /* UserTemplates.swift in Sources */,
@@ -762,6 +779,7 @@
 				FD1E4CEB2674A47200BD2C34 /* LocalizedString.swift in Sources */,
 				FD6D3784268576BE0087272F /* ContactCategoriesList.swift in Sources */,
 				FD1F16C726920781009D08DF /* MeActions.swift in Sources */,
+				FD1F16DF26959F83009D08DF /* ChatInputToolBar.swift in Sources */,
 				FD1F16D32692F8FB009D08DF /* SectionHeaderTitle.swift in Sources */,
 				FD1E4CE92674780600BD2C34 /* Strings.swift in Sources */,
 				FD8827542679D8A600BBEAB6 /* MeView.swift in Sources */,
@@ -779,6 +797,7 @@
 				FDCC72802671A99400A48140 /* KeyValueStoreType.swift in Sources */,
 				FDCC724B266F190700A48140 /* Environment.swift in Sources */,
 				FD424F90268B050900F11A62 /* Image.swift in Sources */,
+				FD1F16DD269560AB009D08DF /* String+Height.swift in Sources */,
 				FD88275D267AF2C300BBEAB6 /* ContactsReducer.swift in Sources */,
 				FDCC727C2671A4DC00A48140 /* AppEnvironment.swift in Sources */,
 				FD6D378B26861A110087272F /* ContactType.swift in Sources */,
@@ -792,6 +811,7 @@
 				FDCC72832671AC2B00A48140 /* Encodable+Dictionary.swift in Sources */,
 				FD1F16C526919065009D08DF /* DiscoverList.swift in Sources */,
 				FD88274E2679D86D00BBEAB6 /* ChatsView.swift in Sources */,
+				FD1F16E12695A6FD009D08DF /* ResignKeyboardOnTapGesture.swift in Sources */,
 				FD88279D2681E1F100BBEAB6 /* Haptics.swift in Sources */,
 				FDCC721B266E254D00A48140 /* WeChat_SwiftUIApp.swift in Sources */,
 				FDCC724D266F19CF00A48140 /* ServiceType.swift in Sources */,

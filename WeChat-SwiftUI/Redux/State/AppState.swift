@@ -19,7 +19,7 @@ struct AppState: ReduxState {
     meState = MeState(
       userSelf: .notRequested
     )
-    rootState = RootState(selectedTab: .me)
+    rootState = RootState(selectedTab: .chats)
   }
 
   #if DEBUG

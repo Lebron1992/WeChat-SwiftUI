@@ -32,5 +32,6 @@ struct WeChat_SwiftUIApp: App {
     navBar.isTranslucent = false
 
     UITableView.appearance().backgroundColor = UIColor(.app_bg)
+    UITextView.appearance().backgroundColor = .clear
   }
 }
