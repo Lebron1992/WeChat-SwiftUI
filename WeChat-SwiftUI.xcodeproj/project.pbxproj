@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FD1D013026999A7A00A9AF37 /* expressions.json in Resources */ = {isa = PBXBuildFile; fileRef = FD1D012F26999A7A00A9AF37 /* expressions.json */; };
+		FD1D01322699B72700A9AF37 /* ExpressionSticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1D01312699B72700A9AF37 /* ExpressionSticker.swift */; };
+		FD1D01342699BC6700A9AF37 /* ExpressionPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1D01332699BC6700A9AF37 /* ExpressionPreview.swift */; };
+		FD1D0136269A8C6B00A9AF37 /* ExpressionStickerTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1D0135269A8C6B00A9AF37 /* ExpressionStickerTemplates.swift */; };
+		FD1D0138269ACD3C00A9AF37 /* DelayTouchesModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1D0137269ACD3C00A9AF37 /* DelayTouchesModifier.swift */; };
+		FD1D013A269AFFA800A9AF37 /* ChatInputToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1D0139269AFFA800A9AF37 /* ChatInputToolBar.swift */; };
 		FD1E4CC726745E7000BD2C34 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FD1E4CC926745E7000BD2C34 /* Localizable.strings */; };
 		FD1E4CE92674780600BD2C34 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4CE82674780600BD2C34 /* Strings.swift */; };
 		FD1E4CEB2674A47200BD2C34 /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4CEA2674A47200BD2C34 /* LocalizedString.swift */; };
@@ -22,9 +28,10 @@
 		FD1F16D52692FB99009D08DF /* ImageTitleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16D42692FB99009D08DF /* ImageTitleRow.swift */; };
 		FD1F16DB26943832009D08DF /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16DA26943832009D08DF /* ChatView.swift */; };
 		FD1F16DD269560AB009D08DF /* String+Height.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16DC269560AB009D08DF /* String+Height.swift */; };
-		FD1F16DF26959F83009D08DF /* ChatInputToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16DE26959F83009D08DF /* ChatInputToolBar.swift */; };
-		FD1F16E12695A6FD009D08DF /* ResignKeyboardOnTapGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16E02695A6FD009D08DF /* ResignKeyboardOnTapGesture.swift */; };
+		FD1F16DF26959F83009D08DF /* ChatInputPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16DE26959F83009D08DF /* ChatInputPanel.swift */; };
+		FD1F16E12695A6FD009D08DF /* ResignKeyboardOnTapGestureModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16E02695A6FD009D08DF /* ResignKeyboardOnTapGestureModifier.swift */; };
 		FD1F16E32695A743009D08DF /* UIApplication+EndEditing.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16E22695A743009D08DF /* UIApplication+EndEditing.swift */; };
+		FD1F16EA26974645009D08DF /* ExpressionKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16E926974645009D08DF /* ExpressionKeyboard.swift */; };
 		FD424F90268B050900F11A62 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD424F8F268B050900F11A62 /* Image.swift */; };
 		FD424F92268B059B00F11A62 /* Image+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD424F91268B059B00F11A62 /* Image+Resize.swift */; };
 		FD6D377326842C610087272F /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D377226842C610087272F /* SearchBar.swift */; };
@@ -129,6 +136,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FD1D012F26999A7A00A9AF37 /* expressions.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = expressions.json; sourceTree = "<group>"; };
+		FD1D01312699B72700A9AF37 /* ExpressionSticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressionSticker.swift; sourceTree = "<group>"; };
+		FD1D01332699BC6700A9AF37 /* ExpressionPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressionPreview.swift; sourceTree = "<group>"; };
+		FD1D0135269A8C6B00A9AF37 /* ExpressionStickerTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressionStickerTemplates.swift; sourceTree = "<group>"; };
+		FD1D0137269ACD3C00A9AF37 /* DelayTouchesModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayTouchesModifier.swift; sourceTree = "<group>"; };
+		FD1D0139269AFFA800A9AF37 /* ChatInputToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputToolBar.swift; sourceTree = "<group>"; };
 		FD1E4CC826745E7000BD2C34 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		FD1E4CCA26745E7300BD2C34 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FD1E4CE82674780600BD2C34 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
@@ -145,9 +158,10 @@
 		FD1F16D42692FB99009D08DF /* ImageTitleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTitleRow.swift; sourceTree = "<group>"; };
 		FD1F16DA26943832009D08DF /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		FD1F16DC269560AB009D08DF /* String+Height.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Height.swift"; sourceTree = "<group>"; };
-		FD1F16DE26959F83009D08DF /* ChatInputToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputToolBar.swift; sourceTree = "<group>"; };
-		FD1F16E02695A6FD009D08DF /* ResignKeyboardOnTapGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResignKeyboardOnTapGesture.swift; sourceTree = "<group>"; };
+		FD1F16DE26959F83009D08DF /* ChatInputPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputPanel.swift; sourceTree = "<group>"; };
+		FD1F16E02695A6FD009D08DF /* ResignKeyboardOnTapGestureModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResignKeyboardOnTapGestureModifier.swift; sourceTree = "<group>"; };
 		FD1F16E22695A743009D08DF /* UIApplication+EndEditing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+EndEditing.swift"; sourceTree = "<group>"; };
+		FD1F16E926974645009D08DF /* ExpressionKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressionKeyboard.swift; sourceTree = "<group>"; };
 		FD424F8F268B050900F11A62 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		FD424F91268B059B00F11A62 /* Image+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Resize.swift"; sourceTree = "<group>"; };
 		FD6D377226842C610087272F /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
@@ -265,6 +279,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FD1F16E82697444E009D08DF /* InputPanel */ = {
+			isa = PBXGroup;
+			children = (
+				FD1F16DE26959F83009D08DF /* ChatInputPanel.swift */,
+				FD1F16E926974645009D08DF /* ExpressionKeyboard.swift */,
+				FD1D01332699BC6700A9AF37 /* ExpressionPreview.swift */,
+				FD1D0139269AFFA800A9AF37 /* ChatInputToolBar.swift */,
+			);
+			path = InputPanel;
+			sourceTree = "<group>";
+		};
+		FD258BA62699974B00FC3794 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FD1D012F26999A7A00A9AF37 /* expressions.json */,
+				FDCC721E266E254E00A48140 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		FD424F8E268B04ED00F11A62 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,7 +360,7 @@
 		FD8827492679D82C00BBEAB6 /* Chats */ = {
 			isa = PBXGroup;
 			children = (
-				FD1F16DE26959F83009D08DF /* ChatInputToolBar.swift */,
+				FD1F16E82697444E009D08DF /* InputPanel */,
 				FD88274D2679D86D00BBEAB6 /* ChatsView.swift */,
 				FD1F16DA26943832009D08DF /* ChatView.swift */,
 			);
@@ -381,10 +415,11 @@
 		FD882782267F878500BBEAB6 /* Modifiers */ = {
 			isa = PBXGroup;
 			children = (
+				FD1D0137269ACD3C00A9AF37 /* DelayTouchesModifier.swift */,
 				FD882783267F888D00BBEAB6 /* NavigationBarBackgroundModifierLightGray.swift */,
 				FD882785267F89E000BBEAB6 /* NavigationBarBackgroundModifierWhite.swift */,
 				FD6D37782684803E0087272F /* ResignKeyboardOnDragGestureModifier.swift */,
-				FD1F16E02695A6FD009D08DF /* ResignKeyboardOnTapGesture.swift */,
+				FD1F16E02695A6FD009D08DF /* ResignKeyboardOnTapGestureModifier.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -430,13 +465,13 @@
 			children = (
 				FDCC7223266E254E00A48140 /* Info.plist */,
 				FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */,
-				FDCC721E266E254E00A48140 /* Assets.xcassets */,
 				FDCC7245266E680800A48140 /* API */,
 				FDCC7247266E6AF700A48140 /* Configs */,
 				FDCC7246266E6AE600A48140 /* DataModels */,
 				FDCC7249266E6B2100A48140 /* Library */,
 				FD8ADB2C2674576300ACD596 /* Locales */,
 				FD8827362679A24C00BBEAB6 /* Redux */,
+				FD258BA62699974B00FC3794 /* Resources */,
 				FDCC7248266E6AFD00A48140 /* Views */,
 			);
 			path = "WeChat-SwiftUI";
@@ -482,6 +517,7 @@
 				FD6D378126856E310087272F /* ContactCategory.swift */,
 				FD6D378A26861A110087272F /* ContactType.swift */,
 				FD1F16C0269162A6009D08DF /* DiscoverItem.swift */,
+				FD1D01312699B72700A9AF37 /* ExpressionSticker.swift */,
 				FD6D378C26861A6D0087272F /* OfficialAccount.swift */,
 				FD6D378E268624520087272F /* OfficialAccountTests.swift */,
 				FD8827432679A80900BBEAB6 /* TabBarItem.swift */,
@@ -569,6 +605,7 @@
 		FDCC728A2671C33400A48140 /* Templates */ = {
 			isa = PBXGroup;
 			children = (
+				FD1D0135269A8C6B00A9AF37 /* ExpressionStickerTemplates.swift */,
 				FD6D3790268624780087272F /* OfficialAccountTemplates.swift */,
 				FDCC728B2671C34200A48140 /* UserTemplates.swift */,
 			);
@@ -695,6 +732,7 @@
 			files = (
 				FDCC721F266E254E00A48140 /* Assets.xcassets in Resources */,
 				FD1E4CC726745E7000BD2C34 /* Localizable.strings in Resources */,
+				FD1D013026999A7A00A9AF37 /* expressions.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -764,6 +802,7 @@
 				FD882759267AF24500BBEAB6 /* ContactsList.swift in Sources */,
 				FDCC728C2671C34200A48140 /* UserTemplates.swift in Sources */,
 				FD1F16D52692FB99009D08DF /* ImageTitleRow.swift in Sources */,
+				FD1D0136269A8C6B00A9AF37 /* ExpressionStickerTemplates.swift in Sources */,
 				FDCC729D2673496800A48140 /* CancelBag.swift in Sources */,
 				FDCC726F2670882D00A48140 /* User.swift in Sources */,
 				FDCC725F266F4DFF00A48140 /* Method.swift in Sources */,
@@ -777,10 +816,12 @@
 				FDCC7297267348A600A48140 /* Constants.swift in Sources */,
 				FD882773267EFA7400BBEAB6 /* MockStore.swift in Sources */,
 				FD1E4CEB2674A47200BD2C34 /* LocalizedString.swift in Sources */,
+				FD1D01342699BC6700A9AF37 /* ExpressionPreview.swift in Sources */,
 				FD6D3784268576BE0087272F /* ContactCategoriesList.swift in Sources */,
 				FD1F16C726920781009D08DF /* MeActions.swift in Sources */,
-				FD1F16DF26959F83009D08DF /* ChatInputToolBar.swift in Sources */,
+				FD1F16DF26959F83009D08DF /* ChatInputPanel.swift in Sources */,
 				FD1F16D32692F8FB009D08DF /* SectionHeaderTitle.swift in Sources */,
+				FD1D0138269ACD3C00A9AF37 /* DelayTouchesModifier.swift in Sources */,
 				FD1E4CE92674780600BD2C34 /* Strings.swift in Sources */,
 				FD8827542679D8A600BBEAB6 /* MeView.swift in Sources */,
 				FD6D3791268624780087272F /* OfficialAccountTemplates.swift in Sources */,
@@ -789,6 +830,7 @@
 				FDCC72872671AD7B00A48140 /* TryDecodable.swift in Sources */,
 				FDCC724F266F1A3400A48140 /* ServerConfigType.swift in Sources */,
 				FD6D37802684D6DD0087272F /* ContactCategoryRow.swift in Sources */,
+				FD1D013A269AFFA800A9AF37 /* ChatInputToolBar.swift in Sources */,
 				FDCC7253266F1FB800A48140 /* Secrets.swift in Sources */,
 				FD8827962680988100BBEAB6 /* Colors.swift in Sources */,
 				FD8827442679A80900BBEAB6 /* TabBarItem.swift in Sources */,
@@ -805,13 +847,14 @@
 				FD6D37752684707A0087272F /* Background.swift in Sources */,
 				FD6D37792684803E0087272F /* ResignKeyboardOnDragGestureModifier.swift in Sources */,
 				FDCC7251266F1B2E00A48140 /* EnvironmentType.swift in Sources */,
+				FD1D01322699B72700A9AF37 /* ExpressionSticker.swift in Sources */,
 				FD882764267AFAD000BBEAB6 /* ErrorView.swift in Sources */,
 				FD6D37862685D21A0087272F /* EdgeInsets.swift in Sources */,
 				FDCC7265266F5C5B00A48140 /* Service.swift in Sources */,
 				FDCC72832671AC2B00A48140 /* Encodable+Dictionary.swift in Sources */,
 				FD1F16C526919065009D08DF /* DiscoverList.swift in Sources */,
 				FD88274E2679D86D00BBEAB6 /* ChatsView.swift in Sources */,
-				FD1F16E12695A6FD009D08DF /* ResignKeyboardOnTapGesture.swift in Sources */,
+				FD1F16E12695A6FD009D08DF /* ResignKeyboardOnTapGestureModifier.swift in Sources */,
 				FD88279D2681E1F100BBEAB6 /* Haptics.swift in Sources */,
 				FDCC721B266E254D00A48140 /* WeChat_SwiftUIApp.swift in Sources */,
 				FDCC724D266F19CF00A48140 /* ServiceType.swift in Sources */,
@@ -824,6 +867,7 @@
 				FDCC7267266F5CF600A48140 /* Language.swift in Sources */,
 				FD1F16D12692F5E9009D08DF /* SectionHeaderBackground.swift in Sources */,
 				FD8827462679A98D00BBEAB6 /* RootReducer.swift in Sources */,
+				FD1F16EA26974645009D08DF /* ExpressionKeyboard.swift in Sources */,
 				FD8827482679A9BF00BBEAB6 /* RootActions.swift in Sources */,
 				FD1F16C926920818009D08DF /* MeState.swift in Sources */,
 				FD88273C2679A37600BBEAB6 /* AppState.swift in Sources */,

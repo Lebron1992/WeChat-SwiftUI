@@ -26,12 +26,20 @@ extension Color {
     .init("bg_info_150")
   }
 
+  static var bg_info_170: Color {
+    .init("bg_info_170")
+  }
+
   static var bg_info_200: Color {
     .init("bg_info_200")
   }
 
   static var bg_info_300: Color {
     .init("bg_info_300")
+  }
+
+  static var bg_expression_preview: Color {
+    .init("bg_expression_preview")
   }
 
   static var text_primary: Color {
@@ -52,6 +60,10 @@ extension Color {
 
   static var text_input_bg: Color {
     .init("text_input_bg")
+  }
+
+  static var text_expression_preview: Color {
+    .init("text_expression_preview")
   }
 }
 

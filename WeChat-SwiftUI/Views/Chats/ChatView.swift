@@ -9,7 +9,7 @@ struct ChatView: View {
       .resignKeyboardOnTapGesture()
       .resignKeyboardOnDragGesture()
 
-      ChatInputToolBar()
+      ChatInputPanel()
     }
   }
 }

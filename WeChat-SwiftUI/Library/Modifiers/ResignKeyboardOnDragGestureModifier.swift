@@ -1,5 +1,11 @@
 import SwiftUI
 
+extension View {
+  func resignKeyboardOnDragGesture() -> some View {
+    modifier(ResignKeyboardOnDragGesture())
+  }
+}
+
 private struct ResignKeyboardOnDragGesture: ViewModifier {
 
   func body(content: Content) -> some View {
@@ -10,11 +16,5 @@ private struct ResignKeyboardOnDragGesture: ViewModifier {
             UIApplication.shared.endEditing(true)
           }
       )
-  }
-}
-
-extension View {
-  func resignKeyboardOnDragGesture() -> some View {
-    modifier(ResignKeyboardOnDragGesture())
   }
 }
