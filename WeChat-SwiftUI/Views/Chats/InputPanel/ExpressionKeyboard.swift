@@ -2,6 +2,8 @@ import SwiftUI
 
 struct ExpressionKeyboard: View {
 
+  let onTapExpression: (ExpressionSticker) -> Void
+
   private let expressions: [ExpressionSticker] = {
     let jsonPath = Bundle.main.path(forResource: "expressions", ofType: "json") ?? ""
     let array = try? JSONDecoder().decode(
@@ -31,9 +33,13 @@ struct ExpressionKeyboard: View {
         LazyVGrid(columns: [GridItem(.adaptive(minimum: 30, maximum: 30), spacing: 16)], spacing: 16) {
           ForEach(expressions, id: \.self) { exp in
             ZStack {
-              Image(exp.image)
-                .resize(.fill)
-                .background(dragObserver(for: exp))
+              Button {
+                onTapExpression(exp)
+              } label: {
+                Image(exp.image)
+                  .resize(.fill)
+                  .background(dragObserver(for: exp))
+              }
             }
           }
         }
@@ -93,6 +99,6 @@ struct ExpressionKeyboard: View {
 
 struct ExpressionKeyboard_Previews: PreviewProvider {
   static var previews: some View {
-    ExpressionKeyboard()
+    ExpressionKeyboard(onTapExpression: { _ in })
   }
 }
