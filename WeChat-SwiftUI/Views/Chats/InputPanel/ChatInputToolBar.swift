@@ -5,43 +5,53 @@ struct ChatInputToolBar: View {
   @Binding
   var text: String
 
-    var body: some View {
-      HStack(alignment: .bottom, spacing: toolBarPadding) {
-        Button {
+  @Binding
+  var isVoiceButtonSelected: Bool
 
-        } label: {
-          Image("icons_outlined_voice")
-            .inputToolBarButtonStyle()
-        }
+  @Binding
+  var isExpressionButtonSelected: Bool
 
-        TextEditor(text: $text)
-          .font(Font(textFont as CTFont))
-          .frame(height: textEditorHeight)
-          .background(Color.text_input_bg)
-          .cornerRadius(4)
-
-        Button {
-
-        } label: {
-          Image("icons_outlined_sticker")
-            .inputToolBarButtonStyle()
-        }
-
-        Button {
-
-        } label: {
-          Image("icons_outlined_add")
-            .inputToolBarButtonStyle()
-        }
+  var body: some View {
+    HStack(alignment: .bottom, spacing: toolBarPadding) {
+      Button {
+        isVoiceButtonSelected.toggle()
+        isExpressionButtonSelected = false
+      } label: {
+        Image(isVoiceButtonSelected ? "icons_outlined_keyboard" : "icons_outlined_voice")
+          .inputToolBarButtonStyle()
       }
-      .foregroundColor(.text_primary)
-      .padding(toolBarPadding)
-      .background(Color.bg_info_150)
+
+      TextEditor(text: $text)
+        .font(Font(textFont as CTFont))
+        .frame(height: textEditorHeight)
+        .background(Color.text_input_bg)
+        .cornerRadius(4)
+
+      Button {
+        isExpressionButtonSelected.toggle()
+        isVoiceButtonSelected = false
+      } label: {
+        Image(isExpressionButtonSelected ? "icons_outlined_keyboard" : "icons_outlined_sticker")
+          .inputToolBarButtonStyle()
+      }
+
+      Button {
+
+      } label: {
+        Image("icons_outlined_add")
+          .inputToolBarButtonStyle()
+      }
     }
+    .foregroundColor(.text_primary)
+    .padding(toolBarPadding)
+    .background(Color.bg_info_150)
+  }
 }
 
 private extension ChatInputToolBar {
+
   var textEditorHeight: CGFloat {
+
     let textEditorHorizontalInsets = textEditorInsets.leading + textEditorInsets.trailing
     let textEditorVerticalInsets = textEditorInsets.top + textEditorInsets.bottom
     let occupiedWidth: CGFloat = 5 * toolBarPadding + 3 * toolBarButtonWidth + textEditorHorizontalInsets
@@ -50,6 +60,7 @@ private extension ChatInputToolBar {
     let textHeight = text.height(withConstrainedWidth: width, font: textFont)
     let contentHeight = textHeight + textEditorVerticalInsets
     let maxHeight = ceil(maxLinesOfTextToDisplay * textFont.lineHeight + textEditorVerticalInsets)
+
     return min(max(toolBarMinHeight, contentHeight), maxHeight)
   }
 }
@@ -73,7 +84,11 @@ private let textFont: UIFont = .systemFont(ofSize: 16)
 // MARK: - Previews
 
 struct ChatInputToolBar_Previews: PreviewProvider {
-    static var previews: some View {
-      ChatInputToolBar(text: Binding<String>(get: { "" }, set: { _ in }))
-    }
+  static var previews: some View {
+    ChatInputToolBar(
+      text: Binding<String>(get: { "" }, set: { _ in }),
+      isVoiceButtonSelected: Binding<Bool>(get: { false }, set: { _ in }),
+      isExpressionButtonSelected: Binding<Bool>(get: { false }, set: { _ in })
+    )
+  }
 }

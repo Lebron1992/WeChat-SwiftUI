@@ -283,9 +283,9 @@
 			isa = PBXGroup;
 			children = (
 				FD1F16DE26959F83009D08DF /* ChatInputPanel.swift */,
+				FD1D0139269AFFA800A9AF37 /* ChatInputToolBar.swift */,
 				FD1F16E926974645009D08DF /* ExpressionKeyboard.swift */,
 				FD1D01332699BC6700A9AF37 /* ExpressionPreview.swift */,
-				FD1D0139269AFFA800A9AF37 /* ChatInputToolBar.swift */,
 			);
 			path = InputPanel;
 			sourceTree = "<group>";

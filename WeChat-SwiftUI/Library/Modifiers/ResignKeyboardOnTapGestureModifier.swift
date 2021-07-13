@@ -1,12 +1,14 @@
 import SwiftUI
 
 extension View {
-  func resignKeyboardOnTapGesture() -> some View {
-    modifier(ResignKeyboardOnTapGesture())
+  func resignKeyboardOnTapGesture(onResign: @escaping () -> Void = {}) -> some View {
+    modifier(ResignKeyboardOnTapGesture(onResign: onResign))
   }
 }
 
 private struct ResignKeyboardOnTapGesture: ViewModifier {
+
+  let onResign: () -> Void
 
   func body(content: Content) -> some View {
     content
@@ -14,6 +16,7 @@ private struct ResignKeyboardOnTapGesture: ViewModifier {
         TapGesture()
           .onEnded({
             UIApplication.shared.endEditing(true)
+            onResign()
           })
       )
   }
