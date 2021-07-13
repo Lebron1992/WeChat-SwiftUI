@@ -69,11 +69,11 @@ public final class Strings {
 
   public func staticStringsFileContents(stringsByLocale: [String: [String: String]]) throws -> String {
     var staticStringsLines: [String] = []
-    staticStringsLines.append("//=======================================================================")
+    staticStringsLines.append("// =======================================================================")
     staticStringsLines.append("//")
     staticStringsLines.append("// This file is computer generated from Localizable.strings. Do not edit.")
     staticStringsLines.append("//")
-    staticStringsLines.append("//=======================================================================")
+    staticStringsLines.append("// =======================================================================")
     staticStringsLines.append("")
     staticStringsLines.append("// swiftlint:disable valid_docs")
     staticStringsLines.append("// swiftlint:disable line_length")

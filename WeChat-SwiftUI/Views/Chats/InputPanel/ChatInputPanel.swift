@@ -21,26 +21,53 @@ struct ChatInputPanel: View {
   @State
   private var isExpressionButtonSelected = false
 
+  // MARK: - Expression Preview
+
+  @State
+  private var selectedExpression: ExpressionSticker?
+
+  @State
+  private var selectedExpressionFrame: CGRect?
+
+  // MARK: - Body
+
   var body: some View {
-    VStack(spacing: 0) {
-      Background(.bg_info_300)
-        .frame(height: 0.8)
+    ZStack(alignment: .topLeading) {
+      VStack(spacing: 0) {
+        Background(.bg_info_300)
+          .frame(height: 0.8)
 
-      ChatInputToolBar(
-        text: $text,
-        isVoiceButtonSelected: $isVoiceButtonSelected,
-        isExpressionButtonSelected: $isExpressionButtonSelected
-      )
+        ChatInputToolBar(
+          text: $text,
+          isVoiceButtonSelected: $isVoiceButtonSelected,
+          isExpressionButtonSelected: $isExpressionButtonSelected
+        )
 
-      if isExpressionButtonSelected {
-        ExpressionKeyboard(onTapExpression: { exp in
-          // TODO: 暂时无法获取 TextEditor 的光标位置，先默认添加到末尾
-          text.append("[\(exp.desciptionForCurrentLanguage())]")
-        })
-          .frame(height: 300)
+        if isExpressionButtonSelected {
+          ExpressionKeyboard(
+            selectedExpression: $selectedExpression,
+            selectedExpressionFrame: $selectedExpressionFrame,
+            onTapExpression: { exp in
+              // TODO: 暂时无法获取 TextEditor 的光标位置，先默认添加到末尾
+              text.append("[\(exp.desciptionForCurrentLanguage())]")
+            })
+            .frame(height: 300)
+        }
+      }
+
+      if let exp = selectedExpression,
+         let frame = selectedExpressionFrame {
+        let width: CGFloat = 60
+        let height: CGFloat = 120
+
+        ExpressionPreview(expression: exp)
+          .frame(width: width, height: height)
+          .padding(.top, frame.maxY - height)
+          .padding(.leading, frame.origin.x - (width - frame.width) * 0.5)
           .animation(.none)
       }
     }
+    .coordinateSpace(name: Self.CoordinateSpace.panel.rawValue)
     .onChange(of: dismissKeyboardOnTapOrDrag, perform: { dismiss in
       if dismiss {
         isVoiceButtonSelected = false
@@ -51,8 +78,14 @@ struct ChatInputPanel: View {
   }
 }
 
+extension ChatInputPanel {
+  enum CoordinateSpace: String {
+    case panel = "ChatInputPanel.panel"
+  }
+}
+
 struct ChatInputPanel_Previews: PreviewProvider {
-    static var previews: some View {
-      ChatInputPanel(dismissKeyboardOnTapOrDrag: true)
-    }
+  static var previews: some View {
+    ChatInputPanel(dismissKeyboardOnTapOrDrag: true)
+  }
 }
