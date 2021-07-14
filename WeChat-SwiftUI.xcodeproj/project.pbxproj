@@ -47,6 +47,12 @@
 		FD6D378F268624520087272F /* OfficialAccountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D378E268624520087272F /* OfficialAccountTests.swift */; };
 		FD6D3791268624780087272F /* OfficialAccountTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D3790268624780087272F /* OfficialAccountTemplates.swift */; };
 		FD6D3793268625610087272F /* ContactOfficialAccountsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D3792268625610087272F /* ContactOfficialAccountsList.swift */; };
+		FD8809F3269EDE52002D3396 /* MessageRowText.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8809F2269EDE52002D3396 /* MessageRowText.swift */; };
+		FD8809F5269EDE60002D3396 /* MessageRowImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8809F4269EDE60002D3396 /* MessageRowImage.swift */; };
+		FD8809F7269EDE6F002D3396 /* MessageRowVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8809F6269EDE6E002D3396 /* MessageRowVideo.swift */; };
+		FD8809F9269EDF0F002D3396 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8809F8269EDF0F002D3396 /* Message.swift */; };
+		FD8809FB269EE76B002D3396 /* MessageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8809FA269EE76B002D3396 /* MessageTests.swift */; };
+		FD8809FD269EE852002D3396 /* MessageTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8809FC269EE852002D3396 /* MessageTemplates.swift */; };
 		FD88273C2679A37600BBEAB6 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88273B2679A37600BBEAB6 /* AppState.swift */; };
 		FD88273E2679A3C300BBEAB6 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88273D2679A3C300BBEAB6 /* AppReducer.swift */; };
 		FD8827402679A40600BBEAB6 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88273F2679A40600BBEAB6 /* Store.swift */; };
@@ -177,6 +183,12 @@
 		FD6D378E268624520087272F /* OfficialAccountTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficialAccountTests.swift; sourceTree = "<group>"; };
 		FD6D3790268624780087272F /* OfficialAccountTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficialAccountTemplates.swift; sourceTree = "<group>"; };
 		FD6D3792268625610087272F /* ContactOfficialAccountsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactOfficialAccountsList.swift; sourceTree = "<group>"; };
+		FD8809F2269EDE52002D3396 /* MessageRowText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRowText.swift; sourceTree = "<group>"; };
+		FD8809F4269EDE60002D3396 /* MessageRowImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRowImage.swift; sourceTree = "<group>"; };
+		FD8809F6269EDE6E002D3396 /* MessageRowVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRowVideo.swift; sourceTree = "<group>"; };
+		FD8809F8269EDF0F002D3396 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		FD8809FA269EE76B002D3396 /* MessageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTests.swift; sourceTree = "<group>"; };
+		FD8809FC269EE852002D3396 /* MessageTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTemplates.swift; sourceTree = "<group>"; };
 		FD88273B2679A37600BBEAB6 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		FD88273D2679A3C300BBEAB6 /* AppReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
 		FD88273F2679A40600BBEAB6 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
@@ -308,6 +320,16 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		FD8809EF269EDE28002D3396 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				FD8809F4269EDE60002D3396 /* MessageRowImage.swift */,
+				FD8809F2269EDE52002D3396 /* MessageRowText.swift */,
+				FD8809F6269EDE6E002D3396 /* MessageRowVideo.swift */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
 		FD8827362679A24C00BBEAB6 /* Redux */ = {
 			isa = PBXGroup;
 			children = (
@@ -360,6 +382,7 @@
 		FD8827492679D82C00BBEAB6 /* Chats */ = {
 			isa = PBXGroup;
 			children = (
+				FD8809EF269EDE28002D3396 /* Message */,
 				FD1F16E82697444E009D08DF /* InputPanel */,
 				FD88274D2679D86D00BBEAB6 /* ChatsView.swift */,
 				FD1F16DA26943832009D08DF /* ChatView.swift */,
@@ -518,6 +541,8 @@
 				FD6D378A26861A110087272F /* ContactType.swift */,
 				FD1F16C0269162A6009D08DF /* DiscoverItem.swift */,
 				FD1D01312699B72700A9AF37 /* ExpressionSticker.swift */,
+				FD8809F8269EDF0F002D3396 /* Message.swift */,
+				FD8809FA269EE76B002D3396 /* MessageTests.swift */,
 				FD6D378C26861A6D0087272F /* OfficialAccount.swift */,
 				FD6D378E268624520087272F /* OfficialAccountTests.swift */,
 				FD8827432679A80900BBEAB6 /* TabBarItem.swift */,
@@ -606,6 +631,7 @@
 			isa = PBXGroup;
 			children = (
 				FD1D0135269A8C6B00A9AF37 /* ExpressionStickerTemplates.swift */,
+				FD8809FC269EE852002D3396 /* MessageTemplates.swift */,
 				FD6D3790268624780087272F /* OfficialAccountTemplates.swift */,
 				FDCC728B2671C34200A48140 /* UserTemplates.swift */,
 			);
@@ -836,6 +862,7 @@
 				FD8827442679A80900BBEAB6 /* TabBarItem.swift in Sources */,
 				FD882784267F888D00BBEAB6 /* NavigationBarBackgroundModifierLightGray.swift in Sources */,
 				FD8827422679A75B00BBEAB6 /* RootState.swift in Sources */,
+				FD8809FD269EE852002D3396 /* MessageTemplates.swift in Sources */,
 				FDCC72802671A99400A48140 /* KeyValueStoreType.swift in Sources */,
 				FDCC724B266F190700A48140 /* Environment.swift in Sources */,
 				FD424F90268B050900F11A62 /* Image.swift in Sources */,
@@ -844,13 +871,16 @@
 				FDCC727C2671A4DC00A48140 /* AppEnvironment.swift in Sources */,
 				FD6D378B26861A110087272F /* ContactType.swift in Sources */,
 				FDCC72922673448A00A48140 /* Route.swift in Sources */,
+				FD8809F5269EDE60002D3396 /* MessageRowImage.swift in Sources */,
 				FD6D37752684707A0087272F /* Background.swift in Sources */,
 				FD6D37792684803E0087272F /* ResignKeyboardOnDragGestureModifier.swift in Sources */,
 				FDCC7251266F1B2E00A48140 /* EnvironmentType.swift in Sources */,
 				FD1D01322699B72700A9AF37 /* ExpressionSticker.swift in Sources */,
+				FD8809F3269EDE52002D3396 /* MessageRowText.swift in Sources */,
 				FD882764267AFAD000BBEAB6 /* ErrorView.swift in Sources */,
 				FD6D37862685D21A0087272F /* EdgeInsets.swift in Sources */,
 				FDCC7265266F5C5B00A48140 /* Service.swift in Sources */,
+				FD8809F9269EDF0F002D3396 /* Message.swift in Sources */,
 				FDCC72832671AC2B00A48140 /* Encodable+Dictionary.swift in Sources */,
 				FD1F16C526919065009D08DF /* DiscoverList.swift in Sources */,
 				FD88274E2679D86D00BBEAB6 /* ChatsView.swift in Sources */,
@@ -862,6 +892,7 @@
 				FD6D378D26861A6D0087272F /* OfficialAccount.swift in Sources */,
 				FD1F16C326918EF5009D08DF /* DiscoverState.swift in Sources */,
 				FD8827502679D88F00BBEAB6 /* ContactsView.swift in Sources */,
+				FD8809F7269EDE6F002D3396 /* MessageRowVideo.swift in Sources */,
 				FD88273E2679A3C300BBEAB6 /* AppReducer.swift in Sources */,
 				FD6D377326842C610087272F /* SearchBar.swift in Sources */,
 				FDCC7267266F5CF600A48140 /* Language.swift in Sources */,
@@ -894,6 +925,7 @@
 				FDCC727A267109D700A48140 /* LanguageTests.swift in Sources */,
 				FDCC72752671087E00A48140 /* EnvironmentTests.swift in Sources */,
 				FD6D378F268624520087272F /* OfficialAccountTests.swift in Sources */,
+				FD8809FB269EE76B002D3396 /* MessageTests.swift in Sources */,
 				FD882778267F1BD500BBEAB6 /* ContactsActionsTests.swift in Sources */,
 				FDCC7269266F62C900A48140 /* ServiceTests.swift in Sources */,
 				FD882769267B499700BBEAB6 /* UserTests.swift in Sources */,
