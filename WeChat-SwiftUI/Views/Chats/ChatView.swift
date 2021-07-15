@@ -7,21 +7,19 @@ struct ChatView: View {
 
   var body: some View {
     VStack(spacing: 0) {
-      List {
-
-      }
-      .resignKeyboardOnDragGesture {
-        dismissKeyboardOnTapOrDrag = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-          dismissKeyboardOnTapOrDrag = false
+      MessagesList(messages: [Message.textTemplate, Message.textTemplate2])
+        .resignKeyboardOnDragGesture {
+          dismissKeyboardOnTapOrDrag = true
+          DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            dismissKeyboardOnTapOrDrag = false
+          }
         }
-      }
-      .resignKeyboardOnTapGesture {
-        dismissKeyboardOnTapOrDrag = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-          dismissKeyboardOnTapOrDrag = false
+        .resignKeyboardOnTapGesture {
+          dismissKeyboardOnTapOrDrag = true
+          DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            dismissKeyboardOnTapOrDrag = false
+          }
         }
-      }
 
       ChatInputPanel(dismissKeyboardOnTapOrDrag: dismissKeyboardOnTapOrDrag)
     }
@@ -31,5 +29,6 @@ struct ChatView: View {
 struct ChatView_Previews: PreviewProvider {
   static var previews: some View {
     ChatView()
+      .onAppear { AppEnvironment.updateCurrentUser(.template) }
   }
 }

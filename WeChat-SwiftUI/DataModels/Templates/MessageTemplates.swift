@@ -1,5 +1,5 @@
 extension Message {
-  static let template: Message! = tryDecode(
+  static let textTemplate: Message! = tryDecode(
     """
     {
     "id": "d6a696da-2c7a-4d27-87e3-6f63fd3e597f",
@@ -14,7 +14,22 @@ extension Message {
     """
   )
 
-  static let template2: Message! = tryDecode(
+  static let textTemplate2: Message! = tryDecode(
+    """
+    {
+    "id": "d05b35fc-9d3c-4478-a526-31127d8fee41",
+    "text": "SwiftUI helps you build great-looking apps across all Apple platforms with the power of Swift — and as little code as possible.",
+    "sender": {
+      "id": "4d0914d5-b04c-43f1-b37f-b2bb8d177951",
+      "avatar": "https://cdn.nba.com/headshots/nba/latest/260x190/2544.png",
+      "name": "LeBron James",
+    },
+    "created": 1626256463
+    }
+    """
+  )
+
+  static let imageTemplate2: Message! = tryDecode(
     """
     {
     "id": "575e9920-c891-4812-b623-2eefc364067d",
@@ -29,7 +44,7 @@ extension Message {
     """
   )
 
-  static let template3: Message! = tryDecode(
+  static let videoTemplate3: Message! = tryDecode(
     """
     {
     "id": "9e64ffee-2ac7-48c5-9569-09e763055d7d",

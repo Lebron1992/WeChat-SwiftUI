@@ -1,6 +1,6 @@
 import Foundation
 
-struct Message: Decodable {
+struct Message: Decodable, Identifiable {
   let id: String
   let text: String?
   let imageUrl: String?
@@ -50,6 +50,10 @@ extension Message {
 
   var isVideoMsg: Bool {
     videoUrl != nil
+  }
+
+  var isOutgoingMsg: Bool {
+    sender.id == AppEnvironment.current.currentUser?.id
   }
 }
 

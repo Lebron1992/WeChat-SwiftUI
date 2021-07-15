@@ -42,6 +42,14 @@ extension Color {
     .init("bg_expression_preview")
   }
 
+  static var bg_chat_incoming_msg: Color {
+    .init("bg_chat_incoming_msg")
+  }
+
+  static var bg_chat_outgoing_msg: Color {
+    .init("bg_chat_outgoing_msg")
+  }
+
   static var text_primary: Color {
     .init("text_primary")
   }
@@ -64,6 +72,14 @@ extension Color {
 
   static var text_expression_preview: Color {
     .init("text_expression_preview")
+  }
+
+  static var text_chat_incoming_msg: Color {
+    .init("text_chat_incoming_msg")
+  }
+
+  static var text_chat_outgoing_msg: Color {
+    .init("text_chat_outgoing_msg")
   }
 }
 

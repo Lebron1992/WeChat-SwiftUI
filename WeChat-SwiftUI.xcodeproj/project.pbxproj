@@ -53,6 +53,7 @@
 		FD8809F9269EDF0F002D3396 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8809F8269EDF0F002D3396 /* Message.swift */; };
 		FD8809FB269EE76B002D3396 /* MessageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8809FA269EE76B002D3396 /* MessageTests.swift */; };
 		FD8809FD269EE852002D3396 /* MessageTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8809FC269EE852002D3396 /* MessageTemplates.swift */; };
+		FD880A0126A01EFE002D3396 /* MessagesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD880A0026A01EFE002D3396 /* MessagesList.swift */; };
 		FD88273C2679A37600BBEAB6 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88273B2679A37600BBEAB6 /* AppState.swift */; };
 		FD88273E2679A3C300BBEAB6 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88273D2679A3C300BBEAB6 /* AppReducer.swift */; };
 		FD8827402679A40600BBEAB6 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88273F2679A40600BBEAB6 /* Store.swift */; };
@@ -189,6 +190,7 @@
 		FD8809F8269EDF0F002D3396 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		FD8809FA269EE76B002D3396 /* MessageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTests.swift; sourceTree = "<group>"; };
 		FD8809FC269EE852002D3396 /* MessageTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTemplates.swift; sourceTree = "<group>"; };
+		FD880A0026A01EFE002D3396 /* MessagesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesList.swift; sourceTree = "<group>"; };
 		FD88273B2679A37600BBEAB6 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		FD88273D2679A3C300BBEAB6 /* AppReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
 		FD88273F2679A40600BBEAB6 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 				FD8809F4269EDE60002D3396 /* MessageRowImage.swift */,
 				FD8809F2269EDE52002D3396 /* MessageRowText.swift */,
 				FD8809F6269EDE6E002D3396 /* MessageRowVideo.swift */,
+				FD880A0026A01EFE002D3396 /* MessagesList.swift */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -382,10 +385,10 @@
 		FD8827492679D82C00BBEAB6 /* Chats */ = {
 			isa = PBXGroup;
 			children = (
-				FD8809EF269EDE28002D3396 /* Message */,
-				FD1F16E82697444E009D08DF /* InputPanel */,
 				FD88274D2679D86D00BBEAB6 /* ChatsView.swift */,
 				FD1F16DA26943832009D08DF /* ChatView.swift */,
+				FD1F16E82697444E009D08DF /* InputPanel */,
+				FD8809EF269EDE28002D3396 /* Message */,
 			);
 			path = Chats;
 			sourceTree = "<group>";
@@ -911,6 +914,7 @@
 				FD88275B267AF27200BBEAB6 /* ContactsState.swift in Sources */,
 				FD6D3793268625610087272F /* ContactOfficialAccountsList.swift in Sources */,
 				FDCC7290267343A800A48140 /* Service+RequestHelpers.swift in Sources */,
+				FD880A0126A01EFE002D3396 /* MessagesList.swift in Sources */,
 				FDCC729F2673499700A48140 /* APIError.swift in Sources */,
 				FD88275F267AF2EB00BBEAB6 /* ContactsActions.swift in Sources */,
 			);
