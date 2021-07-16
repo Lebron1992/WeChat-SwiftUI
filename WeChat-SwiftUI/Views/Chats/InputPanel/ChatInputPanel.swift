@@ -72,7 +72,10 @@ struct ChatInputPanel: View {
     }
     .coordinateSpace(name: Self.CoordinateSpace.panel.rawValue)
     .onChange(of: dismissKeyboardOnTapOrDrag, perform: { dismiss in
-      if dismiss && isTextEditorFoucused {
+      guard dismiss else {
+        return
+      }
+      if isTextEditorFoucused || isExpressionButtonSelected {
         isVoiceButtonSelected = false
         isExpressionButtonSelected = false
       }

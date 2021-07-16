@@ -41,6 +41,7 @@ struct ChatInputToolBar: View {
       Button {
         isExpressionButtonSelected.toggle()
         isVoiceButtonSelected = false
+        isTextEditorFoucused = !isExpressionButtonSelected
       } label: {
         Image(isExpressionButtonSelected ? "icons_outlined_keyboard" : "icons_outlined_sticker")
           .inputToolBarButtonStyle()
@@ -56,6 +57,11 @@ struct ChatInputToolBar: View {
     .foregroundColor(.text_primary)
     .padding(toolBarPadding)
     .background(.bg_info_150)
+    .onChange(of: isTextEditorFoucused) { newValue in
+      if newValue {
+        isExpressionButtonSelected = false
+      }
+    }
   }
 }
 
