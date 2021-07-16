@@ -11,21 +11,32 @@ struct ChatInputToolBar: View {
   @Binding
   var isExpressionButtonSelected: Bool
 
+  @FocusState
+  var isTextEditorFoucused: Bool
+
   var body: some View {
     HStack(alignment: .bottom, spacing: toolBarPadding) {
       Button {
         isVoiceButtonSelected.toggle()
         isExpressionButtonSelected = false
+        isTextEditorFoucused = !isVoiceButtonSelected
       } label: {
         Image(isVoiceButtonSelected ? "icons_outlined_keyboard" : "icons_outlined_voice")
           .inputToolBarButtonStyle()
       }
 
-      TextEditor(text: $text)
-        .font(Font(textFont as CTFont))
-        .frame(height: textEditorHeight)
-        .background(.bg_text_input)
-        .cornerRadius(4)
+      ZStack {
+        Text(Strings.chat_hold_to_talk())
+          .font(.system(size: 16, weight: .medium))
+          .foregroundColor(.text_primary)
+        TextEditor(text: $text)
+          .font(Font(textFont as CTFont))
+          .focused($isTextEditorFoucused)
+          .opacity(isVoiceButtonSelected ? 0 : 1)
+      }
+      .frame(height: isVoiceButtonSelected ? toolBarMinHeight : textEditorHeight)
+      .background(.bg_text_input)
+      .cornerRadius(4)
 
       Button {
         isExpressionButtonSelected.toggle()

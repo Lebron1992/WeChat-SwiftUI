@@ -50,6 +50,20 @@ public enum Strings {
     )
   }
   /**
+   "Hold to Talk"
+
+   - **en**: "Hold to Talk"
+   - **zh**: "按住 说话"
+  */
+  public static func chat_hold_to_talk() -> String {
+    return localizedString(
+      key: "chat.hold_to_talk",
+      defaultValue: "Hold to Talk",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
    "Edit Contact"
 
    - **en**: "Edit Contact"

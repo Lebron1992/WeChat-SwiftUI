@@ -8,6 +8,9 @@
           "unexpected_response": "Unexpected response: %{response}"
         }
       },
+      "chat": {
+        "hold_to_talk": "Hold to Talk"
+      },
       "contacts": {
         "group_chats": "Group Chats",
         "tags": "Tags",
@@ -62,6 +65,9 @@
           "invalid_url": "无效的 URL：%{url}",
           "unexpected_response": "出乎意料的响应：%{response}"
         }
+      },
+      "chat": {
+        "hold_to_talk": "按住 说话"
       },
       "contacts": {
         "group_chats": "群聊",

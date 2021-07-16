@@ -20,6 +20,9 @@ struct ChatInputPanel: View {
   @State
   private var isExpressionButtonSelected = false
 
+  @FocusState
+  private var isTextEditorFoucused: Bool
+
   // MARK: - Expression Preview
 
   @State
@@ -39,7 +42,8 @@ struct ChatInputPanel: View {
         ChatInputToolBar(
           text: $text,
           isVoiceButtonSelected: $isVoiceButtonSelected,
-          isExpressionButtonSelected: $isExpressionButtonSelected
+          isExpressionButtonSelected: $isExpressionButtonSelected,
+          isTextEditorFoucused: _isTextEditorFoucused
         )
 
         if isExpressionButtonSelected {
@@ -68,7 +72,7 @@ struct ChatInputPanel: View {
     }
     .coordinateSpace(name: Self.CoordinateSpace.panel.rawValue)
     .onChange(of: dismissKeyboardOnTapOrDrag, perform: { dismiss in
-      if dismiss {
+      if dismiss && isTextEditorFoucused {
         isVoiceButtonSelected = false
         isExpressionButtonSelected = false
       }

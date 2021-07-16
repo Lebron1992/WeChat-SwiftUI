@@ -9,7 +9,7 @@ struct ChatsView: View {
         .navigationBarItems(trailing: Image("icons_outlined_add"))
         .navigationBarBackgroundLightGray()
     }
-    .navigationViewStyle(StackNavigationViewStyle())
+    .navigationViewStyle(.stack)
   }
 }
 

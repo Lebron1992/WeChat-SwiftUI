@@ -1,6 +1,7 @@
 "api.error.internal_server_error" = "内部服务器错误";
 "api.error.invalid_url" = "无效的 URL：%{url}";
 "api.error.unexpected_response" = "出乎意料的响应：%{response}";
+"chat.hold_to_talk" = "按住 说话";
 "contact_detail.edit_contact" = " 备注和标签";
 "contact_detail.messages" = "发消息";
 "contact_detail.moments" = "朋友圈";

@@ -1,6 +1,7 @@
 "api.error.internal_server_error" = "Internal server error";
 "api.error.invalid_url" = "Invalid URL: %{url}";
 "api.error.unexpected_response" = "Unexpected response: %{response}";
+"chat.hold_to_talk" = "Hold to Talk";
 "contact_detail.edit_contact" = "Edit Contact";
 "contact_detail.messages" = "Messages";
 "contact_detail.moments" = "Moments";
