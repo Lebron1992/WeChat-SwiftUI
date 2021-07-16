@@ -24,7 +24,7 @@ struct ChatInputToolBar: View {
       TextEditor(text: $text)
         .font(Font(textFont as CTFont))
         .frame(height: textEditorHeight)
-        .background(Color.text_input_bg)
+        .background(.bg_text_input)
         .cornerRadius(4)
 
       Button {
@@ -44,7 +44,7 @@ struct ChatInputToolBar: View {
     }
     .foregroundColor(.text_primary)
     .padding(toolBarPadding)
-    .background(Color.bg_info_150)
+    .background(.bg_info_150)
   }
 }
 

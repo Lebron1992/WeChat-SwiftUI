@@ -3,8 +3,8 @@ import SwiftUIRedux
 import URLImage
 
 /* TODO:
- 1. 因为暂时无法改变 grouped list 的 footer 的高度，所以 SectionHeader 使用 cell 代替
- 2. 去除 UserInfo cell 的点击效果
+--- 因为暂时无法改变 header 的高度，所以 SectionHeader 使用 cell 代替
+--- 去除 UserInfo cell 的点击效果
  */
 
 struct MeView: ConnectedView {
@@ -87,8 +87,9 @@ private extension MeView {
           }
           .listRowBackground(Color.app_white)
         }
+        .background(.app_bg)
+        .listStyle(.plain)
         .environment(\.defaultMinListRowHeight, 10)
-        .listStyle(PlainListStyle())
 
         if showLoading {
           ActivityIndicatorView(color: .gray)
@@ -123,7 +124,7 @@ extension MeView {
               image
                 .resize(.fill, .init(width: 64, height: 64))
             })
-            .background(Color.app_bg)
+            .background(.app_bg)
             .cornerRadius(6)
         }
 

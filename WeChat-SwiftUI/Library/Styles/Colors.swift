@@ -38,6 +38,10 @@ extension Color {
     .init("bg_info_300")
   }
 
+  static var bg_text_input: Color {
+    .init("bg_text_input")
+  }
+
   static var bg_expression_preview: Color {
     .init("bg_expression_preview")
   }
@@ -66,10 +70,6 @@ extension Color {
     .init("text_info_500")
   }
 
-  static var text_input_bg: Color {
-    .init("text_input_bg")
-  }
-
   static var text_expression_preview: Color {
     .init("text_expression_preview")
   }
@@ -90,5 +90,51 @@ extension UIColor {
 
   static var text_primary: UIColor {
     .init(named: "text_primary")!
+  }
+}
+
+extension ShapeStyle where Self == Color {
+  static var app_white: Color {
+    .app_white
+  }
+
+  static var app_bg: Color {
+    .app_bg
+  }
+
+  static var bg_info_100: Color {
+    .bg_info_100
+  }
+
+  static var bg_info_150: Color {
+    .bg_info_150
+  }
+
+  static var bg_info_170: Color {
+    .bg_info_170
+  }
+
+  static var bg_info_200: Color {
+    .bg_info_200
+  }
+
+  static var bg_info_300: Color {
+    .bg_info_300
+  }
+
+  static var bg_text_input: Color {
+    .bg_text_input
+  }
+
+  static var bg_expression_preview: Color {
+    .bg_expression_preview
+  }
+
+  static var bg_chat_incoming_msg: Color {
+    .bg_chat_incoming_msg
+  }
+
+  static var bg_chat_outgoing_msg: Color {
+    .bg_chat_outgoing_msg
   }
 }

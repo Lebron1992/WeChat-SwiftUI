@@ -1,11 +1,10 @@
 import SwiftUI
 
 /* TODO:
- 1. 输入框弹出时，背后有白色背景
- 2. 暂时无法使用代码调出键盘，升级到 iOS15 即可解决: 用 focus()
- 3. 输入框文字将表情替换成图片，`TextEditor` 暂时无法做到
- 4. 删除文字时识别是否删除表情，`TextEditor` 暂时无法做到
- 5. 在指定的光标位置插入表情，`TextEditor` 暂时无法做到
+--- 暂时无法使用代码调出键盘，升级到 iOS15 即可解决: 用 focus()
+--- 输入框文字将表情替换成图片，`TextEditor` 暂时无法做到
+--- 删除文字时识别是否删除表情，`TextEditor` 暂时无法做到
+--- 在指定的光标位置插入表情，`TextEditor` 暂时无法做到
  */
 
 struct ChatInputPanel: View {
@@ -64,7 +63,7 @@ struct ChatInputPanel: View {
           .frame(width: width, height: height)
           .padding(.top, frame.maxY - height)
           .padding(.leading, frame.origin.x - (width - frame.width) * 0.5)
-          .animation(.none)
+          .animation(nil, value: isExpressionButtonSelected)
       }
     }
     .coordinateSpace(name: Self.CoordinateSpace.panel.rawValue)
@@ -74,7 +73,7 @@ struct ChatInputPanel: View {
         isExpressionButtonSelected = false
       }
     })
-    .animation(.easeOut(duration: 0.25))
+    .animation(.easeOut(duration: 0.25), value: isExpressionButtonSelected)
   }
 }
 

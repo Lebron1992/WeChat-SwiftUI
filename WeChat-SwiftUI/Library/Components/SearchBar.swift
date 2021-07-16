@@ -2,7 +2,7 @@ import SwiftUI
 
 /*
  TODO:
- 1. 如果点击 Placeholder，键盘不会弹出
+--- 如果点击 Placeholder，键盘不会弹出
  */
 
 struct SearchBar: View {
@@ -17,58 +17,59 @@ struct SearchBar: View {
   private var showCancelButton: Bool = false
 
   var body: some View {
-    HStack(spacing: 5) {
-      HStack {
-        ZStack(alignment: showCancelButton ? .leading : .center) {
-          HStack {
-            Spacer(minLength: showCancelButton ? 25 : 0)
+    withAnimation {
+      HStack(spacing: 5) {
+        HStack {
+          ZStack(alignment: showCancelButton ? .leading : .center) {
+            HStack {
+              Spacer(minLength: showCancelButton ? 25 : 0)
 
-            TextField("", text: $searchText, onEditingChanged: { _ in
-              self.showCancelButton = true
-              onEditingChanged()
-            })
-            .disableAutocorrection(true)
-            .foregroundColor(.black)
-            .textFieldStyle(DefaultTextFieldStyle())
-            .frame(height: 30)
+              TextField("", text: $searchText, onEditingChanged: { _ in
+                self.showCancelButton = true
+                onEditingChanged()
+              })
+                .disableAutocorrection(true)
+                .foregroundColor(.black)
+                .textFieldStyle(DefaultTextFieldStyle())
+                .frame(height: 30)
 
-            Button(action: {
-              self.searchText = ""
-            }) {
-              Image(systemName: "xmark.circle.fill")
-                .opacity(searchText.isEmpty ? 0 : 1)
+              Button(action: {
+                self.searchText = ""
+              }) {
+                Image(systemName: "xmark.circle.fill")
+                  .opacity(searchText.isEmpty ? 0 : 1)
+              }
             }
-          }
 
-          HStack {
-            Image(systemName: "magnifyingglass")
-            Text(Strings.general_search())
-              .foregroundColor(.text_info_100)
-              .opacity(searchText.isEmpty ? 1 : 0)
+            HStack {
+              Image(systemName: "magnifyingglass")
+              Text(Strings.general_search())
+                .foregroundColor(.text_info_100)
+                .opacity(searchText.isEmpty ? 1 : 0)
+            }
+            .padding(.leading, showCancelButton ? 5 : 0)
+            .animation(searchText.isEmpty ? .default : .none, value: searchText.isEmpty)
           }
-          .padding(.leading, showCancelButton ? 5 : 0)
-          .animation(searchText.isEmpty ? .default : .none)
+          .background(.app_white)
+          .cornerRadius(4)
         }
-        .background(Color.app_white)
-        .cornerRadius(4)
-      }
-      .padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
-      .foregroundColor(.secondary)
-      .background(Color.app_bg)
+        .padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
+        .foregroundColor(.secondary)
+        .background(.app_bg)
 
-      if showCancelButton {
-        Button(Strings.general_cancel()) {
-          UIApplication.shared.endEditing(true)
-          self.searchText = ""
-          self.showCancelButton = false
-          onCancelButtonTapped()
+        if showCancelButton {
+          Button(Strings.general_cancel()) {
+            UIApplication.shared.endEditing(true)
+            self.searchText = ""
+            self.showCancelButton = false
+            onCancelButtonTapped()
+          }
+          .foregroundColor(Color.link)
+          .padding(.trailing, 5)
         }
-        .foregroundColor(Color.link)
-        .padding(.trailing, 5)
       }
+      .background(.app_bg)
     }
-    .background(Color.app_bg)
-    .animation(.default)
   }
 }
 

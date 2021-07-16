@@ -56,7 +56,7 @@ struct ContactsView: ConnectedView {
           Spacer(minLength: 0)
         }
       }
-      .background(Color.app_bg)
+      .background(.app_bg)
       .navigationTitle(Strings.tabbar_contacts())
       .navigationBarTitleDisplayMode(.inline)
       .navigationBarItems(trailing: Image("icons_outlined_add_friends"))

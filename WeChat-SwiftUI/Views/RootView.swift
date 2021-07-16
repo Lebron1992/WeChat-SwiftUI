@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftUIRedux
 
 /* TODO:
- 1. push ViewController 时，TabBar 不会隐藏，等待苹果的解决方案。（可选方案：可以把整个 TabView 包装在 NavigationView 内，此方案不方便进行导航栏按钮的控制。）
+--- push ViewController 时，TabBar 不会隐藏，等待苹果的解决方案。（可选方案：可以把整个 TabView 包装在 NavigationView 内，此方案不方便进行导航栏按钮的控制。）
  */
 
 struct RootView: View {

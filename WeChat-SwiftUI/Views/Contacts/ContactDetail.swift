@@ -2,8 +2,8 @@ import SwiftUI
 import URLImage
 
 /* TODO:
- 1. 导航栏背景改为白色
- 2. 因为暂时无法改变 grouped list 的 footer 的高度，所以 SectionHeader 使用 cell 代替
+--- 导航栏背景改为白色
+--- 因为暂时无法改变 header 的高度，所以 SectionHeader 使用 cell 代替
  */
 
 struct ContactDetail: View {
@@ -62,6 +62,8 @@ struct ContactDetail: View {
       }
       .listRowBackground(Color.app_white)
     }
+    .background(.app_bg)
+    .listStyle(.plain)
     .environment(\.defaultMinListRowHeight, 10)
   }
 }
@@ -80,7 +82,7 @@ private extension ContactDetail {
             image
               .resize(.fill, .init(width: 60, height: 60))
           })
-          .background(Color.app_bg)
+          .background(.app_bg)
           .cornerRadius(6)
       }
 

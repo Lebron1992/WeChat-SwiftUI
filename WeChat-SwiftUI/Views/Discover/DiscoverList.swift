@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftUIRedux
 
 /* TODO:
- 1. 因为暂时无法改变 grouped list 的 footer 的高度，所以 SectionHeader 使用 cell 代替
+--- 因为暂时无法改变 header 的高度，所以 SectionHeader 使用 cell 代替
  */
 
 struct DiscoverList: ConnectedView {
@@ -22,6 +22,8 @@ struct DiscoverList: ConnectedView {
         DiscoverSection(section: $0)
       }
     }
+    .background(.app_bg)
+    .listStyle(.plain)
     .environment(\.defaultMinListRowHeight, 10)
   }
 }

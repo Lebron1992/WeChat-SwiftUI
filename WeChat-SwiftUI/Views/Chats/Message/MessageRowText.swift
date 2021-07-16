@@ -44,9 +44,9 @@ private extension MessageRowText {
           content: { image in
             image
               .resize(.fill, size)
-              .background(Color.white)
+              .background(.white)
           })
-          .background(Color.app_bg)
+          .background(.app_bg)
           .cornerRadius(4)
       )
     }
@@ -113,7 +113,7 @@ struct MessageRowText_Previews: PreviewProvider {
       MessageRowText(message: .textTemplate2)
     }
     .padding(50)
-    .background(Color.green)
+    .background(.green)
     .onAppear { AppEnvironment.updateCurrentUser(.template) }
   }
 }

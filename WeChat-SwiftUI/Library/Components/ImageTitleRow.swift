@@ -92,7 +92,7 @@ struct ImageTitleRow<Destination: View>: View {
               image
                 .resize(.fill, imageSize)
             })
-            .background(Color.app_bg)
+            .background(.app_bg)
             .cornerRadius(imageCornerRadius)
         }
 

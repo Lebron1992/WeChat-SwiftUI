@@ -19,7 +19,7 @@ struct AppState: ReduxState {
     meState = MeState(
       userSelf: .notRequested
     )
-    rootState = RootState(selectedTab: .chats)
+    rootState = RootState(selectedTab: .contacts)
 
     // TODO: set the default user for now
     AppEnvironment.updateCurrentUser(.template)

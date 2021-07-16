@@ -30,7 +30,5 @@ struct WeChat_SwiftUIApp: App {
     navBar.tintColor = .text_primary
     navBar.titleTextAttributes = [.foregroundColor: navBar.tintColor as Any]
     navBar.isTranslucent = false
-
-    UITableView.appearance().backgroundColor = UIColor(.app_bg)
   }
 }

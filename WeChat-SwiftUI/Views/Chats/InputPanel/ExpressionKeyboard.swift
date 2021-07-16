@@ -52,7 +52,7 @@ struct ExpressionKeyboard: View {
       .padding(.vertical, 20)
       .padding(.horizontal, 12)
     }
-    .background(Color.bg_info_170)
+    .background(.bg_info_170)
   }
 
   private func dragObserver(for expression: ExpressionSticker) -> some View {

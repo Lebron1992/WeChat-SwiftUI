@@ -124,6 +124,6 @@ struct ExpressionPreview_Previews: PreviewProvider {
     ExpressionPreview(expression: .template)
       .frame(width: 64, height: 136)
       .padding(100)
-      .background(Color.red)
+      .background(.red)
   }
 }

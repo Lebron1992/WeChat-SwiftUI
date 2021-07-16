@@ -1,3 +1,4 @@
+// swiftlint:disable line_length
 extension Message {
   static let textTemplate: Message! = tryDecode(
     """

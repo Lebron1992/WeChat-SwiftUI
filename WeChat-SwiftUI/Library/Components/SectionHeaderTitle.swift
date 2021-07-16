@@ -9,7 +9,7 @@ struct SectionHeaderTitle: View {
       .font(.system(size: 14, weight: .medium))
       .padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 0))
       .frame(width: UIScreen.main.bounds.width, alignment: .leading)
-      .background(Color.app_bg)
+      .background(.app_bg)
   }
 }
 

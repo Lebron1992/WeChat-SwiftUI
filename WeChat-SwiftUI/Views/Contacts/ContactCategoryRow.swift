@@ -28,6 +28,6 @@ struct ContactRowCategory_Previews: PreviewProvider {
         ContactCategoryRow(category: .officalAccount)
         ContactCategoryRow(category: .weChatWorkContacts)
       }
-      .background(Color.blue)
+      .background(.blue)
     }
 }

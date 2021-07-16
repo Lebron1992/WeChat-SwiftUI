@@ -2,8 +2,9 @@ import SwiftUI
 import SwiftUIRedux
 
 /* TODO:
- 1. section header 吸到顶部时，背景色改为白色，title 颜色改为 highlighted
- 2. 滚动列表时，右边的索引切换到对应的 section
+--- section header 吸到顶部时，背景色改为白色，title 颜色改为 highlighted
+--- 滚动列表时，右边的索引切换到对应的 section
+--- Header 高度无法调整
 */
 
 struct ContactsList<Contact: ContactType, Header: View, Destination: View>: View {
@@ -108,7 +109,8 @@ private extension ContactsList {
         }
       }
     }
-    .listStyle(PlainListStyle())
+    .listStyle(.plain)
+    .environment(\.defaultMinListHeaderHeight, 20)
   }
 }
 
@@ -145,7 +147,7 @@ private extension ContactsList {
             }
             .frame(width: 70, height: 50)
             .opacity(selectionBubbleOpacityForIndex(withTitle: title))
-            .animation(showSelectionBubble ? .none : .easeOut)
+            .animation(showSelectionBubble ? .none : .easeOut, value: showSelectionBubble)
 
             SectionIndexTitle(
               title: title,
