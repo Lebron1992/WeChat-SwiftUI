@@ -21,4 +21,10 @@ final class ContactsReducerTests: XCTestCase {
     store.dispatch(action: ContactsActions.SetContacts(contacts: contacts))
     XCTAssertEqual(store.state.contactsState.contacts, contacts)
   }
+
+  func test_handleSetOfficialAccounts() {
+    let accounts: Loadable<[OfficialAccount]> = .loaded([.template, .template2])
+    store.dispatch(action: ContactsActions.SetOfficialAccounts(accounts: accounts))
+    XCTAssertEqual(store.state.contactsState.officialAccounts, accounts)
+  }
 }

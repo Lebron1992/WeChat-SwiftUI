@@ -39,6 +39,7 @@
       "general": {
         "an_error_occured": "An Error Occured",
         "cancel": "Cancel",
+        "ok": "OK",
         "region": "Region",
         "retry": "Retry",
         "search": "Search",
@@ -50,6 +51,16 @@
         "pay": "Pay",
         "settings": "Settings",
         "sticker_gallery": "Sticker Gallery"
+      },
+      "onboarding": {
+        "name": "Name",
+        "email": "Email",
+        "password": "Password",
+        "login": "Login",
+        "register": "Register",
+        "switch_to": "Switch to %{mode}",
+        "email_password_cannot_empty": "Email and password can't be empty",
+        "name_email_password_cannot_empty": "Name, email and password can't be empty"
       },
       "tabbar": {
         "chats": "Chats",
@@ -99,6 +110,7 @@
         "cancel": "取消",
         "region": "地区",
         "retry": "重试",
+        "ok": "好",
         "search": "搜索",
         "something_went_wrong": "出了点问题",
         "wechat_id": "微信号"
@@ -108,6 +120,16 @@
         "pay": "支付",
         "settings": "设置",
         "sticker_gallery": "表情"
+      },
+      "onboarding": {
+        "name": "用户名",
+        "email": "邮箱",
+        "password": "密码",
+        "login": "登录",
+        "register": "注册",
+        "switch_to": "切换到%{mode}",
+        "email_password_cannot_empty": "邮箱和密码都不能为空",
+        "name_email_password_cannot_empty": "用户名、邮箱和密码都不能为空"
       },
       "tabbar": {
         "chats": "微信",

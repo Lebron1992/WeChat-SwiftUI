@@ -35,16 +35,22 @@ final class UserTests: XCTestCase {
     XCTAssertEqual("Hello, I'm LeBron James!", user?.whatsUp)
   }
 
-    func test_index() {
-        let account = User.template
-        XCTAssertEqual(account?.index, "J")
-    }
+  func test_index() {
+    let account = User.template
+    XCTAssertEqual(account?.index, "J")
+  }
 
-    func test_match() {
-        let account = User.template!
+  func test_match() {
+    let account = User.template!
 
-        XCTAssertTrue(account.match("M"))
-        XCTAssertTrue(account.match("m"))
-        XCTAssertFalse(account.match("e"))
-    }
+    XCTAssertTrue(account.match("M"))
+    XCTAssertTrue(account.match("m"))
+    XCTAssertFalse(account.match("e"))
+  }
+
+  func test_genderImage() {
+    XCTAssertEqual(User.Gender.male.iconName, "icons_filled_colorful_male")
+    XCTAssertEqual(User.Gender.male.female, "icons_filled_colorful_female")
+    XCTAssertEqual(User.Gender.male.unknown, "")
+  }
 }

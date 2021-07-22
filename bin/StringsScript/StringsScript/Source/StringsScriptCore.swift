@@ -75,7 +75,6 @@ public final class Strings {
     staticStringsLines.append("//")
     staticStringsLines.append("// =======================================================================")
     staticStringsLines.append("")
-    staticStringsLines.append("// swiftlint:disable valid_docs")
     staticStringsLines.append("// swiftlint:disable line_length")
     staticStringsLines.append("public enum Strings {")
 

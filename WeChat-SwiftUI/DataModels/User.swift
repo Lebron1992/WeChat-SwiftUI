@@ -1,3 +1,5 @@
+import FirebaseAuth
+
 struct User: Codable, Identifiable {
   let id: String
   let avatar: String
@@ -16,12 +18,43 @@ struct User: Codable, Identifiable {
     case region
     case whatsUp  = "whats_up"
   }
+
+  init(
+   id: String,
+   avatar: String,
+   name: String,
+   wechatId: String,
+   gender: Gender,
+   region: String,
+   whatsUp: String
+  ) {
+    self.id = id
+    self.avatar = avatar
+    self.name = name
+    self.wechatId = wechatId
+    self.gender = gender
+    self.region = region
+    self.whatsUp = whatsUp
+  }
+
+  init(firUser: FirebaseAuth.User) {
+    self.init(
+      id: firUser.uid,
+      avatar: firUser.photoURL?.absoluteString ?? "",
+      name: firUser.displayName ?? "",
+      wechatId: "",
+      gender: .unknown,
+      region: "",
+      whatsUp: ""
+    )
+  }
 }
 
 extension User {
   enum Gender: String, Codable {
     case male
     case female
+    case unknown
 
     var iconName: String {
       switch self {
@@ -29,6 +62,8 @@ extension User {
         return "icons_filled_colorful_male"
       case .female:
         return "icons_filled_colorful_female"
+      case .unknown:
+        return ""
       }
     }
   }

@@ -23,6 +23,7 @@
 "discover.shopping" = "购物";
 "general.an_error_occured" = "发生了一个错误";
 "general.cancel" = "取消";
+"general.ok" = "好";
 "general.region" = "地区";
 "general.retry" = "重试";
 "general.search" = "搜索";
@@ -32,6 +33,14 @@
 "me.pay" = "支付";
 "me.settings" = "设置";
 "me.sticker_gallery" = "表情";
+"onboarding.email" = "邮箱";
+"onboarding.email_password_cannot_empty" = "邮箱和密码都不能为空";
+"onboarding.login" = "登录";
+"onboarding.name" = "用户名";
+"onboarding.name_email_password_cannot_empty" = "用户名、邮箱和密码都不能为空";
+"onboarding.password" = "密码";
+"onboarding.register" = "注册";
+"onboarding.switch_to" = "切换到%{mode}";
 "tabbar.chats" = "微信";
 "tabbar.contacts" = "通讯录";
 "tabbar.discover" = "发现";

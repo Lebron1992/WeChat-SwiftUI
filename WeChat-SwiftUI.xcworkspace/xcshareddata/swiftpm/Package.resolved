@@ -1,0 +1,34 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Kickstarter-Prelude",
+        "repositoryURL": "https://github.com/Lebron1992/Kickstarter-Prelude.git",
+        "state": {
+          "branch": null,
+          "revision": "7dfaa2a8d2aa5768aceb9f8114b6a0b91957dee5",
+          "version": "0.0.1"
+        }
+      },
+      {
+        "package": "SwiftUIRedux",
+        "repositoryURL": "/Users/lebron/Documents/Lebron/my-projects/SwiftUIRedux",
+        "state": {
+          "branch": null,
+          "revision": "f5e52895ecab757200c7bc61928f9f0d58ed7b00",
+          "version": "0.0.11"
+        }
+      },
+      {
+        "package": "URLImage",
+        "repositoryURL": "https://github.com/dmytro-anokhin/url-image.git",
+        "state": {
+          "branch": null,
+          "revision": "a55b6597f6ce67dfbdc136ecfb8c8436b14ca41d",
+          "version": "3.1.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

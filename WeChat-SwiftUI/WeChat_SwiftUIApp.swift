@@ -10,10 +10,14 @@ let urlImageService = URLImageService(
 
 @main
 struct WeChat_SwiftUIApp: App {
+
+  @UIApplicationDelegateAdaptor(AppDelegate.self)
+  var appDelegate
+
   var body: some Scene {
     WindowGroup {
       StoreProvider(store: store) {
-        RootView()
+        ContentView()
           .environment(\.urlImageService, urlImageService)
           .onAppear(perform: styleApp)
       }

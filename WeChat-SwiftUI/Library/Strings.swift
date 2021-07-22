@@ -4,7 +4,6 @@
 //
 // =======================================================================
 
-// swiftlint:disable valid_docs
 // swiftlint:disable line_length
 public enum Strings {
   /**
@@ -358,6 +357,20 @@ public enum Strings {
     )
   }
   /**
+   "OK"
+
+   - **en**: "OK"
+   - **zh**: "好"
+  */
+  public static func general_ok() -> String {
+    return localizedString(
+      key: "general.ok",
+      defaultValue: "OK",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
    "Region"
 
    - **en**: "Region"
@@ -481,6 +494,118 @@ public enum Strings {
       defaultValue: "Sticker Gallery",
       count: nil,
       substitutions: [:]
+    )
+  }
+  /**
+   "Email"
+
+   - **en**: "Email"
+   - **zh**: "邮箱"
+  */
+  public static func onboarding_email() -> String {
+    return localizedString(
+      key: "onboarding.email",
+      defaultValue: "Email",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "Email and password can't be empty"
+
+   - **en**: "Email and password can't be empty"
+   - **zh**: "邮箱和密码都不能为空"
+  */
+  public static func onboarding_email_password_cannot_empty() -> String {
+    return localizedString(
+      key: "onboarding.email_password_cannot_empty",
+      defaultValue: "Email and password can't be empty",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "Login"
+
+   - **en**: "Login"
+   - **zh**: "登录"
+  */
+  public static func onboarding_login() -> String {
+    return localizedString(
+      key: "onboarding.login",
+      defaultValue: "Login",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "Name"
+
+   - **en**: "Name"
+   - **zh**: "用户名"
+  */
+  public static func onboarding_name() -> String {
+    return localizedString(
+      key: "onboarding.name",
+      defaultValue: "Name",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "Name, email and password can't be empty"
+
+   - **en**: "Name, email and password can't be empty"
+   - **zh**: "用户名、邮箱和密码都不能为空"
+  */
+  public static func onboarding_name_email_password_cannot_empty() -> String {
+    return localizedString(
+      key: "onboarding.name_email_password_cannot_empty",
+      defaultValue: "Name, email and password can't be empty",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "Password"
+
+   - **en**: "Password"
+   - **zh**: "密码"
+  */
+  public static func onboarding_password() -> String {
+    return localizedString(
+      key: "onboarding.password",
+      defaultValue: "Password",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "Register"
+
+   - **en**: "Register"
+   - **zh**: "注册"
+  */
+  public static func onboarding_register() -> String {
+    return localizedString(
+      key: "onboarding.register",
+      defaultValue: "Register",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "Switch to %{mode}"
+
+   - **en**: "Switch to %{mode}"
+   - **zh**: "切换到%{mode}"
+  */
+  public static func onboarding_switch_to(mode: String) -> String {
+    return localizedString(
+      key: "onboarding.switch_to",
+      defaultValue: "Switch to %{mode}",
+      count: nil,
+      substitutions: ["mode": mode]
     )
   }
   /**

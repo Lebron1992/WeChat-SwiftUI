@@ -153,3 +153,9 @@ enum AppEnvironment {
     userDefaults.set(data, forKey: environmentStorageKey)
   }
 }
+
+extension AppEnvironment {
+  static var isUserLoggedIn: Bool {
+    current.currentUser != nil
+  }
+}

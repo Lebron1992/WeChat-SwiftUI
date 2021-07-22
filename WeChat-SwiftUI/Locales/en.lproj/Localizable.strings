@@ -23,6 +23,7 @@
 "discover.shopping" = "Shopping";
 "general.an_error_occured" = "An Error Occured";
 "general.cancel" = "Cancel";
+"general.ok" = "OK";
 "general.region" = "Region";
 "general.retry" = "Retry";
 "general.search" = "Search";
@@ -32,6 +33,14 @@
 "me.pay" = "Pay";
 "me.settings" = "Settings";
 "me.sticker_gallery" = "Sticker Gallery";
+"onboarding.email" = "Email";
+"onboarding.email_password_cannot_empty" = "Email and password can't be empty";
+"onboarding.login" = "Login";
+"onboarding.name" = "Name";
+"onboarding.name_email_password_cannot_empty" = "Name, email and password can't be empty";
+"onboarding.password" = "Password";
+"onboarding.register" = "Register";
+"onboarding.switch_to" = "Switch to %{mode}";
 "tabbar.chats" = "Chats";
 "tabbar.contacts" = "Contacts";
 "tabbar.discover" = "Discover";
