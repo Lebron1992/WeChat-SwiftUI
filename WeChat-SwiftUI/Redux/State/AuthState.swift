@@ -1,12 +1,12 @@
 import Foundation
 
-struct AuthState {
+struct AuthState: Codable {
   var signedInUser: User?
 }
 
 extension AuthState: Equatable {
   static func == (lhs: AuthState, rhs: AuthState) -> Bool {
-    lhs.signedInUser == lhs.signedInUser
+    lhs.signedInUser == rhs.signedInUser
   }
 }
 

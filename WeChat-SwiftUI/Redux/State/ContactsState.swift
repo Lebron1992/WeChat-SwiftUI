@@ -10,7 +10,7 @@ extension ContactsState: Equatable {
   static func == (lhs: ContactsState, rhs: ContactsState) -> Bool {
     lhs.categories == rhs.categories &&
     lhs.contacts == rhs.contacts &&
-    lhs.officialAccounts == lhs.officialAccounts
+    lhs.officialAccounts == rhs.officialAccounts
   }
 }
 

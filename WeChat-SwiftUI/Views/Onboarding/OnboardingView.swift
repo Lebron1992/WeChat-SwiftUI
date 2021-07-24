@@ -1,5 +1,6 @@
 import SwiftUI
 import FirebaseAuth
+import FirebaseFirestore
 import SwiftUIRedux
 
 struct OnboardingView: View {
@@ -18,6 +19,8 @@ struct OnboardingView: View {
 
   @State
   var password: String = ""
+
+  private let cancelBag = CancelBag()
 
   var body: some View {
     VStack {
@@ -63,6 +66,7 @@ struct OnboardingView: View {
 
   private func login() {
     guard allFieldsAreValid() else {
+        setErrorMessage(Strings.onboarding_email_password_cannot_empty())
       return
     }
 
@@ -84,6 +88,7 @@ struct OnboardingView: View {
 
   private func register() {
     guard allFieldsAreValid() else {
+        setErrorMessage(Strings.onboarding_name_email_password_cannot_empty())
       return
     }
 
@@ -101,8 +106,23 @@ struct OnboardingView: View {
         request.displayName = name
         request.commitChanges { _ in
           let user = User(firUser: result.user)
-          setSignedInUser(user)
-          setShowLoading(false)
+
+          // 注册成功，把用户保存到数据库中
+          AppEnvironment.current.firestoreService
+            .overrideUser(user)
+            .sinkForUI(receiveCompletion: { completion in
+              setSignedInUser(user)
+              setShowLoading(false)
+              // 未考虑错误的情况：因为实际情况中只有把用户保存到数据库中才算注册成功；
+              // 这里使用 Firebase 注册，注册成功之后才把用户保存到数据库中，在保存出错的情况下，不方便把已注册的用户删除
+              switch completion {
+              case let .failure(error):
+                print("Error saving user: \(error.localizedDescription)")
+              default:
+                break
+              }
+            })
+            .store(in: cancelBag)
         }
       }
     }
@@ -112,12 +132,10 @@ struct OnboardingView: View {
     switch mode {
     case .login:
       if email.isEmpty || password.isEmpty {
-        setErrorMessage(Strings.onboarding_email_password_cannot_empty())
         return false
       }
     case .register:
       if name.isEmpty || email.isEmpty || password.isEmpty {
-        setErrorMessage(Strings.onboarding_name_email_password_cannot_empty())
         return false
       }
     }

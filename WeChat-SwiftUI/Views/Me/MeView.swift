@@ -9,14 +9,12 @@ import URLImage
 
 struct MeView: ConnectedView {
   struct Props {
-    let userSelf: Loadable<User>
-    let loadUserSelf: () -> Void
+    let signedInUser: User?
   }
 
   func map(state: AppState, dispatch: @escaping (Action) -> Void) -> Props {
     Props(
-      userSelf: state.meState.userSelf,
-      loadUserSelf: { dispatch(MeActions.LoadUserSelf()) }
+      signedInUser: state.authState.signedInUser
     )
   }
 
@@ -31,71 +29,48 @@ struct MeView: ConnectedView {
 // MARK: - Display Content
 private extension MeView {
 
-  private func content(_ props: Props) -> some View {
-    switch props.userSelf {
-    case .notRequested:
-      return AnyView(Text("").onAppear(perform: props.loadUserSelf))
-
-    case let .isLoading(last, _):
-      return AnyView(loadingView(me: last))
-
-    case let .loaded(userSelf):
-      return AnyView(loadedView(me: userSelf, showLoading: false))
-
-    case let .failed(error):
-      return AnyView(ErrorView(error: error, retryAction: props.loadUserSelf))
-    }
-  }
-
-  func loadingView(me previouslyLoaded: User?) -> some View {
-    if let me = previouslyLoaded {
-      return AnyView(loadedView(me: me, showLoading: true))
+  func content(_ props: Props) -> some View {
+    if let user = props.signedInUser {
+      return AnyView(Me(user))
     } else {
-      return AnyView(ActivityIndicatorView().padding())
+      return AnyView(EmptyView())
     }
   }
 
-  func loadedView(me: User, showLoading: Bool) -> some View {
+  func Me(_ me: User) -> some View {
     ZStack(alignment: .topTrailing) {
-      ZStack {
-        List {
-          Section {
-            MeInfo(me: me)
-          }
-          .listRowBackground(Color.app_white)
-
-          SectionHeaderBackground()
-
-          Section {
-            MeItemRow(item: .pay)
-          }
-          .listRowBackground(Color.app_white)
-
-          SectionHeaderBackground()
-
-          Section {
-            ForEach([MeItem.favorites, MeItem.stickerGallery], id: \.self) {
-              MeItemRow(item: $0)
-            }
-          }
-          .listRowBackground(Color.app_white)
-
-          SectionHeaderBackground()
-
-          Section {
-            MeItemRow(item: .settings)
-          }
-          .listRowBackground(Color.app_white)
+      List {
+        Section {
+          MeInfo(me: me)
         }
-        .background(.app_bg)
-        .listStyle(.plain)
-        .environment(\.defaultMinListRowHeight, 10)
+        .listRowBackground(Color.app_white)
 
-        if showLoading {
-          ActivityIndicatorView(color: .gray)
-            .padding()
+        SectionHeaderBackground()
+
+        Section {
+          MeItemRow(item: .pay)
         }
+        .listRowBackground(Color.app_white)
+
+        SectionHeaderBackground()
+
+        Section {
+          ForEach([MeItem.favorites, MeItem.stickerGallery], id: \.self) {
+            MeItemRow(item: $0)
+          }
+        }
+        .listRowBackground(Color.app_white)
+
+        SectionHeaderBackground()
+
+        Section {
+          MeItemRow(item: .settings)
+        }
+        .listRowBackground(Color.app_white)
       }
+      .background(.app_bg)
+      .listStyle(.plain)
+      .environment(\.defaultMinListRowHeight, 10)
 
       Image("icons_filled_camera")
         .padding(.top, 4)

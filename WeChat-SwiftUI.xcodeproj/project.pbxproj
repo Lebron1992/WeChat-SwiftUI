@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F1C2F9A6170C31AFC9188B3 /* Pods_WeChat_SwiftUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F962857C9287D203FA8877 /* Pods_WeChat_SwiftUITests.framework */; };
 		AFE1BCADF2EFD2AB694A33A2 /* Pods_WeChat_SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB854DDD9775BEBC15DDB6F /* Pods_WeChat_SwiftUI.framework */; };
 		FD1D013026999A7A00A9AF37 /* expressions.json in Resources */ = {isa = PBXBuildFile; fileRef = FD1D012F26999A7A00A9AF37 /* expressions.json */; };
 		FD1D01322699B72700A9AF37 /* ExpressionSticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1D01312699B72700A9AF37 /* ExpressionSticker.swift */; };
@@ -20,10 +21,6 @@
 		FD1F16C1269162A6009D08DF /* DiscoverItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16C0269162A6009D08DF /* DiscoverItem.swift */; };
 		FD1F16C326918EF5009D08DF /* DiscoverState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16C226918EF5009D08DF /* DiscoverState.swift */; };
 		FD1F16C526919065009D08DF /* DiscoverList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16C426919065009D08DF /* DiscoverList.swift */; };
-		FD1F16C726920781009D08DF /* MeActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16C626920781009D08DF /* MeActions.swift */; };
-		FD1F16C926920818009D08DF /* MeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16C826920818009D08DF /* MeState.swift */; };
-		FD1F16CD2692DF15009D08DF /* MeActionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16CC2692DF15009D08DF /* MeActionsTests.swift */; };
-		FD1F16CF2692E005009D08DF /* MeReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16CE2692E005009D08DF /* MeReducer.swift */; };
 		FD1F16D12692F5E9009D08DF /* SectionHeaderBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16D02692F5E9009D08DF /* SectionHeaderBackground.swift */; };
 		FD1F16D32692F8FB009D08DF /* SectionHeaderTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16D22692F8FB009D08DF /* SectionHeaderTitle.swift */; };
 		FD1F16D52692FB99009D08DF /* ImageTitleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16D42692FB99009D08DF /* ImageTitleRow.swift */; };
@@ -41,7 +38,6 @@
 		FD5412E926A8122E0001D199 /* SystemReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5412E826A8122E0001D199 /* SystemReducer.swift */; };
 		FD5412EB26A8127E0001D199 /* SystemActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5412EA26A8127E0001D199 /* SystemActions.swift */; };
 		FD5412ED26A812E40001D199 /* SystemReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5412EC26A812E40001D199 /* SystemReducerTests.swift */; };
-		FD5412EF26A8139B0001D199 /* MeReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5412EE26A8139B0001D199 /* MeReducerTests.swift */; };
 		FD5412F126A81CB60001D199 /* AuthReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5412F026A81CB60001D199 /* AuthReducer.swift */; };
 		FD5412F326A81D040001D199 /* AuthActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5412F226A81D040001D199 /* AuthActions.swift */; };
 		FD5412F626A81D850001D199 /* AuthReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5412F426A81D690001D199 /* AuthReducerTests.swift */; };
@@ -58,6 +54,10 @@
 		FD6D378F268624520087272F /* OfficialAccountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D378E268624520087272F /* OfficialAccountTests.swift */; };
 		FD6D3791268624780087272F /* OfficialAccountTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D3790268624780087272F /* OfficialAccountTemplates.swift */; };
 		FD6D3793268625610087272F /* ContactOfficialAccountsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D3792268625610087272F /* ContactOfficialAccountsList.swift */; };
+		FD6FE98C26A975950059BF45 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6FE98B26A975950059BF45 /* FirestoreService.swift */; };
+		FD6FE99026A9785B0059BF45 /* FirestoreServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6FE98F26A9785B0059BF45 /* FirestoreServiceType.swift */; };
+		FD6FE99226A9786D0059BF45 /* FirestoreServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6FE99126A9786D0059BF45 /* FirestoreServiceMock.swift */; };
+		FD6FE99426A9C30B0059BF45 /* AnyPublisher+ReceiveForUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6FE99326A9C30B0059BF45 /* AnyPublisher+ReceiveForUI.swift */; };
 		FD76764B26A31DBB0050457D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD76764A26A31DBB0050457D /* GoogleService-Info.plist */; };
 		FD76764E26A3C1DF0050457D /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD76764D26A3C1DF0050457D /* OnboardingView.swift */; };
 		FD76765026A3D1DB0050457D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD76764F26A3D1DB0050457D /* ContentView.swift */; };
@@ -158,9 +158,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18F962857C9287D203FA8877 /* Pods_WeChat_SwiftUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeChat_SwiftUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B4D0835FCB71323FDB06DE3 /* Pods-WeChat-SwiftUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChat-SwiftUITests.debug.xcconfig"; path = "Target Support Files/Pods-WeChat-SwiftUITests/Pods-WeChat-SwiftUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4A361B9C52E3F24B78D51243 /* Pods-WeChat-SwiftUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChat-SwiftUI.debug.xcconfig"; path = "Target Support Files/Pods-WeChat-SwiftUI/Pods-WeChat-SwiftUI.debug.xcconfig"; sourceTree = "<group>"; };
 		705D3EF5AFF8B88FA29229A6 /* Pods-WeChat-SwiftUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChat-SwiftUI.release.xcconfig"; path = "Target Support Files/Pods-WeChat-SwiftUI/Pods-WeChat-SwiftUI.release.xcconfig"; sourceTree = "<group>"; };
 		9CB854DDD9775BEBC15DDB6F /* Pods_WeChat_SwiftUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeChat_SwiftUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D74E8DA1C37B8DF975B82FD4 /* Pods-WeChat-SwiftUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChat-SwiftUITests.release.xcconfig"; path = "Target Support Files/Pods-WeChat-SwiftUITests/Pods-WeChat-SwiftUITests.release.xcconfig"; sourceTree = "<group>"; };
 		FD1D012F26999A7A00A9AF37 /* expressions.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = expressions.json; sourceTree = "<group>"; };
 		FD1D01312699B72700A9AF37 /* ExpressionSticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressionSticker.swift; sourceTree = "<group>"; };
 		FD1D01332699BC6700A9AF37 /* ExpressionPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressionPreview.swift; sourceTree = "<group>"; };
@@ -174,10 +177,6 @@
 		FD1F16C0269162A6009D08DF /* DiscoverItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverItem.swift; sourceTree = "<group>"; };
 		FD1F16C226918EF5009D08DF /* DiscoverState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverState.swift; sourceTree = "<group>"; };
 		FD1F16C426919065009D08DF /* DiscoverList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverList.swift; sourceTree = "<group>"; };
-		FD1F16C626920781009D08DF /* MeActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeActions.swift; sourceTree = "<group>"; };
-		FD1F16C826920818009D08DF /* MeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeState.swift; sourceTree = "<group>"; };
-		FD1F16CC2692DF15009D08DF /* MeActionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeActionsTests.swift; sourceTree = "<group>"; };
-		FD1F16CE2692E005009D08DF /* MeReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeReducer.swift; sourceTree = "<group>"; };
 		FD1F16D02692F5E9009D08DF /* SectionHeaderBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderBackground.swift; sourceTree = "<group>"; };
 		FD1F16D22692F8FB009D08DF /* SectionHeaderTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderTitle.swift; sourceTree = "<group>"; };
 		FD1F16D42692FB99009D08DF /* ImageTitleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTitleRow.swift; sourceTree = "<group>"; };
@@ -195,7 +194,6 @@
 		FD5412E826A8122E0001D199 /* SystemReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemReducer.swift; sourceTree = "<group>"; };
 		FD5412EA26A8127E0001D199 /* SystemActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemActions.swift; sourceTree = "<group>"; };
 		FD5412EC26A812E40001D199 /* SystemReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemReducerTests.swift; sourceTree = "<group>"; };
-		FD5412EE26A8139B0001D199 /* MeReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeReducerTests.swift; sourceTree = "<group>"; };
 		FD5412F026A81CB60001D199 /* AuthReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthReducer.swift; sourceTree = "<group>"; };
 		FD5412F226A81D040001D199 /* AuthActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthActions.swift; sourceTree = "<group>"; };
 		FD5412F426A81D690001D199 /* AuthReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthReducerTests.swift; sourceTree = "<group>"; };
@@ -212,6 +210,10 @@
 		FD6D378E268624520087272F /* OfficialAccountTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficialAccountTests.swift; sourceTree = "<group>"; };
 		FD6D3790268624780087272F /* OfficialAccountTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficialAccountTemplates.swift; sourceTree = "<group>"; };
 		FD6D3792268625610087272F /* ContactOfficialAccountsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactOfficialAccountsList.swift; sourceTree = "<group>"; };
+		FD6FE98B26A975950059BF45 /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
+		FD6FE98F26A9785B0059BF45 /* FirestoreServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreServiceType.swift; sourceTree = "<group>"; };
+		FD6FE99126A9786D0059BF45 /* FirestoreServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreServiceMock.swift; sourceTree = "<group>"; };
+		FD6FE99326A9C30B0059BF45 /* AnyPublisher+ReceiveForUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyPublisher+ReceiveForUI.swift"; sourceTree = "<group>"; };
 		FD76764A26A31DBB0050457D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FD76764D26A3C1DF0050457D /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		FD76764F26A3D1DB0050457D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F1C2F9A6170C31AFC9188B3 /* Pods_WeChat_SwiftUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,6 +333,7 @@
 			isa = PBXGroup;
 			children = (
 				9CB854DDD9775BEBC15DDB6F /* Pods_WeChat_SwiftUI.framework */,
+				18F962857C9287D203FA8877 /* Pods_WeChat_SwiftUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -339,6 +343,8 @@
 			children = (
 				4A361B9C52E3F24B78D51243 /* Pods-WeChat-SwiftUI.debug.xcconfig */,
 				705D3EF5AFF8B88FA29229A6 /* Pods-WeChat-SwiftUI.release.xcconfig */,
+				2B4D0835FCB71323FDB06DE3 /* Pods-WeChat-SwiftUITests.debug.xcconfig */,
+				D74E8DA1C37B8DF975B82FD4 /* Pods-WeChat-SwiftUITests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -371,6 +377,32 @@
 				FD424F8F268B050900F11A62 /* Image.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		FD6FE98D26A975D30059BF45 /* Firestore */ = {
+			isa = PBXGroup;
+			children = (
+				FD6FE98B26A975950059BF45 /* FirestoreService.swift */,
+				FD6FE99126A9786D0059BF45 /* FirestoreServiceMock.swift */,
+				FD6FE98F26A9785B0059BF45 /* FirestoreServiceType.swift */,
+			);
+			path = Firestore;
+			sourceTree = "<group>";
+		};
+		FD6FE98E26A977900059BF45 /* OurOwnBackend */ = {
+			isa = PBXGroup;
+			children = (
+				FDCC726C266F70EA00A48140 /* MockService.swift */,
+				FDCC7254266F212B00A48140 /* ServerConfigTests.swift */,
+				FDCC724E266F1A3400A48140 /* ServerConfigType.swift */,
+				FDCC7264266F5C5B00A48140 /* Service.swift */,
+				FDCC728F267343A800A48140 /* Service+RequestHelpers.swift */,
+				FDCC7268266F62C900A48140 /* ServiceTests.swift */,
+				FDCC724C266F19CF00A48140 /* ServiceType.swift */,
+				FDCC726A266F650F00A48140 /* ServiceTypeTests.swift */,
+				FDCC7256266F26C900A48140 /* Lib */,
+			);
+			path = OurOwnBackend;
 			sourceTree = "<group>";
 		};
 		FD76764C26A3C1A90050457D /* Onboarding */ = {
@@ -410,8 +442,6 @@
 				FD5412F226A81D040001D199 /* AuthActions.swift */,
 				FD88275E267AF2EB00BBEAB6 /* ContactsActions.swift */,
 				FD882777267F1BD500BBEAB6 /* ContactsActionsTests.swift */,
-				FD1F16C626920781009D08DF /* MeActions.swift */,
-				FD1F16CC2692DF15009D08DF /* MeActionsTests.swift */,
 				FD8827472679A9BF00BBEAB6 /* RootActions.swift */,
 				FD5412EA26A8127E0001D199 /* SystemActions.swift */,
 			);
@@ -426,8 +456,6 @@
 				FD5412F426A81D690001D199 /* AuthReducerTests.swift */,
 				FD88275C267AF2C300BBEAB6 /* ContactsReducer.swift */,
 				FD882770267EE4E500BBEAB6 /* ContactsReducerTests.swift */,
-				FD1F16CE2692E005009D08DF /* MeReducer.swift */,
-				FD5412EE26A8139B0001D199 /* MeReducerTests.swift */,
 				FD8827452679A98D00BBEAB6 /* RootReducer.swift */,
 				FD88277C267F314000BBEAB6 /* RootReducerTests.swift */,
 				FD5412E826A8122E0001D199 /* SystemReducer.swift */,
@@ -443,7 +471,6 @@
 				FD76765126A3D40A0050457D /* AuthState.swift */,
 				FD88275A267AF27200BBEAB6 /* ContactsState.swift */,
 				FD1F16C226918EF5009D08DF /* DiscoverState.swift */,
-				FD1F16C826920818009D08DF /* MeState.swift */,
 				FD8827412679A75B00BBEAB6 /* RootState.swift */,
 				FD5412E626A811970001D199 /* SystemState.swift */,
 			);
@@ -595,15 +622,8 @@
 		FDCC7245266E680800A48140 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				FDCC726C266F70EA00A48140 /* MockService.swift */,
-				FDCC7254266F212B00A48140 /* ServerConfigTests.swift */,
-				FDCC724E266F1A3400A48140 /* ServerConfigType.swift */,
-				FDCC7264266F5C5B00A48140 /* Service.swift */,
-				FDCC728F267343A800A48140 /* Service+RequestHelpers.swift */,
-				FDCC7268266F62C900A48140 /* ServiceTests.swift */,
-				FDCC724C266F19CF00A48140 /* ServiceType.swift */,
-				FDCC726A266F650F00A48140 /* ServiceTypeTests.swift */,
-				FDCC7256266F26C900A48140 /* Lib */,
+				FD6FE98D26A975D30059BF45 /* Firestore */,
+				FD6FE98E26A977900059BF45 /* OurOwnBackend */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -691,6 +711,7 @@
 		FDCC72812671AC1800A48140 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				FD6FE99326A9C30B0059BF45 /* AnyPublisher+ReceiveForUI.swift */,
 				FD88279E2681E52E00BBEAB6 /* Color+Hex.swift */,
 				FD8827A02681E6DC00BBEAB6 /* Color+HexTests.swift */,
 				FD6D37852685D21A0087272F /* EdgeInsets.swift */,
@@ -748,10 +769,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FDCC723F266E254E00A48140 /* Build configuration list for PBXNativeTarget "WeChat-SwiftUITests" */;
 			buildPhases = (
+				CA57F5F43D5F2E5DC0CF7F00 /* [CP] Check Pods Manifest.lock */,
 				FDCC7224266E254E00A48140 /* Sources */,
 				FDCC7225266E254E00A48140 /* Frameworks */,
 				FDCC7226266E254E00A48140 /* Resources */,
 				FDCC728E2673101A00A48140 /* Swiftlint */,
+				4003D6331091B6CF84DFAADC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -859,6 +882,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		4003D6331091B6CF84DFAADC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WeChat-SwiftUITests/Pods-WeChat-SwiftUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WeChat-SwiftUITests/Pods-WeChat-SwiftUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WeChat-SwiftUITests/Pods-WeChat-SwiftUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		8D744CE048D1DBEC43B46454 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -896,6 +936,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WeChat-SwiftUI/Pods-WeChat-SwiftUI-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CA57F5F43D5F2E5DC0CF7F00 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WeChat-SwiftUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FDCC728D26730FEC00A48140 /* Swiftlint */ = {
@@ -944,7 +1006,6 @@
 				FD1F16DB26943832009D08DF /* ChatView.swift in Sources */,
 				FD1F16E32695A743009D08DF /* UIApplication+EndEditing.swift in Sources */,
 				FD5412F126A81CB60001D199 /* AuthReducer.swift in Sources */,
-				FD1F16CF2692E005009D08DF /* MeReducer.swift in Sources */,
 				FD5412E926A8122E0001D199 /* SystemReducer.swift in Sources */,
 				FD882759267AF24500BBEAB6 /* ContactsList.swift in Sources */,
 				FDCC728C2671C34200A48140 /* UserTemplates.swift in Sources */,
@@ -966,7 +1027,6 @@
 				FD1E4CEB2674A47200BD2C34 /* LocalizedString.swift in Sources */,
 				FD1D01342699BC6700A9AF37 /* ExpressionPreview.swift in Sources */,
 				FD6D3784268576BE0087272F /* ContactCategoriesList.swift in Sources */,
-				FD1F16C726920781009D08DF /* MeActions.swift in Sources */,
 				FD1F16DF26959F83009D08DF /* ChatInputPanel.swift in Sources */,
 				FD1F16D32692F8FB009D08DF /* SectionHeaderTitle.swift in Sources */,
 				FD1D0138269ACD3C00A9AF37 /* DelayTouchesModifier.swift in Sources */,
@@ -982,6 +1042,7 @@
 				FD1D013A269AFFA800A9AF37 /* ChatInputToolBar.swift in Sources */,
 				FDCC7253266F1FB800A48140 /* Secrets.swift in Sources */,
 				FD8827962680988100BBEAB6 /* Colors.swift in Sources */,
+				FD6FE99226A9786D0059BF45 /* FirestoreServiceMock.swift in Sources */,
 				FD8827442679A80900BBEAB6 /* TabBarItem.swift in Sources */,
 				FD882784267F888D00BBEAB6 /* NavigationBarBackgroundModifierLightGray.swift in Sources */,
 				FD8827422679A75B00BBEAB6 /* RootState.swift in Sources */,
@@ -1008,6 +1069,7 @@
 				FD1F16C526919065009D08DF /* DiscoverList.swift in Sources */,
 				FD88274E2679D86D00BBEAB6 /* ChatsView.swift in Sources */,
 				FD3D102C26A6AFAB0045C218 /* LoadingModifier.swift in Sources */,
+				FD6FE99026A9785B0059BF45 /* FirestoreServiceType.swift in Sources */,
 				FD1F16E12695A6FD009D08DF /* ResignKeyboardOnTapGestureModifier.swift in Sources */,
 				FD88279D2681E1F100BBEAB6 /* Haptics.swift in Sources */,
 				FDCC721B266E254D00A48140 /* WeChat_SwiftUIApp.swift in Sources */,
@@ -1028,7 +1090,6 @@
 				FD8827462679A98D00BBEAB6 /* RootReducer.swift in Sources */,
 				FD1F16EA26974645009D08DF /* ExpressionKeyboard.swift in Sources */,
 				FD8827482679A9BF00BBEAB6 /* RootActions.swift in Sources */,
-				FD1F16C926920818009D08DF /* MeState.swift in Sources */,
 				FD88273C2679A37600BBEAB6 /* AppState.swift in Sources */,
 				FD8827402679A40600BBEAB6 /* Store.swift in Sources */,
 				FD6D378226856E310087272F /* ContactCategory.swift in Sources */,
@@ -1038,9 +1099,11 @@
 				FD882786267F89E000BBEAB6 /* NavigationBarBackgroundModifierWhite.swift in Sources */,
 				FD882762267AFAAF00BBEAB6 /* ActivityIndicatorView.swift in Sources */,
 				FD88275B267AF27200BBEAB6 /* ContactsState.swift in Sources */,
+				FD6FE98C26A975950059BF45 /* FirestoreService.swift in Sources */,
 				FD6D3793268625610087272F /* ContactOfficialAccountsList.swift in Sources */,
 				FDCC7290267343A800A48140 /* Service+RequestHelpers.swift in Sources */,
 				FD880A0126A01EFE002D3396 /* MessagesList.swift in Sources */,
+				FD6FE99426A9C30B0059BF45 /* AnyPublisher+ReceiveForUI.swift in Sources */,
 				FDCC729F2673499700A48140 /* APIError.swift in Sources */,
 				FD88275F267AF2EB00BBEAB6 /* ContactsActions.swift in Sources */,
 			);
@@ -1065,9 +1128,7 @@
 				FD5412F626A81D850001D199 /* AuthReducerTests.swift in Sources */,
 				FD8827A22681E6E700BBEAB6 /* Color+HexTests.swift in Sources */,
 				FDCC72892671C14800A48140 /* AppEnvironmentTests.swift in Sources */,
-				FD5412EF26A8139B0001D199 /* MeReducerTests.swift in Sources */,
 				FD88277D267F314000BBEAB6 /* RootReducerTests.swift in Sources */,
-				FD1F16CD2692DF15009D08DF /* MeActionsTests.swift in Sources */,
 				FD6D37882685D2540087272F /* EdgeInsetsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1274,13 +1335,14 @@
 		};
 		FDCC7240266E254E00A48140 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B4D0835FCB71323FDB06DE3 /* Pods-WeChat-SwiftUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PDS2N83HDN;
 				INFOPLIST_FILE = "WeChat-SwiftUITests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1296,13 +1358,14 @@
 		};
 		FDCC7241266E254E00A48140 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D74E8DA1C37B8DF975B82FD4 /* Pods-WeChat-SwiftUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PDS2N83HDN;
 				INFOPLIST_FILE = "WeChat-SwiftUITests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

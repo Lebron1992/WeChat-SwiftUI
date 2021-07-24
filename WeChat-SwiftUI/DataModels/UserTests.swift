@@ -50,7 +50,7 @@ final class UserTests: XCTestCase {
 
   func test_genderImage() {
     XCTAssertEqual(User.Gender.male.iconName, "icons_filled_colorful_male")
-    XCTAssertEqual(User.Gender.male.female, "icons_filled_colorful_female")
-    XCTAssertEqual(User.Gender.male.unknown, "")
+    XCTAssertEqual(User.Gender.female.iconName, "icons_filled_colorful_female")
+    XCTAssertEqual(User.Gender.unknown.iconName, "")
   }
 }

@@ -8,3 +8,10 @@ target 'WeChat-SwiftUI' do
   pod 'Firebase/Storage'
   pod 'Firebase/Firestore'
 end
+
+target 'WeChat-SwiftUITests' do
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Storage'
+  pod 'Firebase/Firestore'
+end

@@ -14,6 +14,23 @@ struct WeChat_SwiftUIApp: App {
   @UIApplicationDelegateAdaptor(AppDelegate.self)
   var appDelegate
 
+  private let cancelBag = CancelBag()
+
+  init() {
+    let appState = AppState()
+
+    store.$state
+      .scan((appState, appState)) { result, newState in
+        let oldState = result.1
+        if oldState.archivePropertiesEqualTo(newState) == false {
+          newState.archive()
+        }
+        return (oldState, newState)
+      }
+      .sink(receiveValue: { _ in })
+      .store(in: cancelBag)
+  }
+
   var body: some Scene {
     WindowGroup {
       StoreProvider(store: store) {
