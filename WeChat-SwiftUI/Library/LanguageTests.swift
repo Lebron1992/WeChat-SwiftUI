@@ -14,4 +14,9 @@ final class LanguageTests: XCTestCase {
     XCTAssertEqual(Language.zh, Language(languageStrings: ["AB", "BC", "ZH"]))
     XCTAssertEqual(nil, Language(languageStrings: ["AB", "BC", "CD"]))
   }
+
+  func test_displayString() {
+    XCTAssertEqual(Language.en.displayString, "English")
+    XCTAssertEqual(Language.zh.displayString, "简体中文")
+  }
 }

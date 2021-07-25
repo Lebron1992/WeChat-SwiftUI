@@ -5,11 +5,11 @@ struct Environment {
   /// 用于从自己的后台获取数据的类型。
   let apiService: ServiceType
 
-  /// 用于从 Firebase 的 Firestore Database 获取数据的类型，代替 apiService 用于模拟数据
-  let firestoreService: FirestoreServiceType
-
   /// 当前已登录的用户。
   let currentUser: User?
+
+  /// 代替 apiService 用于模拟真实开发，用于从 Firebase 的 Firestore Database 获取数据的类型。
+  let firestoreService: FirestoreServiceType
 
   /// 用户的当前语言，用于确定要加载哪个本地化字符串包。
   let language: Language
@@ -19,8 +19,8 @@ struct Environment {
 
   init(
     apiService: ServiceType = Service(),
-    firestoreService: FirestoreServiceType = FirestoreService(),
     currentUser: User? = nil,
+    firestoreService: FirestoreServiceType = FirestoreService(),
     language: Language = Language(languageStrings: Locale.preferredLanguages) ?? .zh,
     userDefaults: KeyValueStoreType = UserDefaults.standard
   ) {

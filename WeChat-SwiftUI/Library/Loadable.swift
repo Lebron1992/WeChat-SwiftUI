@@ -78,29 +78,3 @@ extension Loadable: Equatable where T: Equatable {
     }
   }
 }
-
-protocol SomeOptional {
-  associatedtype Wrapped
-  func unwrap() throws -> Wrapped
-}
-
-struct ValueIsMissingError: Error {
-  var localizedDescription: String {
-    "Data is missing"
-  }
-}
-
-extension Optional: SomeOptional {
-  func unwrap() throws -> Wrapped {
-    switch self {
-    case let .some(value): return value
-    case .none: throw ValueIsMissingError()
-    }
-  }
-}
-
-extension Loadable where T: SomeOptional {
-  func unwrap() -> Loadable<T.Wrapped> {
-    map { try $0.unwrap() }
-  }
-}

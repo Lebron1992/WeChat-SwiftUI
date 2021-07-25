@@ -121,7 +121,7 @@ extension ExpressionPreview {
 
 struct ExpressionPreview_Previews: PreviewProvider {
   static var previews: some View {
-    ExpressionPreview(expression: .template)
+    ExpressionPreview(expression: .awesome)
       .frame(width: 64, height: 136)
       .padding(100)
       .background(.red)

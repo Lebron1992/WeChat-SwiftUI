@@ -37,9 +37,7 @@ enum AppEnvironment {
   /// 获得一个新用户并希望替换当前环境的用户时调用。
   /// - Parameter user: User 数据模型。
   static func updateCurrentUser(_ user: User) {
-    replaceCurrentEnvironment(
-      currentUser: user
-    )
+    replaceCurrentEnvironment(currentUser: user)
   }
 
   /// 替换当前环境的语言。
@@ -87,13 +85,17 @@ enum AppEnvironment {
   static func replaceCurrentEnvironment(
     apiService: ServiceType = AppEnvironment.current.apiService,
     currentUser: User? = AppEnvironment.current.currentUser,
-    language: Language = AppEnvironment.current.language
+    firestoreService: FirestoreServiceType = AppEnvironment.current.firestoreService,
+    language: Language = AppEnvironment.current.language,
+    userDefaults: KeyValueStoreType = AppEnvironment.current.userDefaults
   ) {
     replaceCurrentEnvironment(
       Environment(
         apiService: apiService,
         currentUser: currentUser,
-        language: language
+        firestoreService: firestoreService,
+        language: language,
+        userDefaults: userDefaults
       )
     )
   }
@@ -102,13 +104,15 @@ enum AppEnvironment {
   static func pushEnvironment(
     apiService: ServiceType = AppEnvironment.current.apiService,
     currentUser: User? = AppEnvironment.current.currentUser,
+    firestoreService: FirestoreServiceType = AppEnvironment.current.firestoreService,
     language: Language = AppEnvironment.current.language,
-    userDefaults: KeyValueStoreType = UserDefaults.standard
+    userDefaults: KeyValueStoreType = AppEnvironment.current.userDefaults
   ) {
     pushEnvironment(
       Environment(
         apiService: apiService,
         currentUser: currentUser,
+        firestoreService: firestoreService,
         language: language,
         userDefaults: userDefaults
       )

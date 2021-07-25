@@ -12,7 +12,8 @@ func localizedString(
   defaultValue: String = "",
   count: Int? = nil,
   substitutions: [String: String] = [:],
-  env: Environment = AppEnvironment.current
+  env: Environment = AppEnvironment.current,
+  bundle: NSBundleType = stringsBundle
 ) -> String {
   // 当传入的 `count` 有值时，我们需要用复数后缀来更新键。
   let augmentedKey = count
@@ -20,8 +21,8 @@ func localizedString(
     .coalesceWith(key)
 
   let lprojName = lprojFileNameForLanguage(env.language)
-  let localized = Bundle.main.path(forResource: lprojName, ofType: "lproj")
-    .flatMap { Bundle(path: $0) }
+  let localized = bundle.path(forResource: lprojName, ofType: "lproj")
+    .flatMap(type(of: bundle).create(path:))
     .flatMap { $0.localizedString(forKey: augmentedKey, value: nil, table: nil) }
     .filter {
       // 注意：`localizedStringForKey` 有一个恼人的习惯，就是在键不存在时返回键。
@@ -60,3 +61,6 @@ private func substitute(_ string: String, with substitutions: [String: String]) 
     accum.replacingOccurrences(of: "%{\(sub.0)}", with: sub.1)
   }
 }
+
+private class Pin {}
+private let stringsBundle = Bundle(for: Pin.self)

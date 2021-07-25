@@ -1,9 +1,10 @@
 import SwiftUI
 import SwiftUIRedux
+import Firebase
 import URLImage
 import URLImageStore
 
-let urlImageService = URLImageService(
+private let urlImageService = URLImageService(
   fileStore: URLImageFileStore(),
   inMemoryStore: URLImageInMemoryStore()
 )
@@ -11,14 +12,15 @@ let urlImageService = URLImageService(
 @main
 struct WeChat_SwiftUIApp: App {
 
-  @UIApplicationDelegateAdaptor(AppDelegate.self)
-  var appDelegate
-
   private let cancelBag = CancelBag()
 
   init() {
-    let appState = AppState()
+    FirebaseApp.configure()
 
+    let restoredEnv = AppEnvironment.fromStorage(userDefaults: UserDefaults.standard)
+    AppEnvironment.replaceCurrentEnvironment(restoredEnv)
+
+    let appState = AppState()
     store.$state
       .scan((appState, appState)) { result, newState in
         let oldState = result.1

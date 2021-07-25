@@ -1,9 +1,6 @@
 import Foundation
 import SwiftUIRedux
 
-private let appStateStorageKey = "com.WeChat-SwiftUI.AppState"
-private var archiveURL: URL!
-
 struct AppState: ReduxState {
 
   var authState = AuthState(signedInUser: nil)
@@ -18,15 +15,10 @@ struct AppState: ReduxState {
 
   var rootState = RootState(selectedTab: .chats)
 
-  var systemState = SystemState(showLoading: false)
+  var systemState = SystemState(showLoading: false, errorMessage: nil)
 
   init() {
-    guard let docDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
-      fatalError("Couldn't get document directory")
-    }
-    archiveURL = docDir.appendingPathComponent("AppState")
-
-    guard let data = try? Data(contentsOf: archiveURL),
+    guard let data = AppEnvironment.current.userDefaults.data(forKey: Self.appStateStorageKey),
           let dataObj = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
             return
           }
@@ -37,8 +29,6 @@ struct AppState: ReduxState {
       case .authState:
         if let state: AuthState = tryDecode(json) {
           authState = state
-        } else {
-          authState = AuthState(signedInUser: nil)
         }
       }
     }
@@ -56,15 +46,8 @@ struct AppState: ReduxState {
       }
     }
 
-    guard let data = try? JSONSerialization.data(withJSONObject: dataObj) else {
-      return
-    }
-
-    do {
-      try data.write(to: archiveURL)
-    } catch {
-      print("Error saving AppState: \(error)")
-    }
+    AppEnvironment.current.userDefaults.set(dataObj.data, forKey: Self.appStateStorageKey)
+    _ = AppEnvironment.current.userDefaults.synchronize()
   }
 
   func archivePropertiesEqualTo(_ another: AppState) -> Bool {
@@ -109,6 +92,8 @@ struct AppState: ReduxState {
 }
 
 extension AppState {
+  static let appStateStorageKey = "com.WeChat-SwiftUI.AppState"
+
   enum ArchiveKeys: String, CaseIterable {
     case authState
   }

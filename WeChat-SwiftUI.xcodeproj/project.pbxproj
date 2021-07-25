@@ -30,7 +30,6 @@
 		FD1F16E12695A6FD009D08DF /* ResignKeyboardOnTapGestureModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16E02695A6FD009D08DF /* ResignKeyboardOnTapGestureModifier.swift */; };
 		FD1F16E32695A743009D08DF /* UIApplication+EndEditing.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16E22695A743009D08DF /* UIApplication+EndEditing.swift */; };
 		FD1F16EA26974645009D08DF /* ExpressionKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16E926974645009D08DF /* ExpressionKeyboard.swift */; };
-		FD3D102A26A673AE0045C218 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3D102926A673AE0045C218 /* AppDelegate.swift */; };
 		FD3D102C26A6AFAB0045C218 /* LoadingModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3D102B26A6AFAB0045C218 /* LoadingModifier.swift */; };
 		FD424F90268B050900F11A62 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD424F8F268B050900F11A62 /* Image.swift */; };
 		FD424F92268B059B00F11A62 /* Image+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD424F91268B059B00F11A62 /* Image+Resize.swift */; };
@@ -102,6 +101,20 @@
 		FD88279D2681E1F100BBEAB6 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88279C2681E1F100BBEAB6 /* Haptics.swift */; };
 		FD88279F2681E52E00BBEAB6 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88279E2681E52E00BBEAB6 /* Color+Hex.swift */; };
 		FD8827A22681E6E700BBEAB6 /* Color+HexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8827A02681E6DC00BBEAB6 /* Color+HexTests.swift */; };
+		FDA907FC26ABCC6000805584 /* DiscoverSectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA907FB26ABCC6000805584 /* DiscoverSectionTests.swift */; };
+		FDA907FE26ABCD1500805584 /* ExpressionStickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA907FD26ABCD1500805584 /* ExpressionStickerTests.swift */; };
+		FDA9080026ABD01C00805584 /* LoadableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA907FF26ABD01C00805584 /* LoadableTests.swift */; };
+		FDA9080226ABEA3B00805584 /* LocalizedStringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA9080126ABEA3B00805584 /* LocalizedStringTests.swift */; };
+		FDA9080526ABF64D00805584 /* XCTestCase+AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA9080426ABF64D00805584 /* XCTestCase+AppEnvironment.swift */; };
+		FDA9080726ABF98F00805584 /* NSBundleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA9080626ABF98F00805584 /* NSBundleType.swift */; };
+		FDA9080A26AD00B700805584 /* MockBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA9080826AD00AF00805584 /* MockBundle.swift */; };
+		FDA9080C26AD138600805584 /* AppStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA9080B26AD138600805584 /* AppStateTests.swift */; };
+		FDA9080E26AD551200805584 /* Dictionary+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA9080D26AD551200805584 /* Dictionary+Data.swift */; };
+		FDA9081026AD611400805584 /* AuthStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA9080F26AD611400805584 /* AuthStateTests.swift */; };
+		FDA9081226AD621200805584 /* ContactsStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA9081126AD621200805584 /* ContactsStateTests.swift */; };
+		FDA9081426AD629800805584 /* DiscoverStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA9081326AD629800805584 /* DiscoverStateTests.swift */; };
+		FDA9081626AD62DF00805584 /* RootStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA9081526AD62DF00805584 /* RootStateTests.swift */; };
+		FDA9081826AD631500805584 /* SystemStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA9081726AD631500805584 /* SystemStateTests.swift */; };
 		FDCC721B266E254D00A48140 /* WeChat_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */; };
 		FDCC721D266E254D00A48140 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC721C266E254D00A48140 /* RootView.swift */; };
 		FDCC721F266E254E00A48140 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDCC721E266E254E00A48140 /* Assets.xcassets */; };
@@ -186,7 +199,6 @@
 		FD1F16E02695A6FD009D08DF /* ResignKeyboardOnTapGestureModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResignKeyboardOnTapGestureModifier.swift; sourceTree = "<group>"; };
 		FD1F16E22695A743009D08DF /* UIApplication+EndEditing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+EndEditing.swift"; sourceTree = "<group>"; };
 		FD1F16E926974645009D08DF /* ExpressionKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressionKeyboard.swift; sourceTree = "<group>"; };
-		FD3D102926A673AE0045C218 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD3D102B26A6AFAB0045C218 /* LoadingModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingModifier.swift; sourceTree = "<group>"; };
 		FD424F8F268B050900F11A62 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		FD424F91268B059B00F11A62 /* Image+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Resize.swift"; sourceTree = "<group>"; };
@@ -255,6 +267,20 @@
 		FD88279C2681E1F100BBEAB6 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		FD88279E2681E52E00BBEAB6 /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
 		FD8827A02681E6DC00BBEAB6 /* Color+HexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+HexTests.swift"; sourceTree = "<group>"; };
+		FDA907FB26ABCC6000805584 /* DiscoverSectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverSectionTests.swift; sourceTree = "<group>"; };
+		FDA907FD26ABCD1500805584 /* ExpressionStickerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressionStickerTests.swift; sourceTree = "<group>"; };
+		FDA907FF26ABD01C00805584 /* LoadableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableTests.swift; sourceTree = "<group>"; };
+		FDA9080126ABEA3B00805584 /* LocalizedStringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStringTests.swift; sourceTree = "<group>"; };
+		FDA9080426ABF64D00805584 /* XCTestCase+AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+AppEnvironment.swift"; sourceTree = "<group>"; };
+		FDA9080626ABF98F00805584 /* NSBundleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSBundleType.swift; sourceTree = "<group>"; };
+		FDA9080826AD00AF00805584 /* MockBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBundle.swift; sourceTree = "<group>"; };
+		FDA9080B26AD138600805584 /* AppStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateTests.swift; sourceTree = "<group>"; };
+		FDA9080D26AD551200805584 /* Dictionary+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Data.swift"; sourceTree = "<group>"; };
+		FDA9080F26AD611400805584 /* AuthStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStateTests.swift; sourceTree = "<group>"; };
+		FDA9081126AD621200805584 /* ContactsStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsStateTests.swift; sourceTree = "<group>"; };
+		FDA9081326AD629800805584 /* DiscoverStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverStateTests.swift; sourceTree = "<group>"; };
+		FDA9081526AD62DF00805584 /* RootStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootStateTests.swift; sourceTree = "<group>"; };
+		FDA9081726AD631500805584 /* SystemStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemStateTests.swift; sourceTree = "<group>"; };
 		FDCC7217266E254D00A48140 /* WeChat-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WeChat-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeChat_SwiftUIApp.swift; sourceTree = "<group>"; };
 		FDCC721C266E254D00A48140 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -468,11 +494,17 @@
 			isa = PBXGroup;
 			children = (
 				FD88273B2679A37600BBEAB6 /* AppState.swift */,
+				FDA9080B26AD138600805584 /* AppStateTests.swift */,
 				FD76765126A3D40A0050457D /* AuthState.swift */,
+				FDA9080F26AD611400805584 /* AuthStateTests.swift */,
 				FD88275A267AF27200BBEAB6 /* ContactsState.swift */,
+				FDA9081126AD621200805584 /* ContactsStateTests.swift */,
 				FD1F16C226918EF5009D08DF /* DiscoverState.swift */,
+				FDA9081326AD629800805584 /* DiscoverStateTests.swift */,
 				FD8827412679A75B00BBEAB6 /* RootState.swift */,
+				FDA9081526AD62DF00805584 /* RootStateTests.swift */,
 				FD5412E626A811970001D199 /* SystemState.swift */,
+				FDA9081726AD631500805584 /* SystemStateTests.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -562,6 +594,15 @@
 			path = Locales;
 			sourceTree = "<group>";
 		};
+		FDA9080326ABF62200805584 /* TestHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				FDA9080826AD00AF00805584 /* MockBundle.swift */,
+				FDA9080426ABF64D00805584 /* XCTestCase+AppEnvironment.swift */,
+			);
+			path = TestHelpers;
+			sourceTree = "<group>";
+		};
 		FDCC720E266E254D00A48140 = {
 			isa = PBXGroup;
 			children = (
@@ -588,7 +629,6 @@
 			isa = PBXGroup;
 			children = (
 				FDCC7223266E254E00A48140 /* Info.plist */,
-				FD3D102926A673AE0045C218 /* AppDelegate.swift */,
 				FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */,
 				FDCC7245266E680800A48140 /* API */,
 				FDCC7247266E6AF700A48140 /* Configs */,
@@ -635,7 +675,9 @@
 				FD6D378126856E310087272F /* ContactCategory.swift */,
 				FD6D378A26861A110087272F /* ContactType.swift */,
 				FD1F16C0269162A6009D08DF /* DiscoverItem.swift */,
+				FDA907FB26ABCC6000805584 /* DiscoverSectionTests.swift */,
 				FD1D01312699B72700A9AF37 /* ExpressionSticker.swift */,
+				FDA907FD26ABCD1500805584 /* ExpressionStickerTests.swift */,
 				FD8809F8269EDF0F002D3396 /* Message.swift */,
 				FD8809FA269EE76B002D3396 /* MessageTests.swift */,
 				FD6D378C26861A6D0087272F /* OfficialAccount.swift */,
@@ -683,7 +725,10 @@
 				FDCC7266266F5CF600A48140 /* Language.swift */,
 				FDCC7278267109D500A48140 /* LanguageTests.swift */,
 				FDCC729A2673494B00A48140 /* Loadable.swift */,
+				FDA907FF26ABD01C00805584 /* LoadableTests.swift */,
 				FD1E4CEA2674A47200BD2C34 /* LocalizedString.swift */,
+				FDA9080126ABEA3B00805584 /* LocalizedStringTests.swift */,
+				FDA9080626ABF98F00805584 /* NSBundleType.swift */,
 				FD1E4CE82674780600BD2C34 /* Strings.swift */,
 				FDCC72862671AD7B00A48140 /* TryDecodable.swift */,
 				FD882760267AFAA300BBEAB6 /* Components */,
@@ -691,6 +736,7 @@
 				FDCC72812671AC1800A48140 /* Extensions */,
 				FD882782267F878500BBEAB6 /* Modifiers */,
 				FD8827942680987700BBEAB6 /* Styles */,
+				FDA9080326ABF62200805584 /* TestHelpers */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -714,6 +760,7 @@
 				FD6FE99326A9C30B0059BF45 /* AnyPublisher+ReceiveForUI.swift */,
 				FD88279E2681E52E00BBEAB6 /* Color+Hex.swift */,
 				FD8827A02681E6DC00BBEAB6 /* Color+HexTests.swift */,
+				FDA9080D26AD551200805584 /* Dictionary+Data.swift */,
 				FD6D37852685D21A0087272F /* EdgeInsets.swift */,
 				FD6D37872685D2540087272F /* EdgeInsetsTests.swift */,
 				FDCC72822671AC2B00A48140 /* Encodable+Dictionary.swift */,
@@ -1004,6 +1051,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD1F16DB26943832009D08DF /* ChatView.swift in Sources */,
+				FDA9080E26AD551200805584 /* Dictionary+Data.swift in Sources */,
 				FD1F16E32695A743009D08DF /* UIApplication+EndEditing.swift in Sources */,
 				FD5412F126A81CB60001D199 /* AuthReducer.swift in Sources */,
 				FD5412E926A8122E0001D199 /* SystemReducer.swift in Sources */,
@@ -1069,6 +1117,7 @@
 				FD1F16C526919065009D08DF /* DiscoverList.swift in Sources */,
 				FD88274E2679D86D00BBEAB6 /* ChatsView.swift in Sources */,
 				FD3D102C26A6AFAB0045C218 /* LoadingModifier.swift in Sources */,
+				FDA9080726ABF98F00805584 /* NSBundleType.swift in Sources */,
 				FD6FE99026A9785B0059BF45 /* FirestoreServiceType.swift in Sources */,
 				FD1F16E12695A6FD009D08DF /* ResignKeyboardOnTapGestureModifier.swift in Sources */,
 				FD88279D2681E1F100BBEAB6 /* Haptics.swift in Sources */,
@@ -1080,7 +1129,6 @@
 				FD8827502679D88F00BBEAB6 /* ContactsView.swift in Sources */,
 				FD5412E726A811970001D199 /* SystemState.swift in Sources */,
 				FD8809F7269EDE6F002D3396 /* MessageRowVideo.swift in Sources */,
-				FD3D102A26A673AE0045C218 /* AppDelegate.swift in Sources */,
 				FD88273E2679A3C300BBEAB6 /* AppReducer.swift in Sources */,
 				FD76765026A3D1DB0050457D /* ContentView.swift in Sources */,
 				FD6D377326842C610087272F /* SearchBar.swift in Sources */,
@@ -1114,6 +1162,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD882771267EE4E500BBEAB6 /* ContactsReducerTests.swift in Sources */,
+				FDA9080026ABD01C00805584 /* LoadableTests.swift in Sources */,
+				FDA9081426AD629800805584 /* DiscoverStateTests.swift in Sources */,
+				FDA9081026AD611400805584 /* AuthStateTests.swift in Sources */,
+				FDA9080526ABF64D00805584 /* XCTestCase+AppEnvironment.swift in Sources */,
 				FDCC7255266F212B00A48140 /* ServerConfigTests.swift in Sources */,
 				FDCC727A267109D700A48140 /* LanguageTests.swift in Sources */,
 				FDCC72752671087E00A48140 /* EnvironmentTests.swift in Sources */,
@@ -1122,14 +1174,22 @@
 				FD882778267F1BD500BBEAB6 /* ContactsActionsTests.swift in Sources */,
 				FDCC7269266F62C900A48140 /* ServiceTests.swift in Sources */,
 				FD5412ED26A812E40001D199 /* SystemReducerTests.swift in Sources */,
+				FDA9081826AD631500805584 /* SystemStateTests.swift in Sources */,
+				FDA9080C26AD138600805584 /* AppStateTests.swift in Sources */,
 				FD882769267B499700BBEAB6 /* UserTests.swift in Sources */,
+				FDA9081226AD621200805584 /* ContactsStateTests.swift in Sources */,
 				FDCC726B266F650F00A48140 /* ServiceTypeTests.swift in Sources */,
+				FDA9080226ABEA3B00805584 /* LocalizedStringTests.swift in Sources */,
 				FDCC72852671AC7200A48140 /* Encodable+DictionaryTests.swift in Sources */,
+				FDA907FC26ABCC6000805584 /* DiscoverSectionTests.swift in Sources */,
 				FD5412F626A81D850001D199 /* AuthReducerTests.swift in Sources */,
 				FD8827A22681E6E700BBEAB6 /* Color+HexTests.swift in Sources */,
 				FDCC72892671C14800A48140 /* AppEnvironmentTests.swift in Sources */,
+				FDA9081626AD62DF00805584 /* RootStateTests.swift in Sources */,
+				FDA907FE26ABCD1500805584 /* ExpressionStickerTests.swift in Sources */,
 				FD88277D267F314000BBEAB6 /* RootReducerTests.swift in Sources */,
 				FD6D37882685D2540087272F /* EdgeInsetsTests.swift in Sources */,
+				FDA9080A26AD00B700805584 /* MockBundle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
