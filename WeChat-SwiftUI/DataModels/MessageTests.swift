@@ -21,7 +21,7 @@ final class MessageTests: XCTestCase {
         "avatar": "https://cdn.nba.com/headshots/nba/latest/260x190/1629630.png",
         "name": "Ja Morant"
       },
-      "created": 1626256462
+      "createTime": 1626256462
       }
       """
 
@@ -32,7 +32,7 @@ final class MessageTests: XCTestCase {
     XCTAssertEqual("112ec2a2-68d3-4949-9ce9-82ec80db9c60", message?.sender.id)
     XCTAssertEqual("https://cdn.nba.com/headshots/nba/latest/260x190/1629630.png", message?.sender.avatar)
     XCTAssertEqual("Ja Morant", message?.sender.name)
-    XCTAssertEqual(Date(timeIntervalSince1970: 1626256462), message?.created)
+    XCTAssertEqual(Date(timeIntervalSince1970: 1626256462), message?.createTime)
   }
 
   func test_isTextMsg() {

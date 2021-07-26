@@ -26,7 +26,7 @@ extension Publisher where Output == URLSession.DataTaskPublisher.Output {
       return input.data
     }
     .extractUnderlyingError()
-    .decode(type: M.self, decoder: JSONDecoder())
+    .decode(type: M.self, decoder: Constant.jsonDecoder)
     .receive(on: DispatchQueue.main)
     .eraseToAnyPublisher()
   }

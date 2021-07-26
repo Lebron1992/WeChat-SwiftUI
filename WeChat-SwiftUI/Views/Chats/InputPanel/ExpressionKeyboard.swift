@@ -17,7 +17,7 @@ struct ExpressionKeyboard: View {
 
   private let expressions: [ExpressionSticker] = {
     let jsonPath = Bundle.main.path(forResource: "expressions", ofType: "json") ?? ""
-    let array = try? JSONDecoder().decode(
+    let array = try? Constant.jsonDecoder.decode(
       [ExpressionSticker].self,
       from: Data(contentsOf: URL(fileURLWithPath: jsonPath))
     )

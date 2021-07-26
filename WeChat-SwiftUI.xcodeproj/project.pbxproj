@@ -115,6 +115,9 @@
 		FDA9081426AD629800805584 /* DiscoverStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA9081326AD629800805584 /* DiscoverStateTests.swift */; };
 		FDA9081626AD62DF00805584 /* RootStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA9081526AD62DF00805584 /* RootStateTests.swift */; };
 		FDA9081826AD631500805584 /* SystemStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA9081726AD631500805584 /* SystemStateTests.swift */; };
+		FDAFA49A26AEACCC00FD5C33 /* Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAFA49926AEACCC00FD5C33 /* Dialog.swift */; };
+		FDAFA49C26AEAFA800FD5C33 /* DialogTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAFA49B26AEAFA800FD5C33 /* DialogTemplates.swift */; };
+		FDAFA49E26AEB14F00FD5C33 /* DialogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAFA49D26AEB14F00FD5C33 /* DialogTests.swift */; };
 		FDCC721B266E254D00A48140 /* WeChat_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */; };
 		FDCC721D266E254D00A48140 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC721C266E254D00A48140 /* RootView.swift */; };
 		FDCC721F266E254E00A48140 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDCC721E266E254E00A48140 /* Assets.xcassets */; };
@@ -281,6 +284,9 @@
 		FDA9081326AD629800805584 /* DiscoverStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverStateTests.swift; sourceTree = "<group>"; };
 		FDA9081526AD62DF00805584 /* RootStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootStateTests.swift; sourceTree = "<group>"; };
 		FDA9081726AD631500805584 /* SystemStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemStateTests.swift; sourceTree = "<group>"; };
+		FDAFA49926AEACCC00FD5C33 /* Dialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dialog.swift; sourceTree = "<group>"; };
+		FDAFA49B26AEAFA800FD5C33 /* DialogTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogTemplates.swift; sourceTree = "<group>"; };
+		FDAFA49D26AEB14F00FD5C33 /* DialogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogTests.swift; sourceTree = "<group>"; };
 		FDCC7217266E254D00A48140 /* WeChat-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WeChat-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeChat_SwiftUIApp.swift; sourceTree = "<group>"; };
 		FDCC721C266E254D00A48140 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -674,6 +680,8 @@
 				FDCC727D2671A6E200A48140 /* AccessTokenEnvelope.swift */,
 				FD6D378126856E310087272F /* ContactCategory.swift */,
 				FD6D378A26861A110087272F /* ContactType.swift */,
+				FDAFA49926AEACCC00FD5C33 /* Dialog.swift */,
+				FDAFA49D26AEB14F00FD5C33 /* DialogTests.swift */,
 				FD1F16C0269162A6009D08DF /* DiscoverItem.swift */,
 				FDA907FB26ABCC6000805584 /* DiscoverSectionTests.swift */,
 				FD1D01312699B72700A9AF37 /* ExpressionSticker.swift */,
@@ -775,6 +783,7 @@
 		FDCC728A2671C33400A48140 /* Templates */ = {
 			isa = PBXGroup;
 			children = (
+				FDAFA49B26AEAFA800FD5C33 /* DialogTemplates.swift */,
 				FD1D0135269A8C6B00A9AF37 /* ExpressionStickerTemplates.swift */,
 				FD8809FC269EE852002D3396 /* MessageTemplates.swift */,
 				FD6D3790268624780087272F /* OfficialAccountTemplates.swift */,
@@ -1071,6 +1080,7 @@
 				FD1F16C1269162A6009D08DF /* DiscoverItem.swift in Sources */,
 				FDCC7297267348A600A48140 /* Constants.swift in Sources */,
 				FD882773267EFA7400BBEAB6 /* MockStore.swift in Sources */,
+				FDAFA49A26AEACCC00FD5C33 /* Dialog.swift in Sources */,
 				FD76765226A3D40A0050457D /* AuthState.swift in Sources */,
 				FD1E4CEB2674A47200BD2C34 /* LocalizedString.swift in Sources */,
 				FD1D01342699BC6700A9AF37 /* ExpressionPreview.swift in Sources */,
@@ -1080,6 +1090,7 @@
 				FD1D0138269ACD3C00A9AF37 /* DelayTouchesModifier.swift in Sources */,
 				FD1E4CE92674780600BD2C34 /* Strings.swift in Sources */,
 				FD8827542679D8A600BBEAB6 /* MeView.swift in Sources */,
+				FDAFA49C26AEAFA800FD5C33 /* DialogTemplates.swift in Sources */,
 				FD6D3791268624780087272F /* OfficialAccountTemplates.swift in Sources */,
 				FD88279F2681E52E00BBEAB6 /* Color+Hex.swift in Sources */,
 				FD5412F326A81D040001D199 /* AuthActions.swift in Sources */,
@@ -1176,6 +1187,7 @@
 				FD5412ED26A812E40001D199 /* SystemReducerTests.swift in Sources */,
 				FDA9081826AD631500805584 /* SystemStateTests.swift in Sources */,
 				FDA9080C26AD138600805584 /* AppStateTests.swift in Sources */,
+				FDAFA49E26AEB14F00FD5C33 /* DialogTests.swift in Sources */,
 				FD882769267B499700BBEAB6 /* UserTests.swift in Sources */,
 				FDA9081226AD621200805584 /* ContactsStateTests.swift in Sources */,
 				FDCC726B266F650F00A48140 /* ServiceTypeTests.swift in Sources */,
