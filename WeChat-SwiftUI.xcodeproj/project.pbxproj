@@ -24,7 +24,7 @@
 		FD1F16D12692F5E9009D08DF /* SectionHeaderBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16D02692F5E9009D08DF /* SectionHeaderBackground.swift */; };
 		FD1F16D32692F8FB009D08DF /* SectionHeaderTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16D22692F8FB009D08DF /* SectionHeaderTitle.swift */; };
 		FD1F16D52692FB99009D08DF /* ImageTitleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16D42692FB99009D08DF /* ImageTitleRow.swift */; };
-		FD1F16DB26943832009D08DF /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16DA26943832009D08DF /* ChatView.swift */; };
+		FD1F16DB26943832009D08DF /* DialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16DA26943832009D08DF /* DialogView.swift */; };
 		FD1F16DD269560AB009D08DF /* String+Height.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16DC269560AB009D08DF /* String+Height.swift */; };
 		FD1F16DF26959F83009D08DF /* ChatInputPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16DE26959F83009D08DF /* ChatInputPanel.swift */; };
 		FD1F16E12695A6FD009D08DF /* ResignKeyboardOnTapGestureModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16E02695A6FD009D08DF /* ResignKeyboardOnTapGestureModifier.swift */; };
@@ -118,6 +118,8 @@
 		FDAFA49A26AEACCC00FD5C33 /* Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAFA49926AEACCC00FD5C33 /* Dialog.swift */; };
 		FDAFA49C26AEAFA800FD5C33 /* DialogTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAFA49B26AEAFA800FD5C33 /* DialogTemplates.swift */; };
 		FDAFA49E26AEB14F00FD5C33 /* DialogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAFA49D26AEB14F00FD5C33 /* DialogTests.swift */; };
+		FDAFA4A126AFAB7500FD5C33 /* DialogRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAFA4A026AFAB7500FD5C33 /* DialogRow.swift */; };
+		FDAFA4A326AFB3C400FD5C33 /* DialogsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAFA4A226AFB3C400FD5C33 /* DialogsList.swift */; };
 		FDCC721B266E254D00A48140 /* WeChat_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */; };
 		FDCC721D266E254D00A48140 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC721C266E254D00A48140 /* RootView.swift */; };
 		FDCC721F266E254E00A48140 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDCC721E266E254E00A48140 /* Assets.xcassets */; };
@@ -196,7 +198,7 @@
 		FD1F16D02692F5E9009D08DF /* SectionHeaderBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderBackground.swift; sourceTree = "<group>"; };
 		FD1F16D22692F8FB009D08DF /* SectionHeaderTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderTitle.swift; sourceTree = "<group>"; };
 		FD1F16D42692FB99009D08DF /* ImageTitleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTitleRow.swift; sourceTree = "<group>"; };
-		FD1F16DA26943832009D08DF /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		FD1F16DA26943832009D08DF /* DialogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogView.swift; sourceTree = "<group>"; };
 		FD1F16DC269560AB009D08DF /* String+Height.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Height.swift"; sourceTree = "<group>"; };
 		FD1F16DE26959F83009D08DF /* ChatInputPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputPanel.swift; sourceTree = "<group>"; };
 		FD1F16E02695A6FD009D08DF /* ResignKeyboardOnTapGestureModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResignKeyboardOnTapGestureModifier.swift; sourceTree = "<group>"; };
@@ -287,6 +289,8 @@
 		FDAFA49926AEACCC00FD5C33 /* Dialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dialog.swift; sourceTree = "<group>"; };
 		FDAFA49B26AEAFA800FD5C33 /* DialogTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogTemplates.swift; sourceTree = "<group>"; };
 		FDAFA49D26AEB14F00FD5C33 /* DialogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogTests.swift; sourceTree = "<group>"; };
+		FDAFA4A026AFAB7500FD5C33 /* DialogRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogRow.swift; sourceTree = "<group>"; };
+		FDAFA4A226AFB3C400FD5C33 /* DialogsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogsList.swift; sourceTree = "<group>"; };
 		FDCC7217266E254D00A48140 /* WeChat-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WeChat-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeChat_SwiftUIApp.swift; sourceTree = "<group>"; };
 		FDCC721C266E254D00A48140 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -519,7 +523,7 @@
 			isa = PBXGroup;
 			children = (
 				FD88274D2679D86D00BBEAB6 /* ChatsView.swift */,
-				FD1F16DA26943832009D08DF /* ChatView.swift */,
+				FDAFA49F26AFAB4D00FD5C33 /* Dialog */,
 				FD1F16E82697444E009D08DF /* InputPanel */,
 				FD8809EF269EDE28002D3396 /* Message */,
 			);
@@ -607,6 +611,16 @@
 				FDA9080426ABF64D00805584 /* XCTestCase+AppEnvironment.swift */,
 			);
 			path = TestHelpers;
+			sourceTree = "<group>";
+		};
+		FDAFA49F26AFAB4D00FD5C33 /* Dialog */ = {
+			isa = PBXGroup;
+			children = (
+				FDAFA4A026AFAB7500FD5C33 /* DialogRow.swift */,
+				FDAFA4A226AFB3C400FD5C33 /* DialogsList.swift */,
+				FD1F16DA26943832009D08DF /* DialogView.swift */,
+			);
+			path = Dialog;
 			sourceTree = "<group>";
 		};
 		FDCC720E266E254D00A48140 = {
@@ -1059,7 +1073,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD1F16DB26943832009D08DF /* ChatView.swift in Sources */,
+				FD1F16DB26943832009D08DF /* DialogView.swift in Sources */,
 				FDA9080E26AD551200805584 /* Dictionary+Data.swift in Sources */,
 				FD1F16E32695A743009D08DF /* UIApplication+EndEditing.swift in Sources */,
 				FD5412F126A81CB60001D199 /* AuthReducer.swift in Sources */,
@@ -1123,6 +1137,7 @@
 				FD882764267AFAD000BBEAB6 /* ErrorView.swift in Sources */,
 				FD6D37862685D21A0087272F /* EdgeInsets.swift in Sources */,
 				FDCC7265266F5C5B00A48140 /* Service.swift in Sources */,
+				FDAFA4A126AFAB7500FD5C33 /* DialogRow.swift in Sources */,
 				FD8809F9269EDF0F002D3396 /* Message.swift in Sources */,
 				FDCC72832671AC2B00A48140 /* Encodable+Dictionary.swift in Sources */,
 				FD1F16C526919065009D08DF /* DiscoverList.swift in Sources */,
@@ -1133,6 +1148,7 @@
 				FD1F16E12695A6FD009D08DF /* ResignKeyboardOnTapGestureModifier.swift in Sources */,
 				FD88279D2681E1F100BBEAB6 /* Haptics.swift in Sources */,
 				FDCC721B266E254D00A48140 /* WeChat_SwiftUIApp.swift in Sources */,
+				FDAFA4A326AFB3C400FD5C33 /* DialogsList.swift in Sources */,
 				FDCC724D266F19CF00A48140 /* ServiceType.swift in Sources */,
 				FD8827522679D89C00BBEAB6 /* DiscoverView.swift in Sources */,
 				FD6D378D26861A6D0087272F /* OfficialAccount.swift in Sources */,

@@ -1,6 +1,6 @@
 import Foundation
 
-struct Dialog: Decodable {
+struct Dialog: Decodable, Identifiable {
   let id: String
   let name: String?
   let members: [Member]
@@ -16,6 +16,19 @@ extension Dialog {
     let name: String
     let avatar: String?
     let joinTime: Date
+  }
+}
+
+// MARK: - Getters
+extension Dialog {
+  var lastMessageTimeString: String? {
+    guard let time = lastMessageTime else {
+      return nil
+    }
+    // TODO: test for now
+    let formatter = DateFormatter()
+    formatter.dateStyle = .short
+    return formatter.string(from: time)
   }
 }
 

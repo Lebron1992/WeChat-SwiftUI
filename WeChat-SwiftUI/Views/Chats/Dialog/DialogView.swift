@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ChatView: View {
+struct DialogView: View {
 
   @State
   private var dismissKeyboardOnTapOrDrag = false
@@ -26,9 +26,9 @@ struct ChatView: View {
   }
 }
 
-struct ChatView_Previews: PreviewProvider {
+struct DialogView_Previews: PreviewProvider {
   static var previews: some View {
-    ChatView()
+    DialogView()
       .onAppear { AppEnvironment.updateCurrentUser(.template) }
   }
 }

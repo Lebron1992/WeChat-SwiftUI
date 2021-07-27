@@ -3,7 +3,7 @@ import SwiftUI
 struct ChatsView: View {
   var body: some View {
     NavigationView {
-      ChatView()
+      DialogsList()
         .navigationTitle(Strings.tabbar_chats())
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(trailing: Image("icons_outlined_add"))

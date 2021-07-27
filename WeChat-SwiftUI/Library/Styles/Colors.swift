@@ -58,6 +58,14 @@ extension Color {
     .init("text_primary")
   }
 
+  static var text_info_50: Color {
+    .init("text_info_50")
+  }
+
+  static var text_info_80: Color {
+    .init("text_info_80")
+  }
+
   static var text_info_100: Color {
     .init("text_info_100")
   }

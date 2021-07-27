@@ -3,7 +3,7 @@ import Foundation
 extension Dialog {
     static let template1 = Dialog(
         id: "ee0d9688-c25b-45fa-b484-94e9c13700d6",
-        name: nil,
+        name: "SwiftUI",
         members: [.template1, .template2],
         messages: [.textTemplate, .textTemplate2],
         createTime: Date(timeIntervalSince1970: Date().timeIntervalSince1970 - 1000),
