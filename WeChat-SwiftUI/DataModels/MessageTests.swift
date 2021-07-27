@@ -21,7 +21,7 @@ final class MessageTests: XCTestCase {
         "avatar": "https://cdn.nba.com/headshots/nba/latest/260x190/1629630.png",
         "name": "Ja Morant"
       },
-      "createTime": 1626256462
+      "createTime": "2021-07-14T09:54:22Z"
       }
       """
 
