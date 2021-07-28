@@ -21,8 +21,10 @@ struct MeView: ConnectedView {
   func body(props: Props) -> some View {
     NavigationView {
       content(props)
-      .navigationBarHidden(true)
+        .navigationBarHidden(true)
+        .navigationBarTitleDisplayMode(.inline)
     }
+    .navigationViewStyle(.stack)
   }
 }
 
@@ -41,7 +43,7 @@ private extension MeView {
     ZStack(alignment: .topTrailing) {
       List {
         Section {
-          MeInfo(me: me)
+          MyInfoRow(me: me)
         }
         .listRowBackground(Color.app_white)
 
@@ -81,9 +83,9 @@ private extension MeView {
 
 // MARK: - Helper Types
 extension MeView {
-  func MeInfo(me: User) -> some View {
+  func MyInfoRow(me: User) -> some View {
     ZStack(alignment: .leading) {
-      NavigationLink(destination: Text("Profile")) {
+      NavigationLink(destination: MyProfileView()) {
         EmptyView()
       }
       .opacity(0.0) // 为了隐藏 NavigationLink 右边的箭头
@@ -101,6 +103,8 @@ extension MeView {
             })
             .background(.app_bg)
             .cornerRadius(6)
+        } else {
+            avatarPlaceholder
         }
 
         VStack(alignment: .leading, spacing: 5) {
@@ -111,6 +115,7 @@ extension MeView {
           HStack(spacing: 2) {
             Text("\(Strings.general_wechat_id()): \(me.wechatId)")
               .font(.system(size: 14))
+              .lineLimit(1)
             Image("icons_outlined_qr_code")
               .resize(.fill, .init(width: 14, height: 14))
             Spacer()

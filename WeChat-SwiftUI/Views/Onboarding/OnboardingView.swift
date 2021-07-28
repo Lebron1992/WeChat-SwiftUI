@@ -161,7 +161,10 @@ private extension OnboardingView {
   }
 
   func setSignedInUser(_ user: User) {
-    AppEnvironment.updateCurrentUser(user)
+    // token is unnecessary for firestoreService, but we need to set it to make AppEnvironment works
+    let token = "hello-world"
+    let tokenEnvelope = AccessTokenEnvelope(accessToken: token, user: user)
+    AppEnvironment.login(tokenEnvelope)
     store.dispatch(action: AuthActions.SetSignedInUser(user: user))
   }
 }

@@ -53,4 +53,9 @@ final class UserTests: XCTestCase {
     XCTAssertEqual(User.Gender.female.iconName, "icons_filled_colorful_female")
     XCTAssertEqual(User.Gender.unknown.iconName, "")
   }
+
+  func test_genderDescription() {
+    XCTAssertEqual(User.Gender.male.description, Strings.general_male())
+    XCTAssertEqual(User.Gender.female.description, Strings.general_female())
+  }
 }

@@ -357,6 +357,90 @@ public enum Strings {
     )
   }
   /**
+   "Female"
+
+   - **en**: "Female"
+   - **zh**: "女"
+  */
+  public static func general_female() -> String {
+    return localizedString(
+      key: "general.female",
+      defaultValue: "Female",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "Gender"
+
+   - **en**: "Gender"
+   - **zh**: "性别"
+  */
+  public static func general_gender() -> String {
+    return localizedString(
+      key: "general.gender",
+      defaultValue: "Gender",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "Male"
+
+   - **en**: "Male"
+   - **zh**: "男"
+  */
+  public static func general_male() -> String {
+    return localizedString(
+      key: "general.male",
+      defaultValue: "Male",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "More"
+
+   - **en**: "More"
+   - **zh**: "更多"
+  */
+  public static func general_more() -> String {
+    return localizedString(
+      key: "general.more",
+      defaultValue: "More",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "Name"
+
+   - **en**: "Name"
+   - **zh**: "名字"
+  */
+  public static func general_name() -> String {
+    return localizedString(
+      key: "general.name",
+      defaultValue: "Name",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "Not Set"
+
+   - **en**: "Not Set"
+   - **zh**: "未填写"
+  */
+  public static func general_not_set() -> String {
+    return localizedString(
+      key: "general.not_set",
+      defaultValue: "Not Set",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
    "OK"
 
    - **en**: "OK"
@@ -441,6 +525,20 @@ public enum Strings {
     )
   }
   /**
+   "What's Up"
+
+   - **en**: "What's Up"
+   - **zh**: "个性签名"
+  */
+  public static func general_whats_up() -> String {
+    return localizedString(
+      key: "general.whats_up",
+      defaultValue: "What's Up",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
    "Favorites"
 
    - **en**: "Favorites"
@@ -455,6 +553,20 @@ public enum Strings {
     )
   }
   /**
+   "My QR Code"
+
+   - **en**: "My QR Code"
+   - **zh**: "我的二维码"
+  */
+  public static func me_my_qr_code() -> String {
+    return localizedString(
+      key: "me.my_qr_code",
+      defaultValue: "My QR Code",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
    "Pay"
 
    - **en**: "Pay"
@@ -464,6 +576,20 @@ public enum Strings {
     return localizedString(
       key: "me.pay",
       defaultValue: "Pay",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "Profile Photo"
+
+   - **en**: "Profile Photo"
+   - **zh**: "头像"
+  */
+  public static func me_profile_photo() -> String {
+    return localizedString(
+      key: "me.profile_photo",
+      defaultValue: "Profile Photo",
       count: nil,
       substitutions: [:]
     )

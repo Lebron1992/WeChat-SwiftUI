@@ -30,6 +30,7 @@
 		FD1F16E12695A6FD009D08DF /* ResignKeyboardOnTapGestureModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16E02695A6FD009D08DF /* ResignKeyboardOnTapGestureModifier.swift */; };
 		FD1F16E32695A743009D08DF /* UIApplication+EndEditing.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16E22695A743009D08DF /* UIApplication+EndEditing.swift */; };
 		FD1F16EA26974645009D08DF /* ExpressionKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16E926974645009D08DF /* ExpressionKeyboard.swift */; };
+		FD21E90D26B0038F00EC38DD /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD21E90C26B0038F00EC38DD /* MyProfileView.swift */; };
 		FD3D102C26A6AFAB0045C218 /* LoadingModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3D102B26A6AFAB0045C218 /* LoadingModifier.swift */; };
 		FD424F90268B050900F11A62 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD424F8F268B050900F11A62 /* Image.swift */; };
 		FD424F92268B059B00F11A62 /* Image+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD424F91268B059B00F11A62 /* Image+Resize.swift */; };
@@ -40,6 +41,8 @@
 		FD5412F126A81CB60001D199 /* AuthReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5412F026A81CB60001D199 /* AuthReducer.swift */; };
 		FD5412F326A81D040001D199 /* AuthActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5412F226A81D040001D199 /* AuthActions.swift */; };
 		FD5412F626A81D850001D199 /* AuthReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5412F426A81D690001D199 /* AuthReducerTests.swift */; };
+		FD58C12226B0FABE00BDB0CC /* PresentationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58C12126B0FABE00BDB0CC /* PresentationStyle.swift */; };
+		FD58C12426B1429200BDB0CC /* MyProfileView+RowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58C12326B1429200BDB0CC /* MyProfileView+RowTests.swift */; };
 		FD6D377326842C610087272F /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D377226842C610087272F /* SearchBar.swift */; };
 		FD6D37752684707A0087272F /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D37742684707A0087272F /* Background.swift */; };
 		FD6D37792684803E0087272F /* ResignKeyboardOnDragGestureModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D37782684803E0087272F /* ResignKeyboardOnDragGestureModifier.swift */; };
@@ -204,6 +207,7 @@
 		FD1F16E02695A6FD009D08DF /* ResignKeyboardOnTapGestureModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResignKeyboardOnTapGestureModifier.swift; sourceTree = "<group>"; };
 		FD1F16E22695A743009D08DF /* UIApplication+EndEditing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+EndEditing.swift"; sourceTree = "<group>"; };
 		FD1F16E926974645009D08DF /* ExpressionKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressionKeyboard.swift; sourceTree = "<group>"; };
+		FD21E90C26B0038F00EC38DD /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
 		FD3D102B26A6AFAB0045C218 /* LoadingModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingModifier.swift; sourceTree = "<group>"; };
 		FD424F8F268B050900F11A62 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		FD424F91268B059B00F11A62 /* Image+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Resize.swift"; sourceTree = "<group>"; };
@@ -214,6 +218,8 @@
 		FD5412F026A81CB60001D199 /* AuthReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthReducer.swift; sourceTree = "<group>"; };
 		FD5412F226A81D040001D199 /* AuthActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthActions.swift; sourceTree = "<group>"; };
 		FD5412F426A81D690001D199 /* AuthReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthReducerTests.swift; sourceTree = "<group>"; };
+		FD58C12126B0FABE00BDB0CC /* PresentationStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationStyle.swift; sourceTree = "<group>"; };
+		FD58C12326B1429200BDB0CC /* MyProfileView+RowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyProfileView+RowTests.swift"; sourceTree = "<group>"; };
 		FD6D377226842C610087272F /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		FD6D37742684707A0087272F /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		FD6D37782684803E0087272F /* ResignKeyboardOnDragGestureModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResignKeyboardOnDragGestureModifier.swift; sourceTree = "<group>"; };
@@ -556,6 +562,8 @@
 			isa = PBXGroup;
 			children = (
 				FD8827532679D8A600BBEAB6 /* MeView.swift */,
+				FD21E90C26B0038F00EC38DD /* MyProfileView.swift */,
+				FD58C12326B1429200BDB0CC /* MyProfileView+RowTests.swift */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -751,6 +759,7 @@
 				FD1E4CEA2674A47200BD2C34 /* LocalizedString.swift */,
 				FDA9080126ABEA3B00805584 /* LocalizedStringTests.swift */,
 				FDA9080626ABF98F00805584 /* NSBundleType.swift */,
+				FD58C12126B0FABE00BDB0CC /* PresentationStyle.swift */,
 				FD1E4CE82674780600BD2C34 /* Strings.swift */,
 				FDCC72862671AD7B00A48140 /* TryDecodable.swift */,
 				FD882760267AFAA300BBEAB6 /* Components */,
@@ -1090,6 +1099,7 @@
 				FDCC729B2673494B00A48140 /* Loadable.swift in Sources */,
 				FDCC7299267348D300A48140 /* NetworkingHelpers.swift in Sources */,
 				FDCC7258266F26D200A48140 /* OauthToken.swift in Sources */,
+				FD58C12226B0FABE00BDB0CC /* PresentationStyle.swift in Sources */,
 				FD882781267F844C00BBEAB6 /* NavigationConfigurator.swift in Sources */,
 				FD1F16C1269162A6009D08DF /* DiscoverItem.swift in Sources */,
 				FDCC7297267348A600A48140 /* Constants.swift in Sources */,
@@ -1148,6 +1158,7 @@
 				FD1F16E12695A6FD009D08DF /* ResignKeyboardOnTapGestureModifier.swift in Sources */,
 				FD88279D2681E1F100BBEAB6 /* Haptics.swift in Sources */,
 				FDCC721B266E254D00A48140 /* WeChat_SwiftUIApp.swift in Sources */,
+				FD21E90D26B0038F00EC38DD /* MyProfileView.swift in Sources */,
 				FDAFA4A326AFB3C400FD5C33 /* DialogsList.swift in Sources */,
 				FDCC724D266F19CF00A48140 /* ServiceType.swift in Sources */,
 				FD8827522679D89C00BBEAB6 /* DiscoverView.swift in Sources */,
@@ -1216,6 +1227,7 @@
 				FDA9081626AD62DF00805584 /* RootStateTests.swift in Sources */,
 				FDA907FE26ABCD1500805584 /* ExpressionStickerTests.swift in Sources */,
 				FD88277D267F314000BBEAB6 /* RootReducerTests.swift in Sources */,
+				FD58C12426B1429200BDB0CC /* MyProfileView+RowTests.swift in Sources */,
 				FD6D37882685D2540087272F /* EdgeInsetsTests.swift in Sources */,
 				FDA9080A26AD00B700805584 /* MockBundle.swift in Sources */,
 			);

@@ -4,6 +4,18 @@ import XCTest
 final class AppEnvironmentTests: XCTestCase {
   private let preferredLanguage = Language(languageStrings: Locale.preferredLanguages)
 
+  override func setUp() {
+    super.setUp()
+    // push a clean environment to avoid impacting logged in user
+    AppEnvironment.pushEnvironment(Environment())
+  }
+
+  override func tearDown() {
+    super.tearDown()
+    // pop the clean environment pushed in setup
+    AppEnvironment.popEnvironment()
+  }
+
   func test_pushAndPopEnvironment() {
     let env1 = Environment()
 

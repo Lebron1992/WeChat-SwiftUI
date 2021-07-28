@@ -39,16 +39,25 @@
       "general": {
         "an_error_occured": "An Error Occured",
         "cancel": "Cancel",
+        "gender": "Gender",
+        "female": "Female",
+        "male": "Male",
+        "more": "More",
+        "name": "Name",
+        "not_set": "Not Set",
         "ok": "OK",
         "region": "Region",
         "retry": "Retry",
         "search": "Search",
         "something_went_wrong": "Something went wrong",
-        "wechat_id": "WeChat ID"
+        "wechat_id": "WeChat ID",
+        "whats_up": "What's Up"
       },
       "me": {
         "favorites": "Favorites",
+        "my_qr_code": "My QR Code",
         "pay": "Pay",
+        "profile_photo": "Profile Photo",
         "settings": "Settings",
         "sticker_gallery": "Sticker Gallery"
       },
@@ -108,16 +117,25 @@
       "general": {
         "an_error_occured": "发生了一个错误",
         "cancel": "取消",
+        "gender": "性别",
+        "female": "女",
+        "male": "男",
+        "more": "更多",
+        "name": "名字",
+        "not_set": "未填写",
         "region": "地区",
         "retry": "重试",
         "ok": "好",
         "search": "搜索",
         "something_went_wrong": "出了点问题",
-        "wechat_id": "微信号"
+        "wechat_id": "微信号",
+        "whats_up": "个性签名"
       },
       "me": {
         "favorites": " 收藏",
+        "my_qr_code": "我的二维码",
         "pay": "支付",
+        "profile_photo": "头像",
         "settings": "设置",
         "sticker_gallery": "表情"
       },

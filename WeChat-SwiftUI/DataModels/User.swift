@@ -42,7 +42,7 @@ struct User: Codable, Identifiable {
       id: firUser.uid,
       avatar: firUser.photoURL?.absoluteString ?? "",
       name: firUser.displayName ?? "",
-      wechatId: "",
+      wechatId: "wxid_\(UUID().uuidString.lowercased())",
       gender: .unknown,
       region: "",
       whatsUp: ""
@@ -62,6 +62,17 @@ extension User {
         return "icons_filled_colorful_male"
       case .female:
         return "icons_filled_colorful_female"
+      case .unknown:
+        return ""
+      }
+    }
+
+    var description: String {
+      switch self {
+      case .male:
+        return Strings.general_male()
+      case .female:
+        return Strings.general_female()
       case .unknown:
         return ""
       }

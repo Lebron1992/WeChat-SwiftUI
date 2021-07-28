@@ -63,7 +63,7 @@ struct ContactsView: ConnectedView {
       .navigationBarBackgroundLightGray()
       .navigationBarHidden(isSearching)
     }
-    .navigationViewStyle(StackNavigationViewStyle())
+    .navigationViewStyle(.stack)
   }
 }
 

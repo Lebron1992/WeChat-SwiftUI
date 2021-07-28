@@ -8,7 +8,7 @@ struct DiscoverView: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackgroundLightGray()
     }
-    .navigationViewStyle(StackNavigationViewStyle())
+    .navigationViewStyle(.stack)
   }
 }
 
