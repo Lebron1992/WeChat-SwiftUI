@@ -15,14 +15,14 @@ private struct LoadingContainer: ViewModifier {
       content
       if show {
         Group {
-          Color.black.opacity(0.3)
+          // Color.clear can't cover the content, so we use this to simulate it
+          Color.white.opacity(0.001)
           ActivityIndicatorView(style: .large, color: .hex("#39393A")!)
             .padding(30)
             .background(Color.hex("#D2D3D5"))
             .cornerRadius(10)
             .opacity(show ? 1 : 0)
         }
-        .ignoresSafeArea()
       }
     }
   }
