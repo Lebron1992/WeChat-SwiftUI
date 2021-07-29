@@ -8,7 +8,13 @@ extension View {
 
 private struct LoadingContainer: ViewModifier {
 
+  let style: UIActivityIndicatorView.Style
   let show: Bool
+
+  init(style: UIActivityIndicatorView.Style = .large, show: Bool) {
+    self.style = style
+    self.show = show
+  }
 
   func body(content: Content) -> some View {
     ZStack {

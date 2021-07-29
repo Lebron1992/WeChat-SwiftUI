@@ -20,7 +20,6 @@ final class AppStateTests: XCTestCase {
 
       XCTAssertEqual(appState.rootState.selectedTab, .chats)
 
-      XCTAssertFalse(appState.systemState.showLoading)
       XCTAssertNil(appState.systemState.errorMessage)
     }
   }
@@ -42,7 +41,6 @@ final class AppStateTests: XCTestCase {
 
       XCTAssertEqual(appState.rootState.selectedTab, .chats)
 
-      XCTAssertFalse(appState.systemState.showLoading)
       XCTAssertNil(appState.systemState.errorMessage)
     }
   }
@@ -167,8 +165,8 @@ private extension AppStateTests {
   func appStatesWithDifferentSystemState() -> (AppState, AppState) {
     var state1 = AppState()
     var state2 = AppState()
-    state1.systemState = SystemState(showLoading: false, errorMessage: nil)
-    state2.systemState = SystemState(showLoading: true, errorMessage: "error")
+    state1.systemState = SystemState(errorMessage: nil)
+    state2.systemState = SystemState(errorMessage: "error")
     return (state1, state2)
   }
 }

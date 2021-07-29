@@ -15,7 +15,7 @@ struct AppState: ReduxState {
 
   var rootState = RootState(selectedTab: .chats)
 
-  var systemState = SystemState(showLoading: false, errorMessage: nil)
+  var systemState = SystemState(errorMessage: nil)
 
   init() {
     guard let data = AppEnvironment.current.userDefaults.data(forKey: Self.appStateStorageKey),

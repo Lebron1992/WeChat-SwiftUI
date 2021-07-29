@@ -12,13 +12,16 @@ struct OnboardingView: View {
   var mode: OnboardingMode = .login
 
   @State
-  var name: String = ""
+  var name = ""
 
   @State
-  var email: String = ""
+  var email = ""
 
   @State
-  var password: String = ""
+  var password = ""
+
+  @State
+  var showLoading = false
 
   private let cancelBag = CancelBag()
 
@@ -62,6 +65,7 @@ struct OnboardingView: View {
     .padding()
     .background(.white)
     .resignKeyboardOnTapGesture()
+    .showLoading(show: showLoading)
   }
 
   private func login() {
@@ -153,7 +157,7 @@ extension OnboardingView {
 // MARK: - Update Store
 private extension OnboardingView {
   func setShowLoading(_ show: Bool) {
-    store.dispatch(action: SystemActions.SetShowLoading(showLoading: show))
+    showLoading = show
   }
 
   func setErrorMessage(_ message: String) {

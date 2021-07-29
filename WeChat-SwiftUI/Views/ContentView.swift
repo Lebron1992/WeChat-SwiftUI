@@ -8,14 +8,12 @@ struct ContentView: ConnectedView {
 
   struct Props {
     let signedInUser: User?
-    let showLoading: Bool
     let errorMessage: String?
   }
 
   func map(state: AppState, dispatch: @escaping Dispatch) -> Props {
     Props(
       signedInUser: state.authState.signedInUser,
-      showLoading: state.systemState.showLoading,
       errorMessage: state.systemState.errorMessage
     )
   }
@@ -28,7 +26,6 @@ struct ContentView: ConnectedView {
         RootView()
       }
     }
-    .showLoading(show: props.showLoading)
     .alert(isPresented: showErrorMessage, content: {
       Alert(
         title: Text(""),
