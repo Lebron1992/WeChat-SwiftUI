@@ -84,7 +84,8 @@ extension MyProfileView {
       case .photo:
         return (.push, AnyView(Text("photo")))
       case .name:
-        return (.modal, AnyView(Text("name")))
+        let name = AppEnvironment.current.currentUser?.name ?? ""
+        return (.modal, AnyView(MyProfileFieldUpdateView(field: .name(name))))
       case .wechatId:
         return (.push, AnyView(Text("wechatId")))
       case .qrCode:
@@ -143,11 +144,13 @@ extension MyProfileView.Row {
     var destinationPresentation: (style: PresentationStyle, destination: AnyView) {
       switch self {
       case .gender:
-        return (.modal, AnyView(Text("gender")))
+        let gender = AppEnvironment.current.currentUser?.gender ?? .unknown
+        return (.modal, AnyView(MyProfileFieldUpdateView(field: .gender(gender))))
       case .region:
         return (.modal, AnyView(Text("region")))
       case .whatsUp:
-        return (.modal, AnyView(Text("whatsUp")))
+        let whatsUp = AppEnvironment.current.currentUser?.whatsUp ?? ""
+        return (.modal, AnyView(MyProfileFieldUpdateView(field: .whatsUp(whatsUp))))
       }
     }
   }
@@ -165,6 +168,8 @@ extension MyProfileView {
   struct ProfileRow: View {
     let row: MyProfileRowType
 
+    @State private var showingSheet = false
+
     var body: some View {
       let view: AnyView
 
@@ -181,6 +186,10 @@ extension MyProfileView {
               .font(.system(size: 14, weight: .medium))
               .foregroundColor(.text_info_200)
           }
+            .onTapGesture {
+              showingSheet = true
+            }
+            .fullScreenCover(isPresented: $showingSheet, content: { row.destinationPresentation.destination })
         )
       case .push:
         view = AnyView(

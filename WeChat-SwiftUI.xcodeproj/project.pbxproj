@@ -43,6 +43,7 @@
 		FD5412F626A81D850001D199 /* AuthReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5412F426A81D690001D199 /* AuthReducerTests.swift */; };
 		FD58C12226B0FABE00BDB0CC /* PresentationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58C12126B0FABE00BDB0CC /* PresentationStyle.swift */; };
 		FD58C12426B1429200BDB0CC /* MyProfileView+RowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58C12326B1429200BDB0CC /* MyProfileView+RowTests.swift */; };
+		FD58C12626B2430D00BDB0CC /* MyProfileFieldUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58C12526B2430D00BDB0CC /* MyProfileFieldUpdateView.swift */; };
 		FD6D377326842C610087272F /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D377226842C610087272F /* SearchBar.swift */; };
 		FD6D37752684707A0087272F /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D37742684707A0087272F /* Background.swift */; };
 		FD6D37792684803E0087272F /* ResignKeyboardOnDragGestureModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D37782684803E0087272F /* ResignKeyboardOnDragGestureModifier.swift */; };
@@ -220,6 +221,7 @@
 		FD5412F426A81D690001D199 /* AuthReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthReducerTests.swift; sourceTree = "<group>"; };
 		FD58C12126B0FABE00BDB0CC /* PresentationStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationStyle.swift; sourceTree = "<group>"; };
 		FD58C12326B1429200BDB0CC /* MyProfileView+RowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyProfileView+RowTests.swift"; sourceTree = "<group>"; };
+		FD58C12526B2430D00BDB0CC /* MyProfileFieldUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileFieldUpdateView.swift; sourceTree = "<group>"; };
 		FD6D377226842C610087272F /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		FD6D37742684707A0087272F /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		FD6D37782684803E0087272F /* ResignKeyboardOnDragGestureModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResignKeyboardOnDragGestureModifier.swift; sourceTree = "<group>"; };
@@ -562,6 +564,7 @@
 			isa = PBXGroup;
 			children = (
 				FD8827532679D8A600BBEAB6 /* MeView.swift */,
+				FD58C12526B2430D00BDB0CC /* MyProfileFieldUpdateView.swift */,
 				FD21E90C26B0038F00EC38DD /* MyProfileView.swift */,
 				FD58C12326B1429200BDB0CC /* MyProfileView+RowTests.swift */,
 			);
@@ -1187,6 +1190,7 @@
 				FD88275B267AF27200BBEAB6 /* ContactsState.swift in Sources */,
 				FD6FE98C26A975950059BF45 /* FirestoreService.swift in Sources */,
 				FD6D3793268625610087272F /* ContactOfficialAccountsList.swift in Sources */,
+				FD58C12626B2430D00BDB0CC /* MyProfileFieldUpdateView.swift in Sources */,
 				FDCC7290267343A800A48140 /* Service+RequestHelpers.swift in Sources */,
 				FD880A0126A01EFE002D3396 /* MessagesList.swift in Sources */,
 				FD6FE99426A9C30B0059BF45 /* AnyPublisher+ReceiveForUI.swift in Sources */,

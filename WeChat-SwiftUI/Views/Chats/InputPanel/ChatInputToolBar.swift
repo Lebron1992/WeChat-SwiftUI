@@ -31,6 +31,7 @@ struct ChatInputToolBar: View {
           .foregroundColor(.text_primary)
         TextEditor(text: $text)
           .font(Font(textFont as CTFont))
+          .background(.app_white)
           .focused($isTextEditorFoucused)
           .opacity(isVoiceButtonSelected ? 0 : 1)
       }
