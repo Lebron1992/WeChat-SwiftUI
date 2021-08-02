@@ -176,6 +176,10 @@ private extension MyProfileFieldUpdateView {
     }
   }
 
+  func setShowLoading(_ show: Bool) {
+    showLoading = show
+  }
+
   var isValueChanged: Bool {
     switch field {
     case .name(let name):
@@ -206,19 +210,6 @@ private extension MyProfileFieldUpdateView {
     case .whatsUp:
       return currentUser.setWhatsUp(text)
     }
-  }
-
-  func updateSignedInUser(_ user: User) {
-    AppEnvironment.updateCurrentUser(user)
-    store.dispatch(action: AuthActions.SetSignedInUser(user: user))
-  }
-
-  func setErrorMessage(_ message: String) {
-    store.dispatch(action: SystemActions.SetErrorMessage(message: message))
-  }
-
-  func setShowLoading(_ show: Bool) {
-    showLoading = show
   }
 }
 

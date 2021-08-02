@@ -85,7 +85,7 @@ struct OnboardingView: View {
       } else if let result = result {
 
         let user = User(firUser: result.user)
-        setSignedInUser(user)
+        updateSignedInUser(user)
       }
     }
   }
@@ -115,7 +115,7 @@ struct OnboardingView: View {
           AppEnvironment.current.firestoreService
             .overrideUser(user)
             .sinkForUI(receiveCompletion: { completion in
-              setSignedInUser(user)
+              updateSignedInUser(user)
               setShowLoading(false)
               // 未考虑错误的情况：因为实际情况中只有把用户保存到数据库中才算注册成功；
               // 这里使用 Firebase 注册，注册成功之后才把用户保存到数据库中，在保存出错的情况下，不方便把已注册的用户删除
@@ -145,31 +145,16 @@ struct OnboardingView: View {
     }
     return true
   }
+
+  private func setShowLoading(_ show: Bool) {
+    showLoading = show
+  }
 }
 
 extension OnboardingView {
   enum OnboardingMode {
     case login
     case register
-  }
-}
-
-// MARK: - Update Store
-private extension OnboardingView {
-  func setShowLoading(_ show: Bool) {
-    showLoading = show
-  }
-
-  func setErrorMessage(_ message: String) {
-    store.dispatch(action: SystemActions.SetErrorMessage(message: message))
-  }
-
-  func setSignedInUser(_ user: User) {
-    // token is unnecessary for firestoreService, but we need to set it to make AppEnvironment works
-    let token = "hello-world"
-    let tokenEnvelope = AccessTokenEnvelope(accessToken: token, user: user)
-    AppEnvironment.login(tokenEnvelope)
-    store.dispatch(action: AuthActions.SetSignedInUser(user: user))
   }
 }
 
