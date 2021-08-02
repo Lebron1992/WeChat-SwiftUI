@@ -160,6 +160,7 @@
 		FDCC729B2673494B00A48140 /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC729A2673494B00A48140 /* Loadable.swift */; };
 		FDCC729D2673496800A48140 /* CancelBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC729C2673496800A48140 /* CancelBag.swift */; };
 		FDCC729F2673499700A48140 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC729E2673499700A48140 /* APIError.swift */; };
+		FDF568D826B79D9900033094 /* User+Setters.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF568D726B79D9900033094 /* User+Setters.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -340,6 +341,7 @@
 		FDCC729A2673494B00A48140 /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
 		FDCC729C2673496800A48140 /* CancelBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelBag.swift; sourceTree = "<group>"; };
 		FDCC729E2673499700A48140 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		FDF568D726B79D9900033094 /* User+Setters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Setters.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -717,6 +719,7 @@
 				FD6D378E268624520087272F /* OfficialAccountTests.swift */,
 				FD8827432679A80900BBEAB6 /* TabBarItem.swift */,
 				FDCC726E2670882D00A48140 /* User.swift */,
+				FDF568D726B79D9900033094 /* User+Setters.swift */,
 				FD882768267B499700BBEAB6 /* UserTests.swift */,
 				FDCC728A2671C33400A48140 /* Templates */,
 			);
@@ -1086,6 +1089,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD1F16DB26943832009D08DF /* DialogView.swift in Sources */,
+				FDF568D826B79D9900033094 /* User+Setters.swift in Sources */,
 				FDA9080E26AD551200805584 /* Dictionary+Data.swift in Sources */,
 				FD1F16E32695A743009D08DF /* UIApplication+EndEditing.swift in Sources */,
 				FD5412F126A81CB60001D199 /* AuthReducer.swift in Sources */,

@@ -82,7 +82,13 @@ extension User {
 
 extension User: Equatable {
   static func == (lhs: User, rhs: User) -> Bool {
-    lhs.id == rhs.id
+    lhs.id == rhs.id &&
+    lhs.avatar == rhs.avatar &&
+    lhs.name == rhs.name &&
+    lhs.wechatId == rhs.wechatId &&
+    lhs.gender == rhs.gender &&
+    lhs.region == rhs.region &&
+    lhs.whatsUp == rhs.whatsUp
   }
 }
 

@@ -102,6 +102,11 @@ extension UIColor {
 }
 
 extension ShapeStyle where Self == Color {
+
+  static var highlighted: Color {
+    .highlighted
+  }
+
   static var app_white: Color {
     .app_white
   }

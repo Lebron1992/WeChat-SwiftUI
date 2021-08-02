@@ -23,6 +23,7 @@
 "discover.shopping" = "Shopping";
 "general.an_error_occured" = "An Error Occured";
 "general.cancel" = "Cancel";
+"general.done" = "Done";
 "general.female" = "Female";
 "general.gender" = "Gender";
 "general.male" = "Male";
@@ -33,6 +34,7 @@
 "general.region" = "Region";
 "general.retry" = "Retry";
 "general.search" = "Search";
+"general.set" = " Set";
 "general.something_went_wrong" = "Something went wrong";
 "general.wechat_id" = "WeChat ID";
 "general.whats_up" = "What's Up";

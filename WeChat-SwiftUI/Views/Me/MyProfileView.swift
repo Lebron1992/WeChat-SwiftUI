@@ -1,19 +1,83 @@
 import SwiftUI
+import SwiftUIRedux
 
-struct MyProfileView: View {
-  var body: some View {
-    List {
-      ForEach(Row.allCases, id: \.self) { row in
-        ProfileRow(row: row)
-      }
-      .listRowBackground(Color.app_white)
+struct MyProfileView: ConnectedView {
+  struct Props {
+    let signedInUser: User?
+  }
+
+  func map(state: AppState, dispatch: @escaping (Action) -> Void) -> Props {
+    Props(
+      signedInUser: state.authState.signedInUser
+    )
+  }
+
+  func body(props: Props) -> some View {
+    if let user = props.signedInUser {
+      return AnyView(
+        List {
+          ForEach(Row.allCases, id: \.self) { row in
+            ProfileRow(row: row, user: user)
+          }
+          .listRowBackground(Color.app_white)
+        }
+        .background(.app_bg)
+        .listStyle(.plain)
+      )
+    } else {
+      return AnyView(EmptyView())
     }
-    .background(.app_bg)
-    .listStyle(.plain)
   }
 }
 
-// MARK: - Models
+extension MyProfileView {
+  struct ProfileRow: View {
+    let row: MyProfileRowType
+    let user: User
+
+    @State private var showingSheet = false
+
+    var body: some View {
+      let view: AnyView
+
+      let presentation = row.destinationPresentation(user: user)
+      switch presentation.style {
+      case .modal:
+        view = AnyView(
+          HStack {
+            Text(row.title)
+              .font(.system(size: 16))
+              .foregroundColor(.text_primary)
+            Spacer()
+            row.detailView(user: user)
+            Image(systemName: "chevron.right")
+              .font(.system(size: 14, weight: .medium))
+              .foregroundColor(.text_info_200)
+          }
+            .onTapGesture {
+              showingSheet = true
+            }
+            .fullScreenCover(isPresented: $showingSheet, content: { presentation.destination })
+        )
+      case .push:
+        view = AnyView(
+          NavigationLink(destination: presentation.destination) {
+            HStack {
+              Text(row.title)
+                .font(.system(size: 16))
+                .foregroundColor(.text_primary)
+              Spacer()
+              row.detailView(user: user)
+            }
+          }
+        )
+      }
+
+      return view
+        .padding(.vertical, 8)
+    }
+  }
+}
 
 extension MyProfileView {
   enum Row: CaseIterable, MyProfileRowType {
@@ -47,8 +111,7 @@ extension MyProfileView {
       }
     }
 
-    var detailView: AnyView {
-      let currentUser = AppEnvironment.current.currentUser!
+    func detailView(user: User) -> AnyView {
       switch self {
       case .photo:
         return AnyView(
@@ -57,13 +120,13 @@ extension MyProfileView {
         )
       case .name:
         return AnyView(
-          Text(currentUser.name)
+          Text(user.name)
             .font(.system(size: 16))
             .foregroundColor(.text_info_200)
         )
       case .wechatId:
         return AnyView(
-          Text(currentUser.wechatId)
+          Text(user.wechatId)
             .font(.system(size: 16))
             .lineLimit(1)
             .foregroundColor(.text_info_200)
@@ -79,7 +142,7 @@ extension MyProfileView {
       }
     }
 
-    var destinationPresentation: (style: PresentationStyle, destination: AnyView) {
+    func destinationPresentation(user: User) -> (style: PresentationStyle, destination: AnyView) {
       switch self {
       case .photo:
         return (.push, AnyView(Text("photo")))
@@ -94,7 +157,7 @@ extension MyProfileView {
         return (.push, AnyView(
           List {
             ForEach(subRows, id: \.self) { subRow in
-              ProfileRow(row: subRow)
+              ProfileRow(row: subRow, user: user)
             }
             .listRowBackground(Color.app_white)
           }
@@ -123,16 +186,15 @@ extension MyProfileView.Row {
       }
     }
 
-    var detailView: AnyView {
-      let currentUser = AppEnvironment.current.currentUser!
+    func detailView(user: User) -> AnyView {
       let text: String
       switch self {
       case .gender:
-        text = currentUser.gender.description
+        text = user.gender.description
       case .region:
-        text = currentUser.region
+        text = user.region
       case .whatsUp:
-        text = currentUser.whatsUp.isEmpty ? Strings.general_not_set() : currentUser.whatsUp
+        text = user.whatsUp.isEmpty ? Strings.general_not_set() : user.whatsUp
       }
       return AnyView(
         Text(text)
@@ -141,74 +203,23 @@ extension MyProfileView.Row {
       )
     }
 
-    var destinationPresentation: (style: PresentationStyle, destination: AnyView) {
+    func destinationPresentation(user: User) -> (style: PresentationStyle, destination: AnyView) {
       switch self {
       case .gender:
-        let gender = AppEnvironment.current.currentUser?.gender ?? .unknown
-        return (.modal, AnyView(MyProfileFieldUpdateView(field: .gender(gender))))
+        return (.modal, AnyView(MyProfileFieldUpdateView(field: .gender(user.gender))))
       case .region:
-        return (.modal, AnyView(Text("region")))
+        return (.modal, AnyView(MyProfileFieldUpdateView(field: .region)))
       case .whatsUp:
-        let whatsUp = AppEnvironment.current.currentUser?.whatsUp ?? ""
-        return (.modal, AnyView(MyProfileFieldUpdateView(field: .whatsUp(whatsUp))))
+        return (.modal, AnyView(MyProfileFieldUpdateView(field: .whatsUp(user.whatsUp))))
       }
     }
   }
 }
-
-// MARK: - Helper Types
 
 protocol MyProfileRowType {
   var title: String { get }
-  var detailView: AnyView { get }
-  var destinationPresentation: (style: PresentationStyle, destination: AnyView) { get }
-}
-
-extension MyProfileView {
-  struct ProfileRow: View {
-    let row: MyProfileRowType
-
-    @State private var showingSheet = false
-
-    var body: some View {
-      let view: AnyView
-
-      switch row.destinationPresentation.style {
-      case .modal:
-        view = AnyView(
-          HStack {
-            Text(row.title)
-              .font(.system(size: 16))
-              .foregroundColor(.text_primary)
-            Spacer()
-            row.detailView
-            Image(systemName: "chevron.right")
-              .font(.system(size: 14, weight: .medium))
-              .foregroundColor(.text_info_200)
-          }
-            .onTapGesture {
-              showingSheet = true
-            }
-            .fullScreenCover(isPresented: $showingSheet, content: { row.destinationPresentation.destination })
-        )
-      case .push:
-        view = AnyView(
-          NavigationLink(destination: row.destinationPresentation.destination) {
-            HStack {
-              Text(row.title)
-                .font(.system(size: 16))
-                .foregroundColor(.text_primary)
-              Spacer()
-              row.detailView
-            }
-          }
-        )
-      }
-
-      return view
-        .padding(.vertical, 8)
-    }
-  }
+  func detailView(user: User) -> AnyView
+  func destinationPresentation(user: User) -> (style: PresentationStyle, destination: AnyView)
 }
 
 struct MyProfileView_Previews: PreviewProvider {

@@ -5,6 +5,7 @@
 // =======================================================================
 
 // swiftlint:disable line_length
+// swiftlint:disable file_length
 public enum Strings {
   /**
    "Internal server error"
@@ -357,6 +358,20 @@ public enum Strings {
     )
   }
   /**
+   "Done"
+
+   - **en**: "Done"
+   - **zh**: "完成"
+  */
+  public static func general_done() -> String {
+    return localizedString(
+      key: "general.done",
+      defaultValue: "Done",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
    "Female"
 
    - **en**: "Female"
@@ -492,6 +507,20 @@ public enum Strings {
     return localizedString(
       key: "general.search",
       defaultValue: "Search",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   " Set"
+
+   - **en**: " Set"
+   - **zh**: "设置"
+  */
+  public static func general_set() -> String {
+    return localizedString(
+      key: "general.set",
+      defaultValue: " Set",
       count: nil,
       substitutions: [:]
     )

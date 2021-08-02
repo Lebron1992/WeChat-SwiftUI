@@ -1,7 +1,7 @@
 import SwiftUI
 
 extension View {
-  func showLoading(show: Bool) -> some View {
+  func showLoading(_ show: Bool) -> some View {
     modifier(LoadingContainer(show: show))
   }
 }
@@ -37,6 +37,6 @@ private struct LoadingContainer: ViewModifier {
 struct LoadingModifier_Previews: PreviewProvider {
   static var previews: some View {
     Color.white
-      .showLoading(show: true)
+      .showLoading(true)
   }
 }

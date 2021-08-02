@@ -76,6 +76,7 @@ public final class Strings {
     staticStringsLines.append("// =======================================================================")
     staticStringsLines.append("")
     staticStringsLines.append("// swiftlint:disable line_length")
+    staticStringsLines.append("// swiftlint:disable file_length")
     staticStringsLines.append("public enum Strings {")
 
     try stringsByLocale["en"]?.keys

@@ -65,7 +65,7 @@ struct OnboardingView: View {
     .padding()
     .background(.white)
     .resignKeyboardOnTapGesture()
-    .showLoading(show: showLoading)
+    .showLoading(showLoading)
   }
 
   private func login() {
