@@ -10,7 +10,7 @@ extension View {
     let token = "hello-world"
     let tokenEnvelope = AccessTokenEnvelope(accessToken: token, user: user)
     AppEnvironment.login(tokenEnvelope)
-    store.dispatch(action: AuthActions.SetSignedInUser(user: user))
+    store.dispatch(action: AuthActions.SetSignedInUser(user))
   }
 
   func setErrorMessage(_ message: String) {

@@ -9,12 +9,14 @@ struct ContentView: ConnectedView {
   struct Props {
     let signedInUser: User?
     let errorMessage: String?
+    let loadUserSelf: () -> Void
   }
 
   func map(state: AppState, dispatch: @escaping Dispatch) -> Props {
     Props(
       signedInUser: state.authState.signedInUser,
-      errorMessage: state.systemState.errorMessage
+      errorMessage: state.systemState.errorMessage,
+      loadUserSelf: { dispatch(AuthActions.LoadUserSelf()) }
     )
   }
 
@@ -24,6 +26,7 @@ struct ContentView: ConnectedView {
         OnboardingView()
       } else {
         RootView()
+          .onAppear(perform: props.loadUserSelf)
       }
     }
     .alert(isPresented: showErrorMessage, content: {

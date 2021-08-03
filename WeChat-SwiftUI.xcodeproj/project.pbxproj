@@ -61,6 +61,7 @@
 		FD6FE99026A9785B0059BF45 /* FirestoreServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6FE98F26A9785B0059BF45 /* FirestoreServiceType.swift */; };
 		FD6FE99226A9786D0059BF45 /* FirestoreServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6FE99126A9786D0059BF45 /* FirestoreServiceMock.swift */; };
 		FD6FE99426A9C30B0059BF45 /* AnyPublisher+ReceiveForUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6FE99326A9C30B0059BF45 /* AnyPublisher+ReceiveForUI.swift */; };
+		FD703D1826B83A3000565E4C /* AuthActionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD703D1726B83A3000565E4C /* AuthActionsTests.swift */; };
 		FD76764B26A31DBB0050457D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD76764A26A31DBB0050457D /* GoogleService-Info.plist */; };
 		FD76764E26A3C1DF0050457D /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD76764D26A3C1DF0050457D /* OnboardingView.swift */; };
 		FD76765026A3D1DB0050457D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD76764F26A3D1DB0050457D /* ContentView.swift */; };
@@ -240,6 +241,7 @@
 		FD6FE98F26A9785B0059BF45 /* FirestoreServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreServiceType.swift; sourceTree = "<group>"; };
 		FD6FE99126A9786D0059BF45 /* FirestoreServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreServiceMock.swift; sourceTree = "<group>"; };
 		FD6FE99326A9C30B0059BF45 /* AnyPublisher+ReceiveForUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyPublisher+ReceiveForUI.swift"; sourceTree = "<group>"; };
+		FD703D1726B83A3000565E4C /* AuthActionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthActionsTests.swift; sourceTree = "<group>"; };
 		FD76764A26A31DBB0050457D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FD76764D26A3C1DF0050457D /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		FD76764F26A3D1DB0050457D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -486,6 +488,7 @@
 			isa = PBXGroup;
 			children = (
 				FD5412F226A81D040001D199 /* AuthActions.swift */,
+				FD703D1726B83A3000565E4C /* AuthActionsTests.swift */,
 				FD88275E267AF2EB00BBEAB6 /* ContactsActions.swift */,
 				FD882777267F1BD500BBEAB6 /* ContactsActionsTests.swift */,
 				FD8827472679A9BF00BBEAB6 /* RootActions.swift */,
@@ -1214,6 +1217,7 @@
 				FDA9080526ABF64D00805584 /* XCTestCase+AppEnvironment.swift in Sources */,
 				FDCC7255266F212B00A48140 /* ServerConfigTests.swift in Sources */,
 				FDCC727A267109D700A48140 /* LanguageTests.swift in Sources */,
+				FD703D1826B83A3000565E4C /* AuthActionsTests.swift in Sources */,
 				FDCC72752671087E00A48140 /* EnvironmentTests.swift in Sources */,
 				FD6D378F268624520087272F /* OfficialAccountTests.swift in Sources */,
 				FD8809FB269EE76B002D3396 /* MessageTests.swift in Sources */,

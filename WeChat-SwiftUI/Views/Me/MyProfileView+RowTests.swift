@@ -24,11 +24,12 @@ final class MyProfileView_RowTests: XCTestCase {
   }
 
   func test_row_destinationPresentation() {
-    XCTAssertEqual(Row.photo.destinationPresentation.style, .push)
-    XCTAssertEqual(Row.name.destinationPresentation.style, .modal)
-    XCTAssertEqual(Row.wechatId.destinationPresentation.style, .push)
-    XCTAssertEqual(Row.qrCode.destinationPresentation.style, .push)
-    XCTAssertEqual(Row.more.destinationPresentation.style, .push)
+    let user = User.template!
+    XCTAssertEqual(Row.photo.destinationPresentation(user: user).style, .push)
+    XCTAssertEqual(Row.name.destinationPresentation(user: user).style, .modal)
+    XCTAssertEqual(Row.wechatId.destinationPresentation(user: user).style, .push)
+    XCTAssertEqual(Row.qrCode.destinationPresentation(user: user).style, .push)
+    XCTAssertEqual(Row.more.destinationPresentation(user: user).style, .push)
   }
 
   func test_subRow_title() {
@@ -38,8 +39,9 @@ final class MyProfileView_RowTests: XCTestCase {
   }
 
   func test_subRow_destinationPresentation() {
-    XCTAssertEqual(SubRow.gender.destinationPresentation.style, .modal)
-    XCTAssertEqual(SubRow.region.destinationPresentation.style, .modal)
-    XCTAssertEqual(SubRow.whatsUp.destinationPresentation.style, .modal)
+    let user = User.template!
+    XCTAssertEqual(SubRow.gender.destinationPresentation(user: user).style, .modal)
+    XCTAssertEqual(SubRow.region.destinationPresentation(user: user).style, .modal)
+    XCTAssertEqual(SubRow.whatsUp.destinationPresentation(user: user).style, .modal)
   }
 }

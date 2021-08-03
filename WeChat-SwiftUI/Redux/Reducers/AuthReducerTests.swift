@@ -17,10 +17,10 @@ final class AuthReducerTests: XCTestCase {
   }
 
   func test_handleSetSignedInUser() {
-    store.dispatch(action: AuthActions.SetSignedInUser(user: .template))
+    store.dispatch(action: AuthActions.SetSignedInUser(.template))
     XCTAssertEqual(store.state.authState.signedInUser, .template)
 
-    store.dispatch(action: AuthActions.SetSignedInUser(user: nil))
+    store.dispatch(action: AuthActions.SetSignedInUser(nil))
     XCTAssertEqual(store.state.authState.signedInUser, nil)
   }
 }
