@@ -42,7 +42,7 @@
 		FD5412F326A81D040001D199 /* AuthActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5412F226A81D040001D199 /* AuthActions.swift */; };
 		FD5412F626A81D850001D199 /* AuthReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5412F426A81D690001D199 /* AuthReducerTests.swift */; };
 		FD58C12226B0FABE00BDB0CC /* PresentationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58C12126B0FABE00BDB0CC /* PresentationStyle.swift */; };
-		FD58C12426B1429200BDB0CC /* MyProfileView+RowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58C12326B1429200BDB0CC /* MyProfileView+RowTests.swift */; };
+		FD58C12426B1429200BDB0CC /* MyProfileView.RowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58C12326B1429200BDB0CC /* MyProfileView.RowTests.swift */; };
 		FD58C12626B2430D00BDB0CC /* MyProfileFieldUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58C12526B2430D00BDB0CC /* MyProfileFieldUpdateView.swift */; };
 		FD6D377326842C610087272F /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D377226842C610087272F /* SearchBar.swift */; };
 		FD6D37752684707A0087272F /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D37742684707A0087272F /* Background.swift */; };
@@ -62,6 +62,9 @@
 		FD6FE99226A9786D0059BF45 /* FirestoreServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6FE99126A9786D0059BF45 /* FirestoreServiceMock.swift */; };
 		FD6FE99426A9C30B0059BF45 /* AnyPublisher+ReceiveForUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6FE99326A9C30B0059BF45 /* AnyPublisher+ReceiveForUI.swift */; };
 		FD703D1826B83A3000565E4C /* AuthActionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD703D1726B83A3000565E4C /* AuthActionsTests.swift */; };
+		FD703D1A26B8E9E200565E4C /* FirebaseStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD703D1926B8E9E200565E4C /* FirebaseStorageService.swift */; };
+		FD703D1C26B8F1FE00565E4C /* MyProfileView.Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD703D1B26B8F1FE00565E4C /* MyProfileView.Row.swift */; };
+		FD703D2026B8F2A900565E4C /* MyProfilePhotoPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD703D1F26B8F2A900565E4C /* MyProfilePhotoPreview.swift */; };
 		FD76764B26A31DBB0050457D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD76764A26A31DBB0050457D /* GoogleService-Info.plist */; };
 		FD76764E26A3C1DF0050457D /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD76764D26A3C1DF0050457D /* OnboardingView.swift */; };
 		FD76765026A3D1DB0050457D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD76764F26A3D1DB0050457D /* ContentView.swift */; };
@@ -106,6 +109,20 @@
 		FD88279D2681E1F100BBEAB6 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88279C2681E1F100BBEAB6 /* Haptics.swift */; };
 		FD88279F2681E52E00BBEAB6 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88279E2681E52E00BBEAB6 /* Color+Hex.swift */; };
 		FD8827A22681E6E700BBEAB6 /* Color+HexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8827A02681E6DC00BBEAB6 /* Color+HexTests.swift */; };
+		FD9A857626C8991F00A39051 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9A857426C8991F00A39051 /* ImagePicker.swift */; };
+		FD9A857C26C8B0A300A39051 /* MyProfilePhotoPreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9A857B26C8B0A300A39051 /* MyProfilePhotoPreviewViewModel.swift */; };
+		FD9A857E26C8B5F400A39051 /* FirebaseStorageServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9A857D26C8B5F400A39051 /* FirebaseStorageServiceType.swift */; };
+		FD9A858026C8B62F00A39051 /* ImageFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9A857F26C8B62F00A39051 /* ImageFormat.swift */; };
+		FD9A858226C8BAFF00A39051 /* FirebaseStorageServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9A858126C8BAFF00A39051 /* FirebaseStorageServiceMock.swift */; };
+		FD9A858426C8BC5800A39051 /* AnyPublisher+Initializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9A858326C8BC5800A39051 /* AnyPublisher+Initializer.swift */; };
+		FD9A858626C8BE4C00A39051 /* MyProfilePhotoPreviewViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9A858526C8BE4C00A39051 /* MyProfilePhotoPreviewViewModelTests.swift */; };
+		FD9A858926C8CC7400A39051 /* TestObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9A858726C8CB2D00A39051 /* TestObserver.swift */; };
+		FD9A858D26C962B100A39051 /* ValueUpdateStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9A858C26C962B100A39051 /* ValueUpdateStatus.swift */; };
+		FD9A858F26C9EA8000A39051 /* ValueUpdateStatusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9A858E26C9EA8000A39051 /* ValueUpdateStatusTests.swift */; };
+		FD9A859126C9FDE000A39051 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9A859026C9FDE000A39051 /* Errors.swift */; };
+		FD9A859326CA0ACE00A39051 /* View+AsAnyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9A859226CA0ACE00A39051 /* View+AsAnyView.swift */; };
+		FD9A859526CA11A400A39051 /* XCTestCase+Wait.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9A859426CA11A400A39051 /* XCTestCase+Wait.swift */; };
+		FD9A859726CA181D00A39051 /* UIImage+InitWithColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9A859626CA181D00A39051 /* UIImage+InitWithColor.swift */; };
 		FDA907FC26ABCC6000805584 /* DiscoverSectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA907FB26ABCC6000805584 /* DiscoverSectionTests.swift */; };
 		FDA907FE26ABCD1500805584 /* ExpressionStickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA907FD26ABCD1500805584 /* ExpressionStickerTests.swift */; };
 		FDA9080026ABD01C00805584 /* LoadableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA907FF26ABD01C00805584 /* LoadableTests.swift */; };
@@ -222,7 +239,7 @@
 		FD5412F226A81D040001D199 /* AuthActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthActions.swift; sourceTree = "<group>"; };
 		FD5412F426A81D690001D199 /* AuthReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthReducerTests.swift; sourceTree = "<group>"; };
 		FD58C12126B0FABE00BDB0CC /* PresentationStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationStyle.swift; sourceTree = "<group>"; };
-		FD58C12326B1429200BDB0CC /* MyProfileView+RowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyProfileView+RowTests.swift"; sourceTree = "<group>"; };
+		FD58C12326B1429200BDB0CC /* MyProfileView.RowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.RowTests.swift; sourceTree = "<group>"; };
 		FD58C12526B2430D00BDB0CC /* MyProfileFieldUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileFieldUpdateView.swift; sourceTree = "<group>"; };
 		FD6D377226842C610087272F /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		FD6D37742684707A0087272F /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
@@ -242,6 +259,9 @@
 		FD6FE99126A9786D0059BF45 /* FirestoreServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreServiceMock.swift; sourceTree = "<group>"; };
 		FD6FE99326A9C30B0059BF45 /* AnyPublisher+ReceiveForUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyPublisher+ReceiveForUI.swift"; sourceTree = "<group>"; };
 		FD703D1726B83A3000565E4C /* AuthActionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthActionsTests.swift; sourceTree = "<group>"; };
+		FD703D1926B8E9E200565E4C /* FirebaseStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageService.swift; sourceTree = "<group>"; };
+		FD703D1B26B8F1FE00565E4C /* MyProfileView.Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.Row.swift; sourceTree = "<group>"; };
+		FD703D1F26B8F2A900565E4C /* MyProfilePhotoPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfilePhotoPreview.swift; sourceTree = "<group>"; };
 		FD76764A26A31DBB0050457D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FD76764D26A3C1DF0050457D /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		FD76764F26A3D1DB0050457D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -283,6 +303,20 @@
 		FD88279C2681E1F100BBEAB6 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		FD88279E2681E52E00BBEAB6 /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
 		FD8827A02681E6DC00BBEAB6 /* Color+HexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+HexTests.swift"; sourceTree = "<group>"; };
+		FD9A857426C8991F00A39051 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		FD9A857B26C8B0A300A39051 /* MyProfilePhotoPreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfilePhotoPreviewViewModel.swift; sourceTree = "<group>"; };
+		FD9A857D26C8B5F400A39051 /* FirebaseStorageServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageServiceType.swift; sourceTree = "<group>"; };
+		FD9A857F26C8B62F00A39051 /* ImageFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFormat.swift; sourceTree = "<group>"; };
+		FD9A858126C8BAFF00A39051 /* FirebaseStorageServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageServiceMock.swift; sourceTree = "<group>"; };
+		FD9A858326C8BC5800A39051 /* AnyPublisher+Initializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyPublisher+Initializer.swift"; sourceTree = "<group>"; };
+		FD9A858526C8BE4C00A39051 /* MyProfilePhotoPreviewViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfilePhotoPreviewViewModelTests.swift; sourceTree = "<group>"; };
+		FD9A858726C8CB2D00A39051 /* TestObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestObserver.swift; sourceTree = "<group>"; };
+		FD9A858C26C962B100A39051 /* ValueUpdateStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueUpdateStatus.swift; sourceTree = "<group>"; };
+		FD9A858E26C9EA8000A39051 /* ValueUpdateStatusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueUpdateStatusTests.swift; sourceTree = "<group>"; };
+		FD9A859026C9FDE000A39051 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		FD9A859226CA0ACE00A39051 /* View+AsAnyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+AsAnyView.swift"; sourceTree = "<group>"; };
+		FD9A859426CA11A400A39051 /* XCTestCase+Wait.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Wait.swift"; sourceTree = "<group>"; };
+		FD9A859626CA181D00A39051 /* UIImage+InitWithColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+InitWithColor.swift"; sourceTree = "<group>"; };
 		FDA907FB26ABCC6000805584 /* DiscoverSectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverSectionTests.swift; sourceTree = "<group>"; };
 		FDA907FD26ABCD1500805584 /* ExpressionStickerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressionStickerTests.swift; sourceTree = "<group>"; };
 		FDA907FF26ABD01C00805584 /* LoadableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableTests.swift; sourceTree = "<group>"; };
@@ -570,8 +604,10 @@
 			children = (
 				FD8827532679D8A600BBEAB6 /* MeView.swift */,
 				FD58C12526B2430D00BDB0CC /* MyProfileFieldUpdateView.swift */,
+				FD703D1F26B8F2A900565E4C /* MyProfilePhotoPreview.swift */,
 				FD21E90C26B0038F00EC38DD /* MyProfileView.swift */,
-				FD58C12326B1429200BDB0CC /* MyProfileView+RowTests.swift */,
+				FD703D1B26B8F1FE00565E4C /* MyProfileView.Row.swift */,
+				FD58C12326B1429200BDB0CC /* MyProfileView.RowTests.swift */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -579,6 +615,7 @@
 		FD882760267AFAA300BBEAB6 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				FD9A857426C8991F00A39051 /* ImagePicker.swift */,
 				FD882761267AFAAF00BBEAB6 /* ActivityIndicatorView.swift */,
 				FD6D37742684707A0087272F /* Background.swift */,
 				FD882763267AFAD000BBEAB6 /* ErrorView.swift */,
@@ -620,11 +657,22 @@
 			path = Locales;
 			sourceTree = "<group>";
 		};
+		FD9A857A26C8B07F00A39051 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				FD9A857B26C8B0A300A39051 /* MyProfilePhotoPreviewViewModel.swift */,
+				FD9A858526C8BE4C00A39051 /* MyProfilePhotoPreviewViewModelTests.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		FDA9080326ABF62200805584 /* TestHelpers */ = {
 			isa = PBXGroup;
 			children = (
 				FDA9080826AD00AF00805584 /* MockBundle.swift */,
+				FD9A858726C8CB2D00A39051 /* TestObserver.swift */,
 				FDA9080426ABF64D00805584 /* XCTestCase+AppEnvironment.swift */,
+				FD9A859426CA11A400A39051 /* XCTestCase+Wait.swift */,
 			);
 			path = TestHelpers;
 			sourceTree = "<group>";
@@ -673,6 +721,7 @@
 				FD8ADB2C2674576300ACD596 /* Locales */,
 				FD8827362679A24C00BBEAB6 /* Redux */,
 				FD258BA62699974B00FC3794 /* Resources */,
+				FD9A857A26C8B07F00A39051 /* ViewModels */,
 				FDCC7248266E6AFD00A48140 /* Views */,
 			);
 			path = "WeChat-SwiftUI";
@@ -724,6 +773,8 @@
 				FDCC726E2670882D00A48140 /* User.swift */,
 				FDF568D726B79D9900033094 /* User+Setters.swift */,
 				FD882768267B499700BBEAB6 /* UserTests.swift */,
+				FD9A858C26C962B100A39051 /* ValueUpdateStatus.swift */,
+				FD9A858E26C9EA8000A39051 /* ValueUpdateStatusTests.swift */,
 				FDCC728A2671C33400A48140 /* Templates */,
 			);
 			path = DataModels;
@@ -759,7 +810,12 @@
 				FDCC729C2673496800A48140 /* CancelBag.swift */,
 				FDCC724A266F190700A48140 /* Environment.swift */,
 				FDCC72732671087A00A48140 /* EnvironmentTests.swift */,
+				FD9A859026C9FDE000A39051 /* Errors.swift */,
+				FD703D1926B8E9E200565E4C /* FirebaseStorageService.swift */,
+				FD9A858126C8BAFF00A39051 /* FirebaseStorageServiceMock.swift */,
+				FD9A857D26C8B5F400A39051 /* FirebaseStorageServiceType.swift */,
 				FD88279C2681E1F100BBEAB6 /* Haptics.swift */,
+				FD9A857F26C8B62F00A39051 /* ImageFormat.swift */,
 				FDCC727F2671A99400A48140 /* KeyValueStoreType.swift */,
 				FDCC7266266F5CF600A48140 /* Language.swift */,
 				FDCC7278267109D500A48140 /* LanguageTests.swift */,
@@ -797,6 +853,7 @@
 		FDCC72812671AC1800A48140 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				FD9A858326C8BC5800A39051 /* AnyPublisher+Initializer.swift */,
 				FD6FE99326A9C30B0059BF45 /* AnyPublisher+ReceiveForUI.swift */,
 				FD88279E2681E52E00BBEAB6 /* Color+Hex.swift */,
 				FD8827A02681E6DC00BBEAB6 /* Color+HexTests.swift */,
@@ -808,6 +865,8 @@
 				FD424F91268B059B00F11A62 /* Image+Resize.swift */,
 				FD1F16DC269560AB009D08DF /* String+Height.swift */,
 				FD1F16E22695A743009D08DF /* UIApplication+EndEditing.swift */,
+				FD9A859226CA0ACE00A39051 /* View+AsAnyView.swift */,
+				FD9A859626CA181D00A39051 /* UIImage+InitWithColor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1111,21 +1170,26 @@
 				FDCC7258266F26D200A48140 /* OauthToken.swift in Sources */,
 				FD58C12226B0FABE00BDB0CC /* PresentationStyle.swift in Sources */,
 				FD882781267F844C00BBEAB6 /* NavigationConfigurator.swift in Sources */,
+				FD9A858026C8B62F00A39051 /* ImageFormat.swift in Sources */,
 				FD1F16C1269162A6009D08DF /* DiscoverItem.swift in Sources */,
 				FDCC7297267348A600A48140 /* Constants.swift in Sources */,
 				FD882773267EFA7400BBEAB6 /* MockStore.swift in Sources */,
 				FDAFA49A26AEACCC00FD5C33 /* Dialog.swift in Sources */,
+				FD9A859126C9FDE000A39051 /* Errors.swift in Sources */,
 				FD76765226A3D40A0050457D /* AuthState.swift in Sources */,
 				FD1E4CEB2674A47200BD2C34 /* LocalizedString.swift in Sources */,
 				FD1D01342699BC6700A9AF37 /* ExpressionPreview.swift in Sources */,
+				FD9A857C26C8B0A300A39051 /* MyProfilePhotoPreviewViewModel.swift in Sources */,
 				FD6D3784268576BE0087272F /* ContactCategoriesList.swift in Sources */,
 				FD1F16DF26959F83009D08DF /* ChatInputPanel.swift in Sources */,
 				FD1F16D32692F8FB009D08DF /* SectionHeaderTitle.swift in Sources */,
 				FD1D0138269ACD3C00A9AF37 /* DelayTouchesModifier.swift in Sources */,
 				FD1E4CE92674780600BD2C34 /* Strings.swift in Sources */,
 				FD8827542679D8A600BBEAB6 /* MeView.swift in Sources */,
+				FD9A859326CA0ACE00A39051 /* View+AsAnyView.swift in Sources */,
 				FDAFA49C26AEAFA800FD5C33 /* DialogTemplates.swift in Sources */,
 				FD6D3791268624780087272F /* OfficialAccountTemplates.swift in Sources */,
+				FD703D1C26B8F1FE00565E4C /* MyProfileView.Row.swift in Sources */,
 				FD88279F2681E52E00BBEAB6 /* Color+Hex.swift in Sources */,
 				FD5412F326A81D040001D199 /* AuthActions.swift in Sources */,
 				FD88278E26808F5500BBEAB6 /* ContactDetail.swift in Sources */,
@@ -1140,6 +1204,7 @@
 				FD882784267F888D00BBEAB6 /* NavigationBarBackgroundModifierLightGray.swift in Sources */,
 				FD8827422679A75B00BBEAB6 /* RootState.swift in Sources */,
 				FD8809FD269EE852002D3396 /* MessageTemplates.swift in Sources */,
+				FD9A859726CA181D00A39051 /* UIImage+InitWithColor.swift in Sources */,
 				FDCC72802671A99400A48140 /* KeyValueStoreType.swift in Sources */,
 				FDCC724B266F190700A48140 /* Environment.swift in Sources */,
 				FD424F90268B050900F11A62 /* Image.swift in Sources */,
@@ -1159,17 +1224,22 @@
 				FDCC7265266F5C5B00A48140 /* Service.swift in Sources */,
 				FDAFA4A126AFAB7500FD5C33 /* DialogRow.swift in Sources */,
 				FD8809F9269EDF0F002D3396 /* Message.swift in Sources */,
+				FD9A857E26C8B5F400A39051 /* FirebaseStorageServiceType.swift in Sources */,
+				FD9A858D26C962B100A39051 /* ValueUpdateStatus.swift in Sources */,
 				FDCC72832671AC2B00A48140 /* Encodable+Dictionary.swift in Sources */,
 				FD1F16C526919065009D08DF /* DiscoverList.swift in Sources */,
 				FD88274E2679D86D00BBEAB6 /* ChatsView.swift in Sources */,
 				FD3D102C26A6AFAB0045C218 /* LoadingModifier.swift in Sources */,
 				FDA9080726ABF98F00805584 /* NSBundleType.swift in Sources */,
+				FD703D2026B8F2A900565E4C /* MyProfilePhotoPreview.swift in Sources */,
+				FD9A858226C8BAFF00A39051 /* FirebaseStorageServiceMock.swift in Sources */,
 				FD6FE99026A9785B0059BF45 /* FirestoreServiceType.swift in Sources */,
 				FD1F16E12695A6FD009D08DF /* ResignKeyboardOnTapGestureModifier.swift in Sources */,
 				FD88279D2681E1F100BBEAB6 /* Haptics.swift in Sources */,
 				FDCC721B266E254D00A48140 /* WeChat_SwiftUIApp.swift in Sources */,
 				FD21E90D26B0038F00EC38DD /* MyProfileView.swift in Sources */,
 				FDAFA4A326AFB3C400FD5C33 /* DialogsList.swift in Sources */,
+				FD9A858426C8BC5800A39051 /* AnyPublisher+Initializer.swift in Sources */,
 				FDCC724D266F19CF00A48140 /* ServiceType.swift in Sources */,
 				FD8827522679D89C00BBEAB6 /* DiscoverView.swift in Sources */,
 				FD6D378D26861A6D0087272F /* OfficialAccount.swift in Sources */,
@@ -1182,6 +1252,7 @@
 				FD6D377326842C610087272F /* SearchBar.swift in Sources */,
 				FDCC7267266F5CF600A48140 /* Language.swift in Sources */,
 				FD5412EB26A8127E0001D199 /* SystemActions.swift in Sources */,
+				FD703D1A26B8E9E200565E4C /* FirebaseStorageService.swift in Sources */,
 				FD1F16D12692F5E9009D08DF /* SectionHeaderBackground.swift in Sources */,
 				FD8827462679A98D00BBEAB6 /* RootReducer.swift in Sources */,
 				FD1F16EA26974645009D08DF /* ExpressionKeyboard.swift in Sources */,
@@ -1196,6 +1267,7 @@
 				FD882762267AFAAF00BBEAB6 /* ActivityIndicatorView.swift in Sources */,
 				FD88275B267AF27200BBEAB6 /* ContactsState.swift in Sources */,
 				FD6FE98C26A975950059BF45 /* FirestoreService.swift in Sources */,
+				FD9A857626C8991F00A39051 /* ImagePicker.swift in Sources */,
 				FD6D3793268625610087272F /* ContactOfficialAccountsList.swift in Sources */,
 				FD58C12626B2430D00BDB0CC /* MyProfileFieldUpdateView.swift in Sources */,
 				FDCC7290267343A800A48140 /* Service+RequestHelpers.swift in Sources */,
@@ -1228,18 +1300,22 @@
 				FDA9080C26AD138600805584 /* AppStateTests.swift in Sources */,
 				FDAFA49E26AEB14F00FD5C33 /* DialogTests.swift in Sources */,
 				FD882769267B499700BBEAB6 /* UserTests.swift in Sources */,
+				FD9A858F26C9EA8000A39051 /* ValueUpdateStatusTests.swift in Sources */,
 				FDA9081226AD621200805584 /* ContactsStateTests.swift in Sources */,
 				FDCC726B266F650F00A48140 /* ServiceTypeTests.swift in Sources */,
 				FDA9080226ABEA3B00805584 /* LocalizedStringTests.swift in Sources */,
 				FDCC72852671AC7200A48140 /* Encodable+DictionaryTests.swift in Sources */,
+				FD9A859526CA11A400A39051 /* XCTestCase+Wait.swift in Sources */,
 				FDA907FC26ABCC6000805584 /* DiscoverSectionTests.swift in Sources */,
 				FD5412F626A81D850001D199 /* AuthReducerTests.swift in Sources */,
 				FD8827A22681E6E700BBEAB6 /* Color+HexTests.swift in Sources */,
+				FD9A858626C8BE4C00A39051 /* MyProfilePhotoPreviewViewModelTests.swift in Sources */,
 				FDCC72892671C14800A48140 /* AppEnvironmentTests.swift in Sources */,
 				FDA9081626AD62DF00805584 /* RootStateTests.swift in Sources */,
 				FDA907FE26ABCD1500805584 /* ExpressionStickerTests.swift in Sources */,
 				FD88277D267F314000BBEAB6 /* RootReducerTests.swift in Sources */,
-				FD58C12426B1429200BDB0CC /* MyProfileView+RowTests.swift in Sources */,
+				FD58C12426B1429200BDB0CC /* MyProfileView.RowTests.swift in Sources */,
+				FD9A858926C8CC7400A39051 /* TestObserver.swift in Sources */,
 				FD6D37882685D2540087272F /* EdgeInsetsTests.swift in Sources */,
 				FDA9080A26AD00B700805584 /* MockBundle.swift in Sources */,
 			);

@@ -36,6 +36,7 @@
 "general.search" = "搜索";
 "general.set" = "设置";
 "general.something_went_wrong" = "出了点问题";
+"general.unknown_error" = "未知错误";
 "general.wechat_id" = "微信号";
 "general.whats_up" = "个性签名";
 "me.favorites" = " 收藏";

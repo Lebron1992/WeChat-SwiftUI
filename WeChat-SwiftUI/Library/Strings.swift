@@ -540,6 +540,20 @@ public enum Strings {
     )
   }
   /**
+   "Unknown error"
+
+   - **en**: "Unknown error"
+   - **zh**: "未知错误"
+  */
+  public static func general_unknown_error() -> String {
+    return localizedString(
+      key: "general.unknown_error",
+      defaultValue: "Unknown error",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
    "WeChat ID"
 
    - **en**: "WeChat ID"

@@ -2,6 +2,7 @@ import Combine
 import Foundation
 
 struct MockService: ServiceType {
+
   let serverConfig: ServerConfigType
   let oauthToken: OauthTokenAuthType?
 
@@ -64,36 +65,22 @@ struct MockService: ServiceType {
 
   func loadContacts() -> AnyPublisher<[User], Error> {
     if let error = loadContactsError {
-      return publisher(error: error)
+      return .publisher(failure: error)
     }
-    return publisher(data: loadContactsResponse ?? [User.template])
+    return .publisher(output: loadContactsResponse ?? [User.template])
   }
 
   func loadOfficialAccounts() -> AnyPublisher<[OfficialAccount], Error> {
     if let error = loadOfficialAccountsError {
-      return publisher(error: error)
+      return .publisher(failure: error)
     }
-    return publisher(data: loadOfficialAccountsResponse ?? [OfficialAccount.template])
+    return .publisher(output: loadOfficialAccountsResponse ?? [OfficialAccount.template])
   }
 
   func loadUserSelf() -> AnyPublisher<User, Error> {
     if let error = loadUserSelfError {
-      return publisher(error: error)
+      return .publisher(failure: error)
     }
-    return publisher(data: loadUserSelfResponse ?? User.template)
-  }
-}
-
-extension MockService {
-  private func publisher<T>(data: T) -> AnyPublisher<T, Error> {
-    Just<Void>
-      .withErrorType(Error.self)
-      .map { data }
-      .eraseToAnyPublisher()
-  }
-
-  private func publisher<T>(error: Error) -> AnyPublisher<T, Error> {
-    Fail<T, Error>(error: error)
-      .eraseToAnyPublisher()
+    return .publisher(output: loadUserSelfResponse ?? User.template)
   }
 }

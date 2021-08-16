@@ -36,6 +36,7 @@
 "general.search" = "Search";
 "general.set" = " Set";
 "general.something_went_wrong" = "Something went wrong";
+"general.unknown_error" = "Unknown error";
 "general.wechat_id" = "WeChat ID";
 "general.whats_up" = "What's Up";
 "me.favorites" = "Favorites";

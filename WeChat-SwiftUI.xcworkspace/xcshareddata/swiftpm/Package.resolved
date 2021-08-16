@@ -20,7 +20,7 @@
         }
       },
       {
-        "package": "url-image",
+        "package": "URLImage",
         "repositoryURL": "https://github.com/dmytro-anokhin/url-image.git",
         "state": {
           "branch": null,

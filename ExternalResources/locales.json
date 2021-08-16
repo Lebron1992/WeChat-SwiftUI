@@ -52,6 +52,7 @@
         "search": "Search",
         "set": " Set",
         "something_went_wrong": "Something went wrong",
+        "unknown_error": "Unknown error",
         "wechat_id": "WeChat ID",
         "whats_up": "What's Up"
       },
@@ -132,6 +133,7 @@
         "search": "搜索",
         "set": "设置",
         "something_went_wrong": "出了点问题",
+        "unknown_error": "未知错误",
         "wechat_id": "微信号",
         "whats_up": "个性签名"
       },

@@ -20,6 +20,7 @@ final class AuthActionsTests: XCTestCase {
   func test_LoadContacts() {
     let user = User.template
     let mockService = FirestoreServiceMock(loadUserSelfResponse: user)
+    let expectation = XCTestExpectation(description: "Wait for dispatch")
 
     withEnvironment(firestoreService: mockService) {
       mockStore.dispatch(action: AuthActions.LoadUserSelf())
@@ -34,7 +35,10 @@ final class AuthActionsTests: XCTestCase {
           self.mockStore.actions[1] as! AuthActions.SetSignedInUser,
           AuthActions.SetSignedInUser(user)
         )
+        expectation.fulfill()
       }
     }
+
+    wait(for: [expectation], timeout: 0.2)
   }
 }
