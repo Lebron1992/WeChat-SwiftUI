@@ -91,16 +91,12 @@ private extension ContactsList {
           ForEach(contacts) { contact in
             ImageTitleRow(
               imageUrl: URL(string: contact.avatar),
-              imagePlaceholder: .init(
-                image: .avatarPlaceholder,
-                size: .init(width: 40, height: 40),
-                foregroundColor: .app_bg
-              ),
+              imagePlaceholder: .avatarPlaceholder,
               imageSize: .init(width: 40, height: 40),
               imageCornerRadius: 4,
               title: contact.name,
-              destination: { selectionDestination(contact) },
-              showRightArrow: false
+              showRightArrow: false,
+              destination: { selectionDestination(contact) }
             )
           }
           .listRowBackground(Color.app_white)

@@ -138,6 +138,8 @@ extension MeView {
   func MeItemRow(item: MeItem) -> some View {
     ImageTitleRow(
       image: item.iconImage,
+      imageColor: item.iconForegroundColor,
+      imageSize: .init(width: 24, height: 24),
       title: item.title,
       destination: { Text(item.title) }
     )
@@ -160,17 +162,27 @@ extension MeView {
       }
     }
 
-    var iconImage: ImageWrapper {
-      let size = CGSize(width: 24, height: 24)
+    var iconImage: Image {
       switch self {
       case .pay:
-        return .init(image: Image("icons_outlined_wechatpay"), size: size)
+        return Image("icons_outlined_wechatpay")
       case .favorites:
-        return .init(image: Image("icons_outlined_colorful_favorites"), size: size)
+        return Image("icons_outlined_colorful_favorites")
       case .stickerGallery:
-        return .init(image: Image("icons_outlined_sticker"), size: size, foregroundColor: .hex("F5C343"))
+        return Image("icons_outlined_sticker")
       case .settings:
-        return .init(image: Image("icons_outlined_setting"), size: size, foregroundColor: .hex("3C86E6"))
+        return Image("icons_outlined_setting")
+      }
+    }
+
+    var iconForegroundColor: Color? {
+      switch self {
+      case .pay, .favorites:
+        return nil
+      case .stickerGallery:
+        return .hex("F5C343")
+      case .settings:
+        return .hex("3C86E6")
       }
     }
   }

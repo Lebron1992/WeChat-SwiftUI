@@ -48,6 +48,8 @@ private extension DiscoverList {
   func DiscoverItemRow(item: DiscoverItem) -> some View {
     ImageTitleRow(
       image: item.iconImage,
+      imageColor: item.iconForegroundColor,
+      imageSize: .init(width: 24, height: 24),
       title: item.title,
       destination: { Text(item.title) }
     )

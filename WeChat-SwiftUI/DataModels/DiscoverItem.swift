@@ -30,35 +30,56 @@ enum DiscoverItem {
     }
   }
 
-  var iconImage: ImageWrapper {
-    let size = CGSize(width: 24, height: 24)
+  var iconImage: Image {
     switch self {
     case .moments:
-      return .init(image: Image("icons_outlined_colorful_moment"), size: size)
+      return Image("icons_outlined_colorful_moment")
 
     case .channels:
-      return .init(image: Image("icons_outlined_channel"), size: size, foregroundColor: .hex("#EC9F50"))
+      return Image("icons_outlined_channel")
 
     case .scan:
-      return .init(image: Image("icons_outlined_scan"), size: size, foregroundColor: .hex("#3C86E6"))
+      return Image("icons_outlined_scan")
 
     case .shake:
-      return .init(image: Image("icons_outlined_shake"), size: size, foregroundColor: .hex("#3C86E6"))
+      return Image("icons_outlined_shake")
 
     case .news:
-      return .init(image: Image("icons_outlined_news"), size: size, foregroundColor: .hex("#F5C343"))
+      return Image("icons_outlined_news")
 
     case .search:
-      return .init(image: Image("icons_outlined_searchlogo"), size: size, foregroundColor: .hex("#E75D58"))
+      return Image("icons_outlined_searchlogo")
 
     case .liveNearby:
-      return .init(image: Image("icons_outlined_live_nearby"), size: size, foregroundColor: .hex("#3C86E6"))
+      return Image("icons_outlined_live_nearby")
 
     case .shopping:
-      return .init(image: Image("icons_outlined_shop"), size: size, foregroundColor: .hex("#E75D58"))
+      return Image("icons_outlined_shop")
 
     case .games:
-      return .init(image: Image("icons_outlined_colorful_game"), size: size)
+      return Image("icons_outlined_colorful_game")
+    }
+  }
+
+  var iconForegroundColor: Color? {
+    switch self {
+    case .moments:
+      return nil
+
+    case .channels:
+      return .hex("#EC9F50")
+
+    case .scan, .shake, .liveNearby:
+      return .hex("#3C86E6")
+
+    case .news:
+      return .hex("#F5C343")
+
+    case .search, .shopping:
+      return .hex("#E75D58")
+
+    case .games:
+      return nil
     }
   }
 }
