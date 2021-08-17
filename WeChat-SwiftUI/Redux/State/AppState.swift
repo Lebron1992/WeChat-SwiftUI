@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUIRedux
 
-struct AppState: ReduxState {
+struct AppState: ReduxState, Equatable {
 
   var authState = AuthState(signedInUser: nil)
 
@@ -96,16 +96,6 @@ extension AppState {
 
   enum ArchiveKeys: String, CaseIterable {
     case authState
-  }
-}
-
-extension AppState: Equatable {
-  static func == (lhs: AppState, rhs: AppState) -> Bool {
-    lhs.authState == rhs.authState &&
-    lhs.contactsState == rhs.contactsState &&
-    lhs.discoverState == rhs.discoverState &&
-    lhs.rootState == rhs.rootState &&
-    lhs.systemState == rhs.systemState
   }
 }
 

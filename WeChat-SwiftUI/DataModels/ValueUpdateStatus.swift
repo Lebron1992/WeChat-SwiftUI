@@ -8,15 +8,19 @@ enum ValueUpdateStatus<V: Equatable>: Equatable {
 
   var value: V? {
     switch self {
-    case .finished(let v): return v
-    default:               return nil
+    case .finished(let v):
+      return v
+    default:
+      return nil
     }
   }
 
   var error: Error? {
     switch self {
-    case .failed(let e): return e
-    default:             return nil
+    case .failed(let e):
+      return e
+    default:
+      return nil
     }
   }
 

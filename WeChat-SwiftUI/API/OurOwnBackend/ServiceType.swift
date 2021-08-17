@@ -45,8 +45,11 @@ extension ServiceType {
   ///   - originalRequest: 需要准备的请求。
   ///   - query: 附加到请求的其他查询参数。
   /// - Returns: 为服务器正确配置的新URL请求。
-  func preparedRequest(forRequest originalRequest: URLRequest, query: [String: Any] = [:])
-  -> URLRequest {
+  func preparedRequest(
+    forRequest originalRequest: URLRequest,
+    query: [String: Any] = [:]
+  ) -> URLRequest {
+
     var request = originalRequest
     guard let URL = request.url else {
       return originalRequest
@@ -66,7 +69,7 @@ extension ServiceType {
     } else {
       queryItems.append(
         contentsOf: query
-          .flatMap(self.queryComponents)
+          .flatMap(queryComponents)
           .map(URLQueryItem.init(name:value:))
       )
     }
@@ -85,11 +88,15 @@ extension ServiceType {
   ///   - method: 用于请求的请求方法
   ///   - query: 附加到请求的其他查询参数。
   /// - Returns: 为服务器正确配置的新URL请求。
-  func preparedRequest(forURL url: URL, method: Method = .GET, query: [String: Any] = [:])
-  -> URLRequest {
+  func preparedRequest(
+    forURL url: URL,
+    method: Method = .GET,
+    query: [String: Any] = [:]
+  ) -> URLRequest {
+
     var request = URLRequest(url: url)
     request.httpMethod = method.rawValue
-    return self.preparedRequest(forRequest: request, query: query)
+    return preparedRequest(forRequest: request, query: query)
   }
 
   private var defaultHeaders: [String: String] {

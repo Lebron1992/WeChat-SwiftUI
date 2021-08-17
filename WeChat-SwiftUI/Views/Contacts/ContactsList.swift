@@ -53,7 +53,7 @@ private extension ContactsList {
     if let result = previouslyLoaded {
       return AnyView(loadedView(contacts: result, searchText: searchText, showLoading: true))
     } else {
-      return AnyView(ActivityIndicatorView().padding())
+      return AnyView(ActivityIndicator().padding())
     }
   }
 
@@ -72,8 +72,7 @@ private extension ContactsList {
       ZStack {
         groupedContactsList(contactGroups)
         if showLoading {
-          ActivityIndicatorView(color: .gray)
-            .padding()
+          ActivityIndicator().padding()
         }
       }
       .overlay(

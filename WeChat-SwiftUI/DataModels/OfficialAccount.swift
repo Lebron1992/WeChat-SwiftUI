@@ -1,4 +1,4 @@
-struct OfficialAccount: Decodable {
+struct OfficialAccount: Decodable, Equatable {
   let id: String
   let avatar: String
   let name: String
@@ -15,12 +15,6 @@ struct OfficialAccount: Decodable {
 extension OfficialAccount: CustomDebugStringConvertible {
   var debugDescription: String {
     "OfficialAccount(id: \(id), name: \"\(name)\")"
-  }
-}
-
-extension OfficialAccount: Equatable {
-  static func == (lhs: OfficialAccount, rhs: OfficialAccount) -> Bool {
-    lhs.id == rhs.id
   }
 }
 

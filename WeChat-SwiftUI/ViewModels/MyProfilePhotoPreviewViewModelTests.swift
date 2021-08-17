@@ -71,7 +71,7 @@ final class MyProfilePhotoPreviewViewModelTests: XCTestCase {
       }
     }
 
-    wait(for: [expectation], timeout: 0.2)
+    wait(for: [expectation], timeout: 0.3)
   }
 
   func test_updateUserSelf_failed() {
@@ -86,6 +86,6 @@ final class MyProfilePhotoPreviewViewModelTests: XCTestCase {
       }
     }
 
-    wait(for: [expectation], timeout: 0.2)
+    wait(for: [expectation], timeout: 0.3)
   }
 }

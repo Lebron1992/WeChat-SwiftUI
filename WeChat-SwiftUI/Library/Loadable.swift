@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-/// 表示通过一系列请求才能得到的数据模型的几种状态，用户可以根据不同的状态来更新 UI
+/// 表示通过请求才能得到的数据模型的几种状态，用户可以根据不同的状态来更新 UI
 enum Loadable<T> {
 
   case notRequested
@@ -11,16 +11,21 @@ enum Loadable<T> {
 
   var value: T? {
     switch self {
-    case let .loaded(value): return value
-    case let .isLoading(last, _): return last
-    default: return nil
+    case let .loaded(value):
+      return value
+    case let .isLoading(last, _):
+      return last
+    default:
+      return nil
     }
   }
 
   var error: Error? {
     switch self {
-    case let .failed(error): return error
-    default: return nil
+    case let .failed(error):
+      return error
+    default:
+      return nil
     }
   }
 }
@@ -52,11 +57,12 @@ extension Loadable {
   func map<V>(_ transform: (T) throws -> V) -> Loadable<V> {
     do {
       switch self {
-      case .notRequested: return .notRequested
-      case let .failed(error): return .failed(error)
+      case .notRequested:
+        return .notRequested
+      case let .failed(error):
+        return .failed(error)
       case let .isLoading(value, cancelBag):
-        return .isLoading(last: try value.map { try transform($0) },
-                          cancelBag: cancelBag)
+        return .isLoading(last: try value.map { try transform($0) }, cancelBag: cancelBag)
       case let .loaded(value):
         return .loaded(try transform(value))
       }
@@ -69,12 +75,16 @@ extension Loadable {
 extension Loadable: Equatable where T: Equatable {
   static func == (lhs: Loadable<T>, rhs: Loadable<T>) -> Bool {
     switch (lhs, rhs) {
-    case (.notRequested, .notRequested): return true
-    case let (.isLoading(lhsV, _), .isLoading(rhsV, _)): return lhsV == rhsV
-    case let (.loaded(lhsV), .loaded(rhsV)): return lhsV == rhsV
+    case (.notRequested, .notRequested):
+      return true
+    case let (.isLoading(lhsV, _), .isLoading(rhsV, _)):
+      return lhsV == rhsV
+    case let (.loaded(lhsV), .loaded(rhsV)):
+      return lhsV == rhsV
     case let (.failed(lhsE), .failed(rhsE)):
       return lhsE.localizedDescription == rhsE.localizedDescription
-    default: return false
+    default:
+      return false
     }
   }
 }

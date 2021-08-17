@@ -1,6 +1,6 @@
 import FirebaseAuth
 
-struct User: Codable, Identifiable {
+struct User: Codable, Identifiable, Equatable {
   let id: String
   let avatar: String
   let name: String
@@ -77,18 +77,6 @@ extension User {
         return ""
       }
     }
-  }
-}
-
-extension User: Equatable {
-  static func == (lhs: User, rhs: User) -> Bool {
-    lhs.id == rhs.id &&
-    lhs.avatar == rhs.avatar &&
-    lhs.name == rhs.name &&
-    lhs.wechatId == rhs.wechatId &&
-    lhs.gender == rhs.gender &&
-    lhs.region == rhs.region &&
-    lhs.whatsUp == rhs.whatsUp
   }
 }
 

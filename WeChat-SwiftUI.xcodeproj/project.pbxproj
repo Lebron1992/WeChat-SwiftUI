@@ -91,7 +91,7 @@
 		FD88275B267AF27200BBEAB6 /* ContactsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88275A267AF27200BBEAB6 /* ContactsState.swift */; };
 		FD88275D267AF2C300BBEAB6 /* ContactsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88275C267AF2C300BBEAB6 /* ContactsReducer.swift */; };
 		FD88275F267AF2EB00BBEAB6 /* ContactsActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88275E267AF2EB00BBEAB6 /* ContactsActions.swift */; };
-		FD882762267AFAAF00BBEAB6 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD882761267AFAAF00BBEAB6 /* ActivityIndicatorView.swift */; };
+		FD882762267AFAAF00BBEAB6 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD882761267AFAAF00BBEAB6 /* ActivityIndicator.swift */; };
 		FD882764267AFAD000BBEAB6 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD882763267AFAD000BBEAB6 /* ErrorView.swift */; };
 		FD882769267B499700BBEAB6 /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD882768267B499700BBEAB6 /* UserTests.swift */; };
 		FD882771267EE4E500BBEAB6 /* ContactsReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD882770267EE4E500BBEAB6 /* ContactsReducerTests.swift */; };
@@ -288,7 +288,7 @@
 		FD88275A267AF27200BBEAB6 /* ContactsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsState.swift; sourceTree = "<group>"; };
 		FD88275C267AF2C300BBEAB6 /* ContactsReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsReducer.swift; sourceTree = "<group>"; };
 		FD88275E267AF2EB00BBEAB6 /* ContactsActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsActions.swift; sourceTree = "<group>"; };
-		FD882761267AFAAF00BBEAB6 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
+		FD882761267AFAAF00BBEAB6 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		FD882763267AFAD000BBEAB6 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		FD882768267B499700BBEAB6 /* UserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
 		FD882770267EE4E500BBEAB6 /* ContactsReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsReducerTests.swift; sourceTree = "<group>"; };
@@ -616,7 +616,7 @@
 			isa = PBXGroup;
 			children = (
 				FD9A857426C8991F00A39051 /* ImagePicker.swift */,
-				FD882761267AFAAF00BBEAB6 /* ActivityIndicatorView.swift */,
+				FD882761267AFAAF00BBEAB6 /* ActivityIndicator.swift */,
 				FD6D37742684707A0087272F /* Background.swift */,
 				FD882763267AFAD000BBEAB6 /* ErrorView.swift */,
 				FD1F16D42692FB99009D08DF /* ImageTitleRow.swift */,
@@ -1264,7 +1264,7 @@
 				FD424F92268B059B00F11A62 /* Image+Resize.swift in Sources */,
 				FD76764E26A3C1DF0050457D /* OnboardingView.swift in Sources */,
 				FD882786267F89E000BBEAB6 /* NavigationBarBackgroundModifierWhite.swift in Sources */,
-				FD882762267AFAAF00BBEAB6 /* ActivityIndicatorView.swift in Sources */,
+				FD882762267AFAAF00BBEAB6 /* ActivityIndicator.swift in Sources */,
 				FD88275B267AF27200BBEAB6 /* ContactsState.swift in Sources */,
 				FD6FE98C26A975950059BF45 /* FirestoreService.swift in Sources */,
 				FD9A857626C8991F00A39051 /* ImagePicker.swift in Sources */,

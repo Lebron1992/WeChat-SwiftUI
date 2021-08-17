@@ -1,13 +1,7 @@
 import Foundation
 
-struct DiscoverState {
+struct DiscoverState: Equatable {
   var discoverSections: [DiscoverSection]
-}
-
-extension DiscoverState: Equatable {
-  static func == (lhs: DiscoverState, rhs: DiscoverState) -> Bool {
-    lhs.discoverSections == rhs.discoverSections
-  }
 }
 
 #if DEBUG

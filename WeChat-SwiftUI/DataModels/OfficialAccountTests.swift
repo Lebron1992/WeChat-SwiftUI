@@ -3,6 +3,7 @@ import XCTest
 
 // swiftlint:disable line_length
 final class OfficialAccountTests: XCTestCase {
+
   func test_equatable() {
     XCTAssertEqual(OfficialAccount.template, OfficialAccount.template)
     XCTAssertNotEqual(OfficialAccount.template, OfficialAccount.template2)

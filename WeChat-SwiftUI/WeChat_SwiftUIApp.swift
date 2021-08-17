@@ -4,15 +4,15 @@ import Firebase
 import URLImage
 import URLImageStore
 
-private let urlImageService = URLImageService(
-  fileStore: URLImageFileStore(),
-  inMemoryStore: URLImageInMemoryStore()
-)
-
 @main
 struct WeChat_SwiftUIApp: App {
 
   private let cancelBag = CancelBag()
+
+  private let urlImageService = URLImageService(
+    fileStore: URLImageFileStore(),
+    inMemoryStore: URLImageInMemoryStore()
+  )
 
   init() {
     FirebaseApp.configure()
@@ -20,6 +20,7 @@ struct WeChat_SwiftUIApp: App {
     let restoredEnv = AppEnvironment.fromStorage(userDefaults: UserDefaults.standard)
     AppEnvironment.replaceCurrentEnvironment(restoredEnv)
 
+    // 保存 AppState
     let appState = AppState()
     store.$state
       .scan((appState, appState)) { result, newState in

@@ -11,6 +11,7 @@ extension Service {
       let error = APIError.invalidURL(serverConfig.apiBaseUrl.absoluteString + properties.path)
       return Fail<M, Error>(error: error).eraseToAnyPublisher()
     }
+
     print("\(url): \(properties.method) \(properties.query)")
 
     let request = preparedRequest(forURL: url, method: properties.method, query: properties.query)

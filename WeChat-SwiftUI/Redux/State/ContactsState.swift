@@ -1,17 +1,9 @@
 import Foundation
 
-struct ContactsState {
+struct ContactsState: Equatable {
   var categories: [ContactCategory]
   var contacts: Loadable<[User]>
   var officialAccounts: Loadable<[OfficialAccount]>
-}
-
-extension ContactsState: Equatable {
-  static func == (lhs: ContactsState, rhs: ContactsState) -> Bool {
-    lhs.categories == rhs.categories &&
-    lhs.contacts == rhs.contacts &&
-    lhs.officialAccounts == rhs.officialAccounts
-  }
 }
 
 #if DEBUG

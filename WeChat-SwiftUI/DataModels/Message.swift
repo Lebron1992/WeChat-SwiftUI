@@ -1,6 +1,6 @@
 import Foundation
 
-struct Message: Decodable, Identifiable {
+struct Message: Decodable, Identifiable, Equatable {
   let id: String
   let text: String?
   let imageUrl: String?
@@ -10,7 +10,7 @@ struct Message: Decodable, Identifiable {
 }
 
 extension Message {
-  struct MessageSender: Decodable {
+  struct MessageSender: Decodable, Equatable {
     let id: String
     let name: String
     let avatar: String
@@ -32,12 +32,6 @@ extension Message {
 
   var isOutgoingMsg: Bool {
     sender.id == AppEnvironment.current.currentUser?.id
-  }
-}
-
-extension Message: Equatable {
-  static func == (lhs: Message, rhs: Message) -> Bool {
-    lhs.id == rhs.id
   }
 }
 

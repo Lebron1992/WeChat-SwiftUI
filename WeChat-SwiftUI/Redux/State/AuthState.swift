@@ -1,13 +1,7 @@
 import Foundation
 
-struct AuthState: Codable {
+struct AuthState: Codable, Equatable {
   var signedInUser: User?
-}
-
-extension AuthState: Equatable {
-  static func == (lhs: AuthState, rhs: AuthState) -> Bool {
-    lhs.signedInUser == rhs.signedInUser
-  }
 }
 
 #if DEBUG

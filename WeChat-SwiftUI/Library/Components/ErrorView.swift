@@ -11,7 +11,8 @@ struct ErrorView: View {
       Text((error as? APIError)?.localizedDescription ?? error.localizedDescription)
         .font(.callout)
         .multilineTextAlignment(.center)
-        .padding(.bottom, 40).padding()
+        .padding(.bottom, 40)
+        .padding()
       Button(action: retryAction, label: { Text(Strings.general_retry()).bold() })
     }
   }

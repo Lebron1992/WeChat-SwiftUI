@@ -39,6 +39,6 @@ final class AuthActionsTests: XCTestCase {
       }
     }
 
-    wait(for: [expectation], timeout: 0.2)
+    wait(for: [expectation], timeout: 0.3)
   }
 }

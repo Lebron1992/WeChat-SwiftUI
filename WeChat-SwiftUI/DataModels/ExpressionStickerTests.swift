@@ -9,18 +9,18 @@ final class ExpressionStickerTests: XCTestCase {
   }
 
   func test_desciptionForCurrentLanguage() {
-    AppEnvironment.pushEnvironment(language: .en)
-    XCTAssertEqual(
-      ExpressionSticker.awesome.desciptionForCurrentLanguage(),
-      ExpressionSticker.awesome.desc.en
-    )
-    AppEnvironment.popEnvironment()
+    withEnvironment(language: .en) {
+      XCTAssertEqual(
+        ExpressionSticker.awesome.desciptionForCurrentLanguage(),
+        ExpressionSticker.awesome.desc.en
+      )
+    }
 
-    AppEnvironment.pushEnvironment(language: .zh)
-    XCTAssertEqual(
-      ExpressionSticker.awesome.desciptionForCurrentLanguage(),
-      ExpressionSticker.awesome.desc.zh
-    )
-    AppEnvironment.popEnvironment()
+    withEnvironment(language: .zh) {
+      XCTAssertEqual(
+        ExpressionSticker.awesome.desciptionForCurrentLanguage(),
+        ExpressionSticker.awesome.desc.zh
+      )
+    }
   }
 }

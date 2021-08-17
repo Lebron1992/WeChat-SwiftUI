@@ -1,6 +1,6 @@
 import Foundation
 
-struct Dialog: Decodable, Identifiable {
+struct Dialog: Decodable, Identifiable, Equatable {
   let id: String
   let name: String?
   let members: [Member]
@@ -11,7 +11,7 @@ struct Dialog: Decodable, Identifiable {
 }
 
 extension Dialog {
-  struct Member: Decodable {
+  struct Member: Decodable, Equatable {
     let id: String
     let name: String
     let avatar: String?
@@ -29,12 +29,6 @@ extension Dialog {
     let formatter = DateFormatter()
     formatter.dateStyle = .short
     return formatter.string(from: time)
-  }
-}
-
-extension Dialog: Equatable {
-  static func == (lhs: Dialog, rhs: Dialog) -> Bool {
-    lhs.id == rhs.id
   }
 }
 
