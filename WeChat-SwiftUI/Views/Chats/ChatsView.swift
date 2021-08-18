@@ -7,7 +7,6 @@ struct ChatsView: View {
         .navigationTitle(Strings.tabbar_chats())
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(trailing: Image("icons_outlined_add"))
-        .navigationBarBackgroundLightGray()
     }
     .navigationViewStyle(.stack)
   }

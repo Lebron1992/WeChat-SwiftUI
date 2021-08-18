@@ -99,9 +99,6 @@
 		FD882778267F1BD500BBEAB6 /* ContactsActionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD882777267F1BD500BBEAB6 /* ContactsActionsTests.swift */; };
 		FD88277B267F305800BBEAB6 /* SwiftUIRedux in Frameworks */ = {isa = PBXBuildFile; productRef = FD88277A267F305800BBEAB6 /* SwiftUIRedux */; };
 		FD88277D267F314000BBEAB6 /* RootReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88277C267F314000BBEAB6 /* RootReducerTests.swift */; };
-		FD882781267F844C00BBEAB6 /* NavigationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD882780267F844C00BBEAB6 /* NavigationConfigurator.swift */; };
-		FD882784267F888D00BBEAB6 /* NavigationBarBackgroundModifierLightGray.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD882783267F888D00BBEAB6 /* NavigationBarBackgroundModifierLightGray.swift */; };
-		FD882786267F89E000BBEAB6 /* NavigationBarBackgroundModifierWhite.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD882785267F89E000BBEAB6 /* NavigationBarBackgroundModifierWhite.swift */; };
 		FD88278E26808F5500BBEAB6 /* ContactDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88278D26808F5500BBEAB6 /* ContactDetail.swift */; };
 		FD8827962680988100BBEAB6 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8827952680988100BBEAB6 /* Colors.swift */; };
 		FD88279926809C2D00BBEAB6 /* URLImageStore in Frameworks */ = {isa = PBXBuildFile; productRef = FD88279826809C2D00BBEAB6 /* URLImageStore */; };
@@ -295,9 +292,6 @@
 		FD882772267EFA7400BBEAB6 /* MockStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStore.swift; sourceTree = "<group>"; };
 		FD882777267F1BD500BBEAB6 /* ContactsActionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsActionsTests.swift; sourceTree = "<group>"; };
 		FD88277C267F314000BBEAB6 /* RootReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootReducerTests.swift; sourceTree = "<group>"; };
-		FD882780267F844C00BBEAB6 /* NavigationConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationConfigurator.swift; sourceTree = "<group>"; };
-		FD882783267F888D00BBEAB6 /* NavigationBarBackgroundModifierLightGray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarBackgroundModifierLightGray.swift; sourceTree = "<group>"; };
-		FD882785267F89E000BBEAB6 /* NavigationBarBackgroundModifierWhite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarBackgroundModifierWhite.swift; sourceTree = "<group>"; };
 		FD88278D26808F5500BBEAB6 /* ContactDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetail.swift; sourceTree = "<group>"; };
 		FD8827952680988100BBEAB6 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		FD88279C2681E1F100BBEAB6 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
@@ -620,7 +614,6 @@
 				FD6D37742684707A0087272F /* Background.swift */,
 				FD882763267AFAD000BBEAB6 /* ErrorView.swift */,
 				FD1F16D42692FB99009D08DF /* ImageTitleRow.swift */,
-				FD882780267F844C00BBEAB6 /* NavigationConfigurator.swift */,
 				FD6D377226842C610087272F /* SearchBar.swift */,
 				FD1F16D02692F5E9009D08DF /* SectionHeaderBackground.swift */,
 				FD1F16D22692F8FB009D08DF /* SectionHeaderTitle.swift */,
@@ -633,8 +626,6 @@
 			children = (
 				FD1D0137269ACD3C00A9AF37 /* DelayTouchesModifier.swift */,
 				FD3D102B26A6AFAB0045C218 /* LoadingModifier.swift */,
-				FD882783267F888D00BBEAB6 /* NavigationBarBackgroundModifierLightGray.swift */,
-				FD882785267F89E000BBEAB6 /* NavigationBarBackgroundModifierWhite.swift */,
 				FD6D37782684803E0087272F /* ResignKeyboardOnDragGestureModifier.swift */,
 				FD1F16E02695A6FD009D08DF /* ResignKeyboardOnTapGestureModifier.swift */,
 			);
@@ -1169,7 +1160,6 @@
 				FDCC7299267348D300A48140 /* NetworkingHelpers.swift in Sources */,
 				FDCC7258266F26D200A48140 /* OauthToken.swift in Sources */,
 				FD58C12226B0FABE00BDB0CC /* PresentationStyle.swift in Sources */,
-				FD882781267F844C00BBEAB6 /* NavigationConfigurator.swift in Sources */,
 				FD9A858026C8B62F00A39051 /* ImageFormat.swift in Sources */,
 				FD1F16C1269162A6009D08DF /* DiscoverItem.swift in Sources */,
 				FDCC7297267348A600A48140 /* Constants.swift in Sources */,
@@ -1201,7 +1191,6 @@
 				FD8827962680988100BBEAB6 /* Colors.swift in Sources */,
 				FD6FE99226A9786D0059BF45 /* FirestoreServiceMock.swift in Sources */,
 				FD8827442679A80900BBEAB6 /* TabBarItem.swift in Sources */,
-				FD882784267F888D00BBEAB6 /* NavigationBarBackgroundModifierLightGray.swift in Sources */,
 				FD8827422679A75B00BBEAB6 /* RootState.swift in Sources */,
 				FD8809FD269EE852002D3396 /* MessageTemplates.swift in Sources */,
 				FD9A859726CA181D00A39051 /* UIImage+InitWithColor.swift in Sources */,
@@ -1263,7 +1252,6 @@
 				FDCC726D266F70EA00A48140 /* MockService.swift in Sources */,
 				FD424F92268B059B00F11A62 /* Image+Resize.swift in Sources */,
 				FD76764E26A3C1DF0050457D /* OnboardingView.swift in Sources */,
-				FD882786267F89E000BBEAB6 /* NavigationBarBackgroundModifierWhite.swift in Sources */,
 				FD882762267AFAAF00BBEAB6 /* ActivityIndicator.swift in Sources */,
 				FD88275B267AF27200BBEAB6 /* ContactsState.swift in Sources */,
 				FD6FE98C26A975950059BF45 /* FirestoreService.swift in Sources */,

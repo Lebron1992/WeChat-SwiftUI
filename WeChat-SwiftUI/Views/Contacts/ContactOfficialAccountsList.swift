@@ -53,7 +53,6 @@ struct ContactOfficialAccountsList: ConnectedView {
     .navigationTitle(Strings.contacts_offical_account())
     .navigationBarTitleDisplayMode(.inline)
     .navigationBarItems(trailing: Image("icons_outlined_add2"))
-    .navigationBarBackgroundLightGray()
     .navigationBarHidden(isSearching)
   }
 }

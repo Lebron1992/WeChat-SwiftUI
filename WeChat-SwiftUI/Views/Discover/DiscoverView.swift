@@ -6,7 +6,6 @@ struct DiscoverView: View {
       DiscoverList()
         .navigationTitle(Strings.tabbar_discover())
         .navigationBarTitleDisplayMode(.inline)
-        .navigationBarBackgroundLightGray()
     }
     .navigationViewStyle(.stack)
   }

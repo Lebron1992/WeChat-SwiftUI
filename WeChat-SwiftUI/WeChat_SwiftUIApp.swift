@@ -32,6 +32,8 @@ struct WeChat_SwiftUIApp: App {
       }
       .sink(receiveValue: { _ in })
       .store(in: cancelBag)
+
+    styleApp()
   }
 
   var body: some Scene {
@@ -39,7 +41,6 @@ struct WeChat_SwiftUIApp: App {
       StoreProvider(store: store) {
         ContentView()
           .environment(\.urlImageService, urlImageService)
-          .onAppear(perform: styleApp)
       }
     }
   }
@@ -53,6 +54,5 @@ struct WeChat_SwiftUIApp: App {
     navBar.shadowImage = UIImage()
     navBar.tintColor = .text_primary
     navBar.titleTextAttributes = [.foregroundColor: navBar.tintColor as Any]
-    navBar.isTranslucent = false
   }
 }
