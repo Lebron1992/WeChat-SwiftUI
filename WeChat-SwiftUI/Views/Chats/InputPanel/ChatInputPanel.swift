@@ -21,7 +21,7 @@ struct ChatInputPanel: View {
   private var isExpressionButtonSelected = false
 
   @FocusState
-  private var isTextEditorFoucused: Bool
+  private var isTextEditorFocused: Bool
 
   // MARK: - Expression Preview
 
@@ -43,7 +43,7 @@ struct ChatInputPanel: View {
           text: $text,
           isVoiceButtonSelected: $isVoiceButtonSelected,
           isExpressionButtonSelected: $isExpressionButtonSelected,
-          isTextEditorFoucused: _isTextEditorFoucused
+          isTextEditorFocused: _isTextEditorFocused
         )
 
         if isExpressionButtonSelected {
@@ -75,7 +75,7 @@ struct ChatInputPanel: View {
       guard dismiss else {
         return
       }
-      if isTextEditorFoucused || isExpressionButtonSelected {
+      if isTextEditorFocused || isExpressionButtonSelected {
         isVoiceButtonSelected = false
         isExpressionButtonSelected = false
       }

@@ -12,14 +12,14 @@ struct ChatInputToolBar: View {
   var isExpressionButtonSelected: Bool
 
   @FocusState
-  var isTextEditorFoucused: Bool
+  var isTextEditorFocused: Bool
 
   var body: some View {
     HStack(alignment: .bottom, spacing: toolBarPadding) {
       Button {
         isVoiceButtonSelected.toggle()
         isExpressionButtonSelected = false
-        isTextEditorFoucused = !isVoiceButtonSelected
+        isTextEditorFocused = !isVoiceButtonSelected
       } label: {
         Image(isVoiceButtonSelected ? "icons_outlined_keyboard" : "icons_outlined_voice")
           .inputToolBarButtonStyle()
@@ -32,7 +32,7 @@ struct ChatInputToolBar: View {
         TextEditor(text: $text)
           .font(Font(textFont as CTFont))
           .background(.app_white)
-          .focused($isTextEditorFoucused)
+          .focused($isTextEditorFocused)
           .opacity(isVoiceButtonSelected ? 0 : 1)
       }
       .frame(height: isVoiceButtonSelected ? toolBarMinHeight : textEditorHeight)
@@ -42,7 +42,7 @@ struct ChatInputToolBar: View {
       Button {
         isExpressionButtonSelected.toggle()
         isVoiceButtonSelected = false
-        isTextEditorFoucused = !isExpressionButtonSelected
+        isTextEditorFocused = !isExpressionButtonSelected
       } label: {
         Image(isExpressionButtonSelected ? "icons_outlined_keyboard" : "icons_outlined_sticker")
           .inputToolBarButtonStyle()
@@ -58,7 +58,7 @@ struct ChatInputToolBar: View {
     .foregroundColor(.text_primary)
     .padding(toolBarPadding)
     .background(.bg_info_150)
-    .onChange(of: isTextEditorFoucused) { newValue in
+    .onChange(of: isTextEditorFocused) { newValue in
       if newValue {
         isExpressionButtonSelected = false
       }

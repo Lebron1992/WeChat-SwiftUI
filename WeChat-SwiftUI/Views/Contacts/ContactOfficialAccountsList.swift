@@ -29,10 +29,14 @@ struct ContactOfficialAccountsList: ConnectedView {
         SearchBar(
           searchText: $searchText,
           onEditingChanged: {
-            isSearching = true
+            withAnimation {
+              isSearching = true
+            }
           },
           onCancelButtonTapped: {
-            isSearching = false
+            withAnimation {
+              isSearching = false
+            }
           }
         )
 
