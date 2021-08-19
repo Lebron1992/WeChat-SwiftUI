@@ -10,9 +10,9 @@ extension Image {
     let content = resizable().aspectRatio(contentMode: contentMode)
 
     if let size = size {
-      return AnyView(content.frame(width: size.width, height: size.height))
+      return content.frame(width: size.width, height: size.height).asAnyView()
     }
 
-    return AnyView(content)
+    return content.asAnyView()
   }
 }

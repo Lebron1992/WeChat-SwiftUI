@@ -14,7 +14,7 @@ struct SectionHeaderTitle: View {
 }
 
 struct SectionHeaderTitle_Previews: PreviewProvider {
-    static var previews: some View {
-        SectionHeaderTitle(title: "Hello")
-    }
+  static var previews: some View {
+    SectionHeaderTitle(title: "Hello")
+  }
 }
