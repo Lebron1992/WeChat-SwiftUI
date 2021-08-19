@@ -24,19 +24,21 @@ final class ContactsActionsTests: XCTestCase {
 
     mockStore.dispatch(action: ContactsActions.LoadContacts())
 
-    XCTAssertEqual(mockStore.actions.count, 3)
-    XCTAssertEqual(
-      mockStore.actions[0] as! ContactsActions.LoadContacts,
-      ContactsActions.LoadContacts()
-    )
-    XCTAssertEqual(
-      mockStore.actions[1] as! ContactsActions.SetContacts,
-      ContactsActions.SetContacts(contacts: .isLoading(last: nil, cancelBag: CancelBag()))
-    )
-    XCTAssertEqual(
-      mockStore.actions[2] as! ContactsActions.SetContacts,
-      ContactsActions.SetContacts(contacts: .loaded(contacts))
-    )
+    wait {
+      XCTAssertEqual(self.mockStore.actions.count, 3)
+      XCTAssertEqual(
+        self.mockStore.actions[0] as! ContactsActions.LoadContacts,
+        ContactsActions.LoadContacts()
+      )
+      XCTAssertEqual(
+        self.mockStore.actions[1] as! ContactsActions.SetContacts,
+        ContactsActions.SetContacts(contacts: .isLoading(last: nil, cancelBag: CancelBag()))
+      )
+      XCTAssertEqual(
+        self.mockStore.actions[2] as! ContactsActions.SetContacts,
+        ContactsActions.SetContacts(contacts: .loaded(contacts))
+      )
+    }
 
     AppEnvironment.popEnvironment()
   }
@@ -48,19 +50,21 @@ final class ContactsActionsTests: XCTestCase {
 
     mockStore.dispatch(action: ContactsActions.LoadOfficialAccounts())
 
-    XCTAssertEqual(mockStore.actions.count, 3)
-    XCTAssertEqual(
-      mockStore.actions[0] as! ContactsActions.LoadOfficialAccounts,
-      ContactsActions.LoadOfficialAccounts()
-    )
-    XCTAssertEqual(
-      mockStore.actions[1] as! ContactsActions.SetOfficialAccounts,
-      ContactsActions.SetOfficialAccounts(accounts: .isLoading(last: nil, cancelBag: CancelBag()))
-    )
-    XCTAssertEqual(
-      mockStore.actions[2] as! ContactsActions.SetOfficialAccounts,
-      ContactsActions.SetOfficialAccounts(accounts: .loaded(accounts))
-    )
+    wait {
+      XCTAssertEqual(self.mockStore.actions.count, 3)
+      XCTAssertEqual(
+        self.mockStore.actions[0] as! ContactsActions.LoadOfficialAccounts,
+        ContactsActions.LoadOfficialAccounts()
+      )
+      XCTAssertEqual(
+        self.mockStore.actions[1] as! ContactsActions.SetOfficialAccounts,
+        ContactsActions.SetOfficialAccounts(accounts: .isLoading(last: nil, cancelBag: CancelBag()))
+      )
+      XCTAssertEqual(
+        self.mockStore.actions[2] as! ContactsActions.SetOfficialAccounts,
+        ContactsActions.SetOfficialAccounts(accounts: .loaded(accounts))
+      )
+    }
 
     AppEnvironment.popEnvironment()
   }

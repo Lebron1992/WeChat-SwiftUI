@@ -125,7 +125,7 @@ enum AppEnvironment {
 
   /// 从  userDefaults 保存的数据恢复 Environment 对象。
   static func fromStorage(userDefaults: KeyValueStoreType) -> Environment {
-    let data = userDefaults.dictionary(forKey: environmentStorageKey) ?? [:]
+    let data = userDefaults.dictionary(forKey: .appEnvironment) ?? [:]
 
     var service = current.apiService
     var currentUser: User?
@@ -154,7 +154,7 @@ enum AppEnvironment {
     data["apiService.oauthToken.token"] = env.apiService.oauthToken?.token
     data["currentUser"] = env.currentUser?.dictionaryRepresentation
 
-    userDefaults.set(data, forKey: environmentStorageKey)
+    userDefaults.set(data, forKey: .appEnvironment)
   }
 }
 

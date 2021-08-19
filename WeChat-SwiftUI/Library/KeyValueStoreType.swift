@@ -1,64 +1,109 @@
 import Foundation
 
+// MARK: - KeyValueStoreType
 protocol KeyValueStoreType: AnyObject {
-  func set(_ value: Bool, forKey defaultName: String)
-  func set(_ value: Int, forKey defaultName: String)
-  func set(_ value: Any?, forKey defaultName: String)
+  func set(_ value: Bool, forKey key: KeyValueStoreKey)
+  func set(_ value: Int, forKey key: KeyValueStoreKey)
+  func set(_ value: Any?, forKey key: KeyValueStoreKey)
 
-  func bool(forKey defaultName: String) -> Bool
-  func data(forKey defaultName: String) -> Data?
-  func dictionary(forKey defaultName: String) -> [String: Any]?
-  func integer(forKey defaultName: String) -> Int
-  func object(forKey defaultName: String) -> Any?
-  func string(forKey defaultName: String) -> String?
+  func bool(forKey key: KeyValueStoreKey) -> Bool
+  func data(forKey key: KeyValueStoreKey) -> Data?
+  func dictionary(forKey key: KeyValueStoreKey) -> [String: Any]?
+  func integer(forKey key: KeyValueStoreKey) -> Int
+  func object(forKey key: KeyValueStoreKey) -> Any?
+  func string(forKey key: KeyValueStoreKey) -> String?
+
+  @discardableResult
   func synchronize() -> Bool
 
-  func removeObject(forKey defaultName: String)
+  func removeObject(forKey key: KeyValueStoreKey)
 }
 
-extension UserDefaults: KeyValueStoreType {}
+// MARK: - UserDefaults
+extension UserDefaults: KeyValueStoreType {
+  func set(_ value: Bool, forKey key: KeyValueStoreKey) {
+    set(value, forKey: key.key)
+  }
 
-class MockKeyValueStore: KeyValueStoreType {
+  func set(_ value: Int, forKey key: KeyValueStoreKey) {
+    set(value, forKey: key.key)
+  }
+
+  func set(_ value: Any?, forKey key: KeyValueStoreKey) {
+    set(value, forKey: key.key)
+  }
+
+  func bool(forKey key: KeyValueStoreKey) -> Bool {
+    bool(forKey: key.key)
+  }
+
+  func data(forKey key: KeyValueStoreKey) -> Data? {
+    data(forKey: key.key)
+  }
+
+  func dictionary(forKey key: KeyValueStoreKey) -> [String : Any]? {
+    dictionary(forKey: key.key)
+  }
+
+  func integer(forKey key: KeyValueStoreKey) -> Int {
+    integer(forKey: key.key)
+  }
+
+  func object(forKey key: KeyValueStoreKey) -> Any? {
+    object(forKey: key.key)
+  }
+
+  func string(forKey key: KeyValueStoreKey) -> String? {
+    string(forKey: key.key)
+  }
+
+  func removeObject(forKey key: KeyValueStoreKey) {
+    set(nil, forKey: key)
+  }
+}
+
+// MARK: - MockKeyValueStore
+final class MockKeyValueStore: KeyValueStoreType {
   var store: [String: Any] = [:]
 
-  func set(_ value: Bool, forKey defaultName: String) {
-    store[defaultName] = value
+  func set(_ value: Bool, forKey key: KeyValueStoreKey) {
+    store[key.key] = value
   }
 
-  func set(_ value: Int, forKey defaultName: String) {
-    store[defaultName] = value
+  func set(_ value: Int, forKey key: KeyValueStoreKey) {
+    store[key.key] = value
   }
 
-  func set(_ value: Any?, forKey key: String) {
-    store[key] = value
+  func set(_ value: Any?, forKey key: KeyValueStoreKey) {
+    store[key.key] = value
   }
 
-  func bool(forKey defaultName: String) -> Bool {
-    store[defaultName] as? Bool ?? false
+  func bool(forKey key: KeyValueStoreKey) -> Bool {
+    store[key.key] as? Bool ?? false
   }
 
-  func data(forKey defaultName: String) -> Data? {
-    store[defaultName] as? Data
+  func data(forKey key: KeyValueStoreKey) -> Data? {
+    store[key.key] as? Data
   }
 
-  func dictionary(forKey key: String) -> [String: Any]? {
+  func dictionary(forKey key: KeyValueStoreKey) -> [String: Any]? {
     object(forKey: key) as? [String: Any]
   }
 
-  func integer(forKey defaultName: String) -> Int {
-    store[defaultName] as? Int ?? 0
+  func integer(forKey key: KeyValueStoreKey) -> Int {
+    store[key.key] as? Int ?? 0
   }
 
-  func object(forKey key: String) -> Any? {
-    store[key]
+  func object(forKey key: KeyValueStoreKey) -> Any? {
+    store[key.key]
   }
 
-  func string(forKey defaultName: String) -> String? {
-    store[defaultName] as? String
+  func string(forKey key: KeyValueStoreKey) -> String? {
+    store[key.key] as? String
   }
 
-  func removeObject(forKey defaultName: String) {
-    set(nil, forKey: defaultName)
+  func removeObject(forKey key: KeyValueStoreKey) {
+    set(nil, forKey: key)
   }
 
   func synchronize() -> Bool {

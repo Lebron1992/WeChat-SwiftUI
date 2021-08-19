@@ -69,6 +69,7 @@
 		FD76764E26A3C1DF0050457D /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD76764D26A3C1DF0050457D /* OnboardingView.swift */; };
 		FD76765026A3D1DB0050457D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD76764F26A3D1DB0050457D /* ContentView.swift */; };
 		FD76765226A3D40A0050457D /* AuthState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD76765126A3D40A0050457D /* AuthState.swift */; };
+		FD76B8C426CE120A00C0A03F /* KeyValueStoreKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD76B8C326CE120A00C0A03F /* KeyValueStoreKey.swift */; };
 		FD8809F3269EDE52002D3396 /* MessageRowText.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8809F2269EDE52002D3396 /* MessageRowText.swift */; };
 		FD8809F5269EDE60002D3396 /* MessageRowImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8809F4269EDE60002D3396 /* MessageRowImage.swift */; };
 		FD8809F7269EDE6F002D3396 /* MessageRowVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8809F6269EDE6E002D3396 /* MessageRowVideo.swift */; };
@@ -263,6 +264,7 @@
 		FD76764D26A3C1DF0050457D /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		FD76764F26A3D1DB0050457D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FD76765126A3D40A0050457D /* AuthState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthState.swift; sourceTree = "<group>"; };
+		FD76B8C326CE120A00C0A03F /* KeyValueStoreKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueStoreKey.swift; sourceTree = "<group>"; };
 		FD8809F2269EDE52002D3396 /* MessageRowText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRowText.swift; sourceTree = "<group>"; };
 		FD8809F4269EDE60002D3396 /* MessageRowImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRowImage.swift; sourceTree = "<group>"; };
 		FD8809F6269EDE6E002D3396 /* MessageRowVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRowVideo.swift; sourceTree = "<group>"; };
@@ -799,6 +801,7 @@
 				FD9A857D26C8B5F400A39051 /* FirebaseStorageServiceType.swift */,
 				FD88279C2681E1F100BBEAB6 /* Haptics.swift */,
 				FD9A857F26C8B62F00A39051 /* ImageFormat.swift */,
+				FD76B8C326CE120A00C0A03F /* KeyValueStoreKey.swift */,
 				FDCC727F2671A99400A48140 /* KeyValueStoreType.swift */,
 				FDCC7266266F5CF600A48140 /* Language.swift */,
 				FDCC7278267109D500A48140 /* LanguageTests.swift */,
@@ -1217,6 +1220,7 @@
 				FD6FE99026A9785B0059BF45 /* FirestoreServiceType.swift in Sources */,
 				FD1F16E12695A6FD009D08DF /* ResignKeyboardOnTapModifier.swift in Sources */,
 				FD88279D2681E1F100BBEAB6 /* Haptics.swift in Sources */,
+				FD76B8C426CE120A00C0A03F /* KeyValueStoreKey.swift in Sources */,
 				FDCC721B266E254D00A48140 /* WeChat_SwiftUIApp.swift in Sources */,
 				FD21E90D26B0038F00EC38DD /* MyProfileView.swift in Sources */,
 				FDAFA4A326AFB3C400FD5C33 /* DialogsList.swift in Sources */,

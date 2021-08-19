@@ -27,7 +27,7 @@ final class AppStateTests: XCTestCase {
   func test_init_restoredArchive() {
 
     let userDefaults = MockKeyValueStore()
-    userDefaults.set(templateDataObj.data, forKey: AppState.appStateStorageKey)
+    userDefaults.set(templateDataObj.data, forKey: .appState)
 
     withEnvironment(userDefaults: userDefaults) {
       let appState = AppState()
@@ -52,7 +52,7 @@ final class AppStateTests: XCTestCase {
       appState.authState = templateAuthState
       appState.archive()
       XCTAssertEqual(
-        userDefaults.data(forKey: AppState.appStateStorageKey),
+        userDefaults.data(forKey: .appState),
         templateDataObj.data
       )
 
@@ -60,7 +60,7 @@ final class AppStateTests: XCTestCase {
       appState.authState = newAuthState
       appState.archive()
       XCTAssertEqual(
-        userDefaults.data(forKey: AppState.appStateStorageKey),
+        userDefaults.data(forKey: .appState),
         [authStateKey: newAuthState.dictionaryRepresentation].data
       )
     }

@@ -110,7 +110,7 @@ final class AppEnvironmentTests: XCTestCase {
         "apiService.oauthToken.token": "deadbeef",
         "currentUser": user.dictionaryRepresentation as Any
       ],
-      forKey: AppEnvironment.environmentStorageKey
+      forKey: .appEnvironment
     )
 
     let env = AppEnvironment.fromStorage(userDefaults: userDefaults)
@@ -136,7 +136,7 @@ final class AppEnvironmentTests: XCTestCase {
       userDefaults: userDefaults
     )
 
-    let result = userDefaults.dictionary(forKey: AppEnvironment.environmentStorageKey)!
+    let result = userDefaults.dictionary(forKey: .appEnvironment)!
 
     XCTAssertEqual("deadbeef", result["apiService.oauthToken.token"] as? String)
     XCTAssertEqual(currentUser?.id, (result["currentUser"] as? [String: Any])?["id"] as? String)
@@ -172,7 +172,7 @@ final class AppEnvironmentTests: XCTestCase {
     AppEnvironment.pushEnvironment(currentUser: .template)
 
     var currentUserId = AppEnvironment.current.userDefaults
-      .dictionary(forKey: AppEnvironment.environmentStorageKey)
+      .dictionary(forKey: .appEnvironment)
       .flatMap { $0["currentUser"] as? [String: Any] }
       .flatMap { $0["id"] as? String }
     XCTAssertEqual(User.template.id, currentUserId, "当前用户已保存。")
@@ -180,7 +180,7 @@ final class AppEnvironmentTests: XCTestCase {
     AppEnvironment.popEnvironment()
 
     currentUserId = AppEnvironment.current.userDefaults
-      .dictionary(forKey: AppEnvironment.environmentStorageKey)
+      .dictionary(forKey: .appEnvironment)
       .flatMap { $0["currentUser"] as? [String: Any] }
       .flatMap { $0["id"] as? String }
     XCTAssertEqual(nil, currentUserId, "当前用户被移除。")

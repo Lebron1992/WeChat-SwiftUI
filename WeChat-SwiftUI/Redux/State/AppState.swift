@@ -18,10 +18,11 @@ struct AppState: ReduxState, Equatable {
   var systemState = SystemState(errorMessage: nil)
 
   init() {
-    guard let data = AppEnvironment.current.userDefaults.data(forKey: Self.appStateStorageKey),
-          let dataObj = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
-            return
-          }
+    guard let data = AppEnvironment.current.userDefaults.data(forKey: .appState),
+          let dataObj = try? JSONSerialization.jsonObject(with: data) as? [String: Any]
+    else {
+      return
+    }
 
     for key in ArchiveKeys.allCases {
       let json = dataObj[key.rawValue] as? [String: Any] ?? [:]
@@ -33,8 +34,20 @@ struct AppState: ReduxState, Equatable {
       }
     }
   }
+}
 
-  // MARK: - Archive
+// MARK: - Archive
+extension AppState {
+  enum ArchiveKeys: String, CaseIterable {
+    case authState
+  }
+
+  subscript(key: ArchiveKeys) -> Any {
+    switch key {
+    case .authState:
+      return authState
+    }
+  }
 
   func archive() {
     var dataObj: [String: Any] = [:]
@@ -46,8 +59,8 @@ struct AppState: ReduxState, Equatable {
       }
     }
 
-    AppEnvironment.current.userDefaults.set(dataObj.data, forKey: Self.appStateStorageKey)
-    _ = AppEnvironment.current.userDefaults.synchronize()
+    AppEnvironment.current.userDefaults.set(dataObj.data, forKey: .appState)
+    AppEnvironment.current.userDefaults.synchronize()
   }
 
   func archivePropertiesEqualTo(_ another: AppState) -> Bool {
@@ -66,15 +79,12 @@ struct AppState: ReduxState, Equatable {
 
     return isEqual
   }
+}
 
-  subscript(key: ArchiveKeys) -> Any {
-    switch key {
-    case .authState:
-      return authState
-    }
-  }
+// MARK: - Preview
 
 #if DEBUG
+extension AppState {
   init(
     authState: AuthState,
     contactsState: ContactsState,
@@ -88,19 +98,7 @@ struct AppState: ReduxState, Equatable {
     self.rootState = rootState
     self.systemState = systemState
   }
-#endif
-}
 
-extension AppState {
-  static let appStateStorageKey = "com.WeChat-SwiftUI.AppState"
-
-  enum ArchiveKeys: String, CaseIterable {
-    case authState
-  }
-}
-
-#if DEBUG
-extension AppState {
   static var preview: AppState {
     AppState(
       authState: .preview,
