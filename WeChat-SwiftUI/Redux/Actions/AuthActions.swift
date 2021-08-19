@@ -7,7 +7,7 @@ enum AuthActions {
     func async(dispatch: @escaping Dispatch, state: ReduxState?) {
       AppEnvironment.current.firestoreService
         .loadUserSelf()
-        .sinkForUI(receiveValue: { dispatch(SetSignedInUser($0)) })
+        .sinkToValueForUI { dispatch(SetSignedInUser(user: $0)) }
         .store(in: cancelBag)
     }
 
@@ -18,9 +18,5 @@ enum AuthActions {
 
   struct SetSignedInUser: Action, Equatable {
     let user: User?
-
-    init(_ user: User?) {
-      self.user = user
-    }
   }
 }

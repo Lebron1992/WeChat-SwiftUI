@@ -60,7 +60,7 @@
 		FD6FE98C26A975950059BF45 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6FE98B26A975950059BF45 /* FirestoreService.swift */; };
 		FD6FE99026A9785B0059BF45 /* FirestoreServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6FE98F26A9785B0059BF45 /* FirestoreServiceType.swift */; };
 		FD6FE99226A9786D0059BF45 /* FirestoreServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6FE99126A9786D0059BF45 /* FirestoreServiceMock.swift */; };
-		FD6FE99426A9C30B0059BF45 /* AnyPublisher+SinkForUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6FE99326A9C30B0059BF45 /* AnyPublisher+SinkForUI.swift */; };
+		FD6FE99426A9C30B0059BF45 /* Publisher+Sink.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6FE99326A9C30B0059BF45 /* Publisher+Sink.swift */; };
 		FD703D1826B83A3000565E4C /* AuthActionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD703D1726B83A3000565E4C /* AuthActionsTests.swift */; };
 		FD703D1A26B8E9E200565E4C /* FirebaseStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD703D1926B8E9E200565E4C /* FirebaseStorageService.swift */; };
 		FD703D1C26B8F1FE00565E4C /* MyProfileView.Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD703D1B26B8F1FE00565E4C /* MyProfileView.Row.swift */; };
@@ -254,7 +254,7 @@
 		FD6FE98B26A975950059BF45 /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
 		FD6FE98F26A9785B0059BF45 /* FirestoreServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreServiceType.swift; sourceTree = "<group>"; };
 		FD6FE99126A9786D0059BF45 /* FirestoreServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreServiceMock.swift; sourceTree = "<group>"; };
-		FD6FE99326A9C30B0059BF45 /* AnyPublisher+SinkForUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyPublisher+SinkForUI.swift"; sourceTree = "<group>"; };
+		FD6FE99326A9C30B0059BF45 /* Publisher+Sink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Sink.swift"; sourceTree = "<group>"; };
 		FD703D1726B83A3000565E4C /* AuthActionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthActionsTests.swift; sourceTree = "<group>"; };
 		FD703D1926B8E9E200565E4C /* FirebaseStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageService.swift; sourceTree = "<group>"; };
 		FD703D1B26B8F1FE00565E4C /* MyProfileView.Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.Row.swift; sourceTree = "<group>"; };
@@ -836,7 +836,6 @@
 			isa = PBXGroup;
 			children = (
 				FD9A858326C8BC5800A39051 /* AnyPublisher+Initializers.swift */,
-				FD6FE99326A9C30B0059BF45 /* AnyPublisher+SinkForUI.swift */,
 				FD88279E2681E52E00BBEAB6 /* Color+Hex.swift */,
 				FD8827A02681E6DC00BBEAB6 /* Color+HexTests.swift */,
 				FDA9080D26AD551200805584 /* Dictionary+Data.swift */,
@@ -846,6 +845,7 @@
 				FDCC72842671AC7200A48140 /* Encodable+DictionaryTests.swift */,
 				FD424F8F268B050900F11A62 /* Image+Constants.swift */,
 				FD424F91268B059B00F11A62 /* Image+Resize.swift */,
+				FD6FE99326A9C30B0059BF45 /* Publisher+Sink.swift */,
 				FD1F16DC269560AB009D08DF /* String+Height.swift */,
 				FD1F16E22695A743009D08DF /* UIApplication+EndEditing.swift */,
 				FD9A859626CA181D00A39051 /* UIImage+InitWithColor.swift */,
@@ -1252,7 +1252,7 @@
 				FD58C12626B2430D00BDB0CC /* MyProfileFieldUpdateView.swift in Sources */,
 				FDCC7290267343A800A48140 /* Service+RequestHelpers.swift in Sources */,
 				FD880A0126A01EFE002D3396 /* MessagesList.swift in Sources */,
-				FD6FE99426A9C30B0059BF45 /* AnyPublisher+SinkForUI.swift in Sources */,
+				FD6FE99426A9C30B0059BF45 /* Publisher+Sink.swift in Sources */,
 				FDCC729F2673499700A48140 /* APIError.swift in Sources */,
 				FD88275F267AF2EB00BBEAB6 /* ContactsActions.swift in Sources */,
 			);

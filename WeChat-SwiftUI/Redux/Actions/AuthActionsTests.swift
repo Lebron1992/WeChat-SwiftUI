@@ -33,7 +33,7 @@ final class AuthActionsTests: XCTestCase {
         )
         XCTAssertEqual(
           self.mockStore.actions[1] as! AuthActions.SetSignedInUser,
-          AuthActions.SetSignedInUser(user)
+          AuthActions.SetSignedInUser(user: user)
         )
         expectation.fulfill()
       }

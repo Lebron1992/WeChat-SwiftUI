@@ -11,9 +11,7 @@ enum ContactsActions {
 
       AppEnvironment.current.apiService
         .loadContacts()
-        .sinkToLoadable {
-          dispatch(SetContacts(contacts: $0))
-        }
+        .sinkToLoadableForUI { dispatch(SetContacts(contacts: $0)) }
         .store(in: cancelBag)
     }
   }
@@ -32,9 +30,7 @@ enum ContactsActions {
 
       AppEnvironment.current.apiService
         .loadOfficialAccounts()
-        .sinkToLoadable {
-          dispatch(SetOfficialAccounts(accounts: $0))
-        }
+        .sinkToLoadableForUI { dispatch(SetOfficialAccounts(accounts: $0)) }
         .store(in: cancelBag)
     }
   }
