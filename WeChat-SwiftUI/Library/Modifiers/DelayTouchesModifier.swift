@@ -1,7 +1,10 @@
 import SwiftUI
 
 extension View {
-  func delayTouches(for duration: TimeInterval = 0.25, onTap action: @escaping () -> Void = {}) -> some View {
+  func delayTouches(
+    for duration: TimeInterval = 0.25,
+    onTap action: @escaping () -> Void = {}
+  ) -> some View {
     modifier(DelayTouches(duration: duration, action: action))
   }
 }
@@ -10,14 +13,15 @@ extension View {
 // https://www.hackingwithswift.com/forums/swiftui/a-guide-to-delaying-gestures-in-scrollview/6005
 
 private struct DelayTouches: ViewModifier {
+
+  let duration: TimeInterval
+  let action: () -> Void
+
   @State
   private var disabled = false
 
   @State
   private var touchDownDate: Date?
-
-  var duration: TimeInterval
-  var action: () -> Void
 
   func body(content: Content) -> some View {
     Button(action: action) {
@@ -30,7 +34,7 @@ private struct DelayTouches: ViewModifier {
 
 private struct DelayTouchesButtonStyle: ButtonStyle {
 
-  var duration: TimeInterval
+  let duration: TimeInterval
 
   @Binding
   var disabled: Bool

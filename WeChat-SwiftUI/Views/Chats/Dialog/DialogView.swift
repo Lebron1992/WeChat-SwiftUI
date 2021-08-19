@@ -8,13 +8,13 @@ struct DialogView: View {
   var body: some View {
     VStack(spacing: 0) {
       MessagesList(messages: [Message.textTemplate, Message.textTemplate2])
-        .resignKeyboardOnDragGesture {
+        .resignKeyboardOnDrag {
           dismissKeyboardOnTapOrDrag = true
           DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             dismissKeyboardOnTapOrDrag = false
           }
         }
-        .resignKeyboardOnTapGesture {
+        .resignKeyboardOnTap {
           dismissKeyboardOnTapOrDrag = true
           DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             dismissKeyboardOnTapOrDrag = false

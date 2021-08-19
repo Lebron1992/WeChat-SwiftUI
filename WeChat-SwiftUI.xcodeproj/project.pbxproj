@@ -27,7 +27,7 @@
 		FD1F16DB26943832009D08DF /* DialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16DA26943832009D08DF /* DialogView.swift */; };
 		FD1F16DD269560AB009D08DF /* String+Height.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16DC269560AB009D08DF /* String+Height.swift */; };
 		FD1F16DF26959F83009D08DF /* ChatInputPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16DE26959F83009D08DF /* ChatInputPanel.swift */; };
-		FD1F16E12695A6FD009D08DF /* ResignKeyboardOnTapGestureModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16E02695A6FD009D08DF /* ResignKeyboardOnTapGestureModifier.swift */; };
+		FD1F16E12695A6FD009D08DF /* ResignKeyboardOnTapModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16E02695A6FD009D08DF /* ResignKeyboardOnTapModifier.swift */; };
 		FD1F16E32695A743009D08DF /* UIApplication+EndEditing.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16E22695A743009D08DF /* UIApplication+EndEditing.swift */; };
 		FD1F16EA26974645009D08DF /* ExpressionKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F16E926974645009D08DF /* ExpressionKeyboard.swift */; };
 		FD21E90D26B0038F00EC38DD /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD21E90C26B0038F00EC38DD /* MyProfileView.swift */; };
@@ -46,7 +46,7 @@
 		FD58C12626B2430D00BDB0CC /* MyProfileFieldUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58C12526B2430D00BDB0CC /* MyProfileFieldUpdateView.swift */; };
 		FD6D377326842C610087272F /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D377226842C610087272F /* SearchBar.swift */; };
 		FD6D37752684707A0087272F /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D37742684707A0087272F /* Background.swift */; };
-		FD6D37792684803E0087272F /* ResignKeyboardOnDragGestureModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D37782684803E0087272F /* ResignKeyboardOnDragGestureModifier.swift */; };
+		FD6D37792684803E0087272F /* ResignKeyboardOnDragModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D37782684803E0087272F /* ResignKeyboardOnDragModifier.swift */; };
 		FD6D37802684D6DD0087272F /* ContactCategoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D377F2684D6DD0087272F /* ContactCategoryRow.swift */; };
 		FD6D378226856E310087272F /* ContactCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D378126856E310087272F /* ContactCategory.swift */; };
 		FD6D3784268576BE0087272F /* ContactCategoriesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D3783268576BE0087272F /* ContactCategoriesList.swift */; };
@@ -221,7 +221,7 @@
 		FD1F16DA26943832009D08DF /* DialogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogView.swift; sourceTree = "<group>"; };
 		FD1F16DC269560AB009D08DF /* String+Height.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Height.swift"; sourceTree = "<group>"; };
 		FD1F16DE26959F83009D08DF /* ChatInputPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputPanel.swift; sourceTree = "<group>"; };
-		FD1F16E02695A6FD009D08DF /* ResignKeyboardOnTapGestureModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResignKeyboardOnTapGestureModifier.swift; sourceTree = "<group>"; };
+		FD1F16E02695A6FD009D08DF /* ResignKeyboardOnTapModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResignKeyboardOnTapModifier.swift; sourceTree = "<group>"; };
 		FD1F16E22695A743009D08DF /* UIApplication+EndEditing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+EndEditing.swift"; sourceTree = "<group>"; };
 		FD1F16E926974645009D08DF /* ExpressionKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressionKeyboard.swift; sourceTree = "<group>"; };
 		FD21E90C26B0038F00EC38DD /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
@@ -240,7 +240,7 @@
 		FD58C12526B2430D00BDB0CC /* MyProfileFieldUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileFieldUpdateView.swift; sourceTree = "<group>"; };
 		FD6D377226842C610087272F /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		FD6D37742684707A0087272F /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
-		FD6D37782684803E0087272F /* ResignKeyboardOnDragGestureModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResignKeyboardOnDragGestureModifier.swift; sourceTree = "<group>"; };
+		FD6D37782684803E0087272F /* ResignKeyboardOnDragModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResignKeyboardOnDragModifier.swift; sourceTree = "<group>"; };
 		FD6D377F2684D6DD0087272F /* ContactCategoryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCategoryRow.swift; sourceTree = "<group>"; };
 		FD6D378126856E310087272F /* ContactCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCategory.swift; sourceTree = "<group>"; };
 		FD6D3783268576BE0087272F /* ContactCategoriesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCategoriesList.swift; sourceTree = "<group>"; };
@@ -617,8 +617,8 @@
 			children = (
 				FD1D0137269ACD3C00A9AF37 /* DelayTouchesModifier.swift */,
 				FD3D102B26A6AFAB0045C218 /* LoadingModifier.swift */,
-				FD6D37782684803E0087272F /* ResignKeyboardOnDragGestureModifier.swift */,
-				FD1F16E02695A6FD009D08DF /* ResignKeyboardOnTapGestureModifier.swift */,
+				FD6D37782684803E0087272F /* ResignKeyboardOnDragModifier.swift */,
+				FD1F16E02695A6FD009D08DF /* ResignKeyboardOnTapModifier.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -1196,7 +1196,7 @@
 				FDCC72922673448A00A48140 /* Route.swift in Sources */,
 				FD8809F5269EDE60002D3396 /* MessageRowImage.swift in Sources */,
 				FD6D37752684707A0087272F /* Background.swift in Sources */,
-				FD6D37792684803E0087272F /* ResignKeyboardOnDragGestureModifier.swift in Sources */,
+				FD6D37792684803E0087272F /* ResignKeyboardOnDragModifier.swift in Sources */,
 				FDCC7251266F1B2E00A48140 /* EnvironmentType.swift in Sources */,
 				FD1D01322699B72700A9AF37 /* ExpressionSticker.swift in Sources */,
 				FD8809F3269EDE52002D3396 /* MessageRowText.swift in Sources */,
@@ -1215,7 +1215,7 @@
 				FD703D2026B8F2A900565E4C /* MyProfilePhotoPreview.swift in Sources */,
 				FD9A858226C8BAFF00A39051 /* FirebaseStorageServiceMock.swift in Sources */,
 				FD6FE99026A9785B0059BF45 /* FirestoreServiceType.swift in Sources */,
-				FD1F16E12695A6FD009D08DF /* ResignKeyboardOnTapGestureModifier.swift in Sources */,
+				FD1F16E12695A6FD009D08DF /* ResignKeyboardOnTapModifier.swift in Sources */,
 				FD88279D2681E1F100BBEAB6 /* Haptics.swift in Sources */,
 				FDCC721B266E254D00A48140 /* WeChat_SwiftUIApp.swift in Sources */,
 				FD21E90D26B0038F00EC38DD /* MyProfileView.swift in Sources */,

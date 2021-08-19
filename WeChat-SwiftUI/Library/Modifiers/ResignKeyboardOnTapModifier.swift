@@ -1,12 +1,12 @@
 import SwiftUI
 
 extension View {
-  func resignKeyboardOnTapGesture(onResign: @escaping () -> Void = {}) -> some View {
-    modifier(ResignKeyboardOnTapGesture(onResign: onResign))
+  func resignKeyboardOnTap(onResign: @escaping () -> Void = {}) -> some View {
+    modifier(ResignKeyboardOnTap(onResign: onResign))
   }
 }
 
-private struct ResignKeyboardOnTapGesture: ViewModifier {
+private struct ResignKeyboardOnTap: ViewModifier {
 
   let onResign: () -> Void
 

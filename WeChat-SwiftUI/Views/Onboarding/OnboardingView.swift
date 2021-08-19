@@ -64,7 +64,7 @@ struct OnboardingView: View {
     }
     .padding()
     .background(.white)
-    .resignKeyboardOnTapGesture()
+    .resignKeyboardOnTap()
     .showLoading(showLoading)
   }
 
