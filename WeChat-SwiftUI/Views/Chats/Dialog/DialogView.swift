@@ -3,26 +3,29 @@ import SwiftUI
 struct DialogView: View {
 
   @State
-  private var dismissKeyboardOnTapOrDrag = false
+  private var dismissKeyboard = false
 
   var body: some View {
     VStack(spacing: 0) {
-      MessagesList(messages: [Message.textTemplate, Message.textTemplate2])
-        .resignKeyboardOnDrag {
-          dismissKeyboardOnTapOrDrag = true
-          DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            dismissKeyboardOnTapOrDrag = false
-          }
-        }
-        .resignKeyboardOnTap {
-          dismissKeyboardOnTapOrDrag = true
-          DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            dismissKeyboardOnTapOrDrag = false
-          }
-        }
-
-      ChatInputPanel(dismissKeyboardOnTapOrDrag: dismissKeyboardOnTapOrDrag)
+      messagesList
+      ChatInputPanel(dismissKeyboard: dismissKeyboard)
     }
+  }
+
+  private var messagesList: some View {
+    MessagesList(messages: [Message.textTemplate, Message.textTemplate2])
+      .resignKeyboardOnDrag {
+        dismissKeyboard = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+          dismissKeyboard = false
+        }
+      }
+      .resignKeyboardOnTap {
+        dismissKeyboard = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+          dismissKeyboard = false
+        }
+      }
   }
 }
 

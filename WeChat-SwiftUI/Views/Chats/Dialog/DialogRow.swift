@@ -16,18 +16,18 @@ struct DialogRow: View {
         lastMessageText
       }
     }
-    .padding(EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16))
+    .padding(Constant.contentInset)
   }
 
   private var avatar: some View {
     Image.avatarPlaceholder
-      .resize(.fill, .init(width: 48, height: 48))
-      .cornerRadius(8)
+      .resize(.fill, Constant.avatarSize)
+      .cornerRadius(Constant.avatarCornerRadius)
   }
 
   private var title: some View {
     Text(dialog.name ?? "")
-      .font(.system(size: 16, weight: .regular))
+      .font(.system(size: Constant.titleFontSize, weight: .regular))
       .foregroundColor(.text_primary)
   }
 
@@ -35,7 +35,7 @@ struct DialogRow: View {
   private var lastMessageTime: some View {
     if let time = dialog.lastMessageTimeString {
       Text(time)
-        .font(.system(size: 11))
+        .font(.system(size: Constant.lastMessageTimeFontSize))
         .foregroundColor(.text_info_50)
     }
   }
@@ -45,9 +45,21 @@ struct DialogRow: View {
     if let text = dialog.lastMessageText {
       Text(text)
         .lineLimit(1)
-        .font(.system(size: 15))
+        .font(.system(size: Constant.lastMessageTextFontSize))
         .foregroundColor(.text_info_80)
     }
+  }
+}
+
+// MARK: - Constant
+extension DialogRow {
+  enum Constant {
+    static let contentInset: EdgeInsets = .init(top: 12, leading: 16, bottom: 12, trailing: 16)
+    static let avatarSize: CGSize = .init(width: 48, height: 48)
+    static let avatarCornerRadius: CGFloat = 8
+    static let titleFontSize: CGFloat = 16
+    static let lastMessageTimeFontSize: CGFloat = 11
+    static let lastMessageTextFontSize: CGFloat = 15
   }
 }
 

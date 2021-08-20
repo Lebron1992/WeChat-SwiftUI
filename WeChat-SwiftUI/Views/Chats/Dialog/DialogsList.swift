@@ -4,11 +4,7 @@ struct DialogsList: View {
   var body: some View {
     List {
       ForEach([Dialog.template1]) { dialog in
-        ZStack(alignment: .leading) {
-          NavigationLink(destination: DialogView()) {
-            EmptyView()
-          }
-          .opacity(0)
+        NavigationRow(destination: DialogView()) {
           DialogRow(dialog: dialog)
         }
       }
