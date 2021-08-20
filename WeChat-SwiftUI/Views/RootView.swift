@@ -10,27 +10,22 @@ struct RootView: View {
   @EnvironmentObject
   private var store: Store<AppState>
 
-  init() {
-    // 设置 tab bar 未选中颜色
-    UITabBar.appearance().unselectedItemTintColor = .text_primary
-  }
-
   var body: some View {
     TabView(selection: selectedTab) {
       ChatsView()
-        .tabItem({ tabItemView(for: .chats) })
+        .tabItem { tabItem(for: .chats) }
         .tag(TabBarItem.chats.rawValue)
 
       ContactsView()
-        .tabItem({ tabItemView(for: .contacts) })
+        .tabItem { tabItem(for: .contacts) }
         .tag(TabBarItem.contacts.rawValue)
 
       DiscoverView()
-        .tabItem({ tabItemView(for: .discover) })
+        .tabItem { tabItem(for: .discover) }
         .tag(TabBarItem.discover.rawValue)
 
       MeView()
-        .tabItem({ tabItemView(for: .me) })
+        .tabItem { tabItem(for: .me) }
         .tag(TabBarItem.me.rawValue)
     }
     .accentColor(.highlighted) // 设置 tab bar 选中颜色
@@ -44,17 +39,12 @@ struct RootView: View {
         store.dispatch(action: RootActions.SetSelectedTab(tab: tab)) }
     )
   }
-}
 
-// MARK: - Helper Methods
-extension RootView {
-  private func tabItemView(for tab: TabBarItem) -> AnyView {
-    AnyView(
-      VStack {
-        tab.rawValue == selectedTab.wrappedValue ? tab.selectedImage : tab.defaultImage
-        Text(tab.title)
-      }
-    )
+  private func tabItem(for tab: TabBarItem) -> some View {
+    VStack {
+      tab.rawValue == selectedTab.wrappedValue ? tab.selectedImage : tab.defaultImage
+      Text(tab.title)
+    }
   }
 }
 

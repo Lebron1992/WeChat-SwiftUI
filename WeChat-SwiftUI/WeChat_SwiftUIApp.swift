@@ -48,11 +48,12 @@ struct WeChat_SwiftUIApp: App {
   private func styleApp() {
     let backImage = UIImage(named: "icons_outlined_back")
     let navBar = UINavigationBar.appearance()
-
     navBar.backIndicatorImage = backImage
     navBar.backIndicatorTransitionMaskImage = backImage
     navBar.shadowImage = UIImage()
     navBar.tintColor = .text_primary
     navBar.titleTextAttributes = [.foregroundColor: navBar.tintColor as Any]
+
+    UITabBar.appearance().unselectedItemTintColor = .text_primary
   }
 }

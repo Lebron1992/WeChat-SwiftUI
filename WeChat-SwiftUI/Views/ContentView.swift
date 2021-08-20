@@ -8,14 +8,12 @@ struct ContentView: ConnectedView {
 
   struct Props {
     let signedInUser: User?
-    let errorMessage: String?
     let loadUserSelf: () -> Void
   }
 
   func map(state: AppState, dispatch: @escaping Dispatch) -> Props {
     Props(
       signedInUser: state.authState.signedInUser,
-      errorMessage: state.systemState.errorMessage,
       loadUserSelf: { dispatch(AuthActions.LoadUserSelf()) }
     )
   }
@@ -29,23 +27,21 @@ struct ContentView: ConnectedView {
           .onAppear(perform: props.loadUserSelf)
       }
     }
-    .alert(isPresented: showErrorMessage, content: {
+    .alert(item: errorMessage) {
       Alert(
         title: Text(""),
-        message: Text(props.errorMessage ?? ""),
+        message: Text($0),
         dismissButton: .cancel(Text(Strings.general_ok()))
       )
-    })
+    }
   }
 }
 
 private extension ContentView {
-  var showErrorMessage: Binding<Bool> {
+  var errorMessage: Binding<String?> {
     Binding(
-      get: { store.state.systemState.errorMessage != nil },
-      set: { _ in
-        store.dispatch(action: SystemActions.SetErrorMessage(message: nil))
-      }
+      get: { store.state.systemState.errorMessage },
+      set: { _ in store.dispatch(action: SystemActions.SetErrorMessage(message: nil)) }
     )
   }
 }
