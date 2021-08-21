@@ -15,53 +15,66 @@ struct ChatInputToolBar: View {
   var isTextEditorFocused: Bool
 
   var body: some View {
-    HStack(alignment: .bottom, spacing: toolBarPadding) {
-      Button {
-        isVoiceButtonSelected.toggle()
-        isExpressionButtonSelected = false
-        isTextEditorFocused = !isVoiceButtonSelected
-      } label: {
-        Image(isVoiceButtonSelected ? "icons_outlined_keyboard" : "icons_outlined_voice")
-          .inputToolBarButtonStyle()
-      }
-
-      ZStack {
-        Text(Strings.chat_hold_to_talk())
-          .font(.system(size: 16, weight: .medium))
-          .foregroundColor(.text_primary)
-        TextEditor(text: $text)
-          .font(Font(textFont as CTFont))
-          .background(.app_white)
-          .focused($isTextEditorFocused)
-          .opacity(isVoiceButtonSelected ? 0 : 1)
-      }
-      .frame(height: isVoiceButtonSelected ? toolBarMinHeight : textEditorHeight)
-      .background(.bg_text_input)
-      .cornerRadius(4)
-
-      Button {
-        isExpressionButtonSelected.toggle()
-        isVoiceButtonSelected = false
-        isTextEditorFocused = !isExpressionButtonSelected
-      } label: {
-        Image(isExpressionButtonSelected ? "icons_outlined_keyboard" : "icons_outlined_sticker")
-          .inputToolBarButtonStyle()
-      }
-
-      Button {
-
-      } label: {
-        Image("icons_outlined_add")
-          .inputToolBarButtonStyle()
-      }
+    HStack(alignment: .bottom, spacing: Constant.toolBarPadding) {
+      voiceButton
+      textEditor
+      expressionButton
+      addButton
     }
     .foregroundColor(.text_primary)
-    .padding(toolBarPadding)
+    .padding(Constant.toolBarPadding)
     .background(.bg_info_150)
     .onChange(of: isTextEditorFocused) { newValue in
       if newValue {
         isExpressionButtonSelected = false
       }
+    }
+  }
+
+  private var voiceButton: some View {
+    Button {
+      isVoiceButtonSelected.toggle()
+      isExpressionButtonSelected = false
+      isTextEditorFocused = !isVoiceButtonSelected
+    } label: {
+      Image(isVoiceButtonSelected ? "icons_outlined_keyboard" : "icons_outlined_voice")
+        .inputToolBarButtonStyle()
+    }
+  }
+
+  private var textEditor: some View {
+    ZStack {
+      Text(Strings.chat_hold_to_talk())
+        .font(.system(size: 16, weight: .medium))
+        .foregroundColor(.text_primary)
+      TextEditor(text: $text)
+        .font(Font(Constant.textFont as CTFont))
+        .background(.app_white)
+        .focused($isTextEditorFocused)
+        .opacity(isVoiceButtonSelected ? 0 : 1)
+    }
+    .frame(height: isVoiceButtonSelected ? Constant.toolBarMinHeight : textEditorHeight)
+    .background(.bg_text_input)
+    .cornerRadius(4)
+  }
+
+  private var expressionButton: some View {
+    Button {
+      isExpressionButtonSelected.toggle()
+      isVoiceButtonSelected = false
+      isTextEditorFocused = !isExpressionButtonSelected
+    } label: {
+      Image(isExpressionButtonSelected ? "icons_outlined_keyboard" : "icons_outlined_sticker")
+        .inputToolBarButtonStyle()
+    }
+  }
+
+  private var addButton: some View {
+    Button {
+
+    } label: {
+      Image("icons_outlined_add")
+        .inputToolBarButtonStyle()
     }
   }
 }
@@ -70,43 +83,56 @@ private extension ChatInputToolBar {
 
   var textEditorHeight: CGFloat {
 
+    let textEditorInsets = Constant.textEditorInsets
     let textEditorHorizontalInsets = textEditorInsets.leading + textEditorInsets.trailing
     let textEditorVerticalInsets = textEditorInsets.top + textEditorInsets.bottom
-    let occupiedWidth: CGFloat = 5 * toolBarPadding + 3 * toolBarButtonWidth + textEditorHorizontalInsets
+    let occupiedWidth: CGFloat = 5 * Constant.toolBarPadding +
+                                 3 * Constant.toolBarButtonWidth +
+                                 textEditorHorizontalInsets
     let width = UIScreen.main.bounds.width - occupiedWidth
 
-    let textHeight = text.height(withConstrainedWidth: width, font: textFont)
+    let textHeight = text.height(withConstrainedWidth: width, font: Constant.textFont)
     let contentHeight = textHeight + textEditorVerticalInsets
-    let maxHeight = ceil(maxLinesOfTextToDisplay * textFont.lineHeight + textEditorVerticalInsets)
+    let maxHeight = ceil(Constant.maxLinesOfTextToDisplay * Constant.textFont.lineHeight + textEditorVerticalInsets)
 
-    return min(max(toolBarMinHeight, contentHeight), maxHeight)
+    return min(max(Constant.toolBarMinHeight, contentHeight), maxHeight)
   }
 }
 
 private extension Image {
   func inputToolBarButtonStyle() -> some View {
-    resize(.fill, .init(width: toolBarButtonWidth, height: toolBarButtonWidth))
-      .padding(.vertical, (toolBarMinHeight - toolBarButtonWidth) * 0.5)
+    typealias Constant = ChatInputToolBar.Constant
+    let size = CGSize(
+      width: Constant.toolBarButtonWidth,
+      height: Constant.toolBarButtonWidth
+    )
+    let padding = (Constant.toolBarMinHeight - Constant.toolBarButtonWidth) * 0.5
+    return resize(.fill, size)
+      .padding(.vertical, padding)
   }
 }
 
 // MARK: - Constants
 
-private let maxLinesOfTextToDisplay: CGFloat = 4
-private let toolBarPadding: CGFloat = 8
-private let toolBarMinHeight: CGFloat = 36
-private let toolBarButtonWidth: CGFloat = 26
-private let textEditorInsets: EdgeInsets = .init(top: 8, leading: 5, bottom: 8, trailing: 5)
-private let textFont: UIFont = .systemFont(ofSize: 16)
+private extension ChatInputToolBar {
+  enum Constant {
+    static let maxLinesOfTextToDisplay: CGFloat = 4
+    static let toolBarPadding: CGFloat = 8
+    static let toolBarMinHeight: CGFloat = 36
+    static let toolBarButtonWidth: CGFloat = 26
+    static let textEditorInsets: EdgeInsets = .init(top: 8, leading: 5, bottom: 8, trailing: 5)
+    static let textFont: UIFont = .systemFont(ofSize: 16)
+  }
+}
 
 // MARK: - Previews
 
 struct ChatInputToolBar_Previews: PreviewProvider {
   static var previews: some View {
     ChatInputToolBar(
-      text: Binding<String>(get: { "" }, set: { _ in }),
-      isVoiceButtonSelected: Binding<Bool>(get: { false }, set: { _ in }),
-      isExpressionButtonSelected: Binding<Bool>(get: { false }, set: { _ in })
+      text: .constant(""),
+      isVoiceButtonSelected: .constant(false),
+      isExpressionButtonSelected: .constant(false)
     )
   }
 }
