@@ -5,20 +5,19 @@ struct MessageRowText: View {
   let message: Message
 
   var body: some View {
-    let spacerLength: CGFloat = 50
     HStack(alignment: .top, spacing: 8) {
       if message.isOutgoingMsg {
-        Spacer(minLength: spacerLength)
+        Spacer(minLength: Constant.spacingOfContentMaxWidthToEdge)
       } else {
-        Avatar()
+        avatar
       }
 
-      MessageText()
+      messageText
 
       if message.isOutgoingMsg {
-        Avatar()
+        avatar
       } else {
-        Spacer(minLength: spacerLength)
+        Spacer(minLength: Constant.spacingOfContentMaxWidthToEdge)
       }
     }
     .listRowBackground(Color.app_bg)
@@ -26,67 +25,54 @@ struct MessageRowText: View {
 }
 
 private extension MessageRowText {
-  func Avatar() -> some View {
 
-    let size = CGSize(width: 40, height: 40)
-    let avatarPlaceholder =
+  var avatar: some View {
+    URLPlaceholderImage(message.sender.avatar, size: Constant.avatarSize) {
       Image.avatarPlaceholder
-      .resize(.fill, size)
-      .foregroundColor(.app_bg)
-
-    if let url = URL(string: message.sender.avatar) {
-      return AnyView(
-        URLImage(
-          url,
-          empty: { avatarPlaceholder },
-          inProgress: { _ in avatarPlaceholder },
-          failure: { _, _ in avatarPlaceholder },
-          content: { image in
-            image
-              .resize(.fill, size)
-              .background(.white)
-          })
-          .background(.app_bg)
-          .cornerRadius(4)
-      )
+        .resize(.fill, Constant.avatarSize)
+        .foregroundColor(.app_bg)
     }
-
-    return AnyView(avatarPlaceholder)
+    .background(.app_white)
+    .cornerRadius(Constant.avatarCornerRadius)
   }
 
-  func MessageText() -> some View {
-    HStack(alignment: .top, spacing: -textBackgroundArrowOverlapWidth) {
+  var messageText: some View {
+    HStack(alignment: .top, spacing: -Constant.textBackgroundArrowOverlapWidth) {
       if message.isOutgoingMsg == false {
-        TextBackgroundArrow()
+        textBackgroundArrow
       }
 
       Text(message.text!)
-        .font(.system(size: 17))
+        .font(Font(Constant.textFont as CTFont))
         .foregroundColor(textForegroundColor)
-        .padding(.horizontal, 12)
-        .padding(.vertical, 10)
+        .padding(Constant.textInsets)
         .background(textBackgroundColor)
-        .cornerRadius(4)
+        .cornerRadius(Constant.textBackgroundCornerRadius)
 
       if message.isOutgoingMsg {
-        TextBackgroundArrow()
+        textBackgroundArrow
       }
     }
   }
 
-  func TextBackgroundArrow() -> some View {
+  var textBackgroundArrow: some View {
     VStack(alignment: .center) {
       Path { path in
         path.addRoundedRect(
-          in: .init(x: 0, y: 0, width: textBackgroundArrowWidth, height: textBackgroundArrowWidth),
+          in: .init(
+            x: 0,
+            y: 0,
+            width: Constant.textBackgroundArrowWidth,
+            height: Constant.textBackgroundArrowWidth
+          ),
           cornerSize: .init(width: 1, height: 1)
         )
       }
-      .frame(width: textBackgroundArrowWidth, height: textBackgroundArrowWidth)
+      .frame(width: Constant.textBackgroundArrowWidth, height: Constant.textBackgroundArrowWidth)
       .foregroundColor(textBackgroundColor)
       .rotationEffect(.init(degrees: 45))
     }
-    .frame(width: textBackgroundArrowOverlapWidth * 2, height: 40)
+    .frame(width: Constant.textBackgroundArrowContainerWidth, height: Constant.textBackgroundArrowContainerHeight)
   }
 
   var textForegroundColor: Color {
@@ -96,13 +82,24 @@ private extension MessageRowText {
   var textBackgroundColor: Color {
     message.isOutgoingMsg ? Color.bg_chat_outgoing_msg : Color.bg_chat_incoming_msg
   }
+}
 
-  var textBackgroundArrowOverlapWidth: CGFloat {
-    sqrt((textBackgroundArrowWidth * textBackgroundArrowWidth) * 2) / 2
-  }
+extension MessageRowText {
+  enum Constant {
+    static let spacingOfContentMaxWidthToEdge: CGFloat = 50
 
-  var textBackgroundArrowWidth: CGFloat {
-    10
+    static let avatarSize: CGSize = .init(width: 40, height: 40)
+    static let avatarCornerRadius: CGFloat = 4
+
+    static let textFont: UIFont = .systemFont(ofSize: 17)
+    static let textInsets: EdgeInsets = .init(top: 10, leading: 12, bottom: 10, trailing: 12)
+    static let textBackgroundCornerRadius: CGFloat = 4
+
+    static let textBackgroundArrowWidth: CGFloat = 10
+    static let textBackgroundArrowOverlapWidth: CGFloat = sqrt((pow(textBackgroundArrowWidth, 2)) * 2) / 2
+
+    static let textBackgroundArrowContainerWidth = textBackgroundArrowOverlapWidth * 2
+    static let textBackgroundArrowContainerHeight = textFont.lineHeight + textInsets.top + textInsets.bottom
   }
 }
 
