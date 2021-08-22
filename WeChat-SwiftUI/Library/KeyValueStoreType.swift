@@ -41,7 +41,7 @@ extension UserDefaults: KeyValueStoreType {
     data(forKey: key.key)
   }
 
-  func dictionary(forKey key: KeyValueStoreKey) -> [String : Any]? {
+  func dictionary(forKey key: KeyValueStoreKey) -> [String: Any]? {
     dictionary(forKey: key.key)
   }
 

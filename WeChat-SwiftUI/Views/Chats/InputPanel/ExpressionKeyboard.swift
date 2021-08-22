@@ -5,6 +5,7 @@ struct ExpressionKeyboard: View {
   @Binding
   var selectedExpression: ExpressionSticker?
 
+  /// 被选中的 expression 在 ChatInputPanel 中的 frame
   @Binding
   var selectedExpressionFrame: CGRect?
 
@@ -17,7 +18,7 @@ struct ExpressionKeyboard: View {
 
   private let expressions: [ExpressionSticker] = {
     let jsonPath = Bundle.main.path(forResource: "expressions", ofType: "json") ?? ""
-    let array = try? Constant.jsonDecoder.decode(
+    let array = try? WeChat_SwiftUI.Constant.jsonDecoder.decode(
       [ExpressionSticker].self,
       from: Data(contentsOf: URL(fileURLWithPath: jsonPath))
     )
@@ -26,42 +27,62 @@ struct ExpressionKeyboard: View {
 
   var body: some View {
     ScrollView {
-      LazyVGrid(columns: [GridItem(.adaptive(minimum: 30, maximum: 30), spacing: 16)], spacing: 16) {
-        ForEach(expressions, id: \.self) { exp in
-          Button {
-            onTapExpression(exp)
-          } label: {
-            Image(exp.image)
-              .resize(.fill)
-              .background(dragObserver(for: exp))
-          }
-        }
-      }
-      .coordinateSpace(name: Self.CoordinateSpace.expressionsGrid.rawValue)
-      .delayTouches(for: 0.25)
-      .gesture(
-        DragGesture(minimumDistance: 0, coordinateSpace: .local)
-          .updating($dragLocation) { value, state, _ in
-            state = value.location
-          }
-          .onEnded({ _ in
-            selectedExpression = nil
-            selectedExpressionFrame = nil
-          })
-      )
-      .padding(.vertical, 20)
-      .padding(.horizontal, 12)
+      expressionGrid
+        .coordinateSpace(name: Self.CoordinateSpace.expressionsGrid.rawValue)
+        .delayTouches(for: 0.25)
+        .gesture(
+          DragGesture(minimumDistance: 0, coordinateSpace: .local)
+            .updating($dragLocation) { value, state, _ in
+              state = value.location
+            }
+            .onEnded({ _ in
+              selectedExpression = nil
+              selectedExpressionFrame = nil
+            })
+        )
+        .padding(.horizontal, Constant.expressionsGridHorizontalPadding)
+        .padding(.vertical, Constant.expressionsGridVerticalPadding)
     }
     .background(.bg_info_170)
   }
 
-  private func dragObserver(for expression: ExpressionSticker) -> some View {
+  @ViewBuilder
+  private var expressionGrid: some View {
+    let gridItem = GridItem(
+      .adaptive(
+        minimum: Constant.expressionItemWidth,
+        maximum: Constant.expressionItemHeight
+      ),
+      spacing: Constant.expressionItemSpacing
+    )
+    LazyVGrid(columns: [gridItem], spacing: Constant.expressionItemSpacing) {
+      ForEach(expressions, id: \.self) {
+        expressionItem(for: $0)
+      }
+    }
+  }
+
+  private func expressionItem(for expression: ExpressionSticker) -> some View {
+    Button {
+      onTapExpression(expression)
+    } label: {
+      Image(expression.image)
+        .resize(.fill)
+        .background(dragObserver(for: expression))
+    }
+  }
+}
+
+// MARK: - Drag Observer
+private extension ExpressionKeyboard {
+
+  func dragObserver(for expression: ExpressionSticker) -> some View {
     GeometryReader { geometry in
       dragObserver(geometry: geometry, expression: expression)
     }
   }
 
-  private func dragObserver(geometry: GeometryProxy, expression: ExpressionSticker) -> some View {
+  func dragObserver(geometry: GeometryProxy, expression: ExpressionSticker) -> some View {
 
     let frameInPanel = geometry.frame(in: .named(ChatInputPanel.CoordinateSpace.panel.rawValue))
     let frame = geometry.frame(in: .named(Self.CoordinateSpace.expressionsGrid.rawValue))
@@ -80,6 +101,16 @@ struct ExpressionKeyboard: View {
 extension ExpressionKeyboard {
   enum CoordinateSpace: String {
     case expressionsGrid = "ExpressionKeyboard.expressionsGrid"
+  }
+}
+
+extension ExpressionKeyboard {
+  enum Constant {
+    static let expressionItemWidth: CGFloat = 30
+    static let expressionItemHeight: CGFloat = expressionItemWidth
+    static let expressionItemSpacing: CGFloat = 16
+    static let expressionsGridHorizontalPadding: CGFloat = 12
+    static let expressionsGridVerticalPadding: CGFloat = 20
   }
 }
 
