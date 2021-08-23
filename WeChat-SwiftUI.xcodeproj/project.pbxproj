@@ -144,6 +144,7 @@
 		FDB07F0F26CFA90600FF7B43 /* NavigationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB07F0E26CFA90600FF7B43 /* NavigationRow.swift */; };
 		FDB07F1126D202C800FF7B43 /* ExpressionPreview.Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB07F1026D202C800FF7B43 /* ExpressionPreview.Background.swift */; };
 		FDB07F1326D22D6100FF7B43 /* URLPlaceholderImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB07F1226D22D6100FF7B43 /* URLPlaceholderImage.swift */; };
+		FDB07F1526D3449F00FF7B43 /* ContactsList.SectionIndexTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB07F1426D3449F00FF7B43 /* ContactsList.SectionIndexTitles.swift */; };
 		FDCC721B266E254D00A48140 /* WeChat_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */; };
 		FDCC721D266E254D00A48140 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC721C266E254D00A48140 /* RootView.swift */; };
 		FDCC721F266E254E00A48140 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDCC721E266E254E00A48140 /* Assets.xcassets */; };
@@ -340,6 +341,7 @@
 		FDB07F0E26CFA90600FF7B43 /* NavigationRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRow.swift; sourceTree = "<group>"; };
 		FDB07F1026D202C800FF7B43 /* ExpressionPreview.Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressionPreview.Background.swift; sourceTree = "<group>"; };
 		FDB07F1226D22D6100FF7B43 /* URLPlaceholderImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLPlaceholderImage.swift; sourceTree = "<group>"; };
+		FDB07F1426D3449F00FF7B43 /* ContactsList.SectionIndexTitles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsList.SectionIndexTitles.swift; sourceTree = "<group>"; };
 		FDCC7217266E254D00A48140 /* WeChat-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WeChat-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeChat_SwiftUIApp.swift; sourceTree = "<group>"; };
 		FDCC721C266E254D00A48140 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -580,6 +582,7 @@
 				FD6D377F2684D6DD0087272F /* ContactCategoryRow.swift */,
 				FD88278D26808F5500BBEAB6 /* ContactDetail.swift */,
 				FD6D3792268625610087272F /* ContactOfficialAccountsList.swift */,
+				FDB07F1426D3449F00FF7B43 /* ContactsList.SectionIndexTitles.swift */,
 				FD882758267AF24500BBEAB6 /* ContactsList.swift */,
 				FD88274F2679D88F00BBEAB6 /* ContactsView.swift */,
 			);
@@ -1191,6 +1194,7 @@
 				FD703D1C26B8F1FE00565E4C /* MyProfileView.Row.swift in Sources */,
 				FD88279F2681E52E00BBEAB6 /* Color+Hex.swift in Sources */,
 				FD5412F326A81D040001D199 /* AuthActions.swift in Sources */,
+				FDB07F1526D3449F00FF7B43 /* ContactsList.SectionIndexTitles.swift in Sources */,
 				FD88278E26808F5500BBEAB6 /* ContactDetail.swift in Sources */,
 				FDCC72872671AD7B00A48140 /* TryDecodable.swift in Sources */,
 				FDCC724F266F1A3400A48140 /* ServerConfigType.swift in Sources */,
