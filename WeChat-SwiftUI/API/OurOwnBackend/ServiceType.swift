@@ -107,9 +107,9 @@ extension ServiceType {
   }
 
   private var authorizationHeader: String? {
-    if let token = self.oauthToken?.token {
-      return "token \(token)"
-    }
+//    if let token = self.oauthToken?.token {
+//      return "token \(token)"
+//    }
     return nil
   }
 

@@ -12,11 +12,7 @@ struct ContactCategoriesList: ConnectedView {
 
   func body(props: Props) -> some View {
     ForEach(props.categories, id: \.title) { category in
-      ZStack(alignment: .leading) {
-        NavigationLink(destination: destination(for: category)) {
-          EmptyView()
-        }
-        .opacity(0.0) // 为了隐藏 NavigationLink 右边的箭头
+      NavigationRow(destination: destination(for: category)) {
         ContactCategoryRow(category: category)
       }
     }

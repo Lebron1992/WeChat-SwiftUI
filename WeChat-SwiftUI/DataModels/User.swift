@@ -56,14 +56,14 @@ extension User {
     case female
     case unknown
 
-    var iconName: String {
+    var iconName: String? {
       switch self {
       case .male:
         return "icons_filled_colorful_male"
       case .female:
         return "icons_filled_colorful_female"
       case .unknown:
-        return ""
+        return nil
       }
     }
 

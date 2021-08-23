@@ -7,12 +7,18 @@ struct MessagesList: View {
     List {
       ForEach(messages) {
         MessageRowText(message: $0)
-          .listRowInsets(.init(top: 8, leading: 12, bottom: 8, trailing: 12))
+          .listRowInsets(Constant.listRowInset)
           .listRowSeparator(.hidden)
       }
     }
     .background(.app_bg)
     .listStyle(.plain)
+  }
+}
+
+extension MessagesList {
+  enum Constant {
+    static let listRowInset: EdgeInsets = .init(top: 8, leading: 12, bottom: 8, trailing: 12)
   }
 }
 

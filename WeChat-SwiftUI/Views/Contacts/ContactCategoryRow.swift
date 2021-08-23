@@ -4,19 +4,28 @@ struct ContactCategoryRow: View {
   let category: ContactCategory
 
   var body: some View {
-    HStack(spacing: 15) {
+    HStack(spacing: Constant.imageTitleSpacing) {
       Image(category.icon)
-        .resizable()
-        .frame(width: 25, height: 25)
+        .resize(.fill, Constant.imageSize)
         .foregroundColor(.white)
-        .frame(width: 40, height: 40)
+        .frame(width: Constant.imageContainerSize.width, height: Constant.imageContainerSize.height)
         .background(category.iconBgColor)
-        .cornerRadius(4)
+        .cornerRadius(Constant.imageContainerCornerRadius)
 
       Text(category.title)
-        .font(.system(size: 16))
+        .font(.system(size: Constant.titleFontSize))
         .foregroundColor(.text_primary)
     }
+  }
+}
+
+extension ContactCategoryRow {
+  enum Constant {
+    static let imageTitleSpacing: CGFloat = 16
+    static let imageSize: CGSize = .init(width: 25, height: 25)
+    static let imageContainerSize: CGSize = .init(width: 40, height: 40)
+    static let imageContainerCornerRadius: CGFloat = 4
+    static let titleFontSize: CGFloat = 16
   }
 }
 
