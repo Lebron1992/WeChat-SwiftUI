@@ -31,15 +31,7 @@ struct MyProfilePhotoPreview: View {
 
   @ViewBuilder
   private var avatar: some View {
-    if let url = URL(string: photoUrl ?? "") {
-      URLImage(
-        url,
-        empty: { avatarPlaceholder },
-        inProgress: { _ in avatarPlaceholder },
-        failure: { _, _ in avatarPlaceholder },
-        content: { $0.resize(.fit) }
-      )
-    } else {
+    URLPlaceholderImage(photoUrl, contentMode: .fit) {
       avatarPlaceholder
     }
   }

@@ -60,18 +60,12 @@ struct ImageTitleRow<Destination: View>: View {
       }
 
       if let url = imageUrl {
-        URLImage(
-          url,
-          empty: { imagePlaceholder },
-          inProgress: { _ in imagePlaceholder },
-          failure: { _, _ in imagePlaceholder },
-          content: {
-            $0.resize(imageContentMode, imageSize)
-              .foregroundColor(imageColor)
-          }
-        )
-          .background(.app_bg)
-          .cornerRadius(imageCornerRadius)
+        URLPlaceholderImage(url, size: imageSize, contentMode: imageContentMode) {
+          imagePlaceholder
+        }
+        .foregroundColor(imageColor)
+        .background(.app_bg)
+        .cornerRadius(imageCornerRadius)
       }
 
       Text(title)

@@ -73,17 +73,11 @@ private extension ContactDetail {
   func InfoRow() -> some View {
     HStack(spacing: 20) {
       if let url = URL(string: contact.avatar) {
-        URLImage(
-          url,
-          empty: { avatarPlaceholder },
-          inProgress: { _ in avatarPlaceholder },
-          failure: { _, _ in avatarPlaceholder },
-          content: { image in
-            image
-              .resize(.fill, .init(width: 60, height: 60))
-          })
-          .background(.app_bg)
-          .cornerRadius(6)
+        URLPlaceholderImage(url, size: .init(width: 60, height: 60)) {
+          avatarPlaceholder
+        }
+        .background(.app_bg)
+        .cornerRadius(6)
       }
 
       VStack(alignment: .leading, spacing: 5) {

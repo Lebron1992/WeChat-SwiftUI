@@ -36,22 +36,12 @@ extension MyProfileView {
     func detailView(user: User) -> AnyView {
       switch self {
       case .photo:
-        let avatarPlaceholder = Image.avatarPlaceholder
-          .resize(.fill, .init(width: 64, height: 64))
-          .asAnyView()
-        if let url = URL(string: user.avatar) {
-          return URLImage(
-            url,
-            empty: { avatarPlaceholder },
-            inProgress: { _ in avatarPlaceholder },
-            failure: { _, _ in avatarPlaceholder },
-            content: { $0.resize(.fill, .init(width: 64, height: 64)) }
-          )
-            .cornerRadius(6)
-            .asAnyView()
-        } else {
-          return avatarPlaceholder
+        return URLPlaceholderImage(user.avatar, size: .init(width: 64, height: 64)) {
+          Image.avatarPlaceholder
         }
+        .background(.app_bg)
+        .cornerRadius(6)
+        .asAnyView()
 
       case .name:
         return Text(user.name)

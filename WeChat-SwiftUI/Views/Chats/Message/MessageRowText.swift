@@ -29,8 +29,6 @@ private extension MessageRowText {
   var avatar: some View {
     URLPlaceholderImage(message.sender.avatar, size: Constant.avatarSize) {
       Image.avatarPlaceholder
-        .resize(.fill, Constant.avatarSize)
-        .foregroundColor(.app_bg)
     }
     .background(.app_white)
     .cornerRadius(Constant.avatarCornerRadius)

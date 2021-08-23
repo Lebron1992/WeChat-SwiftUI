@@ -91,21 +91,11 @@ extension MeView {
       .opacity(0.0) // 为了隐藏 NavigationLink 右边的箭头
 
       HStack(spacing: 16) {
-        if let url = URL(string: me.avatar) {
-          URLImage(
-            url,
-            empty: { avatarPlaceholder },
-            inProgress: { _ in avatarPlaceholder },
-            failure: { _, _ in avatarPlaceholder },
-            content: { image in
-              image
-                .resize(.fill, .init(width: 64, height: 64))
-            })
-            .background(.app_bg)
-            .cornerRadius(6)
-        } else {
-            avatarPlaceholder
+        URLPlaceholderImage(me.avatar, size: .init(width: 64, height: 64)) {
+          avatarPlaceholder
         }
+        .background(.app_bg)
+        .cornerRadius(6)
 
         VStack(alignment: .leading, spacing: 5) {
           Text(me.name)
