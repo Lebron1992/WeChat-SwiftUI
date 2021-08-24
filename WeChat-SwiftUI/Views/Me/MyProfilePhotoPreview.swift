@@ -4,11 +4,17 @@ import URLImage
 struct MyProfilePhotoPreview: View {
   let photoUrl: String?
 
-  @StateObject
-  private var viewModel = MyProfilePhotoPreviewViewModel()
+  @State
+  private var photoPicker: PhotoPickerType?
+
+  @State
+  private var pickedPhoto: UIImage?
 
   @State
   private var showLoading = false
+
+  @StateObject
+  private var viewModel = MyProfilePhotoPreviewViewModel()
 
   var body: some View {
     avatar
@@ -20,23 +26,27 @@ struct MyProfilePhotoPreview: View {
         }
       }
       .showLoading(showLoading)
+      .onChange(of: viewModel.photoUploadStatus, perform: handlePhotoUploadStatusChange(_:))
+      .onChange(of: viewModel.userSelfUpdateStatus, perform: handleUserSelfUpdateStatusChange(_:))
       .onChange(of: pickedPhoto) { newImage in
         if let image = newImage {
           viewModel.uploadPhoto(image)
         }
       }
-      .onChange(of: viewModel.photoUploadStatus, perform: handlePhotoUploadStatusChange(_:))
-      .onChange(of: viewModel.userSelfUpdateStatus, perform: handleUserSelfUpdateStatusChange(_:))
   }
+}
+
+// MARK: - Views
+private extension MyProfilePhotoPreview {
 
   @ViewBuilder
-  private var avatar: some View {
+  var avatar: some View {
     URLPlaceholderImage(photoUrl, contentMode: .fit) {
       avatarPlaceholder
     }
   }
 
-  private var avatarPlaceholder: some View {
+  var avatarPlaceholder: some View {
     let image: Image
 
     if viewModel.isUserSelfUpdated, let pickedImage = pickedPhoto {
@@ -50,7 +60,20 @@ struct MyProfilePhotoPreview: View {
       .foregroundColor(.app_bg)
   }
 
-  private func handlePhotoUploadStatusChange(_ status: ValueUpdateStatus<URL>) {
+  var moreButton: some View {
+    Button {
+      // TODO: Open library for now
+      photoPicker = .library
+    } label: {
+      Image(systemName: "ellipsis")
+    }
+  }
+}
+
+// MARK: - Helper Methods
+private extension MyProfilePhotoPreview {
+
+  func handlePhotoUploadStatusChange(_ status: ValueUpdateStatus<URL>) {
     switch status {
     case .updating:
       showLoading = true
@@ -68,7 +91,7 @@ struct MyProfilePhotoPreview: View {
     }
   }
 
-  private func handleUserSelfUpdateStatusChange(_ status: ValueUpdateStatus<User>) {
+  func handleUserSelfUpdateStatusChange(_ status: ValueUpdateStatus<User>) {
     switch status {
     case .updating:
       showLoading = true
@@ -85,32 +108,7 @@ struct MyProfilePhotoPreview: View {
     }
   }
 
-  // MARK: - More Menu
-
-  private var moreButton: some View {
-    Button {
-      // TODO: Open library for now
-      photoPicker = .library
-    } label: {
-      Image(systemName: "ellipsis")
-    }
-  }
-
-  // MARK: - Pick Photo
-
-  @State
-  private var photoPicker: PhotoPickerType?
-
-  @State
-  private var pickedPhoto: UIImage?
-
-  private enum PhotoPickerType: Identifiable {
-    case camera
-    case library
-    var id: PhotoPickerType { self }
-  }
-
-  private func handlePickedImage(_ image: UIImage?) {
+  func handlePickedImage(_ image: UIImage?) {
     pickedPhoto = image
     photoPicker = nil
   }

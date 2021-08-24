@@ -149,6 +149,7 @@
 		FDC45E8B26D4F61400C44827 /* MyProfileFieldUpdateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC45E8A26D4F61400C44827 /* MyProfileFieldUpdateViewModel.swift */; };
 		FDC45E8D26D4F8A800C44827 /* MyProfileFieldUpdateView.Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC45E8C26D4F8A800C44827 /* MyProfileFieldUpdateView.Field.swift */; };
 		FDC45E8F26D4FD6600C44827 /* MyProfileFieldUpdateViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC45E8E26D4FD6600C44827 /* MyProfileFieldUpdateViewModelTests.swift */; };
+		FDC45E9126D5005B00C44827 /* PhotoPickerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC45E9026D5005B00C44827 /* PhotoPickerType.swift */; };
 		FDCC721B266E254D00A48140 /* WeChat_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */; };
 		FDCC721D266E254D00A48140 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC721C266E254D00A48140 /* RootView.swift */; };
 		FDCC721F266E254E00A48140 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDCC721E266E254E00A48140 /* Assets.xcassets */; };
@@ -350,6 +351,7 @@
 		FDC45E8A26D4F61400C44827 /* MyProfileFieldUpdateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileFieldUpdateViewModel.swift; sourceTree = "<group>"; };
 		FDC45E8C26D4F8A800C44827 /* MyProfileFieldUpdateView.Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileFieldUpdateView.Field.swift; sourceTree = "<group>"; };
 		FDC45E8E26D4FD6600C44827 /* MyProfileFieldUpdateViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileFieldUpdateViewModelTests.swift; sourceTree = "<group>"; };
+		FDC45E9026D5005B00C44827 /* PhotoPickerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerType.swift; sourceTree = "<group>"; };
 		FDCC7217266E254D00A48140 /* WeChat-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WeChat-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeChat_SwiftUIApp.swift; sourceTree = "<group>"; };
 		FDCC721C266E254D00A48140 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -783,8 +785,6 @@
 				FDCC726E2670882D00A48140 /* User.swift */,
 				FDF568D726B79D9900033094 /* User+Setters.swift */,
 				FD882768267B499700BBEAB6 /* UserTests.swift */,
-				FD9A858C26C962B100A39051 /* ValueUpdateStatus.swift */,
-				FD9A858E26C9EA8000A39051 /* ValueUpdateStatusTests.swift */,
 				FDCC728A2671C33400A48140 /* Templates */,
 			);
 			path = DataModels;
@@ -836,9 +836,12 @@
 				FD1E4CEA2674A47200BD2C34 /* LocalizedString.swift */,
 				FDA9080126ABEA3B00805584 /* LocalizedStringTests.swift */,
 				FDA9080626ABF98F00805584 /* NSBundleType.swift */,
+				FDC45E9026D5005B00C44827 /* PhotoPickerType.swift */,
 				FD58C12126B0FABE00BDB0CC /* PresentationStyle.swift */,
 				FD1E4CE82674780600BD2C34 /* Strings.swift */,
 				FDCC72862671AD7B00A48140 /* TryDecodable.swift */,
+				FD9A858C26C962B100A39051 /* ValueUpdateStatus.swift */,
+				FD9A858E26C9EA8000A39051 /* ValueUpdateStatusTests.swift */,
 				FD882760267AFAA300BBEAB6 /* Components */,
 				FDCC72812671AC1800A48140 /* Extensions */,
 				FD882782267F878500BBEAB6 /* Modifiers */,
@@ -1241,6 +1244,7 @@
 				FDAFA4A126AFAB7500FD5C33 /* DialogRow.swift in Sources */,
 				FD8809F9269EDF0F002D3396 /* Message.swift in Sources */,
 				FD9A857E26C8B5F400A39051 /* FirebaseStorageServiceType.swift in Sources */,
+				FDC45E9126D5005B00C44827 /* PhotoPickerType.swift in Sources */,
 				FD9A858D26C962B100A39051 /* ValueUpdateStatus.swift in Sources */,
 				FDCC72832671AC2B00A48140 /* Encodable+Dictionary.swift in Sources */,
 				FD1F16C526919065009D08DF /* DiscoverList.swift in Sources */,
