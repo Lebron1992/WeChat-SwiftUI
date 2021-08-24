@@ -3,8 +3,7 @@ import SwiftUIRedux
 import URLImage
 
 /* TODO:
---- 因为暂时无法改变 header 的高度，所以 SectionHeader 使用 cell 代替
---- 去除 UserInfo cell 的点击效果
+ --- 因为暂时无法改变 header 的高度，所以 SectionHeader 使用 cell 代替
  */
 
 struct MeView: ConnectedView {
@@ -28,108 +27,106 @@ struct MeView: ConnectedView {
   }
 }
 
-// MARK: - Display Content
 private extension MeView {
 
+  @ViewBuilder
   func content(_ props: Props) -> some View {
     if let user = props.signedInUser {
-      return AnyView(Me(user))
-    } else {
-      return AnyView(EmptyView())
-    }
-  }
-
-  func Me(_ me: User) -> some View {
-    ZStack(alignment: .topTrailing) {
-      List {
-        Section {
-          MyInfoRow(me: me)
-        }
-        .listRowBackground(Color.app_white)
-
-        SectionHeaderBackground()
-
-        Section {
-          MeItemRow(item: .pay)
-        }
-        .listRowBackground(Color.app_white)
-
-        SectionHeaderBackground()
-
-        Section {
-          ForEach([MeItem.favorites, MeItem.stickerGallery], id: \.self) {
-            MeItemRow(item: $0)
-          }
-        }
-        .listRowBackground(Color.app_white)
-
-        SectionHeaderBackground()
-
-        Section {
-          MeItemRow(item: .settings)
-        }
-        .listRowBackground(Color.app_white)
-      }
-      .background(.app_bg)
-      .listStyle(.plain)
-      .environment(\.defaultMinListRowHeight, 10)
-
-      Image("icons_filled_camera")
-        .padding(.top, 4)
-        .padding(.trailing, 14)
-    }
-  }
-}
-
-// MARK: - Helper Types
-extension MeView {
-  func MyInfoRow(me: User) -> some View {
-    ZStack(alignment: .leading) {
-      NavigationLink(destination: MyProfileView()) {
-        EmptyView()
-      }
-      .opacity(0.0) // 为了隐藏 NavigationLink 右边的箭头
-
-      HStack(spacing: 16) {
-        URLPlaceholderImage(me.avatar, size: .init(width: 64, height: 64)) {
-          avatarPlaceholder
+      ZStack(alignment: .topTrailing) {
+        List {
+          sectionMyInfo(user: user)
+          SectionHeaderBackground()
+          sectionPay
+          SectionHeaderBackground()
+          sectionFavoritesSticker
+          SectionHeaderBackground()
+          sectionSettings
         }
         .background(.app_bg)
-        .cornerRadius(6)
+        .listStyle(.plain)
+        .environment(\.defaultMinListRowHeight, 10)
 
-        VStack(alignment: .leading, spacing: 5) {
-          Text(me.name)
-            .foregroundColor(.text_primary)
-            .font(.system(size: 20, weight: .semibold))
-
-          HStack(spacing: 2) {
-            Text("\(Strings.general_wechat_id()): \(me.wechatId)")
-              .font(.system(size: 14))
-              .lineLimit(1)
-            Image("icons_outlined_qr_code")
-              .resize(.fill, .init(width: 14, height: 14))
-            Spacer()
-            Image(systemName: "chevron.right")
-              .font(.system(size: 14, weight: .medium))
-          }
-          .foregroundColor(.text_info_200)
-        }
+        cameraButton
       }
-      .padding(.vertical, 30)
     }
   }
 
-  var avatarPlaceholder: some View {
-    Image.avatarPlaceholder
-      .resize(.fill, .init(width: 64, height: 64))
-      .foregroundColor(.app_bg)
+  func sectionMyInfo(user: User) -> some View {
+    Section {
+      NavigationRow(destination: MyProfileView()) {
+        HStack(spacing: 16) {
+          URLPlaceholderImage(user.avatar, size: Constant.avatarSize) {
+            Image.avatarPlaceholder
+          }
+          .foregroundColor(.app_bg)
+          .background(.app_bg)
+          .cornerRadius(Constant.avatarCornerRadius)
+
+          VStack(alignment: .leading, spacing: 5) {
+            usernameView(user: user)
+            wechatIdView(user: user)
+          }
+        }
+        .padding(.vertical, Constant.myInfoVerticalPadding)
+      }
+    }
+    .listRowBackground(Color.app_white)
   }
 
-  func MeItemRow(item: MeItem) -> some View {
+  func usernameView(user: User) -> some View {
+    Text(user.name)
+      .foregroundColor(.text_primary)
+      .font(.system(size: Constant.usernameFontSize, weight: .semibold))
+  }
+
+  func wechatIdView(user: User) -> some View {
+    HStack(spacing: 2) {
+      Text("\(Strings.general_wechat_id()): \(user.wechatId)")
+        .font(.system(size: Constant.wechatIdFontSize))
+        .lineLimit(1)
+      Image("icons_outlined_qr_code")
+        .resize(.fill, Constant.qrCodeImageSize)
+      Spacer()
+      Image(systemName: "chevron.right")
+        .font(.system(size: Constant.wechatIdFontSize, weight: .medium))
+    }
+    .foregroundColor(.text_info_200)
+  }
+
+  var sectionPay: some View {
+    Section {
+      meItemRow(for: .pay)
+    }
+    .listRowBackground(Color.app_white)
+  }
+
+  var sectionFavoritesSticker: some View {
+    Section {
+      ForEach([MeItem.favorites, MeItem.stickerGallery], id: \.self) {
+        meItemRow(for: $0)
+      }
+    }
+    .listRowBackground(Color.app_white)
+  }
+
+  var sectionSettings: some View {
+    Section {
+      meItemRow(for: .settings)
+    }
+    .listRowBackground(Color.app_white)
+  }
+
+  var cameraButton: some View {
+    Image("icons_filled_camera")
+      .padding(.top, Constant.cameraButtonPaddingTop)
+      .padding(.trailing, Constant.cameraButtonPaddingTrailing)
+  }
+
+  func meItemRow(for item: MeItem) -> some View {
     ImageTitleRow(
       image: item.iconImage,
       imageColor: item.iconForegroundColor,
-      imageSize: .init(width: 24, height: 24),
+      imageSize: Constant.rowImageSize,
       title: item.title,
       destination: { Text(item.title) }
     )
@@ -137,44 +134,16 @@ extension MeView {
 }
 
 extension MeView {
-  enum MeItem {
-    case pay
-    case favorites
-    case stickerGallery
-    case settings
-
-    var title: String {
-      switch self {
-      case .pay: return Strings.me_pay()
-      case .favorites: return Strings.me_favorites()
-      case .stickerGallery: return Strings.me_sticker_gallery()
-      case .settings: return Strings.me_settings()
-      }
-    }
-
-    var iconImage: Image {
-      switch self {
-      case .pay:
-        return Image("icons_outlined_wechatpay")
-      case .favorites:
-        return Image("icons_outlined_colorful_favorites")
-      case .stickerGallery:
-        return Image("icons_outlined_sticker")
-      case .settings:
-        return Image("icons_outlined_setting")
-      }
-    }
-
-    var iconForegroundColor: Color? {
-      switch self {
-      case .pay, .favorites:
-        return nil
-      case .stickerGallery:
-        return .hex("F5C343")
-      case .settings:
-        return .hex("3C86E6")
-      }
-    }
+  enum Constant {
+    static let avatarSize: CGSize = .init(width: 64, height: 64)
+    static let avatarCornerRadius: CGFloat = 6
+    static let myInfoVerticalPadding: CGFloat = 30
+    static let usernameFontSize: CGFloat = 20
+    static let wechatIdFontSize: CGFloat = 14
+    static let qrCodeImageSize: CGSize = .init(width: 14, height: 14)
+    static let cameraButtonPaddingTop: CGFloat = 4
+    static let cameraButtonPaddingTrailing: CGFloat = 14
+    static let rowImageSize: CGSize = .init(width: 24, height: 24)
   }
 }
 

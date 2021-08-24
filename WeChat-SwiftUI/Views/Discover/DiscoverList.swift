@@ -19,7 +19,7 @@ struct DiscoverList: ConnectedView {
   func body(props: Props) -> some View {
     List {
       ForEach(props.discoverSections, id: \.self) {
-        DiscoverSection(section: $0)
+        discoverSection(section: $0)
       }
     }
     .background(.app_bg)
@@ -30,29 +30,35 @@ struct DiscoverList: ConnectedView {
 
 private extension DiscoverList {
 
-  func DiscoverSection(section: DiscoverSection) -> some View {
+  func discoverSection(section: DiscoverSection) -> some View {
 
-    let header = section.isFirstSection ? AnyView(EmptyView()) : AnyView(SectionHeaderBackground())
+    let header = section.isFirstSection ? EmptyView().asAnyView() : SectionHeaderBackground().asAnyView()
 
     return Group {
       header
       Section {
         ForEach(section.items, id: \.self) {
-          DiscoverItemRow(item: $0)
+          discoverItemRow(item: $0)
             .listRowBackground(Color.app_white)
         }
       }
     }
   }
 
-  func DiscoverItemRow(item: DiscoverItem) -> some View {
+  func discoverItemRow(item: DiscoverItem) -> some View {
     ImageTitleRow(
       image: item.iconImage,
       imageColor: item.iconForegroundColor,
-      imageSize: .init(width: 24, height: 24),
+      imageSize: Constant.itemImageSize,
       title: item.title,
       destination: { Text(item.title) }
     )
+  }
+}
+
+extension DiscoverList {
+  enum Constant {
+    static let itemImageSize: CGSize = .init(width: 24, height: 24)
   }
 }
 
