@@ -5,9 +5,6 @@ import SwiftUIRedux
 --- 暗黑模式时，TextEditor 的背景颜色不对
  */
 
-private let maxTextCountOfWhatsUp = 30
-private let rowInsets = EdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16)
-
 struct MyProfileFieldUpdateView: View {
 
   let field: Field
@@ -27,15 +24,16 @@ struct MyProfileFieldUpdateView: View {
   @State
   private var showLoading = false
 
-  private let cancelBag = CancelBag()
+  @StateObject
+  private var viewModel = MyProfileFieldUpdateViewModel()
 
   var body: some View {
     NavigationView {
       List {
         switch field {
-        case .name:    NameEditor()
-        case .gender:  GenderEditor()
-        case .whatsUp: WhatsUpEditor()
+        case .name:    nameEditor
+        case .gender:  genderEditor
+        case .whatsUp: whatsUpEditor
         case .region:  EmptyView()
         }
       }
@@ -43,20 +41,21 @@ struct MyProfileFieldUpdateView: View {
       .background(.app_bg)
       .navigationTitle(field.navigationBarTitle)
       .navigationBarTitleDisplayMode(.inline)
-      .navigationBarItems(leading: CancelButton(), trailing: DoneButton())
+      .navigationBarItems(leading: cancelButton, trailing: doneButton)
       .showLoading(showLoading)
+      .onChange(of: viewModel.userSelfUpdateStatus, perform: handleUserSelfUpdateStatusChange(_:))
     }
     .onAppear(perform: setDefaultValues)
   }
 }
 
-// MARK: - Helper Methods
+// MARK: - Views
 private extension MyProfileFieldUpdateView {
 
-  func NameEditor() -> some View {
+  var nameEditor: some View {
     HStack {
       TextField("", text: $text)
-        .font(.system(size: 16))
+        .font(.system(size: Constant.fieldFontSize))
         .foregroundColor(.text_primary)
       Spacer()
       Button(action: {
@@ -69,15 +68,15 @@ private extension MyProfileFieldUpdateView {
     }
     .listRowBackground(Color.app_white)
     .listRowSeparator(.hidden)
-    .listRowInsets(rowInsets)
+    .listRowInsets(Constant.rowInsets)
   }
 
-  func GenderEditor() -> some View {
+  var genderEditor: some View {
     ForEach([User.Gender.male, User.Gender.female], id: \.self) { item in
       let isSelected = item == gender
       HStack {
         Text(item.description)
-          .font(.system(size: 16))
+          .font(.system(size: Constant.fieldFontSize))
           .foregroundColor(.text_primary)
         Spacer()
         Image(systemName: "checkmark")
@@ -90,73 +89,81 @@ private extension MyProfileFieldUpdateView {
       }
     }
     .listRowBackground(Color.app_white)
-    .listRowInsets(rowInsets)
+    .listRowInsets(Constant.rowInsets)
   }
 
-  func WhatsUpEditor() -> some View {
+  var whatsUpEditor: some View {
     ZStack(alignment: .bottomTrailing) {
       TextEditor(text: $text)
-        .font(.system(size: 16))
+        .font(.system(size: Constant.fieldFontSize))
         .foregroundColor(.text_primary)
-        .onChange(of: text, perform: { newValue in
-          if newValue.count > maxTextCountOfWhatsUp {
-            let to = newValue.index(newValue.startIndex, offsetBy: maxTextCountOfWhatsUp)
-            text = String(newValue[newValue.startIndex..<to])
-          }
-        })
         .background(.app_white)
-        .frame(height: 50)
-      Text("\(maxTextCountOfWhatsUp - text.count)")
-        .font(.system(size: 15))
+        .frame(height: Constant.whatsUpEditorHeight)
+        .onChange(of: text, perform: handleWhatsUpEditorTextChange(_:))
+
+      Text("\(Constant.maxTextCountOfWhatsUp - text.count)")
+        .font(.system(size: Constant.whatsUpEditorRemainingTextCountFontSize))
         .foregroundColor(.text_info_100)
     }
     .listRowBackground(Color.app_white)
     .listRowSeparator(.hidden)
-    .listRowInsets(rowInsets)
+    .listRowInsets(Constant.rowInsets)
   }
 
-  func CancelButton() -> some View {
-    Button(action: { dismiss() }, label: {
+  var cancelButton: some View {
+    Button {
+      dismiss()
+    } label: {
       Text(Strings.general_cancel())
         .foregroundColor(.text_primary)
-    })
-  }
-
-  func DoneButton() -> some View {
-    Button(action: doneButtonTapped, label: {
-      Text(Strings.general_done())
-        .font(.system(size: 16, weight: .medium))
-        .foregroundColor(isValueChanged ? .white : .text_info_80)
-        .padding(.vertical, 6)
-        .padding(.horizontal, 10)
-        .background(isValueChanged ? .highlighted : .bg_info_200)
-        .cornerRadius(4)
-    })
-      .disabled(!isValueChanged)
-  }
-
-  func doneButtonTapped() {
-    guard isValueChanged else {
-      return
+        .font(.system(size: Constant.actionButtonFontSize, weight: .medium))
     }
+  }
 
-    setShowLoading(true)
+  var doneButton: some View {
+    Button {
+      guard isValueChanged else {
+        return
+      }
+      viewModel.updateUserSelf(newUser)
+    } label: {
+      Text(Strings.general_done())
+        .font(.system(size: Constant.actionButtonFontSize, weight: .medium))
+        .foregroundColor(isValueChanged ? .white : .text_info_80)
+        .padding(Constant.doneButtonPadding)
+        .background(isValueChanged ? .highlighted : .bg_info_200)
+        .cornerRadius(Constant.doneButtonCornerRadius)
+    }
+    .disabled(!isValueChanged)
+  }
+}
 
-    AppEnvironment.current.firestoreService
-      .overrideUser(newUser)
-      .sinkForUI(receiveCompletion: { completion in
+// MARK: - Helper Methods
+private extension MyProfileFieldUpdateView {
 
-        setShowLoading(false)
+  func handleUserSelfUpdateStatusChange(_ status: ValueUpdateStatus<User>) {
+    switch status {
+    case .updating:
+      showLoading = true
 
-        switch completion {
-        case .finished:
-          updateSignedInUser(newUser)
-          dismiss()
-        case let .failure(error):
-          setErrorMessage("Error saving user: \(error.localizedDescription)")
-        }
-      })
-      .store(in: cancelBag)
+    case .finished(let user):
+      updateSignedInUser(user)
+      showLoading = false
+      dismiss()
+
+    case .failed(let error):
+      setErrorMessage(error.localizedDescription)
+      showLoading = false
+    default:
+      showLoading = false
+    }
+  }
+
+  func handleWhatsUpEditorTextChange(_ newText: String) {
+    if newText.count > Constant.maxTextCountOfWhatsUp {
+      let to = newText.index(newText.startIndex, offsetBy: Constant.maxTextCountOfWhatsUp)
+      text = String(newText[newText.startIndex..<to])
+    }
   }
 
   func setDefaultValues() {
@@ -175,11 +182,10 @@ private extension MyProfileFieldUpdateView {
       gender = .unknown
     }
   }
+}
 
-  func setShowLoading(_ show: Bool) {
-    showLoading = show
-  }
-
+// MARK: - Getters
+extension MyProfileFieldUpdateView {
   var isValueChanged: Bool {
     switch field {
     case .name(let name):
@@ -213,28 +219,16 @@ private extension MyProfileFieldUpdateView {
   }
 }
 
-// MARK: - Field
-extension MyProfileFieldUpdateView {
-  enum Field {
-    case name(String)
-    case gender(User.Gender)
-    case region
-    case whatsUp(String)
-
-    var navigationBarTitle: String {
-      let name: String
-      switch self {
-      case .name:
-        name = Strings.general_name()
-      case .gender:
-        name = Strings.general_gender()
-      case .region:
-        name = Strings.general_region()
-      case .whatsUp:
-        name = Strings.general_whats_up()
-      }
-      return "\(Strings.general_set()) \(name)"
-    }
+private extension MyProfileFieldUpdateView {
+  enum Constant {
+    static let fieldFontSize: CGFloat = 16
+    static let actionButtonFontSize: CGFloat = 16
+    static let maxTextCountOfWhatsUp = 30
+    static let whatsUpEditorHeight: CGFloat = 50
+    static let whatsUpEditorRemainingTextCountFontSize: CGFloat = 15
+    static let doneButtonPadding: EdgeInsets = .init(top: 6, leading: 10, bottom: 6, trailing: 10)
+    static let doneButtonCornerRadius: CGFloat = 4
+    static let rowInsets = EdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16)
   }
 }
 

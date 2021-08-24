@@ -19,7 +19,7 @@ struct ContactCategoryRow: View {
   }
 }
 
-extension ContactCategoryRow {
+private extension ContactCategoryRow {
   enum Constant {
     static let imageTitleSpacing: CGFloat = 16
     static let imageSize: CGSize = .init(width: 25, height: 25)

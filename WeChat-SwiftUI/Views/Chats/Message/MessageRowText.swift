@@ -82,7 +82,7 @@ private extension MessageRowText {
   }
 }
 
-extension MessageRowText {
+private extension MessageRowText {
   enum Constant {
     static let spacingOfContentMaxWidthToEdge: CGFloat = 50
 

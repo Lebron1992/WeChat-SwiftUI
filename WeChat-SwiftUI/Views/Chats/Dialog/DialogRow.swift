@@ -52,7 +52,7 @@ struct DialogRow: View {
 }
 
 // MARK: - Constant
-extension DialogRow {
+private extension DialogRow {
   enum Constant {
     static let contentInset: EdgeInsets = .init(top: 12, leading: 16, bottom: 12, trailing: 16)
     static let avatarSize: CGSize = .init(width: 48, height: 48)

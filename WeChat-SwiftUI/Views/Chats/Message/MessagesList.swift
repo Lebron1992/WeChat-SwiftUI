@@ -16,7 +16,7 @@ struct MessagesList: View {
   }
 }
 
-extension MessagesList {
+private extension MessagesList {
   enum Constant {
     static let listRowInset: EdgeInsets = .init(top: 8, leading: 12, bottom: 8, trailing: 12)
   }

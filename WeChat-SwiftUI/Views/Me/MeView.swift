@@ -133,7 +133,7 @@ private extension MeView {
   }
 }
 
-extension MeView {
+private extension MeView {
   enum Constant {
     static let avatarSize: CGSize = .init(width: 64, height: 64)
     static let avatarCornerRadius: CGFloat = 6

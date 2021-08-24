@@ -56,7 +56,7 @@ private extension DiscoverList {
   }
 }
 
-extension DiscoverList {
+private extension DiscoverList {
   enum Constant {
     static let itemImageSize: CGSize = .init(width: 24, height: 24)
   }

@@ -104,7 +104,7 @@ extension ExpressionKeyboard {
   }
 }
 
-extension ExpressionKeyboard {
+private extension ExpressionKeyboard {
   enum Constant {
     static let expressionItemWidth: CGFloat = 30
     static let expressionItemHeight: CGFloat = expressionItemWidth

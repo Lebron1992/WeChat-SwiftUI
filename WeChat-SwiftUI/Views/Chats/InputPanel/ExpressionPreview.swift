@@ -30,7 +30,7 @@ struct ExpressionPreview: View {
   }
 }
 
-extension ExpressionPreview {
+private extension ExpressionPreview {
   enum Constant {
     static let imageSize: CGSize = .init(width: 40, height: 40)
     static let descriptionWidth: CGFloat = 40

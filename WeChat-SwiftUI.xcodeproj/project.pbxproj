@@ -146,6 +146,9 @@
 		FDB07F1326D22D6100FF7B43 /* URLPlaceholderImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB07F1226D22D6100FF7B43 /* URLPlaceholderImage.swift */; };
 		FDB07F1526D3449F00FF7B43 /* ContactsList.SectionIndexTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB07F1426D3449F00FF7B43 /* ContactsList.SectionIndexTitles.swift */; };
 		FDC45E8926D4EF7B00C44827 /* MeView.MeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC45E8826D4EF7B00C44827 /* MeView.MeItem.swift */; };
+		FDC45E8B26D4F61400C44827 /* MyProfileFieldUpdateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC45E8A26D4F61400C44827 /* MyProfileFieldUpdateViewModel.swift */; };
+		FDC45E8D26D4F8A800C44827 /* MyProfileFieldUpdateView.Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC45E8C26D4F8A800C44827 /* MyProfileFieldUpdateView.Field.swift */; };
+		FDC45E8F26D4FD6600C44827 /* MyProfileFieldUpdateViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC45E8E26D4FD6600C44827 /* MyProfileFieldUpdateViewModelTests.swift */; };
 		FDCC721B266E254D00A48140 /* WeChat_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */; };
 		FDCC721D266E254D00A48140 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC721C266E254D00A48140 /* RootView.swift */; };
 		FDCC721F266E254E00A48140 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDCC721E266E254E00A48140 /* Assets.xcassets */; };
@@ -344,6 +347,9 @@
 		FDB07F1226D22D6100FF7B43 /* URLPlaceholderImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLPlaceholderImage.swift; sourceTree = "<group>"; };
 		FDB07F1426D3449F00FF7B43 /* ContactsList.SectionIndexTitles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsList.SectionIndexTitles.swift; sourceTree = "<group>"; };
 		FDC45E8826D4EF7B00C44827 /* MeView.MeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeView.MeItem.swift; sourceTree = "<group>"; };
+		FDC45E8A26D4F61400C44827 /* MyProfileFieldUpdateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileFieldUpdateViewModel.swift; sourceTree = "<group>"; };
+		FDC45E8C26D4F8A800C44827 /* MyProfileFieldUpdateView.Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileFieldUpdateView.Field.swift; sourceTree = "<group>"; };
+		FDC45E8E26D4FD6600C44827 /* MyProfileFieldUpdateViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileFieldUpdateViewModelTests.swift; sourceTree = "<group>"; };
 		FDCC7217266E254D00A48140 /* WeChat-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WeChat-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeChat_SwiftUIApp.swift; sourceTree = "<group>"; };
 		FDCC721C266E254D00A48140 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -605,6 +611,7 @@
 			children = (
 				FDC45E8826D4EF7B00C44827 /* MeView.MeItem.swift */,
 				FD8827532679D8A600BBEAB6 /* MeView.swift */,
+				FDC45E8C26D4F8A800C44827 /* MyProfileFieldUpdateView.Field.swift */,
 				FD58C12526B2430D00BDB0CC /* MyProfileFieldUpdateView.swift */,
 				FD703D1F26B8F2A900565E4C /* MyProfilePhotoPreview.swift */,
 				FD703D1B26B8F1FE00565E4C /* MyProfileView.Row.swift */,
@@ -663,6 +670,8 @@
 			children = (
 				FD9A857B26C8B0A300A39051 /* MyProfilePhotoPreviewViewModel.swift */,
 				FD9A858526C8BE4C00A39051 /* MyProfilePhotoPreviewViewModelTests.swift */,
+				FDC45E8A26D4F61400C44827 /* MyProfileFieldUpdateViewModel.swift */,
+				FDC45E8E26D4FD6600C44827 /* MyProfileFieldUpdateViewModelTests.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1181,6 +1190,7 @@
 				FDAFA49A26AEACCC00FD5C33 /* Dialog.swift in Sources */,
 				FD9A859126C9FDE000A39051 /* Errors.swift in Sources */,
 				FD76765226A3D40A0050457D /* AuthState.swift in Sources */,
+				FDC45E8D26D4F8A800C44827 /* MyProfileFieldUpdateView.Field.swift in Sources */,
 				FD1E4CEB2674A47200BD2C34 /* LocalizedString.swift in Sources */,
 				FD1D01342699BC6700A9AF37 /* ExpressionPreview.swift in Sources */,
 				FD9A857C26C8B0A300A39051 /* MyProfilePhotoPreviewViewModel.swift in Sources */,
@@ -1240,6 +1250,7 @@
 				FD703D2026B8F2A900565E4C /* MyProfilePhotoPreview.swift in Sources */,
 				FD9A858226C8BAFF00A39051 /* FirebaseStorageServiceMock.swift in Sources */,
 				FD6FE99026A9785B0059BF45 /* FirestoreServiceType.swift in Sources */,
+				FDC45E8B26D4F61400C44827 /* MyProfileFieldUpdateViewModel.swift in Sources */,
 				FD1F16E12695A6FD009D08DF /* ResignKeyboardOnTapModifier.swift in Sources */,
 				FD88279D2681E1F100BBEAB6 /* Haptics.swift in Sources */,
 				FD76B8C426CE120A00C0A03F /* KeyValueStoreKey.swift in Sources */,
@@ -1299,6 +1310,7 @@
 				FDCC727A267109D700A48140 /* LanguageTests.swift in Sources */,
 				FD703D1826B83A3000565E4C /* AuthActionsTests.swift in Sources */,
 				FDCC72752671087E00A48140 /* EnvironmentTests.swift in Sources */,
+				FDC45E8F26D4FD6600C44827 /* MyProfileFieldUpdateViewModelTests.swift in Sources */,
 				FD6D378F268624520087272F /* OfficialAccountTests.swift in Sources */,
 				FD8809FB269EE76B002D3396 /* MessageTests.swift in Sources */,
 				FD882778267F1BD500BBEAB6 /* ContactsActionsTests.swift in Sources */,

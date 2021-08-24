@@ -133,7 +133,7 @@ private extension ContactDetail {
   }
 }
 
-extension ContactDetail {
+private extension ContactDetail {
   enum Constant {
     static let avatarSize: CGSize = .init(width: 60, height: 60)
     static let avatarCornerRaidus: CGFloat = 6
