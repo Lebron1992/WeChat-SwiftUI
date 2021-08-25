@@ -5,6 +5,9 @@ struct Environment {
   /// 用于从自己的后台获取数据的类型。
   let apiService: ServiceType
 
+  /// 代替 apiService 用于模拟真实开发，用 Firebase 处理用户系统
+  let authService: FirebaseAuthServiceType
+
   /// 当前已登录的用户。
   let currentUser: User?
 
@@ -19,12 +22,14 @@ struct Environment {
 
   init(
     apiService: ServiceType = Service(),
+    authService: FirebaseAuthServiceType =  FirebaseAuthService(),
     currentUser: User? = nil,
     firestoreService: FirestoreServiceType = FirestoreService(),
     language: Language = Language(languageStrings: Locale.preferredLanguages) ?? .zh,
     userDefaults: KeyValueStoreType = UserDefaults.standard
   ) {
     self.apiService = apiService
+    self.authService = authService
     self.firestoreService = firestoreService
     self.currentUser = currentUser
     self.language = language

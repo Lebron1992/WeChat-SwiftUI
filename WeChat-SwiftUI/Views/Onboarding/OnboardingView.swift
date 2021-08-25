@@ -8,6 +8,9 @@ struct OnboardingView: View {
   @EnvironmentObject
   private var store: Store<AppState>
 
+  @StateObject
+  private var viewModel = OnboardingViewModel()
+
   @State
   var mode: OnboardingMode = .login
 
@@ -22,8 +25,6 @@ struct OnboardingView: View {
 
   @State
   var showLoading = false
-
-  private let cancelBag = CancelBag()
 
   var body: some View {
     VStack {
@@ -66,73 +67,32 @@ struct OnboardingView: View {
     .background(.white)
     .resignKeyboardOnTap()
     .showLoading(showLoading)
+    .onChange(of: viewModel.registerStatus, perform: handleRegisterStatusChange(_:))
+    .onChange(of: viewModel.signInStatus, perform: handleSignInStatusChange(_:))
+    .onChange(of: viewModel.usernameUpdateStatus, perform: handleUsernameUpdateStatusChange(_:))
+    .onChange(of: viewModel.userSelfUpdateStatus, perform: handleUserSelfUpdateStatusChange(_:))
   }
+}
 
-  private func login() {
+// MARK: - Helper Methods
+private extension OnboardingView {
+  func login() {
     guard allFieldsAreValid() else {
         setErrorMessage(Strings.onboarding_email_password_cannot_empty())
       return
     }
-
-    setShowLoading(true)
-
-    Auth.auth().signIn(withEmail: email, password: password) { result, error in
-      setShowLoading(false)
-
-      if let error = error {
-        setErrorMessage(error.localizedDescription)
-
-      } else if let result = result {
-
-        let user = User(firUser: result.user)
-        updateSignedInUser(user)
-      }
-    }
+    viewModel.signIn(email: email, password: password)
   }
 
-  private func register() {
+  func register() {
     guard allFieldsAreValid() else {
         setErrorMessage(Strings.onboarding_name_email_password_cannot_empty())
       return
     }
-
-    setShowLoading(true)
-
-    Auth.auth().createUser(withEmail: email, password: password) { result, error in
-
-      if let error = error {
-        setErrorMessage(error.localizedDescription)
-        setShowLoading(false)
-
-      } else if let result = result {
-
-        let request = result.user.createProfileChangeRequest()
-        request.displayName = name
-        request.commitChanges { _ in
-          let user = User(firUser: result.user)
-
-          // 注册成功，把用户保存到数据库中
-          AppEnvironment.current.firestoreService
-            .overrideUser(user)
-            .sinkForUI(receiveCompletion: { completion in
-              updateSignedInUser(user)
-              setShowLoading(false)
-              // 未考虑错误的情况：因为实际情况中只有把用户保存到数据库中才算注册成功；
-              // 这里使用 Firebase 注册，注册成功之后才把用户保存到数据库中，在保存出错的情况下，不方便把已注册的用户删除
-              switch completion {
-              case let .failure(error):
-                print("Error saving user: \(error.localizedDescription)")
-              default:
-                break
-              }
-            })
-            .store(in: cancelBag)
-        }
-      }
-    }
+    viewModel.register(email: email, password: password)
   }
 
-  private func allFieldsAreValid() -> Bool {
+  func allFieldsAreValid() -> Bool {
     switch mode {
     case .login:
       if email.isEmpty || password.isEmpty {
@@ -146,8 +106,67 @@ struct OnboardingView: View {
     return true
   }
 
-  private func setShowLoading(_ show: Bool) {
+  func setShowLoading(_ show: Bool) {
     showLoading = show
+  }
+
+  func handleRegisterStatusChange(_ status: ValueUpdateStatus<AuthDataResult>) {
+    switch status {
+    case .idle:
+      setShowLoading(false)
+    case .updating:
+      setShowLoading(true)
+    case .finished(let result):
+      setShowLoading(false)
+      viewModel.updateUsername(authResult: result, username: name)
+    case .failed(let error):
+      setShowLoading(false)
+      setErrorMessage(error.localizedDescription)
+    }
+  }
+
+  func handleSignInStatusChange(_ status: ValueUpdateStatus<User>) {
+    switch status {
+    case .idle:
+      setShowLoading(false)
+    case .updating:
+      setShowLoading(true)
+    case .finished(let user):
+      setShowLoading(false)
+      updateSignedInUser(user)
+    case .failed(let error):
+      setShowLoading(false)
+      setErrorMessage(error.localizedDescription)
+    }
+  }
+
+  func handleUsernameUpdateStatusChange(_ status: ValueUpdateStatus<User>) {
+    switch status {
+    case .idle:
+      setShowLoading(false)
+    case .updating:
+      setShowLoading(true)
+    case .finished(let user):
+      setShowLoading(false)
+      viewModel.updateUserSelf(user)
+    case .failed(let error):
+      setShowLoading(false)
+      setErrorMessage(error.localizedDescription)
+    }
+  }
+
+  func handleUserSelfUpdateStatusChange(_ status: ValueUpdateStatus<User>) {
+    switch status {
+    case .idle:
+      setShowLoading(false)
+    case .updating:
+      setShowLoading(true)
+    case .finished(let user):
+      setShowLoading(false)
+      updateSignedInUser(user)
+    case .failed:
+      setShowLoading(false)
+    }
   }
 }
 

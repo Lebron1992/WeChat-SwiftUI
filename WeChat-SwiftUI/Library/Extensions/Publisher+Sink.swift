@@ -4,8 +4,7 @@ import Foundation
 extension Publisher {
 
   func sinkToLoadableForUI(_ completion: @escaping (Loadable<Output>) -> Void) -> AnyCancellable {
-    receive(on: DispatchQueue.main)
-      .sink(
+    sinkForUI(
         receiveCompletion: { subscriptionCompletion in
           if let error = subscriptionCompletion.error {
             completion(.failed(error))
@@ -17,8 +16,17 @@ extension Publisher {
       )
   }
 
-  func sinkToValueForUI(completion: @escaping (Output) -> Void = { _ in }) -> AnyCancellable {
-    sinkForUI(receiveValue: { completion($0) })
+  func sinkToResultForUI(completion: @escaping (Result<Output, Error>) -> Void = { _ in }) -> AnyCancellable {
+    sinkForUI(
+        receiveCompletion: { subscriptionCompletion in
+          if let error = subscriptionCompletion.error {
+            completion(.failure(error))
+          }
+        },
+        receiveValue: { value in
+          completion(.success(value))
+        }
+      )
   }
 
   func sinkForUI(

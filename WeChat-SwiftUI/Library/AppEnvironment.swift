@@ -84,6 +84,7 @@ enum AppEnvironment {
   /// 更新当前 Environment 的一些全局变量。
   static func replaceCurrentEnvironment(
     apiService: ServiceType = AppEnvironment.current.apiService,
+    authService: FirebaseAuthServiceType = AppEnvironment.current.authService,
     currentUser: User? = AppEnvironment.current.currentUser,
     firestoreService: FirestoreServiceType = AppEnvironment.current.firestoreService,
     language: Language = AppEnvironment.current.language,
@@ -92,6 +93,7 @@ enum AppEnvironment {
     replaceCurrentEnvironment(
       Environment(
         apiService: apiService,
+        authService: authService,
         currentUser: currentUser,
         firestoreService: firestoreService,
         language: language,
@@ -103,6 +105,7 @@ enum AppEnvironment {
   /// 更新当前 Environment 的一些全局变量。
   static func pushEnvironment(
     apiService: ServiceType = AppEnvironment.current.apiService,
+    authService: FirebaseAuthServiceType = AppEnvironment.current.authService,
     currentUser: User? = AppEnvironment.current.currentUser,
     firestoreService: FirestoreServiceType = AppEnvironment.current.firestoreService,
     language: Language = AppEnvironment.current.language,
@@ -111,6 +114,7 @@ enum AppEnvironment {
     pushEnvironment(
       Environment(
         apiService: apiService,
+        authService: authService,
         currentUser: currentUser,
         firestoreService: firestoreService,
         language: language,
@@ -120,8 +124,6 @@ enum AppEnvironment {
   }
 
   // MARK: - Save & Restore
-
-  static let environmentStorageKey = "com.wechat.AppEnvironment.current"
 
   /// 从  userDefaults 保存的数据恢复 Environment 对象。
   static func fromStorage(userDefaults: KeyValueStoreType) -> Environment {

@@ -24,10 +24,3 @@ final class MyProfileFieldUpdateViewModel: ObservableObject {
       })
   }
 }
-
-// MARK: - Getters
-extension MyProfileFieldUpdateViewModel {
-  var isUserSelfUpdated: Bool {
-    userSelfUpdateStatus.value != nil
-  }
-}

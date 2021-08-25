@@ -19,20 +19,20 @@ struct FirebaseStorageService: FirebaseStorageServiceType {
 
         guard metadata != nil else {
           if let err = error {
-            promise(Result.failure(err))
+            promise(.failure(err))
           } else {
-            promise(Result.failure(NSError.unknowError))
+            promise(.failure(NSError.unknowError))
           }
           return
         }
 
         imageRef.downloadURL { url, error in
           if let url = url {
-            promise(Result.success(url))
+            promise(.success(url))
           } else if let err = error {
-            promise(Result.failure(err))
+            promise(.failure(err))
           } else {
-            promise(Result.failure(NSError.unknowError))
+            promise(.failure(NSError.unknowError))
           }
         }
       }
