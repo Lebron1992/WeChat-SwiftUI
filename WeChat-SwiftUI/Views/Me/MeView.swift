@@ -88,7 +88,7 @@ private extension MeView {
         .resize(.fill, Constant.qrCodeImageSize)
       Spacer()
       Image(systemName: "chevron.right")
-        .font(.system(size: Constant.wechatIdFontSize, weight: .medium))
+        .font(.system(size: Constant.rightArrowFontSize, weight: .medium))
     }
     .foregroundColor(.text_info_200)
   }
@@ -140,6 +140,7 @@ private extension MeView {
     static let myInfoVerticalPadding: CGFloat = 30
     static let usernameFontSize: CGFloat = 20
     static let wechatIdFontSize: CGFloat = 14
+    static let rightArrowFontSize: CGFloat = 14
     static let qrCodeImageSize: CGSize = .init(width: 14, height: 14)
     static let cameraButtonPaddingTop: CGFloat = 4
     static let cameraButtonPaddingTrailing: CGFloat = 14

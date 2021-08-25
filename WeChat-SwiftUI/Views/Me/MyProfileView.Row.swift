@@ -36,29 +36,29 @@ extension MyProfileView {
     func detailView(user: User) -> AnyView {
       switch self {
       case .photo:
-        return URLPlaceholderImage(user.avatar, size: .init(width: 64, height: 64)) {
+        return URLPlaceholderImage(user.avatar, size: Constant.avatarSize) {
           Image.avatarPlaceholder
         }
         .background(.app_bg)
-        .cornerRadius(6)
+        .cornerRadius(Constant.avatarCornerRadius)
         .asAnyView()
 
       case .name:
         return Text(user.name)
-          .font(.system(size: 16))
+          .font(.system(size: Constant.detailTextFontSize))
           .foregroundColor(.text_info_200)
           .asAnyView()
 
       case .wechatId:
         return Text(user.wechatId)
-          .font(.system(size: 16))
+          .font(.system(size: Constant.detailTextFontSize))
           .lineLimit(1)
           .foregroundColor(.text_info_200)
           .asAnyView()
 
       case .qrCode:
         return Image("icons_outlined_qr_code")
-          .resize(.fill, .init(width: 20, height: 20))
+          .resize(.fill, Constant.qrCodeImageSize)
           .foregroundColor(.text_info_200)
           .asAnyView()
 
@@ -121,7 +121,7 @@ extension MyProfileView.Row {
         text = user.whatsUp.isEmpty ? Strings.general_not_set() : user.whatsUp
       }
       return Text(text)
-          .font(.system(size: 16))
+        .font(.system(size: Constant.detailTextFontSize))
           .foregroundColor(.text_info_200)
           .asAnyView()
     }
@@ -143,4 +143,13 @@ protocol MyProfileRowType {
   var title: String { get }
   func detailView(user: User) -> AnyView
   func destinationPresentation(user: User) -> (style: PresentationStyle, destination: AnyView)
+}
+
+private extension MyProfileView.Row {
+  enum Constant {
+    static let avatarSize: CGSize = .init(width: 64, height: 64)
+    static let avatarCornerRadius: CGFloat = 6
+    static let detailTextFontSize: CGFloat = 16
+    static let qrCodeImageSize: CGSize = .init(width: 20, height: 20)
+  }
 }

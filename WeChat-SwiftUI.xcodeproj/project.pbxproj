@@ -150,6 +150,7 @@
 		FDC45E8D26D4F8A800C44827 /* MyProfileFieldUpdateView.Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC45E8C26D4F8A800C44827 /* MyProfileFieldUpdateView.Field.swift */; };
 		FDC45E8F26D4FD6600C44827 /* MyProfileFieldUpdateViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC45E8E26D4FD6600C44827 /* MyProfileFieldUpdateViewModelTests.swift */; };
 		FDC45E9126D5005B00C44827 /* PhotoPickerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC45E9026D5005B00C44827 /* PhotoPickerType.swift */; };
+		FDC45E9326D501F200C44827 /* MyProfileView.ProfileRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC45E9226D501F200C44827 /* MyProfileView.ProfileRow.swift */; };
 		FDCC721B266E254D00A48140 /* WeChat_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */; };
 		FDCC721D266E254D00A48140 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC721C266E254D00A48140 /* RootView.swift */; };
 		FDCC721F266E254E00A48140 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDCC721E266E254E00A48140 /* Assets.xcassets */; };
@@ -352,6 +353,7 @@
 		FDC45E8C26D4F8A800C44827 /* MyProfileFieldUpdateView.Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileFieldUpdateView.Field.swift; sourceTree = "<group>"; };
 		FDC45E8E26D4FD6600C44827 /* MyProfileFieldUpdateViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileFieldUpdateViewModelTests.swift; sourceTree = "<group>"; };
 		FDC45E9026D5005B00C44827 /* PhotoPickerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerType.swift; sourceTree = "<group>"; };
+		FDC45E9226D501F200C44827 /* MyProfileView.ProfileRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.ProfileRow.swift; sourceTree = "<group>"; };
 		FDCC7217266E254D00A48140 /* WeChat-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WeChat-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeChat_SwiftUIApp.swift; sourceTree = "<group>"; };
 		FDCC721C266E254D00A48140 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -616,6 +618,7 @@
 				FDC45E8C26D4F8A800C44827 /* MyProfileFieldUpdateView.Field.swift */,
 				FD58C12526B2430D00BDB0CC /* MyProfileFieldUpdateView.swift */,
 				FD703D1F26B8F2A900565E4C /* MyProfilePhotoPreview.swift */,
+				FDC45E9226D501F200C44827 /* MyProfileView.ProfileRow.swift */,
 				FD703D1B26B8F1FE00565E4C /* MyProfileView.Row.swift */,
 				FD58C12326B1429200BDB0CC /* MyProfileView.RowTests.swift */,
 				FD21E90C26B0038F00EC38DD /* MyProfileView.swift */,
@@ -1256,6 +1259,7 @@
 				FD6FE99026A9785B0059BF45 /* FirestoreServiceType.swift in Sources */,
 				FDC45E8B26D4F61400C44827 /* MyProfileFieldUpdateViewModel.swift in Sources */,
 				FD1F16E12695A6FD009D08DF /* ResignKeyboardOnTapModifier.swift in Sources */,
+				FDC45E9326D501F200C44827 /* MyProfileView.ProfileRow.swift in Sources */,
 				FD88279D2681E1F100BBEAB6 /* Haptics.swift in Sources */,
 				FD76B8C426CE120A00C0A03F /* KeyValueStoreKey.swift in Sources */,
 				FDCC721B266E254D00A48140 /* WeChat_SwiftUIApp.swift in Sources */,
