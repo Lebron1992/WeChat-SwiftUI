@@ -19,53 +19,51 @@ final class ContactsActionsTests: XCTestCase {
 
   func test_LoadContacts() {
     let contacts: [User] = [.template, .template2]
-    let mockService = MockService(loadContactsResponse: contacts)
-    AppEnvironment.pushEnvironment(apiService: mockService)
+    let mockService = FirestoreServiceMock(loadContactsResponse: contacts)
 
-    mockStore.dispatch(action: ContactsActions.LoadContacts())
+    withEnvironment(firestoreService: mockService) {
+      mockStore.dispatch(action: ContactsActions.LoadContacts())
 
-    wait {
-      XCTAssertEqual(self.mockStore.actions.count, 3)
-      XCTAssertEqual(
-        self.mockStore.actions[0] as! ContactsActions.LoadContacts,
-        ContactsActions.LoadContacts()
-      )
-      XCTAssertEqual(
-        self.mockStore.actions[1] as! ContactsActions.SetContacts,
-        ContactsActions.SetContacts(contacts: .isLoading(last: nil, cancelBag: CancelBag()))
-      )
-      XCTAssertEqual(
-        self.mockStore.actions[2] as! ContactsActions.SetContacts,
-        ContactsActions.SetContacts(contacts: .loaded(contacts))
-      )
+      wait {
+        XCTAssertEqual(self.mockStore.actions.count, 3)
+        XCTAssertEqual(
+          self.mockStore.actions[0] as! ContactsActions.LoadContacts,
+          ContactsActions.LoadContacts()
+        )
+        XCTAssertEqual(
+          self.mockStore.actions[1] as! ContactsActions.SetContacts,
+          ContactsActions.SetContacts(contacts: .isLoading(last: nil, cancelBag: CancelBag()))
+        )
+        XCTAssertEqual(
+          self.mockStore.actions[2] as! ContactsActions.SetContacts,
+          ContactsActions.SetContacts(contacts: .loaded(contacts))
+        )
+      }
     }
-
-    AppEnvironment.popEnvironment()
   }
 
   func test_LoadOfficialAccounts() {
     let accounts: [OfficialAccount] = [.template, .template2]
-    let mockService = MockService(loadOfficialAccountsResponse: accounts)
-    AppEnvironment.pushEnvironment(apiService: mockService)
+    let mockService = FirestoreServiceMock(loadOfficialAccountsResponse: accounts)
+    
+    withEnvironment(firestoreService: mockService) {
+      mockStore.dispatch(action: ContactsActions.LoadOfficialAccounts())
 
-    mockStore.dispatch(action: ContactsActions.LoadOfficialAccounts())
-
-    wait {
-      XCTAssertEqual(self.mockStore.actions.count, 3)
-      XCTAssertEqual(
-        self.mockStore.actions[0] as! ContactsActions.LoadOfficialAccounts,
-        ContactsActions.LoadOfficialAccounts()
-      )
-      XCTAssertEqual(
-        self.mockStore.actions[1] as! ContactsActions.SetOfficialAccounts,
-        ContactsActions.SetOfficialAccounts(accounts: .isLoading(last: nil, cancelBag: CancelBag()))
-      )
-      XCTAssertEqual(
-        self.mockStore.actions[2] as! ContactsActions.SetOfficialAccounts,
-        ContactsActions.SetOfficialAccounts(accounts: .loaded(accounts))
-      )
+      wait {
+        XCTAssertEqual(self.mockStore.actions.count, 3)
+        XCTAssertEqual(
+          self.mockStore.actions[0] as! ContactsActions.LoadOfficialAccounts,
+          ContactsActions.LoadOfficialAccounts()
+        )
+        XCTAssertEqual(
+          self.mockStore.actions[1] as! ContactsActions.SetOfficialAccounts,
+          ContactsActions.SetOfficialAccounts(accounts: .isLoading(last: nil, cancelBag: CancelBag()))
+        )
+        XCTAssertEqual(
+          self.mockStore.actions[2] as! ContactsActions.SetOfficialAccounts,
+          ContactsActions.SetOfficialAccounts(accounts: .loaded(accounts))
+        )
+      }
     }
-
-    AppEnvironment.popEnvironment()
   }
 }

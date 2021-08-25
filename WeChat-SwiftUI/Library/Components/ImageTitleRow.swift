@@ -59,8 +59,8 @@ struct ImageTitleRow<Destination: View>: View {
           .cornerRadius(imageCornerRadius)
       }
 
-      if let url = imageUrl {
-        URLPlaceholderImage(url, size: imageSize, contentMode: imageContentMode) {
+      if imageUrl != nil || image == nil {
+        URLPlaceholderImage(imageUrl, size: imageSize, contentMode: imageContentMode) {
           imagePlaceholder
         }
         .foregroundColor(imageColor)

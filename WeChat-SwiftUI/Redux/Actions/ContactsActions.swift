@@ -9,7 +9,7 @@ enum ContactsActions {
 
       dispatch(SetContacts(contacts: .isLoading(last: last, cancelBag: cancelBag)))
 
-      AppEnvironment.current.apiService
+      AppEnvironment.current.firestoreService
         .loadContacts()
         .sinkToLoadableForUI { dispatch(SetContacts(contacts: $0)) }
         .store(in: cancelBag)
@@ -28,7 +28,7 @@ enum ContactsActions {
 
       dispatch(SetOfficialAccounts(accounts: .isLoading(last: last, cancelBag: cancelBag)))
 
-      AppEnvironment.current.apiService
+      AppEnvironment.current.firestoreService
         .loadOfficialAccounts()
         .sinkToLoadableForUI { dispatch(SetOfficialAccounts(accounts: $0)) }
         .store(in: cancelBag)
