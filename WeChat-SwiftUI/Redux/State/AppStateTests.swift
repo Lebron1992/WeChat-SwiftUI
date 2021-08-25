@@ -7,6 +7,13 @@ private let templateDataObj = [authStateKey: templateAuthState.dictionaryReprese
 
 final class AppStateTests: XCTestCase {
 
+  func test_persistenceKey() {
+    XCTAssertEqual(
+      "com.WeChat-SwiftUI.appState", KeyValueStoreKey.appState.key,
+      "测试失败意味着用户数据丢失。"
+    )
+  }
+
   func test_init_withNoArchive() {
     withEnvironment(userDefaults: MockKeyValueStore()) {
       let appState = AppState()

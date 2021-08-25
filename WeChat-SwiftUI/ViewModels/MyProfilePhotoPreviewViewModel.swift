@@ -3,7 +3,11 @@ import SwiftUI
 
 final class MyProfilePhotoPreviewViewModel: ObservableObject {
 
-  private(set) var fsService: FirebaseStorageServiceType = FirebaseStorageService()
+  private var fsService: FirebaseStorageServiceType
+
+  init(fsService: FirebaseStorageServiceType = FirebaseStorageService()) {
+    self.fsService = fsService
+  }
 
   @Published
   var photoUploadStatus: ValueUpdateStatus<URL> = .idle

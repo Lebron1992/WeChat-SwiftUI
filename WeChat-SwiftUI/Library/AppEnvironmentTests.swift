@@ -64,7 +64,7 @@ final class AppEnvironmentTests: XCTestCase {
 
   func test_persistenceKey() {
     XCTAssertEqual(
-      "com.wechat.AppEnvironment.current", AppEnvironment.environmentStorageKey,
+      "com.WeChat-SwiftUI.appEnvironment", KeyValueStoreKey.appEnvironment.key,
       "测试失败意味着用户将会被登出。"
     )
   }
