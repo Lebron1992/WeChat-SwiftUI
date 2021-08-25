@@ -8,6 +8,46 @@ struct Dialog: Decodable, Identifiable, Equatable {
   let createTime: Date
   let lastMessageText: String?
   let lastMessageTime: Date?
+
+  init(
+    id: String,
+    name: String?,
+    members: [Member],
+    messages: [Message],
+    createTime: Date,
+    lastMessageText: String?,
+    lastMessageTime: Date?
+  ) {
+    self.id = id
+    self.name = name
+    self.members = members
+    self.messages = messages
+    self.createTime = createTime
+    self.lastMessageText = lastMessageText
+    self.lastMessageTime = lastMessageTime
+  }
+
+  init(members: [Member]) {
+
+    let name: String? = {
+      if members.count == 2 {
+        return members
+          .first(where: { $0.id != AppEnvironment.current.currentUser?.id })?
+          .name
+      }
+      return Strings.general_group_chat()
+    }()
+
+    self.init(
+      id: UUID().uuidString.lowercased(),
+      name: name,
+      members: members,
+      messages: [],
+      createTime: Date(),
+      lastMessageText: nil,
+      lastMessageTime: nil
+    )
+  }
 }
 
 extension Dialog {
@@ -16,6 +56,25 @@ extension Dialog {
     let name: String
     let avatar: String?
     let joinTime: Date
+
+    init(
+      id: String,
+      name: String,
+      avatar: String?,
+      joinTime: Date
+    ) {
+      self.id = id
+      self.name = name
+      self.avatar = avatar
+      self.joinTime = joinTime
+    }
+
+    init(user: User) {
+      self.id = user.id
+      self.name = user.name
+      self.avatar = user.avatar
+      self.joinTime = Date()
+    }
   }
 }
 

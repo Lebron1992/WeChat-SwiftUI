@@ -109,12 +109,16 @@ private extension ContactDetail {
   }
 
   var sendMessageButton: some View {
-    Button {
-      print("send messages")
-    } label: {
+    let dialog = Dialog(members: [
+      .init(user: contact),
+      .init(user: AppEnvironment.current.currentUser!)
+    ])
+    return NavigationRow(destination: DialogView(dialog: dialog)) {
       HStack {
+        Spacer()
         Image("icons_outlined_chats")
         Text(Strings.contact_detail_messages())
+        Spacer()
       }
       .frame(height: Constant.actionButtonHeight)
     }

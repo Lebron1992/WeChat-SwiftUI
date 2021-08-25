@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct DialogView: View {
+  let dialog: Dialog
 
   @State
   private var dismissKeyboard = false
@@ -10,10 +11,11 @@ struct DialogView: View {
       messagesList
       ChatInputPanel(dismissKeyboard: dismissKeyboard)
     }
+    .navigationTitle(dialog.name ?? "")
   }
 
   private var messagesList: some View {
-    MessagesList(messages: [Message.textTemplate, Message.textTemplate2])
+    MessagesList(messages: dialog.messages)
       .resignKeyboardOnDrag {
         dismissKeyboard = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -31,7 +33,7 @@ struct DialogView: View {
 
 struct DialogView_Previews: PreviewProvider {
   static var previews: some View {
-    DialogView()
+    DialogView(dialog: .template1)
       .onAppear { AppEnvironment.updateCurrentUser(.template) }
   }
 }

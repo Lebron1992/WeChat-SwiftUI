@@ -4,7 +4,7 @@ struct DialogsList: View {
   var body: some View {
     List {
       ForEach([Dialog.template1]) { dialog in
-        NavigationRow(destination: DialogView()) {
+        NavigationRow(destination: DialogView(dialog: dialog)) {
           DialogRow(dialog: dialog)
         }
       }

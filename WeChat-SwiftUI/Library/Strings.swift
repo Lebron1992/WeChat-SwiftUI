@@ -400,6 +400,20 @@ public enum Strings {
     )
   }
   /**
+   "Group Chat"
+
+   - **en**: "Group Chat"
+   - **zh**: "群聊"
+  */
+  public static func general_group_chat() -> String {
+    return localizedString(
+      key: "general.group_chat",
+      defaultValue: "Group Chat",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
    "Male"
 
    - **en**: "Male"
