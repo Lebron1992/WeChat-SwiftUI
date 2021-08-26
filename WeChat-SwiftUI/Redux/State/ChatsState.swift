@@ -1,6 +1,6 @@
 import Foundation
 
-struct ChatsState: Equatable {
+struct ChatsState: Codable, Equatable {
   var dialogs: [Dialog]
 }
 

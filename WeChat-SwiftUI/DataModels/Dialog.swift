@@ -1,30 +1,24 @@
 import Foundation
 
-struct Dialog: Decodable, Identifiable, Equatable {
+struct Dialog: Codable, Identifiable, Equatable {
   let id: String
   let name: String?
   let members: [Member]
   let messages: [Message]
   let createTime: Date
-  let lastMessageText: String?
-  let lastMessageTime: Date?
 
   init(
     id: String,
     name: String?,
     members: [Member],
     messages: [Message],
-    createTime: Date,
-    lastMessageText: String?,
-    lastMessageTime: Date?
+    createTime: Date
   ) {
     self.id = id
     self.name = name
     self.members = members
     self.messages = messages
     self.createTime = createTime
-    self.lastMessageText = lastMessageText
-    self.lastMessageTime = lastMessageTime
   }
 
   init(members: [Member]) {
@@ -43,37 +37,31 @@ struct Dialog: Decodable, Identifiable, Equatable {
       name: name,
       members: members,
       messages: [],
-      createTime: Date(),
-      lastMessageText: nil,
-      lastMessageTime: nil
+      createTime: Date()
     )
   }
 }
 
 extension Dialog {
-  struct Member: Decodable, Equatable {
+  struct Member: Codable, Equatable {
     let id: String
     let name: String
     let avatar: String?
-    let joinTime: Date
 
     init(
       id: String,
       name: String,
-      avatar: String?,
-      joinTime: Date
+      avatar: String?
     ) {
       self.id = id
       self.name = name
       self.avatar = avatar
-      self.joinTime = joinTime
     }
 
     init(user: User) {
       self.id = user.id
       self.name = user.name
       self.avatar = user.avatar
-      self.joinTime = Date()
     }
   }
 }
@@ -84,14 +72,24 @@ extension Dialog {
     guard messages.contains(message) == false else {
       return self
     }
+
     var newMessages = messages
     newMessages.append(message)
+
     return setMessages(newMessages)
   }
 }
 
 // MARK: - Getters
 extension Dialog {
+  var lastMessageText: String? {
+    messages.last?.text
+  }
+
+  var lastMessageTime: Date? {
+    messages.last?.createTime
+  }
+
   var lastMessageTimeString: String? {
     guard let time = lastMessageTime else {
       return nil
@@ -100,6 +98,10 @@ extension Dialog {
     let formatter = DateFormatter()
     formatter.dateStyle = .short
     return formatter.string(from: time)
+  }
+
+  func isIndividual(with member: Member) -> Bool {
+    members.count == 2 && members.contains(member)
   }
 }
 

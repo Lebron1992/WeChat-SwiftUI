@@ -1,6 +1,6 @@
 import Foundation
 
-struct Message: Decodable, Identifiable, Equatable {
+struct Message: Codable, Identifiable, Equatable {
   let id: String
   let text: String?
   let imageUrl: String?
@@ -37,7 +37,7 @@ struct Message: Decodable, Identifiable, Equatable {
 }
 
 extension Message {
-  struct MessageSender: Decodable, Equatable {
+  struct MessageSender: Codable, Equatable {
     let id: String
     let name: String
     let avatar: String

@@ -33,6 +33,10 @@ struct AppState: ReduxState, Equatable {
         if let state: AuthState = tryDecode(json) {
           authState = state
         }
+      case .chatsState:
+        if let state: ChatsState = tryDecode(json) {
+          chatsState = state
+        }
       }
     }
   }
@@ -42,12 +46,15 @@ struct AppState: ReduxState, Equatable {
 extension AppState {
   enum ArchiveKeys: String, CaseIterable {
     case authState
+    case chatsState
   }
 
   subscript(key: ArchiveKeys) -> Any {
     switch key {
     case .authState:
       return authState
+    case .chatsState:
+      return chatsState
     }
   }
 
@@ -58,6 +65,8 @@ extension AppState {
       switch key {
       case .authState:
         dataObj[key.rawValue] = authState.dictionaryRepresentation
+      case .chatsState:
+        dataObj[key.rawValue] = chatsState.dictionaryRepresentation
       }
     }
 
@@ -73,6 +82,8 @@ extension AppState {
       switch key {
       case .authState:
         isEqual = (self[key] as! AuthState) == (another[key] as! AuthState)
+      case .chatsState:
+        isEqual = (self[key] as! ChatsState) == (another[key] as! ChatsState)
       }
       if isEqual == false {
         break

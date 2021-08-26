@@ -21,14 +21,12 @@ final class DialogTests: XCTestCase {
           {
             "id": "112ec2a2-68d3-4949-9ce9-82ec80db9c60",
             "avatar": "https://cdn.nba.com/headshots/nba/latest/260x190/1629630.png",
-            "name": "Ja Morant",
-            "joinTime": "2021-07-14T09:54:22Z"
+            "name": "Ja Morant"
           },
           {
             "id": "4d0914d5-b04c-43f1-b37f-b2bb8d177951",
             "avatar": "https://cdn.nba.com/headshots/nba/latest/260x190/2544.png",
-            "name": "LeBron James",
-              "joinTime": "2021-07-14T09:54:22Z"
+            "name": "LeBron James"
           }
         ],
         "messages": [
@@ -43,8 +41,6 @@ final class DialogTests: XCTestCase {
             "createTime": "2021-07-14T09:54:22Z"
           }
         ],
-        "lastMessageText": "hello world",
-        "lastMessageTime": "2021-07-14T09:54:22Z",
         "createTime": "2021-07-14T09:54:22Z"
       }
       """
@@ -55,8 +51,6 @@ final class DialogTests: XCTestCase {
     XCTAssertEqual(dialog?.name, "SwiftUI")
     XCTAssertEqual(dialog?.members.count, 2)
     XCTAssertEqual(dialog?.messages.count, 1)
-    XCTAssertEqual(dialog?.lastMessageText, "hello world")
-    XCTAssertEqual(dialog?.lastMessageTime, ISO8601DateFormatter().date(from: "2021-07-14T09:54:22Z"))
     XCTAssertEqual(dialog?.createTime, ISO8601DateFormatter().date(from: "2021-07-14T09:54:22Z"))
   }
 
@@ -89,18 +83,14 @@ final class DialogTests: XCTestCase {
       name: "",
       members: [],
       messages: [],
-      createTime: Date(),
-      lastMessageText: nil,
-      lastMessageTime: Date()
+      createTime: Date()
     )
     let d2 = Dialog(
       id: generateUUID(),
       name: "",
       members: [],
       messages: [],
-      createTime: Date(),
-      lastMessageText: nil,
-      lastMessageTime: Date().addingTimeInterval(10)
+      createTime: Date()
     )
     XCTAssertTrue(d1 > d2)
 
@@ -109,18 +99,14 @@ final class DialogTests: XCTestCase {
       name: "",
       members: [],
       messages: [],
-      createTime: Date(),
-      lastMessageText: nil,
-      lastMessageTime: nil
+      createTime: Date()
     )
     let d4 = Dialog(
       id: generateUUID(),
       name: "",
       members: [],
       messages: [],
-      createTime: Date().addingTimeInterval(10),
-      lastMessageText: nil,
-      lastMessageTime: nil
+      createTime: Date().addingTimeInterval(10)
     )
     XCTAssertTrue(d3 > d4)
   }

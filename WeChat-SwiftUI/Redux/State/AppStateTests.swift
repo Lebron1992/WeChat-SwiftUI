@@ -3,7 +3,14 @@ import XCTest
 
 private let authStateKey = AppState.ArchiveKeys.authState.rawValue
 private let templateAuthState = AuthState(signedInUser: .template)
-private let templateDataObj = [authStateKey: templateAuthState.dictionaryRepresentation]
+
+private let chatsStateKey = AppState.ArchiveKeys.chatsState.rawValue
+private let templateChatsState = ChatsState(dialogs: [.template1])
+
+private let templateDataJSON: [String: Any] = [
+  authStateKey: templateAuthState.dictionaryRepresentation as Any,
+  chatsStateKey: templateChatsState.dictionaryRepresentation as Any
+]
 
 final class AppStateTests: XCTestCase {
 
@@ -18,6 +25,7 @@ final class AppStateTests: XCTestCase {
     withEnvironment(userDefaults: MockKeyValueStore()) {
       let appState = AppState()
       XCTAssertNil(appState.authState.signedInUser)
+      XCTAssertTrue(appState.chatsState.dialogs.isEmpty)
 
       XCTAssertEqual(appState.contactsState.categories, ContactCategory.allCases)
       XCTAssertEqual(appState.contactsState.contacts, .notRequested)
@@ -34,11 +42,12 @@ final class AppStateTests: XCTestCase {
   func test_init_restoredArchive() {
 
     let userDefaults = MockKeyValueStore()
-    userDefaults.set(templateDataObj.data, forKey: .appState)
+    userDefaults.set(templateDataJSON.data, forKey: .appState)
 
     withEnvironment(userDefaults: userDefaults) {
       let appState = AppState()
       XCTAssertEqual(appState.authState, templateAuthState)
+      XCTAssertEqual(appState.chatsState, templateChatsState)
 
       XCTAssertEqual(appState.contactsState.categories, ContactCategory.allCases)
       XCTAssertEqual(appState.contactsState.contacts, .notRequested)
@@ -55,20 +64,28 @@ final class AppStateTests: XCTestCase {
   func test_archive() {
     let userDefaults = MockKeyValueStore()
     withEnvironment(userDefaults: userDefaults) {
-      var appState = AppState()
+      var appState: AppState = .preview
       appState.authState = templateAuthState
+      appState.chatsState = templateChatsState
       appState.archive()
       XCTAssertEqual(
         userDefaults.data(forKey: .appState),
-        templateDataObj.data
+        templateDataJSON.data
       )
 
       let newAuthState = AuthState(signedInUser: nil)
+      let newChatsState = ChatsState(dialogs: [])
       appState.authState = newAuthState
+      appState.chatsState = newChatsState
       appState.archive()
+
+      let newDataJSON: [String: Any] = [
+        authStateKey: newAuthState.dictionaryRepresentation as Any,
+        chatsStateKey: newChatsState.dictionaryRepresentation  as Any
+      ]
       XCTAssertEqual(
         userDefaults.data(forKey: .appState),
-        [authStateKey: newAuthState.dictionaryRepresentation].data
+        newDataJSON.data
       )
     }
   }
@@ -78,6 +95,9 @@ final class AppStateTests: XCTestCase {
     XCTAssertTrue(pair.0.archivePropertiesEqualTo(pair.1))
 
     pair = appStatesWithDifferentAuthState()
+    XCTAssertFalse(pair.0.archivePropertiesEqualTo(pair.1))
+
+    pair = appStatesWithDifferentChatsState()
     XCTAssertFalse(pair.0.archivePropertiesEqualTo(pair.1))
 
     pair = appStatesWithDifferentContactsState()
@@ -94,13 +114,9 @@ final class AppStateTests: XCTestCase {
   }
 
   func test_subscriptArchiveKeys() {
-    let appState = AppState()
+    let appState: AppState = .preview
     XCTAssertEqual(appState.authState, appState[.authState] as? AuthState)
-  }
-
-  func test_ArchiveKeys_onlyContainsTheKeyOfAuthState() {
-    XCTAssertEqual(AppState.ArchiveKeys.allCases.count, 1)
-    XCTAssertEqual(AppState.ArchiveKeys.allCases.first, .authState)
+    XCTAssertEqual(appState.chatsState, appState[.chatsState] as? ChatsState)
   }
 
   func test_equals() {
@@ -108,6 +124,9 @@ final class AppStateTests: XCTestCase {
     XCTAssertEqual(pair.0, pair.1)
 
     pair = appStatesWithDifferentAuthState()
+    XCTAssertNotEqual(pair.0, pair.1)
+
+    pair = appStatesWithDifferentChatsState()
     XCTAssertNotEqual(pair.0, pair.1)
 
     pair = appStatesWithDifferentContactsState()
@@ -126,20 +145,28 @@ final class AppStateTests: XCTestCase {
 
 private extension AppStateTests {
   func twoSameAppStates() -> (AppState, AppState) {
-    return (AppState(), AppState())
+    return (.preview, .preview)
   }
 
   func appStatesWithDifferentAuthState() -> (AppState, AppState) {
-    var state1 = AppState()
-    var state2 = AppState()
+    var state1: AppState = .preview
+    var state2: AppState = .preview
     state1.authState = AuthState(signedInUser: nil)
     state2.authState = AuthState(signedInUser: .template)
     return (state1, state2)
   }
 
+  func appStatesWithDifferentChatsState() -> (AppState, AppState) {
+    var state1: AppState = .preview
+    var state2: AppState = .preview
+    state1.chatsState = ChatsState(dialogs: [.empty])
+    state2.chatsState = ChatsState(dialogs: [.empty, .template1])
+    return (state1, state2)
+  }
+
   func appStatesWithDifferentContactsState() -> (AppState, AppState) {
-    var state1 = AppState()
-    var state2 = AppState()
+    var state1: AppState = .preview
+    var state2: AppState = .preview
     state1.contactsState = ContactsState(
       categories: ContactCategory.allCases,
       contacts: .notRequested,
@@ -154,24 +181,24 @@ private extension AppStateTests {
   }
 
   func appStatesWithDifferentDiscoverState() -> (AppState, AppState) {
-    var state1 = AppState()
-    var state2 = AppState()
+    var state1: AppState = .preview
+    var state2: AppState = .preview
     state1.discoverState = DiscoverState(discoverSections: DiscoverSection.allCases)
     state2.discoverState = DiscoverState(discoverSections: [])
     return (state1, state2)
   }
 
   func appStatesWithDifferentRootState() -> (AppState, AppState) {
-    var state1 = AppState()
-    var state2 = AppState()
+    var state1: AppState = .preview
+    var state2: AppState = .preview
     state1.rootState = RootState(selectedTab: .chats)
     state2.rootState = RootState(selectedTab: .contacts)
     return (state1, state2)
   }
 
   func appStatesWithDifferentSystemState() -> (AppState, AppState) {
-    var state1 = AppState()
-    var state2 = AppState()
+    var state1: AppState = .preview
+    var state2: AppState = .preview
     state1.systemState = SystemState(errorMessage: nil)
     state2.systemState = SystemState(errorMessage: "error")
     return (state1, state2)

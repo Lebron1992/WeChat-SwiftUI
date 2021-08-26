@@ -1,3 +1,5 @@
+import Foundation
+
 extension Dialog {
   func setMessages(_ messages: [Message]) -> Dialog {
     Dialog(
@@ -5,9 +7,7 @@ extension Dialog {
       name: name,
       members: members,
       messages: messages,
-      createTime: createTime,
-      lastMessageText: lastMessageText,
-      lastMessageTime: lastMessageTime
+      createTime: createTime
     )
   }
 }

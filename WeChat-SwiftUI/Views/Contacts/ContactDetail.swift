@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftUIRedux
 import URLImage
 
 /* TODO:
@@ -8,6 +9,9 @@ import URLImage
 
 struct ContactDetail: View {
   let contact: User
+
+  @EnvironmentObject
+  private var store: Store<AppState>
 
   @State
   private var navigationSelection: NavigationSelection?
@@ -112,7 +116,9 @@ private extension ContactDetail {
   }
 
   var sendMessageButton: some View {
-    let dialog = Dialog(members: [
+    let cachedDialog = store.state.chatsState.dialogs
+      .first { $0.isIndividual(with: .init(user: contact)) }
+    let dialog = cachedDialog ?? Dialog(members: [
       .init(user: contact),
       .init(user: AppEnvironment.current.currentUser!)
     ])
