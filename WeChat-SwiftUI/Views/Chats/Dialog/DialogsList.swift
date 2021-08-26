@@ -1,9 +1,20 @@
 import SwiftUI
+import SwiftUIRedux
 
-struct DialogsList: View {
-  var body: some View {
+struct DialogsList: ConnectedView {
+  struct Props {
+    let dialogs: [Dialog]
+  }
+
+  func map(state: AppState, dispatch: @escaping Dispatch) -> Props {
+    Props(
+      dialogs: state.chatsState.dialogs
+    )
+  }
+
+  func body(props: Props) -> some View {
     List {
-      ForEach([Dialog.template1]) { dialog in
+      ForEach(props.dialogs) { dialog in
         NavigationRow(destination: DialogView(dialog: dialog)) {
           DialogRow(dialog: dialog)
         }

@@ -39,7 +39,7 @@ struct Dialog: Decodable, Identifiable, Equatable {
     }()
 
     self.init(
-      id: UUID().uuidString.lowercased(),
+      id: generateUUID(),
       name: name,
       members: members,
       messages: [],
@@ -78,6 +78,18 @@ extension Dialog {
   }
 }
 
+// MARK: - Mutations
+extension Dialog {
+  func append(_ message: Message) -> Dialog {
+    guard messages.contains(message) == false else {
+      return self
+    }
+    var newMessages = messages
+    newMessages.append(message)
+    return setMessages(newMessages)
+  }
+}
+
 // MARK: - Getters
 extension Dialog {
   var lastMessageTimeString: String? {
@@ -88,6 +100,15 @@ extension Dialog {
     let formatter = DateFormatter()
     formatter.dateStyle = .short
     return formatter.string(from: time)
+  }
+}
+
+extension Dialog: Comparable {
+  static func < (lhs: Dialog, rhs: Dialog) -> Bool {
+    if let lhsLastTime = lhs.lastMessageTime, let rhsLastTime = rhs.lastMessageTime {
+      return lhsLastTime > rhsLastTime
+    }
+    return lhs.createTime > rhs.createTime
   }
 }
 

@@ -14,6 +14,8 @@ struct ChatInputToolBar: View {
   @FocusState
   var isTextEditorFocused: Bool
 
+  let onSubmit: () -> Void
+
   var body: some View {
     HStack(alignment: .bottom, spacing: Constant.toolBarPadding) {
       voiceButton
@@ -49,9 +51,11 @@ struct ChatInputToolBar: View {
         .foregroundColor(.text_primary)
       TextEditor(text: $text)
         .font(Font(Constant.textFont as CTFont))
+        .submitLabel(.send) // TODO: 暂时无效，等待苹果修复
         .background(.app_white)
         .focused($isTextEditorFocused)
         .opacity(isVoiceButtonSelected ? 0 : 1)
+        .onSubmit(onSubmit) // TODO: 暂时无效，等待苹果修复
     }
     .frame(height: isVoiceButtonSelected ? Constant.toolBarMinHeight : textEditorHeight)
     .background(.bg_text_input)
@@ -132,7 +136,8 @@ struct ChatInputToolBar_Previews: PreviewProvider {
     ChatInputToolBar(
       text: .constant(""),
       isVoiceButtonSelected: .constant(false),
-      isExpressionButtonSelected: .constant(false)
+      isExpressionButtonSelected: .constant(false),
+      onSubmit: { }
     )
   }
 }

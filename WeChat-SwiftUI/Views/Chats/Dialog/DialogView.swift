@@ -1,21 +1,38 @@
 import SwiftUI
+import SwiftUIRedux
 
-struct DialogView: View {
+struct DialogView: ConnectedView {
+
   let dialog: Dialog
 
   @State
   private var dismissKeyboard = false
 
-  var body: some View {
-    VStack(spacing: 0) {
-      messagesList
-      ChatInputPanel(dismissKeyboard: dismissKeyboard)
-    }
-    .navigationTitle(dialog.name ?? "")
+  struct Props {
+    let dialog: Dialog
+    let appendMessageToDialog: (Message, Dialog) -> Void
   }
 
-  private var messagesList: some View {
-    MessagesList(messages: dialog.messages)
+  func map(state: AppState, dispatch: @escaping Dispatch) -> Props {
+    Props(
+      dialog: state.chatsState.dialogs.element(matching: dialog),
+      appendMessageToDialog: { dispatch(ChatsActions.AppendMessageToDialog(message: $0, dialog: $1)) }
+    )
+  }
+
+  func body(props: Props) -> some View {
+    VStack(spacing: 0) {
+      messagesList(props: props)
+      chatInputPanel(props: props)
+    }
+    .navigationTitle(props.dialog.name ?? "")
+  }
+}
+
+// MARK: - Views
+private extension DialogView {
+  func messagesList(props: Props) -> some View {
+    MessagesList(messages: props.dialog.messages)
       .resignKeyboardOnDrag {
         dismissKeyboard = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -28,6 +45,21 @@ struct DialogView: View {
           dismissKeyboard = false
         }
       }
+  }
+
+  func chatInputPanel(props: Props) -> some View {
+    ChatInputPanel(
+      dismissKeyboard: dismissKeyboard,
+      onSubmitText: { onSubmitText($0, props: props) }
+    )
+  }
+}
+
+// MARK: - Send Text
+private extension DialogView {
+  func onSubmitText(_ text: String, props: Props) {
+    let message = Message(text: text)
+    props.appendMessageToDialog(message, props.dialog)
   }
 }
 

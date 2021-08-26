@@ -42,7 +42,7 @@ struct User: Codable, Identifiable, Equatable {
       id: firUser.uid,
       avatar: firUser.photoURL?.absoluteString ?? "",
       name: firUser.displayName ?? "",
-      wechatId: "wxid_\(UUID().uuidString.lowercased())",
+      wechatId: "wxid_\(generateUUID())",
       gender: .unknown,
       region: "",
       whatsUp: ""

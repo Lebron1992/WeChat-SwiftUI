@@ -7,6 +7,33 @@ struct Message: Decodable, Identifiable, Equatable {
   let videoUrl: String?
   let sender: MessageSender
   let createTime: Date
+
+  init(
+    id: String,
+    text: String?,
+    imageUrl: String?,
+    videoUrl: String?,
+    sender: MessageSender,
+    createTime: Date
+  ) {
+    self.id = id
+    self.text = text
+    self.imageUrl = imageUrl
+    self.videoUrl = videoUrl
+    self.sender = sender
+    self.createTime = createTime
+  }
+
+  init(text: String) {
+    self.init(
+      id: generateUUID(),
+      text: text,
+      imageUrl: nil,
+      videoUrl: nil,
+      sender: .currentUser ?? .anonymity,
+      createTime: Date()
+    )
+  }
 }
 
 extension Message {
@@ -14,6 +41,17 @@ extension Message {
     let id: String
     let name: String
     let avatar: String
+
+    static var currentUser: Self? {
+      guard let user = AppEnvironment.current.currentUser else {
+        return nil
+      }
+      return .init(id: user.id, name: user.name, avatar: user.avatar)
+    }
+
+    static var anonymity: Self {
+      .init(id: generateUUID(), name: "Anonymous", avatar: "")
+    }
   }
 }
 

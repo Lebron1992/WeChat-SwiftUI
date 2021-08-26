@@ -45,7 +45,7 @@ final class ContactsActionsTests: XCTestCase {
   func test_LoadOfficialAccounts() {
     let accounts: [OfficialAccount] = [.template, .template2]
     let mockService = FirestoreServiceMock(loadOfficialAccountsResponse: accounts)
-    
+
     withEnvironment(firestoreService: mockService) {
       mockStore.dispatch(action: ContactsActions.LoadOfficialAccounts())
 

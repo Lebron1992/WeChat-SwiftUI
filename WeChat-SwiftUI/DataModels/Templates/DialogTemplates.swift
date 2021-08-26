@@ -11,7 +11,7 @@ extension Dialog {
         lastMessageTime: Message.textTemplate2.createTime
     )
 
-    static let template2 = Dialog(
+    static let empty = Dialog(
         id: "46ea1b2a-327d-4f17-bdb0-220a88e3a9bb",
         name: nil,
         members: [],

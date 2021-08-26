@@ -5,6 +5,8 @@ struct AppState: ReduxState, Equatable {
 
   var authState = AuthState(signedInUser: nil)
 
+  var chatsState = ChatsState(dialogs: [])
+
   var contactsState = ContactsState(
     categories: ContactCategory.allCases,
     contacts: .notRequested,
@@ -87,12 +89,14 @@ extension AppState {
 extension AppState {
   init(
     authState: AuthState,
+    chatsState: ChatsState,
     contactsState: ContactsState,
     discoverState: DiscoverState,
     rootState: RootState,
     systemState: SystemState
   ) {
     self.authState = authState
+    self.chatsState = chatsState
     self.contactsState = contactsState
     self.discoverState = discoverState
     self.rootState = rootState
@@ -102,6 +106,7 @@ extension AppState {
   static var preview: AppState {
     AppState(
       authState: .preview,
+      chatsState: .preview,
       contactsState: .preview,
       discoverState: .preview,
       rootState: .preview,

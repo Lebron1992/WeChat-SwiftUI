@@ -9,7 +9,7 @@ struct FirebaseStorageService: FirebaseStorageServiceType {
   func uploadImage(data: Data, format: ImageFormat) -> AnyPublisher<URL, Error> {
     Future { promise in
 
-      let id = UUID().uuidString.lowercased()
+      let id = generateUUID()
       let imageRef = Self.storage.reference().child("images/avatars/\(id).\(format.fileExtension)")
 
       let metadata = StorageMetadata()

@@ -2,9 +2,10 @@ import XCTest
 @testable import WeChat_SwiftUI
 
 final class DialogTests: XCTestCase {
+
   func test_equatable() {
     XCTAssertEqual(Dialog.template1, Dialog.template1)
-    XCTAssertNotEqual(Dialog.template1, Dialog.template2)
+    XCTAssertNotEqual(Dialog.template1, Dialog.empty)
   }
 
   func test_description() {
@@ -57,5 +58,70 @@ final class DialogTests: XCTestCase {
     XCTAssertEqual(dialog?.lastMessageText, "hello world")
     XCTAssertEqual(dialog?.lastMessageTime, ISO8601DateFormatter().date(from: "2021-07-14T09:54:22Z"))
     XCTAssertEqual(dialog?.createTime, ISO8601DateFormatter().date(from: "2021-07-14T09:54:22Z"))
+  }
+
+  func test_appendMessage_getAppended() {
+    var dialog: Dialog = .empty
+    let message: Message = .textTemplate
+
+    XCTAssertTrue(dialog.messages.isEmpty)
+
+    dialog = dialog.append(message)
+
+    XCTAssertEqual(1, dialog.messages.count)
+    XCTAssertEqual(message, dialog.messages.first!)
+  }
+
+  func test_appendMessage_ignoreDuplicated() {
+    var dialog: Dialog = .empty
+    let message: Message = .textTemplate
+
+    dialog = dialog.append(message)
+    XCTAssertEqual(1, dialog.messages.count)
+
+    dialog = dialog.append(message)
+    XCTAssertEqual(1, dialog.messages.count)
+  }
+
+  func test_comparable() {
+    let d1 = Dialog(
+      id: generateUUID(),
+      name: "",
+      members: [],
+      messages: [],
+      createTime: Date(),
+      lastMessageText: nil,
+      lastMessageTime: Date()
+    )
+    let d2 = Dialog(
+      id: generateUUID(),
+      name: "",
+      members: [],
+      messages: [],
+      createTime: Date(),
+      lastMessageText: nil,
+      lastMessageTime: Date().addingTimeInterval(10)
+    )
+    XCTAssertTrue(d1 > d2)
+
+    let d3 = Dialog(
+      id: generateUUID(),
+      name: "",
+      members: [],
+      messages: [],
+      createTime: Date(),
+      lastMessageText: nil,
+      lastMessageTime: nil
+    )
+    let d4 = Dialog(
+      id: generateUUID(),
+      name: "",
+      members: [],
+      messages: [],
+      createTime: Date().addingTimeInterval(10),
+      lastMessageText: nil,
+      lastMessageTime: nil
+    )
+    XCTAssertTrue(d3 > d4)
   }
 }

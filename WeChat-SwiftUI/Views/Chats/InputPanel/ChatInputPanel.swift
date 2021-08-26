@@ -9,6 +9,7 @@ import SwiftUI
 struct ChatInputPanel: View {
 
   let dismissKeyboard: Bool
+  let onSubmitText: (String) -> Void
 
   @State
   private var text: String = ""
@@ -42,8 +43,15 @@ struct ChatInputPanel: View {
       expressionPreview
     }
     .coordinateSpace(name: Self.CoordinateSpace.panel.rawValue)
-    .onChange(of: dismissKeyboard, perform: handleDismissKeyboardChange(_:))
     .animation(.easeOut(duration: 0.25), value: isExpressionButtonSelected)
+    .onChange(of: dismissKeyboard, perform: handleDismissKeyboardChange(_:))
+    .onChange(of: text) { newValue in
+      if newValue.last == "\n" { // 点击发送
+        // TODO: 当 onSubmit 可用时移除
+        onSubmitText(newValue.trimmingCharacters(in: .whitespacesAndNewlines))
+        text = ""
+      }
+    }
   }
 }
 
@@ -54,7 +62,8 @@ private extension ChatInputPanel {
       text: $text,
       isVoiceButtonSelected: $isVoiceButtonSelected,
       isExpressionButtonSelected: $isExpressionButtonSelected,
-      isTextEditorFocused: _isTextEditorFocused
+      isTextEditorFocused: _isTextEditorFocused,
+      onSubmit: { onSubmitText(text) }
     )
   }
 
@@ -115,6 +124,6 @@ private extension ChatInputPanel {
 
 struct ChatInputPanel_Previews: PreviewProvider {
   static var previews: some View {
-    ChatInputPanel(dismissKeyboard: true)
+    ChatInputPanel(dismissKeyboard: true, onSubmitText: { _ in })
   }
 }
