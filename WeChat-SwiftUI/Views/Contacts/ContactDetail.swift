@@ -9,6 +9,9 @@ import URLImage
 struct ContactDetail: View {
   let contact: User
 
+  @State
+  private var navigationSelection: NavigationSelection?
+
   var body: some View {
     List {
       sectionInfoEditPrivacy
@@ -21,8 +24,11 @@ struct ContactDetail: View {
     .listStyle(.plain)
     .environment(\.defaultMinListRowHeight, 10)
   }
+}
 
-  private var sectionInfoEditPrivacy: some View {
+private extension ContactDetail {
+
+  var sectionInfoEditPrivacy: some View {
     Section {
       infoRow
       ForEach([TextRowItem.editContact, TextRowItem.privacy], id: \.self) { item in
@@ -32,7 +38,7 @@ struct ContactDetail: View {
     .listRowBackground(Color.app_white)
   }
 
-  private var sectionMomentsMore: some View {
+  var sectionMomentsMore: some View {
     Section {
       ForEach([TextRowItem.moment, TextRowItem.more], id: \.self) { item in
         rowTitle(item.title)
@@ -41,7 +47,7 @@ struct ContactDetail: View {
     .listRowBackground(Color.app_white)
   }
 
-  private var sectionMessagesCall: some View {
+  var sectionMessagesCall: some View {
     Section {
       VStack(spacing: 0) {
         sendMessageButton
@@ -55,9 +61,6 @@ struct ContactDetail: View {
     }
     .listRowBackground(Color.app_white)
   }
-}
-
-private extension ContactDetail {
 
   var infoRow: some View {
     HStack(spacing: 20) {
@@ -113,14 +116,23 @@ private extension ContactDetail {
       .init(user: contact),
       .init(user: AppEnvironment.current.currentUser!)
     ])
-    return NavigationRow(destination: DialogView(dialog: dialog)) {
-      HStack {
-        Spacer()
-        Image("icons_outlined_chats")
-        Text(Strings.contact_detail_messages())
-        Spacer()
+
+    return NavigationLink(
+      tag: NavigationSelection.messages,
+      selection: $navigationSelection,
+      destination: { DialogView(dialog: dialog) }
+    ) {
+      Button {
+        navigationSelection = .messages
+      } label: {
+        HStack {
+          Spacer()
+          Image("icons_outlined_chats")
+          Text(Strings.contact_detail_messages())
+          Spacer()
+        }
+        .frame(height: Constant.actionButtonHeight)
       }
-      .frame(height: Constant.actionButtonHeight)
     }
   }
 
@@ -149,6 +161,12 @@ private extension ContactDetail {
 
     static let actionButtonFontSize: CGFloat = 16
     static let actionButtonHeight: CGFloat = 52
+  }
+}
+
+extension ContactDetail {
+  enum NavigationSelection {
+    case messages
   }
 }
 
