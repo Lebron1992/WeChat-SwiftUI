@@ -19,10 +19,15 @@ struct DialogRow: View {
     .padding(Constant.contentInset)
   }
 
+  @ViewBuilder
   private var avatar: some View {
-    Image.avatarPlaceholder
-      .resize(.fill, Constant.avatarSize)
+    if let member = dialog.individualChatMember {
+      URLPlaceholderImage(member.avatar, size: Constant.avatarSize) {
+        Image.avatarPlaceholder
+      }
+      .background(.app_bg)
       .cornerRadius(Constant.avatarCornerRadius)
+    }
   }
 
   private var title: some View {

@@ -58,8 +58,13 @@ private extension DialogView {
 // MARK: - Send Text
 private extension DialogView {
   func onSubmitText(_ text: String, props: Props) {
+    guard text.isEmpty == false else {
+      return
+    }
     let message = Message(text: text)
-    props.appendMessageToDialog(message, props.dialog)
+    withAnimation {
+      props.appendMessageToDialog(message, props.dialog)
+    }
   }
 }
 

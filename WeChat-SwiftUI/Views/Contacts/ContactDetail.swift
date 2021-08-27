@@ -120,7 +120,7 @@ private extension ContactDetail {
       .first { $0.isIndividual(with: .init(user: contact)) }
     let dialog = cachedDialog ?? Dialog(members: [
       .init(user: contact),
-      .init(user: AppEnvironment.current.currentUser!)
+      .currentUser!
     ])
 
     return NavigationLink(

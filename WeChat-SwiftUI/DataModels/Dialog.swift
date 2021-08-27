@@ -63,6 +63,13 @@ extension Dialog {
       self.name = user.name
       self.avatar = user.avatar
     }
+
+    static var currentUser: Self? {
+      guard let user = AppEnvironment.current.currentUser else {
+        return nil
+      }
+      return .init(id: user.id, name: user.name, avatar: user.avatar)
+    }
   }
 }
 
@@ -98,6 +105,17 @@ extension Dialog {
     let formatter = DateFormatter()
     formatter.dateStyle = .short
     return formatter.string(from: time)
+  }
+
+  var isIndividual: Bool {
+    members.count == 2
+  }
+
+  var individualChatMember: Member? {
+    guard isIndividual else {
+      return nil
+    }
+    return members.first { $0.id != Member.currentUser?.id }
   }
 
   func isIndividual(with member: Member) -> Bool {

@@ -21,6 +21,7 @@ struct MessageRowText: View {
       }
     }
     .listRowBackground(Color.app_bg)
+    .transition(.move(edge: .bottom))
   }
 }
 
@@ -89,7 +90,7 @@ private extension MessageRowText {
     static let avatarSize: CGSize = .init(width: 40, height: 40)
     static let avatarCornerRadius: CGFloat = 4
 
-    static let textFont: UIFont = .systemFont(ofSize: 17)
+    static let textFont: UIFont = .systemFont(ofSize: 16)
     static let textInsets: EdgeInsets = .init(top: 10, leading: 12, bottom: 10, trailing: 12)
     static let textBackgroundCornerRadius: CGFloat = 4
 

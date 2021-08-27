@@ -110,4 +110,30 @@ final class DialogTests: XCTestCase {
     )
     XCTAssertTrue(d3 > d4)
   }
+
+  func test_isIndividual() {
+    var dialog = Dialog(members: [.template1])
+    XCTAssertFalse(dialog.isIndividual)
+
+    dialog = Dialog(members: [.template1, .template2])
+    XCTAssertTrue(dialog.isIndividual)
+
+    let member = Dialog.Member(id: generateUUID(), name: "Lebron", avatar: nil)
+    dialog = Dialog(members: [.template1, .template2, member])
+    XCTAssertFalse(dialog.isIndividual)
+  }
+
+  func test_individualChatMember() {
+    withEnvironment(currentUser: .template) {
+      var dialog = Dialog(members: [.template1])
+      XCTAssertNil(dialog.individualChatMember)
+
+      dialog = Dialog(members: [.currentUser!, .template2])
+      XCTAssertEqual(dialog.individualChatMember, .template2)
+
+      let member = Dialog.Member(id: generateUUID(), name: "Lebron", avatar: nil)
+      dialog = Dialog(members: [.template1, .template2, member])
+      XCTAssertNil(dialog.individualChatMember)
+    }
+  }
 }
