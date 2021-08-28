@@ -10,13 +10,13 @@ struct DialogView: ConnectedView {
 
   struct Props {
     let dialog: Dialog
-    let appendMessageToDialog: (Message, Dialog) -> Void
+    let sendMessageInDialog: (Message, Dialog) -> Void
   }
 
   func map(state: AppState, dispatch: @escaping Dispatch) -> Props {
     Props(
       dialog: state.chatsState.dialogs.element(matching: dialog),
-      appendMessageToDialog: { dispatch(ChatsActions.AppendMessageToDialog(message: $0, dialog: $1)) }
+      sendMessageInDialog: { dispatch(ChatsActions.SendMessageInDialog(message: $0, dialog: $1)) }
     )
   }
 
@@ -63,7 +63,7 @@ private extension DialogView {
     }
     let message = Message(text: text)
     withAnimation {
-      props.appendMessageToDialog(message, props.dialog)
+      props.sendMessageInDialog(message, props.dialog)
     }
   }
 }

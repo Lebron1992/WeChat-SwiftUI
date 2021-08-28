@@ -3,13 +3,32 @@ import FirebaseFirestore
 
 struct FirestoreService: FirestoreServiceType {
 
+  private let dialogsCollection: CollectionReference
   private let officialAccountsCollection: CollectionReference
   private let usersCollection: CollectionReference
 
   init() {
     let database = Firestore.firestore()
+    dialogsCollection = database.collection("dialogs")
     officialAccountsCollection = database.collection("official-accounts")
     usersCollection = database.collection("users")
+  }
+
+  func insert(_ message: Message, to dialog: Dialog) -> AnyPublisher<Void, Error> {
+    Future { promise in
+      dialogsCollection
+        .document(dialog.id)
+        .collection("messages")
+        .document(message.id)
+        .setData(message.dictionaryRepresentation ?? [:]) { error in
+          if let e = error {
+            promise(Result.failure(e))
+          } else {
+            promise(Result.success(()))
+          }
+        }
+    }
+    .eraseToAnyPublisher()
   }
 
   func loadContacts() -> AnyPublisher<[User], Error> {
@@ -83,6 +102,21 @@ struct FirestoreService: FirestoreServiceType {
               userInfo: [NSLocalizedDescriptionKey: "Can not decode user from snapshot"]
             )
             promise(Result.failure(error as Error))
+          }
+        }
+    }
+    .eraseToAnyPublisher()
+  }
+
+  func overrideDialog(_ dialog: Dialog) -> AnyPublisher<Void, Error> {
+    Future { promise in
+      dialogsCollection
+        .document(dialog.id)
+        .setData(dialog.dictionaryRepresentation ?? [:]) { error in
+          if let e = error {
+            promise(Result.failure(e))
+          } else {
+            promise(Result.success(()))
           }
         }
     }

@@ -38,9 +38,11 @@ final class DialogTests: XCTestCase {
               "avatar": "https://cdn.nba.com/headshots/nba/latest/260x190/1629630.png",
               "name": "Ja Morant"
             },
-            "createTime": "2021-07-14T09:54:22Z"
+            "createTime": "2021-07-14T09:54:22Z",
+            "status": "sent"
           }
         ],
+        "isSavedToServer": true,
         "createTime": "2021-07-14T09:54:22Z"
       }
       """
@@ -54,26 +56,31 @@ final class DialogTests: XCTestCase {
     XCTAssertEqual(dialog?.createTime, ISO8601DateFormatter().date(from: "2021-07-14T09:54:22Z"))
   }
 
-  func test_appendMessage_getAppended() {
-    var dialog: Dialog = .empty
-    let message: Message = .textTemplate
+  func test_insertMessage_appended() {
+    let (m1, m2, m3) = sortedMessages()
+    var dialog = Dialog(members: [.template1, .template2], messages: [m1, m2])
 
-    XCTAssertTrue(dialog.messages.isEmpty)
-
-    dialog = dialog.append(message)
-
-    XCTAssertEqual(1, dialog.messages.count)
-    XCTAssertEqual(message, dialog.messages.first!)
+    dialog = dialog.insert(m3)
+    XCTAssertEqual(dialog.messages, [m1, m2, m3])
   }
 
-  func test_appendMessage_ignoreDuplicated() {
+  func test_insertMessage_inserted() {
+    let (m1, m2, m3) = sortedMessages()
+    var dialog = Dialog(members: [.template1, .template2], messages: [m1, m3])
+
+    dialog = dialog.insert(m2)
+
+    XCTAssertEqual(dialog.messages, [m1, m2, m3])
+  }
+
+  func test_insertMessage_ignoreDuplicated() {
     var dialog: Dialog = .empty
     let message: Message = .textTemplate
 
-    dialog = dialog.append(message)
+    dialog = dialog.insert(message)
     XCTAssertEqual(1, dialog.messages.count)
 
-    dialog = dialog.append(message)
+    dialog = dialog.insert(message)
     XCTAssertEqual(1, dialog.messages.count)
   }
 
@@ -83,6 +90,7 @@ final class DialogTests: XCTestCase {
       name: "",
       members: [],
       messages: [],
+      isSavedToServer: false,
       createTime: Date()
     )
     let d2 = Dialog(
@@ -90,6 +98,7 @@ final class DialogTests: XCTestCase {
       name: "",
       members: [],
       messages: [],
+      isSavedToServer: false,
       createTime: Date()
     )
     XCTAssertTrue(d1 > d2)
@@ -99,6 +108,7 @@ final class DialogTests: XCTestCase {
       name: "",
       members: [],
       messages: [],
+      isSavedToServer: false,
       createTime: Date()
     )
     let d4 = Dialog(
@@ -106,6 +116,7 @@ final class DialogTests: XCTestCase {
       name: "",
       members: [],
       messages: [],
+      isSavedToServer: false,
       createTime: Date().addingTimeInterval(10)
     )
     XCTAssertTrue(d3 > d4)
@@ -135,5 +146,16 @@ final class DialogTests: XCTestCase {
       dialog = Dialog(members: [.template1, .template2, member])
       XCTAssertNil(dialog.individualChatMember)
     }
+  }
+}
+
+// MARK: - Helper Methods
+private extension DialogTests {
+  func sortedMessages() -> (Message, Message, Message) {
+    let now = Date()
+    let m1 = Message(text: "1", createTime: now)
+    let m2 = Message(text: "2", createTime: now.addingTimeInterval(10))
+    let m3 = Message(text: "3", createTime: now.addingTimeInterval(20))
+    return (m1, m2, m3)
   }
 }

@@ -5,6 +5,7 @@ struct Dialog: Codable, Identifiable, Equatable {
   let name: String?
   let members: [Member]
   let messages: [Message]
+  let isSavedToServer: Bool
   let createTime: Date
 
   init(
@@ -12,16 +13,22 @@ struct Dialog: Codable, Identifiable, Equatable {
     name: String?,
     members: [Member],
     messages: [Message],
+    isSavedToServer: Bool,
     createTime: Date
   ) {
     self.id = id
     self.name = name
     self.members = members
     self.messages = messages
+    self.isSavedToServer = isSavedToServer
     self.createTime = createTime
   }
 
-  init(members: [Member]) {
+  init(
+    members: [Member],
+    messages: [Message] = [],
+    isSavedToServer: Bool = false
+  ) {
 
     let name: String? = {
       if members.count == 2 {
@@ -36,7 +43,8 @@ struct Dialog: Codable, Identifiable, Equatable {
       id: generateUUID(),
       name: name,
       members: members,
-      messages: [],
+      messages: messages,
+      isSavedToServer: isSavedToServer,
       createTime: Date()
     )
   }
@@ -75,13 +83,18 @@ extension Dialog {
 
 // MARK: - Mutations
 extension Dialog {
-  func append(_ message: Message) -> Dialog {
+  func insert(_ message: Message) -> Dialog {
     guard messages.contains(message) == false else {
       return self
     }
 
     var newMessages = messages
-    newMessages.append(message)
+
+    if let index = newMessages.firstIndex(where: { $0.createTime > message.createTime }) {
+      newMessages.insert(message, at: index)
+    } else {
+      newMessages.append(message)
+    }
 
     return setMessages(newMessages)
   }

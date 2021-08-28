@@ -5,19 +5,12 @@ struct MessageRowText: View {
   let message: Message
 
   var body: some View {
-    HStack(alignment: .top, spacing: 8) {
-      if message.isOutgoingMsg {
-        Spacer(minLength: Constant.spacingOfContentMaxWidthToEdge)
-      } else {
-        avatar
-      }
-
-      messageText
-
-      if message.isOutgoingMsg {
-        avatar
-      } else {
-        Spacer(minLength: Constant.spacingOfContentMaxWidthToEdge)
+    HStack(spacing: 8) {
+      outgoingSendingIndicator
+      HStack(alignment: .top, spacing: 8) {
+        incomingAvatar
+        messageText
+        outgoingAvatar
       }
     }
     .listRowBackground(Color.app_bg)
@@ -26,6 +19,42 @@ struct MessageRowText: View {
 }
 
 private extension MessageRowText {
+
+  @ViewBuilder
+  var outgoingSendingIndicator: some View {
+    if message.isOutgoingMsg {
+      Spacer(minLength: Constant.spacingOfContentMaxWidthToEdge)
+      sendingIndicator
+    }
+  }
+
+  @ViewBuilder
+  var incomingAvatar: some View {
+    if message.isOutgoingMsg == false {
+      avatar
+    }
+  }
+
+  @ViewBuilder
+  var outgoingAvatar: some View {
+    if message.isOutgoingMsg {
+      avatar
+    } else {
+      Spacer(minLength: Constant.spacingOfContentMaxWidthToEdge)
+    }
+  }
+
+  var sendingIndicator: some View {
+    Group {
+      if message.isSending {
+        ActivityIndicator()
+      } else {
+        Color.clear
+      }
+    }
+    // 让 ActivityIndicator 消失后仍然占据位置，防止 text 的大小发生改变
+    .frame(width: Constant.sendingIndicatorWidth)
+  }
 
   var avatar: some View {
     URLPlaceholderImage(message.sender.avatar, size: Constant.avatarSize) {
@@ -67,11 +96,17 @@ private extension MessageRowText {
           cornerSize: .init(width: 1, height: 1)
         )
       }
-      .frame(width: Constant.textBackgroundArrowWidth, height: Constant.textBackgroundArrowWidth)
+      .frame(
+        width: Constant.textBackgroundArrowWidth,
+        height: Constant.textBackgroundArrowWidth
+      )
       .foregroundColor(textBackgroundColor)
       .rotationEffect(.init(degrees: 45))
     }
-    .frame(width: Constant.textBackgroundArrowContainerWidth, height: Constant.textBackgroundArrowContainerHeight)
+    .frame(
+      width: Constant.textBackgroundArrowContainerWidth,
+      height: Constant.textBackgroundArrowContainerHeight
+    )
   }
 
   var textForegroundColor: Color {
@@ -85,7 +120,8 @@ private extension MessageRowText {
 
 private extension MessageRowText {
   enum Constant {
-    static let spacingOfContentMaxWidthToEdge: CGFloat = 50
+    static let spacingOfContentMaxWidthToEdge: CGFloat = 30
+    static let sendingIndicatorWidth: CGFloat = 20
 
     static let avatarSize: CGSize = .init(width: 40, height: 40)
     static let avatarCornerRadius: CGFloat = 4

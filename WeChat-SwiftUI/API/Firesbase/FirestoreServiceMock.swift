@@ -2,6 +2,8 @@ import Combine
 
 struct FirestoreServiceMock: FirestoreServiceType {
 
+  let insertMessageError: Error?
+
   let loadContactsResponse: [User]?
   let loadContactsError: Error?
 
@@ -11,17 +13,22 @@ struct FirestoreServiceMock: FirestoreServiceType {
   let loadUserSelfResponse: User?
   let loadUserSelfError: Error?
 
+  let overrideDialogError: Error?
   let overrideUserError: Error?
 
   init(
+    insertMessageError: Error? = nil,
     loadContactsResponse: [User]? = nil,
     loadContactsError: Error? = nil,
     loadOfficialAccountsResponse: [OfficialAccount]? = nil,
     loadOfficialAccountsError: Error? = nil,
     loadUserSelfResponse: User? = nil,
     loadUserSelfError: Error? = nil,
+    overrideDialogError: Error? = nil,
     overrideUserError: Error? = nil
   ) {
+    self.insertMessageError = insertMessageError
+
     self.loadContactsResponse = loadContactsResponse
     self.loadContactsError = loadContactsError
 
@@ -31,7 +38,15 @@ struct FirestoreServiceMock: FirestoreServiceType {
     self.loadUserSelfResponse = loadUserSelfResponse
     self.loadUserSelfError = loadUserSelfError
 
+    self.overrideDialogError = overrideDialogError
     self.overrideUserError = overrideUserError
+  }
+
+  func insert(_ message: Message, to dialog: Dialog) -> AnyPublisher<Void, Error> {
+    if let error = insertMessageError {
+      return .publisher(failure: error)
+    }
+    return .publisher(output: ())
   }
 
   func loadContacts() -> AnyPublisher<[User], Error> {
@@ -53,6 +68,13 @@ struct FirestoreServiceMock: FirestoreServiceType {
       return .publisher(failure: error)
     }
     return .publisher(output: loadUserSelfResponse ?? .template)
+  }
+
+  func overrideDialog(_ dialog: Dialog) -> AnyPublisher<Void, Error> {
+    if let error = overrideDialogError {
+      return .publisher(failure: error)
+    }
+    return .publisher(output: ())
   }
 
   func overrideUser(_ user: User) -> AnyPublisher<Void, Error> {

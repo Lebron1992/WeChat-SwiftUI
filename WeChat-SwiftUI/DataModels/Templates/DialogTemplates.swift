@@ -8,6 +8,7 @@ extension Dialog {
         name: "SwiftUI",
         members: [.template1, .template2],
         messages: [.textTemplate, .textTemplate2],
+        isSavedToServer: true,
         createTime: Date(timeIntervalSince1970: timeIntervalSince1970 - 1000)
     )
 
@@ -16,6 +17,7 @@ extension Dialog {
         name: nil,
         members: [],
         messages: [],
+        isSavedToServer: true,
         createTime: Date()
     )
 }

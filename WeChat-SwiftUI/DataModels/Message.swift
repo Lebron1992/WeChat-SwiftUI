@@ -7,6 +7,7 @@ struct Message: Codable, Identifiable, Equatable {
   let videoUrl: String?
   let sender: MessageSender
   let createTime: Date
+  let status: Status
 
   init(
     id: String,
@@ -14,7 +15,8 @@ struct Message: Codable, Identifiable, Equatable {
     imageUrl: String?,
     videoUrl: String?,
     sender: MessageSender,
-    createTime: Date
+    createTime: Date,
+    status: Status
   ) {
     self.id = id
     self.text = text
@@ -22,16 +24,22 @@ struct Message: Codable, Identifiable, Equatable {
     self.videoUrl = videoUrl
     self.sender = sender
     self.createTime = createTime
+    self.status = status
   }
 
-  init(text: String) {
+  init(
+    text: String,
+    createTime: Date = Date(),
+    status: Status = .idle
+  ) {
     self.init(
       id: generateUUID(),
       text: text,
       imageUrl: nil,
       videoUrl: nil,
       sender: .currentUser ?? .anonymity,
-      createTime: Date()
+      createTime: createTime,
+      status: status
     )
   }
 }
@@ -56,6 +64,14 @@ extension Message {
 }
 
 extension Message {
+  enum Status: String, Codable {
+    case idle
+    case sending
+    case sent
+  }
+}
+
+extension Message {
   var isTextMsg: Bool {
     text != nil
   }
@@ -70,6 +86,14 @@ extension Message {
 
   var isOutgoingMsg: Bool {
     sender.id == AppEnvironment.current.currentUser?.id
+  }
+
+  var isSending: Bool {
+    status == .sending
+  }
+
+  var isSent: Bool {
+    status == .sent
   }
 }
 

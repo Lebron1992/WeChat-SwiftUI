@@ -17,7 +17,8 @@ private struct LoadingContainer: ViewModifier {
         Group {
           // Color.clear can't cover the content, so we use this to simulate it
           Color.white.opacity(0.001)
-          ActivityIndicator()
+          ActivityIndicator(style: .large)
+            .padding(40)
             .background(Color.hex("#D2D3D5"))
             .cornerRadius(10)
             .opacity(show ? 1 : 0)

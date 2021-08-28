@@ -21,7 +21,8 @@ final class MessageTests: XCTestCase {
         "avatar": "https://cdn.nba.com/headshots/nba/latest/260x190/1629630.png",
         "name": "Ja Morant"
       },
-      "createTime": "2021-07-14T09:54:22Z"
+      "createTime": "2021-07-14T09:54:22Z",
+      "status": "sent"
       }
       """
 
@@ -51,5 +52,27 @@ final class MessageTests: XCTestCase {
     XCTAssertFalse(Message.textTemplate.isVideoMsg)
     XCTAssertFalse(Message.imageTemplate2.isVideoMsg)
     XCTAssertTrue(Message.videoTemplate3.isVideoMsg)
+  }
+
+  func test_isSending() {
+    var message = Message(text: "hello", status: .idle)
+    XCTAssertFalse(message.isSending)
+
+    message = Message(text: "hello", status: .sending)
+    XCTAssertTrue(message.isSending)
+
+    message = Message(text: "hello", status: .sent)
+    XCTAssertFalse(message.isSending)
+  }
+
+  func test_isSent() {
+    var message = Message(text: "hello", status: .idle)
+    XCTAssertFalse(message.isSent)
+
+    message = Message(text: "hello", status: .sending)
+    XCTAssertFalse(message.isSent)
+
+    message = Message(text: "hello", status: .sent)
+    XCTAssertTrue(message.isSent)
   }
 }

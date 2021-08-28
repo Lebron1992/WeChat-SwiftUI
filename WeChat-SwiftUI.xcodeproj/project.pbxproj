@@ -165,6 +165,9 @@
 		FDC45EAD26D73E2400C44827 /* Collection+MatchingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC45EAC26D73E2400C44827 /* Collection+MatchingTests.swift */; };
 		FDC45EAF26D7406E00C44827 /* ChatsReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC45EAE26D7406E00C44827 /* ChatsReducerTests.swift */; };
 		FDC45EB126D7462500C44827 /* GenerateUUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC45EB026D7462500C44827 /* GenerateUUID.swift */; };
+		FDC45EB926D8CB7700C44827 /* Message+Setters.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC45EB826D8CB7700C44827 /* Message+Setters.swift */; };
+		FDC45EBB26D8EB6F00C44827 /* ChatsActionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC45EBA26D8EB6F00C44827 /* ChatsActionsTests.swift */; };
+		FDC45EBD26D923F000C44827 /* ReduxTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC45EBC26D923F000C44827 /* ReduxTestCase.swift */; };
 		FDCC721B266E254D00A48140 /* WeChat_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */; };
 		FDCC721D266E254D00A48140 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC721C266E254D00A48140 /* RootView.swift */; };
 		FDCC721F266E254E00A48140 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDCC721E266E254E00A48140 /* Assets.xcassets */; };
@@ -382,6 +385,9 @@
 		FDC45EAC26D73E2400C44827 /* Collection+MatchingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+MatchingTests.swift"; sourceTree = "<group>"; };
 		FDC45EAE26D7406E00C44827 /* ChatsReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsReducerTests.swift; sourceTree = "<group>"; };
 		FDC45EB026D7462500C44827 /* GenerateUUID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateUUID.swift; sourceTree = "<group>"; };
+		FDC45EB826D8CB7700C44827 /* Message+Setters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+Setters.swift"; sourceTree = "<group>"; };
+		FDC45EBA26D8EB6F00C44827 /* ChatsActionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsActionsTests.swift; sourceTree = "<group>"; };
+		FDC45EBC26D923F000C44827 /* ReduxTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReduxTestCase.swift; sourceTree = "<group>"; };
 		FDCC7217266E254D00A48140 /* WeChat-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WeChat-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeChat_SwiftUIApp.swift; sourceTree = "<group>"; };
 		FDCC721C266E254D00A48140 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -565,6 +571,7 @@
 				FD5412F226A81D040001D199 /* AuthActions.swift */,
 				FD703D1726B83A3000565E4C /* AuthActionsTests.swift */,
 				FDC45EA426D7367700C44827 /* ChatsActions.swift */,
+				FDC45EBA26D8EB6F00C44827 /* ChatsActionsTests.swift */,
 				FD88275E267AF2EB00BBEAB6 /* ContactsActions.swift */,
 				FD882777267F1BD500BBEAB6 /* ContactsActionsTests.swift */,
 				FD8827472679A9BF00BBEAB6 /* RootActions.swift */,
@@ -723,6 +730,7 @@
 			isa = PBXGroup;
 			children = (
 				FDA9080826AD00AF00805584 /* MockBundle.swift */,
+				FDC45EBC26D923F000C44827 /* ReduxTestCase.swift */,
 				FD9A858726C8CB2D00A39051 /* TestObserver.swift */,
 				FDA9080426ABF64D00805584 /* XCTestCase+AppEnvironment.swift */,
 				FD9A859426CA11A400A39051 /* XCTestCase+Wait.swift */,
@@ -820,6 +828,7 @@
 				FD1D01312699B72700A9AF37 /* ExpressionSticker.swift */,
 				FDA907FD26ABCD1500805584 /* ExpressionStickerTests.swift */,
 				FD8809F8269EDF0F002D3396 /* Message.swift */,
+				FDC45EB826D8CB7700C44827 /* Message+Setters.swift */,
 				FD8809FA269EE76B002D3396 /* MessageTests.swift */,
 				FD6D378C26861A6D0087272F /* OfficialAccount.swift */,
 				FD6D378E268624520087272F /* OfficialAccountTests.swift */,
@@ -1301,6 +1310,7 @@
 				FD88274E2679D86D00BBEAB6 /* ChatsView.swift in Sources */,
 				FD3D102C26A6AFAB0045C218 /* LoadingModifier.swift in Sources */,
 				FDA9080726ABF98F00805584 /* NSBundleType.swift in Sources */,
+				FDC45EB926D8CB7700C44827 /* Message+Setters.swift in Sources */,
 				FD703D2026B8F2A900565E4C /* MyProfilePhotoPreview.swift in Sources */,
 				FD9A858226C8BAFF00A39051 /* FirebaseStorageServiceMock.swift in Sources */,
 				FD6FE99026A9785B0059BF45 /* FirestoreServiceType.swift in Sources */,
@@ -1379,6 +1389,7 @@
 				FDC45EAD26D73E2400C44827 /* Collection+MatchingTests.swift in Sources */,
 				FDCC7269266F62C900A48140 /* ServiceTests.swift in Sources */,
 				FD5412ED26A812E40001D199 /* SystemReducerTests.swift in Sources */,
+				FDC45EBD26D923F000C44827 /* ReduxTestCase.swift in Sources */,
 				FDA9081826AD631500805584 /* SystemStateTests.swift in Sources */,
 				FDA9080C26AD138600805584 /* AppStateTests.swift in Sources */,
 				FDAFA49E26AEB14F00FD5C33 /* DialogTests.swift in Sources */,
@@ -1392,6 +1403,7 @@
 				FDA907FC26ABCC6000805584 /* DiscoverSectionTests.swift in Sources */,
 				FD5412F626A81D850001D199 /* AuthReducerTests.swift in Sources */,
 				FD8827A22681E6E700BBEAB6 /* Color+HexTests.swift in Sources */,
+				FDC45EBB26D8EB6F00C44827 /* ChatsActionsTests.swift in Sources */,
 				FD9A858626C8BE4C00A39051 /* MyProfilePhotoPreviewViewModelTests.swift in Sources */,
 				FDCC72892671C14800A48140 /* AppEnvironmentTests.swift in Sources */,
 				FDA9081626AD62DF00805584 /* RootStateTests.swift in Sources */,

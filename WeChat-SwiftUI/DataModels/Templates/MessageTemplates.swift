@@ -10,7 +10,8 @@ extension Message {
       "avatar": "https://cdn.nba.com/headshots/nba/latest/260x190/1629630.png",
       "name": "Ja Morant"
     },
-    "createTime": "2021-07-14T09:54:22Z"
+    "createTime": "2021-07-14T09:54:22Z",
+    "status": "sent"
     }
     """
   )
@@ -25,7 +26,8 @@ extension Message {
       "avatar": "https://cdn.nba.com/headshots/nba/latest/260x190/2544.png",
       "name": "LeBron James",
     },
-    "createTime": "2021-07-14T09:54:23Z"
+    "createTime": "2021-07-14T09:54:23Z",
+    "status": "sent"
     }
     """
   )
@@ -40,7 +42,8 @@ extension Message {
       "avatar": "https://cdn.nba.com/headshots/nba/latest/260x190/2544.png",
       "name": "LeBron James",
     },
-    "createTime": "2021-07-14T09:54:32Z"
+    "createTime": "2021-07-14T09:54:32Z",
+    "status": "sent"
     }
     """
   )
@@ -55,7 +58,8 @@ extension Message {
       "avatar": "https://cdn.nba.com/headshots/nba/latest/260x190/2544.png",
       "name": "LeBron James",
     },
-    "createTime": "2021-07-14T09:54:42Z"
+    "createTime": "2021-07-14T09:54:42Z",
+    "status": "sent"
     }
     """
   )
