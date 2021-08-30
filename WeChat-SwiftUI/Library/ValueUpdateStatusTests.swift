@@ -20,8 +20,8 @@ final class ValueUpdateStatusTests: XCTestCase {
     v2 = .finished("World")
     XCTAssertNotEqual(v1, v2)
 
-    let e1 = NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Hello"])
-    let e2 = NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "World"])
+    let e1 = NSError.commonError(description: "Hello")
+    let e2 = NSError.commonError(description: "World")
 
     v1 = .failed(e1)
     v2 = .failed(e1)
@@ -50,7 +50,7 @@ final class ValueUpdateStatusTests: XCTestCase {
     v = .finished("Hello")
     XCTAssertEqual(v.value, "Hello")
 
-    let e = NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Hello"])
+    let e = NSError.commonError(description: "Hello")
 
     v = .failed(e)
     XCTAssertNil(v.value)
@@ -66,7 +66,7 @@ final class ValueUpdateStatusTests: XCTestCase {
     v = .finished("Hello")
     XCTAssertNil(v.error)
 
-    let e = NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Hello"])
+    let e = NSError.commonError(description: "Hello")
 
     v = .failed(e)
     XCTAssertNotNil(v.error)

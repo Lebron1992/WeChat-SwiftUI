@@ -7,8 +7,7 @@ extension Dialog {
         id: "ee0d9688-c25b-45fa-b484-94e9c13700d6",
         name: "SwiftUI",
         members: [.template1, .template2],
-        messages: [.textTemplate, .textTemplate2],
-        isSavedToServer: true,
+        lastMessage: .textTemplate,
         createTime: Date(timeIntervalSince1970: timeIntervalSince1970 - 1000)
     )
 
@@ -16,8 +15,7 @@ extension Dialog {
         id: "46ea1b2a-327d-4f17-bdb0-220a88e3a9bb",
         name: nil,
         members: [],
-        messages: [],
-        isSavedToServer: true,
+        lastMessage: nil,
         createTime: Date()
     )
 }

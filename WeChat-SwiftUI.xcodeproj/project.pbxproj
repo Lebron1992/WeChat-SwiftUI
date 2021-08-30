@@ -34,6 +34,8 @@
 		FD3D102C26A6AFAB0045C218 /* LoadingModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3D102B26A6AFAB0045C218 /* LoadingModifier.swift */; };
 		FD424F90268B050900F11A62 /* Image+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD424F8F268B050900F11A62 /* Image+Constants.swift */; };
 		FD424F92268B059B00F11A62 /* Image+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD424F91268B059B00F11A62 /* Image+Resize.swift */; };
+		FD46236826DC82330021B397 /* DialogMessagesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD46236726DC82330021B397 /* DialogMessagesTests.swift */; };
+		FD46236A26DC83A20021B397 /* MessagesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD46236926DC83A20021B397 /* MessagesDataSource.swift */; };
 		FD5412E726A811970001D199 /* SystemState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5412E626A811970001D199 /* SystemState.swift */; };
 		FD5412E926A8122E0001D199 /* SystemReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5412E826A8122E0001D199 /* SystemReducer.swift */; };
 		FD5412EB26A8127E0001D199 /* SystemActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5412EA26A8127E0001D199 /* SystemActions.swift */; };
@@ -167,7 +169,9 @@
 		FDC45EB126D7462500C44827 /* GenerateUUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC45EB026D7462500C44827 /* GenerateUUID.swift */; };
 		FDC45EB926D8CB7700C44827 /* Message+Setters.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC45EB826D8CB7700C44827 /* Message+Setters.swift */; };
 		FDC45EBB26D8EB6F00C44827 /* ChatsActionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC45EBA26D8EB6F00C44827 /* ChatsActionsTests.swift */; };
-		FDC45EBD26D923F000C44827 /* ReduxTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC45EBC26D923F000C44827 /* ReduxTestCase.swift */; };
+		FDC45EBD26D923F000C44827 /* AppStateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC45EBC26D923F000C44827 /* AppStateDataSource.swift */; };
+		FDC45EBF26DC680C00C44827 /* DialogMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC45EBE26DC680C00C44827 /* DialogMessages.swift */; };
+		FDC45EC126DC7B7C00C44827 /* DialogMessagesTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC45EC026DC7B7C00C44827 /* DialogMessagesTemplates.swift */; };
 		FDCC721B266E254D00A48140 /* WeChat_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */; };
 		FDCC721D266E254D00A48140 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC721C266E254D00A48140 /* RootView.swift */; };
 		FDCC721F266E254E00A48140 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDCC721E266E254E00A48140 /* Assets.xcassets */; };
@@ -257,6 +261,8 @@
 		FD3D102B26A6AFAB0045C218 /* LoadingModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingModifier.swift; sourceTree = "<group>"; };
 		FD424F8F268B050900F11A62 /* Image+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Constants.swift"; sourceTree = "<group>"; };
 		FD424F91268B059B00F11A62 /* Image+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Resize.swift"; sourceTree = "<group>"; };
+		FD46236726DC82330021B397 /* DialogMessagesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogMessagesTests.swift; sourceTree = "<group>"; };
+		FD46236926DC83A20021B397 /* MessagesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesDataSource.swift; sourceTree = "<group>"; };
 		FD5412E626A811970001D199 /* SystemState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemState.swift; sourceTree = "<group>"; };
 		FD5412E826A8122E0001D199 /* SystemReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemReducer.swift; sourceTree = "<group>"; };
 		FD5412EA26A8127E0001D199 /* SystemActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemActions.swift; sourceTree = "<group>"; };
@@ -387,7 +393,9 @@
 		FDC45EB026D7462500C44827 /* GenerateUUID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateUUID.swift; sourceTree = "<group>"; };
 		FDC45EB826D8CB7700C44827 /* Message+Setters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+Setters.swift"; sourceTree = "<group>"; };
 		FDC45EBA26D8EB6F00C44827 /* ChatsActionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsActionsTests.swift; sourceTree = "<group>"; };
-		FDC45EBC26D923F000C44827 /* ReduxTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReduxTestCase.swift; sourceTree = "<group>"; };
+		FDC45EBC26D923F000C44827 /* AppStateDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateDataSource.swift; sourceTree = "<group>"; };
+		FDC45EBE26DC680C00C44827 /* DialogMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogMessages.swift; sourceTree = "<group>"; };
+		FDC45EC026DC7B7C00C44827 /* DialogMessagesTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogMessagesTemplates.swift; sourceTree = "<group>"; };
 		FDCC7217266E254D00A48140 /* WeChat-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WeChat-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeChat_SwiftUIApp.swift; sourceTree = "<group>"; };
 		FDCC721C266E254D00A48140 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -729,8 +737,9 @@
 		FDA9080326ABF62200805584 /* TestHelpers */ = {
 			isa = PBXGroup;
 			children = (
+				FDC45EBC26D923F000C44827 /* AppStateDataSource.swift */,
+				FD46236926DC83A20021B397 /* MessagesDataSource.swift */,
 				FDA9080826AD00AF00805584 /* MockBundle.swift */,
-				FDC45EBC26D923F000C44827 /* ReduxTestCase.swift */,
 				FD9A858726C8CB2D00A39051 /* TestObserver.swift */,
 				FDA9080426ABF64D00805584 /* XCTestCase+AppEnvironment.swift */,
 				FD9A859426CA11A400A39051 /* XCTestCase+Wait.swift */,
@@ -822,6 +831,8 @@
 				FD6D378A26861A110087272F /* ContactType.swift */,
 				FDAFA49926AEACCC00FD5C33 /* Dialog.swift */,
 				FDC45EAA26D73CA800C44827 /* Dialog+Setters.swift */,
+				FDC45EBE26DC680C00C44827 /* DialogMessages.swift */,
+				FD46236726DC82330021B397 /* DialogMessagesTests.swift */,
 				FDAFA49D26AEB14F00FD5C33 /* DialogTests.swift */,
 				FD1F16C0269162A6009D08DF /* DiscoverItem.swift */,
 				FDA907FB26ABCC6000805584 /* DiscoverSectionTests.swift */,
@@ -949,6 +960,7 @@
 				FD8809FC269EE852002D3396 /* MessageTemplates.swift */,
 				FD6D3790268624780087272F /* OfficialAccountTemplates.swift */,
 				FDCC728B2671C34200A48140 /* UserTemplates.swift */,
+				FDC45EC026DC7B7C00C44827 /* DialogMessagesTemplates.swift */,
 			);
 			path = Templates;
 			sourceTree = "<group>";
@@ -1295,6 +1307,7 @@
 				FD6D37792684803E0087272F /* ResignKeyboardOnDragModifier.swift in Sources */,
 				FDCC7251266F1B2E00A48140 /* EnvironmentType.swift in Sources */,
 				FD1D01322699B72700A9AF37 /* ExpressionSticker.swift in Sources */,
+				FDC45EC126DC7B7C00C44827 /* DialogMessagesTemplates.swift in Sources */,
 				FD8809F3269EDE52002D3396 /* MessageRowText.swift in Sources */,
 				FD882764267AFAD000BBEAB6 /* ErrorView.swift in Sources */,
 				FD6D37862685D21A0087272F /* EdgeInsets.swift in Sources */,
@@ -1328,6 +1341,7 @@
 				FD8827522679D89C00BBEAB6 /* DiscoverView.swift in Sources */,
 				FD6D378D26861A6D0087272F /* OfficialAccount.swift in Sources */,
 				FD1F16C326918EF5009D08DF /* DiscoverState.swift in Sources */,
+				FDC45EBF26DC680C00C44827 /* DialogMessages.swift in Sources */,
 				FD8827502679D88F00BBEAB6 /* ContactsView.swift in Sources */,
 				FD5412E726A811970001D199 /* SystemState.swift in Sources */,
 				FD8809F7269EDE6F002D3396 /* MessageRowVideo.swift in Sources */,
@@ -1389,7 +1403,7 @@
 				FDC45EAD26D73E2400C44827 /* Collection+MatchingTests.swift in Sources */,
 				FDCC7269266F62C900A48140 /* ServiceTests.swift in Sources */,
 				FD5412ED26A812E40001D199 /* SystemReducerTests.swift in Sources */,
-				FDC45EBD26D923F000C44827 /* ReduxTestCase.swift in Sources */,
+				FDC45EBD26D923F000C44827 /* AppStateDataSource.swift in Sources */,
 				FDA9081826AD631500805584 /* SystemStateTests.swift in Sources */,
 				FDA9080C26AD138600805584 /* AppStateTests.swift in Sources */,
 				FDAFA49E26AEB14F00FD5C33 /* DialogTests.swift in Sources */,
@@ -1404,12 +1418,14 @@
 				FD5412F626A81D850001D199 /* AuthReducerTests.swift in Sources */,
 				FD8827A22681E6E700BBEAB6 /* Color+HexTests.swift in Sources */,
 				FDC45EBB26D8EB6F00C44827 /* ChatsActionsTests.swift in Sources */,
+				FD46236A26DC83A20021B397 /* MessagesDataSource.swift in Sources */,
 				FD9A858626C8BE4C00A39051 /* MyProfilePhotoPreviewViewModelTests.swift in Sources */,
 				FDCC72892671C14800A48140 /* AppEnvironmentTests.swift in Sources */,
 				FDA9081626AD62DF00805584 /* RootStateTests.swift in Sources */,
 				FDA907FE26ABCD1500805584 /* ExpressionStickerTests.swift in Sources */,
 				FD88277D267F314000BBEAB6 /* RootReducerTests.swift in Sources */,
 				FD58C12426B1429200BDB0CC /* MyProfileView.RowTests.swift in Sources */,
+				FD46236826DC82330021B397 /* DialogMessagesTests.swift in Sources */,
 				FD9A858926C8CC7400A39051 /* TestObserver.swift in Sources */,
 				FD6D37882685D2540087272F /* EdgeInsetsTests.swift in Sources */,
 				FDA9080A26AD00B700805584 /* MockBundle.swift in Sources */,

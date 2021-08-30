@@ -3,54 +3,91 @@ import SwiftUIRedux
 enum ChatsActions {
   private static let cancelBag = CancelBag()
 
+  struct LoadDialogs: AsyncAction, Equatable {
+    func async(dispatch: @escaping Dispatch, state: ReduxState?) {
+      AppEnvironment.current.firestoreService
+        .loadDialogs()
+        .sinkToResultForUI { result in
+          switch result {
+          case .success(let dialogs):
+            dispatch(SetDialogs(dialogs: dialogs))
+          case .failure(let error):
+            dispatch(SystemActions.SetErrorMessage(message: error.localizedDescription))
+          }
+        }
+        .store(in: cancelBag)
+    }
+  }
+
+  struct SetDialogs: Action, Equatable {
+    let dialogs: [Dialog]
+  }
+
+  struct LoadMessagesForDialog: AsyncAction, Equatable {
+    let dialog: Dialog
+
+    func async(dispatch: @escaping Dispatch, state: ReduxState?) {
+      AppEnvironment.current.firestoreService
+        .loadMessages(for: dialog)
+        .sinkToResultForUI { result in
+          switch result {
+          case .success(let messages):
+            dispatch(SetMessagesForDialog(messages: messages, dialog: dialog))
+          case .failure(let error):
+            dispatch(SystemActions.SetErrorMessage(message: error.localizedDescription))
+          }
+        }
+        .store(in: cancelBag)
+    }
+  }
+
+  struct SetMessagesForDialog: Action, Equatable {
+    let messages: [Message]
+    let dialog: Dialog
+  }
+
   struct SendMessageInDialog: AsyncAction, Equatable {
     let message: Message
     let dialog: Dialog
 
     func async(dispatch: @escaping Dispatch, state: ReduxState?) {
+      let sendingMessage = message.setStatus(.sending)
+      let sentMessage = message.setStatus(.sent)
+
       dispatch(InsertMessageToDialog(
-        message: message.setStatus(.sending),
+        message: sendingMessage,
         dialog: dialog
       ))
 
-      if dialog.isSavedToServer {
-        AppEnvironment.current.firestoreService
-          .insert(message, to: dialog)
-          .sinkToResultForUI { result in
-            switch result {
-            case .success:
-              dispatch(SetMessageStatusInDialog(
-                message: message,
-                status: .sent,
-                dialog: dialog
-              ))
-            case .failure(let error):
-              // TODO: 错误处理
-              print("[SendMessageInDialog] insert message error: \(error.localizedDescription)")
-            }
-          }
-          .store(in: cancelBag)
+      AppEnvironment.current.firestoreService
+        .insert(sentMessage, to: dialog)
+        .sinkToResultForUI { result in
+          switch result {
+          case .success:
+            // 保存 message 成功后再更新 dialog，实际开发中应该通过一个请求完成
+            let newDialog = dialog.updatedLastMessage(sentMessage)
+            AppEnvironment.current.firestoreService
+              .overrideDialog(newDialog)
+              .sinkToResultForUI { result in
+                switch result {
+                case .success:
+                  dispatch(SetMessageStatusInDialog(
+                    message: sendingMessage,
+                    status: .sent,
+                    dialog: dialog
+                  ))
+                  dispatch(SetDialogLastMessage(dialog: dialog, lastMessage: sentMessage))
+                case .failure(let error):
+                  dispatch(SystemActions.SetErrorMessage(message: error.localizedDescription))
+                }
+              }
+              .store(in: cancelBag)
 
-      } else {
-        let newDialog = dialog.insert(message)
-        AppEnvironment.current.firestoreService
-          .overrideDialog(newDialog)
-          .sinkToResultForUI { result in
-            switch result {
-            case .success:
-              dispatch(SetDialogIsSavedToServer(dialog: dialog, isSaved: true))
-              dispatch(SetMessageStatusInDialog(
-                message: message,
-                status: .sent,
-                dialog: dialog
-              ))
-            case .failure(let error):
-              // TODO: 错误处理
-              print("[SendMessageInDialog] override dialog error: \(error.localizedDescription)")
-            }
+          case .failure(let error):
+            dispatch(SystemActions.SetErrorMessage(message: error.localizedDescription))
           }
-          .store(in: cancelBag)
-      }
+        }
+        .store(in: cancelBag)
     }
   }
 
@@ -65,8 +102,8 @@ enum ChatsActions {
     let dialog: Dialog
   }
 
-  struct SetDialogIsSavedToServer: Action, Equatable {
+  struct SetDialogLastMessage: Action, Equatable {
     let dialog: Dialog
-    let isSaved: Bool
+    let lastMessage: Message
   }
 }

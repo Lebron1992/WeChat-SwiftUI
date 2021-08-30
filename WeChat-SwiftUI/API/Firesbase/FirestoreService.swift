@@ -1,4 +1,5 @@
 import Combine
+import Foundation
 import FirebaseFirestore
 
 struct FirestoreService: FirestoreServiceType {
@@ -38,15 +39,51 @@ struct FirestoreService: FirestoreServiceType {
           if let err = error {
             promise(Result.failure(err))
 
-          } else if let users: [User] = decoderModels(snapshot?.documents) {
+          } else if let users: [User] = decodeModels(snapshot?.documents) {
             promise(Result.success(users))
 
           } else {
-            let error = NSError(
-              domain: "",
-              code: -1,
-              userInfo: [NSLocalizedDescriptionKey: "Can not decode [User] from snapshot"]
-            )
+            let error = NSError.commonError(description: "Can not decode [User] from snapshot")
+            promise(Result.failure(error as Error))
+          }
+        }
+    }
+    .eraseToAnyPublisher()
+  }
+
+  func loadDialogs() -> AnyPublisher<[Dialog], Error> {
+    Future { promise in
+      dialogsCollection
+        .getDocuments { snapshot, error in
+          if let err = error {
+            promise(Result.failure(err))
+
+          } else if let dialogs: [Dialog] = decodeModels(snapshot?.documents) {
+            promise(Result.success(dialogs))
+
+          } else {
+            let error = NSError.commonError(description: "Can not decode [Dialog] from snapshot")
+            promise(Result.failure(error))
+          }
+        }
+    }
+    .eraseToAnyPublisher()
+  }
+
+  func loadMessages(for dialog: Dialog) -> AnyPublisher<[Message], Error> {
+    Future { promise in
+      dialogsCollection
+        .document(dialog.id)
+        .collection("messages")
+        .getDocuments { snapshot, error in
+          if let err = error {
+            promise(Result.failure(err))
+
+          } else if let messages: [Message] = decodeModels(snapshot?.documents) {
+            promise(Result.success(messages))
+
+          } else {
+            let error = NSError.commonError(description: "Can not decode [Message] from snapshot")
             promise(Result.failure(error as Error))
           }
         }
@@ -61,15 +98,11 @@ struct FirestoreService: FirestoreServiceType {
           if let err = error {
             promise(Result.failure(err))
 
-          } else if let accounts: [OfficialAccount] = decoderModels(snapshot?.documents) {
+          } else if let accounts: [OfficialAccount] = decodeModels(snapshot?.documents) {
             promise(Result.success(accounts))
 
           } else {
-            let error = NSError(
-              domain: "",
-              code: -1,
-              userInfo: [NSLocalizedDescriptionKey: "Can not decode [OfficialAccount] from snapshot"]
-            )
+            let error = NSError.commonError(description: "Can not decode [OfficialAccount] from snapshot")
             promise(Result.failure(error as Error))
           }
         }
@@ -80,7 +113,7 @@ struct FirestoreService: FirestoreServiceType {
   func loadUserSelf() -> AnyPublisher<User, Error> {
 
     guard let userId = AppEnvironment.current.currentUser?.id else {
-      let error = NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "currentUser is nil"])
+      let error = NSError.commonError(description: "currentUser is nil")
       return .publisher(failure: error)
     }
 
@@ -92,15 +125,11 @@ struct FirestoreService: FirestoreServiceType {
           if let err = error {
             promise(Result.failure(err))
 
-          } else if let user: User = decoderModel(snapshot) {
+          } else if let user: User = decodeModel(snapshot) {
             promise(Result.success(user))
 
           } else {
-            let error = NSError(
-              domain: "",
-              code: -1,
-              userInfo: [NSLocalizedDescriptionKey: "Can not decode user from snapshot"]
-            )
+            let error = NSError.commonError(description: "Can not decode user from snapshot")
             promise(Result.failure(error as Error))
           }
         }
@@ -141,14 +170,14 @@ struct FirestoreService: FirestoreServiceType {
 
 // MARK: - Helper Methods
 
-private func decoderModel<M: Decodable>(_ snapshot: DocumentSnapshot?) -> M? {
+private func decodeModel<M: Decodable>(_ snapshot: DocumentSnapshot?) -> M? {
   if let data = snapshot?.data(), let model: M = tryDecode(data) {
     return model
   }
   return nil
 }
 
-private func decoderModels<M: Decodable>(_ documents: [QueryDocumentSnapshot]?) -> [M]? {
+private func decodeModels<M: Decodable>(_ documents: [QueryDocumentSnapshot]?) -> [M]? {
   documents?
     .map { $0.data() }
     .compactMap { tryDecode($0) }

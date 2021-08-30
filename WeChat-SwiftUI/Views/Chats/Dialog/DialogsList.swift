@@ -4,11 +4,13 @@ import SwiftUIRedux
 struct DialogsList: ConnectedView {
   struct Props {
     let dialogs: [Dialog]
+    let loadDialogs: () -> Void
   }
 
   func map(state: AppState, dispatch: @escaping Dispatch) -> Props {
     Props(
-      dialogs: state.chatsState.dialogs
+      dialogs: state.chatsState.dialogs,
+      loadDialogs: { dispatch(ChatsActions.LoadDialogs()) }
     )
   }
 
@@ -23,6 +25,7 @@ struct DialogsList: ConnectedView {
     }
     .background(.app_bg)
     .listStyle(.plain)
+    .onAppear(perform: props.loadDialogs)
   }
 }
 

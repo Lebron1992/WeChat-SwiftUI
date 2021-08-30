@@ -2,42 +2,80 @@ import Foundation
 
 struct ChatsState: Codable, Equatable {
   var dialogs: [Dialog]
+  var dialogMessages: Set<DialogMessages>
 }
 
-// MARK: - Mutation
+// MARK: - Mutations
 extension ChatsState {
-  mutating func insert(_ message: Message, to dialog: Dialog) {
+  mutating func set(_ messages: [Message], for dialog: Dialog) {
+    guard messages.isEmpty == false else {
+      return
+    }
+
+    // update dialogs
 
     let newDialog = dialogs
       .element(matching: dialog)
-      .insert(message)
+      .updatedLastMessage(messages.last!)
+    insert(newDialog)
 
-    if let index = dialogs.index(matching: newDialog) {
-      dialogs[index] = newDialog
+    // update dialogMessages
+
+    if var existingDM = dialogMessages.first(where: { $0.dialogId == dialog.id }) {
+      dialogMessages.update(with: existingDM.set(messages))
     } else {
-      dialogs.append(newDialog)
+      dialogMessages.insert(.init(dialogId: dialog.id, messages: messages))
     }
+  }
 
-    dialogs.sort()
+  mutating func insert(_ message: Message, to dialog: Dialog) {
+
+    // update dialogs
+
+    let newDialog = dialogs
+      .element(matching: dialog)
+      .updatedLastMessage(message)
+    insert(newDialog)
+
+    // update dialogMessages
+
+    if var existingDM = dialogMessages.first(where: { $0.dialogId == dialog.id }) {
+      dialogMessages.update(with: existingDM.inserted(message))
+    } else {
+      dialogMessages.insert(.init(dialogId: dialog.id, messages: [message]))
+    }
   }
 
   mutating func setStatus(_ status: Message.Status, for message: Message, in dialog: Dialog) {
 
-    guard let dIndex = dialogs.index(matching: dialog),
-          let mIndex = dialogs[dIndex].messages.index(matching: message)
+    guard var existingMessages = dialogMessages.first(where: { $0.dialogId == dialog.id }),
+          existingMessages.messages.contains(message)
     else {
       return
     }
 
-    let newMessage = dialogs[dIndex].messages[mIndex].setStatus(status)
-    dialogs[dIndex] = dialogs[dIndex].setMessage(newMessage, at: mIndex)
+    dialogMessages.update(with: existingMessages.updatedStatus(status, for: message))
   }
 
-  mutating func setIsSavedToServer(_ isSaved: Bool, for dialog: Dialog) {
+  mutating func setLastMessage(_ message: Message, for dialog: Dialog) {
     guard let index = dialogs.index(matching: dialog) else {
       return
     }
-    dialogs[index] = dialogs[index].setIsSavedToServer(isSaved)
+    dialogs[index] = dialogs[index].setLastMessage(message)
+    dialogs.sort()
+  }
+}
+
+// MARK: - Helper Methods
+private extension ChatsState {
+  mutating func insert(_ dialog: Dialog) {
+    if let index = dialogs.index(matching: dialog) {
+      dialogs[index] = dialog
+    } else if let index = dialogs.firstIndex(where: { dialog < $0 }) {
+      dialogs.insert(dialog, at: index)
+    } else {
+      dialogs.append(dialog)
+    }
   }
 }
 
@@ -45,7 +83,8 @@ extension ChatsState {
 extension ChatsState {
   static var preview: ChatsState {
     ChatsState(
-      dialogs: []
+      dialogs: [],
+      dialogMessages: []
     )
   }
 }

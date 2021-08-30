@@ -1,7 +1,7 @@
 import XCTest
 @testable import WeChat_SwiftUI
 
-final class DialogTests: XCTestCase {
+final class DialogTests: XCTestCase, MessagesDataSource {
 
   func test_equatable() {
     XCTAssertEqual(Dialog.template1, Dialog.template1)
@@ -29,8 +29,7 @@ final class DialogTests: XCTestCase {
             "name": "LeBron James"
           }
         ],
-        "messages": [
-          {
+        "lastMessage": {
             "id": "d6a696da-2c7a-4d27-87e3-6f63fd3e597f",
             "text": "hello world",
             "sender": {
@@ -40,9 +39,7 @@ final class DialogTests: XCTestCase {
             },
             "createTime": "2021-07-14T09:54:22Z",
             "status": "sent"
-          }
-        ],
-        "isSavedToServer": true,
+          },
         "createTime": "2021-07-14T09:54:22Z"
       }
       """
@@ -52,74 +49,86 @@ final class DialogTests: XCTestCase {
     XCTAssertEqual(dialog?.id, "55b6cda0-f563-4eb8-88f9-28ff22a53cf7")
     XCTAssertEqual(dialog?.name, "SwiftUI")
     XCTAssertEqual(dialog?.members.count, 2)
-    XCTAssertEqual(dialog?.messages.count, 1)
+    XCTAssertNotNil(dialog?.lastMessage)
     XCTAssertEqual(dialog?.createTime, ISO8601DateFormatter().date(from: "2021-07-14T09:54:22Z"))
   }
 
-  func test_insertMessage_appended() {
-    let (m1, m2, m3) = sortedMessages()
-    var dialog = Dialog(members: [.template1, .template2], messages: [m1, m2])
+  func test_updatedLastMessage_lastMessageIsNil() {
+    var dialog = Dialog(members: [.template1, .template2], lastMessage: nil)
+    XCTAssertNil(dialog.lastMessage)
 
-    dialog = dialog.insert(m3)
-    XCTAssertEqual(dialog.messages, [m1, m2, m3])
+    dialog = dialog.updatedLastMessage(.textTemplate)
+    XCTAssertEqual(dialog.lastMessage, .textTemplate)
   }
 
-  func test_insertMessage_inserted() {
-    let (m1, m2, m3) = sortedMessages()
-    var dialog = Dialog(members: [.template1, .template2], messages: [m1, m3])
+  func test_updatedLastMessage_lastMessageUpdated() {
+    let (m1, m2, _) = sortedMessages()
 
-    dialog = dialog.insert(m2)
+    var dialog = Dialog(members: [.template1, .template2], lastMessage: m1)
+    XCTAssertEqual(dialog.lastMessage, m1)
 
-    XCTAssertEqual(dialog.messages, [m1, m2, m3])
+    dialog = dialog.updatedLastMessage(m2)
+    XCTAssertEqual(dialog.lastMessage, m2)
   }
 
-  func test_insertMessage_ignoreDuplicated() {
-    var dialog: Dialog = .empty
-    let message: Message = .textTemplate
+  func test_updatedLastMessage_ignored() {
+    let (m1, m2, _) = sortedMessages()
 
-    dialog = dialog.insert(message)
-    XCTAssertEqual(1, dialog.messages.count)
+    var dialog = Dialog(members: [.template1, .template2], lastMessage: m2)
+    XCTAssertEqual(dialog.lastMessage, m2)
 
-    dialog = dialog.insert(message)
-    XCTAssertEqual(1, dialog.messages.count)
+    dialog = dialog.updatedLastMessage(m1)
+    XCTAssertEqual(dialog.lastMessage, m2)
   }
 
   func test_comparable() {
-    let d1 = Dialog(
+    var d1 = Dialog(
       id: generateUUID(),
       name: "",
       members: [],
-      messages: [],
-      isSavedToServer: false,
+      lastMessage: .init(text: "", createTime: Date()),
       createTime: Date()
     )
-    let d2 = Dialog(
+    var d2 = Dialog(
       id: generateUUID(),
       name: "",
       members: [],
-      messages: [],
-      isSavedToServer: false,
+      lastMessage: .init(text: "", createTime: Date().addingTimeInterval(10)),
       createTime: Date()
     )
-    XCTAssertTrue(d1 > d2)
+    XCTAssertTrue(d2 < d1)
 
-    let d3 = Dialog(
+    d1 = Dialog(
       id: generateUUID(),
       name: "",
       members: [],
-      messages: [],
-      isSavedToServer: false,
+      lastMessage: .init(text: "", createTime: Date()),
       createTime: Date()
     )
-    let d4 = Dialog(
+    d2 = Dialog(
       id: generateUUID(),
       name: "",
       members: [],
-      messages: [],
-      isSavedToServer: false,
+      lastMessage: nil,
       createTime: Date().addingTimeInterval(10)
     )
-    XCTAssertTrue(d3 > d4)
+    XCTAssertTrue(d2 < d1)
+
+    d1 = Dialog(
+      id: generateUUID(),
+      name: "",
+      members: [],
+      lastMessage: nil,
+      createTime: Date()
+    )
+    d2 = Dialog(
+      id: generateUUID(),
+      name: "",
+      members: [],
+      lastMessage: nil,
+      createTime: Date().addingTimeInterval(10)
+    )
+    XCTAssertTrue(d2 < d1)
   }
 
   func test_isIndividual() {
@@ -146,16 +155,5 @@ final class DialogTests: XCTestCase {
       dialog = Dialog(members: [.template1, .template2, member])
       XCTAssertNil(dialog.individualChatMember)
     }
-  }
-}
-
-// MARK: - Helper Methods
-private extension DialogTests {
-  func sortedMessages() -> (Message, Message, Message) {
-    let now = Date()
-    let m1 = Message(text: "1", createTime: now)
-    let m2 = Message(text: "2", createTime: now.addingTimeInterval(10))
-    let m3 = Message(text: "3", createTime: now.addingTimeInterval(20))
-    return (m1, m2, m3)
   }
 }

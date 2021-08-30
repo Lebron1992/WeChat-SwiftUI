@@ -5,7 +5,7 @@ struct AppState: ReduxState, Equatable {
 
   var authState = AuthState(signedInUser: nil)
 
-  var chatsState = ChatsState(dialogs: [])
+  var chatsState = ChatsState(dialogs: [], dialogMessages: [])
 
   var contactsState = ContactsState(
     categories: ContactCategory.allCases,

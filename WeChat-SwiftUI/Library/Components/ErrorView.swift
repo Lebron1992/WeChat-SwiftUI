@@ -22,12 +22,7 @@ struct ErrorView: View {
 struct ErrorView_Previews: PreviewProvider {
   static var previews: some View {
     ErrorView(
-      error: NSError(
-        domain: "",
-        code: 0,
-        userInfo: [
-          NSLocalizedDescriptionKey: Strings.general_something_went_wrong()]
-      ),
+      error: NSError.commonError(description: Strings.general_something_went_wrong()),
       retryAction: { }
     )
   }

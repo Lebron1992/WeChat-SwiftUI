@@ -10,13 +10,17 @@ struct DialogView: ConnectedView {
 
   struct Props {
     let dialog: Dialog
-    let sendMessageInDialog: (Message, Dialog) -> Void
+    let messages: [Message]
+    let loadMessages: (Dialog) -> Void
+    let sendMessage: (Message, Dialog) -> Void
   }
 
   func map(state: AppState, dispatch: @escaping Dispatch) -> Props {
     Props(
       dialog: state.chatsState.dialogs.element(matching: dialog),
-      sendMessageInDialog: { dispatch(ChatsActions.SendMessageInDialog(message: $0, dialog: $1)) }
+      messages: state.chatsState.dialogMessages.first(where: { $0.dialogId == dialog.id })?.messages ?? [],
+      loadMessages: { dispatch(ChatsActions.LoadMessagesForDialog(dialog: $0)) },
+      sendMessage: { dispatch(ChatsActions.SendMessageInDialog(message: $0, dialog: $1)) }
     )
   }
 
@@ -26,13 +30,14 @@ struct DialogView: ConnectedView {
       chatInputPanel(props: props)
     }
     .navigationTitle(props.dialog.name ?? "")
+    .onAppear(perform: { props.loadMessages(dialog) })
   }
 }
 
 // MARK: - Views
 private extension DialogView {
   func messagesList(props: Props) -> some View {
-    MessagesList(messages: props.dialog.messages)
+    MessagesList(messages: props.messages)
       .resignKeyboardOnDrag {
         dismissKeyboard = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -63,7 +68,7 @@ private extension DialogView {
     }
     let message = Message(text: text)
     withAnimation {
-      props.sendMessageInDialog(message, props.dialog)
+      props.sendMessage(message, props.dialog)
     }
   }
 }

@@ -97,6 +97,12 @@ extension Message {
   }
 }
 
+extension Message: Comparable {
+  static func < (lhs: Message, rhs: Message) -> Bool {
+    lhs.createTime < rhs.createTime
+  }
+}
+
 extension Message: CustomDebugStringConvertible {
   var debugDescription: String {
     if isTextMsg {

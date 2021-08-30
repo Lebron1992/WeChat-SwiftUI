@@ -5,7 +5,7 @@ private let authStateKey = AppState.ArchiveKeys.authState.rawValue
 private let templateAuthState = AuthState(signedInUser: .template)
 
 private let chatsStateKey = AppState.ArchiveKeys.chatsState.rawValue
-private let templateChatsState = ChatsState(dialogs: [.template1])
+private let templateChatsState = ChatsState(dialogs: [.template1], dialogMessages: [.template1])
 
 private let templateDataJSON: [String: Any] = [
   authStateKey: templateAuthState.dictionaryRepresentation as Any,
@@ -74,7 +74,7 @@ final class AppStateTests: XCTestCase {
       )
 
       let newAuthState = AuthState(signedInUser: nil)
-      let newChatsState = ChatsState(dialogs: [])
+      let newChatsState = ChatsState(dialogs: [], dialogMessages: [])
       appState.authState = newAuthState
       appState.chatsState = newChatsState
       appState.archive()
@@ -159,8 +159,8 @@ private extension AppStateTests {
   func appStatesWithDifferentChatsState() -> (AppState, AppState) {
     var state1: AppState = .preview
     var state2: AppState = .preview
-    state1.chatsState = ChatsState(dialogs: [.empty])
-    state2.chatsState = ChatsState(dialogs: [.empty, .template1])
+    state1.chatsState = ChatsState(dialogs: [.empty], dialogMessages: [.template1])
+    state2.chatsState = ChatsState(dialogs: [.empty, .template1], dialogMessages: [.template2])
     return (state1, state2)
   }
 

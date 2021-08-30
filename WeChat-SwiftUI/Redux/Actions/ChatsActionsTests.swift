@@ -3,7 +3,7 @@ import SwiftUIRedux
 @testable import WeChat_SwiftUI
 
 // swiftlint:disable force_cast
-final class ChatsActionsTests: XCTestCase, ReduxTestCase {
+final class ChatsActionsTests: XCTestCase, AppStateDataSource {
 
   private var mockStore: MockStore!
 
@@ -17,14 +17,95 @@ final class ChatsActionsTests: XCTestCase, ReduxTestCase {
     mockStore = nil
   }
 
-  func test_sendMessageInDialog_dialogIsNotSavedToServer() {
-    let message = Message(text: "Hello")
-    let dialog = Dialog(members: [.template1, .template2], messages: [message])
+  func test_loadDialogs_success() {
+    let dialogs: [Dialog] = [.empty, .template1]
+    let mockService = FirestoreServiceMock(loadDialogsResponse: dialogs)
 
-    let appState = preparedAppState(with: [dialog])
+    withEnvironment(firestoreService: mockService) {
+      mockStore.dispatch(action: ChatsActions.LoadDialogs())
+      wait {
+        XCTAssertEqual(self.mockStore.actions.count, 2)
+        XCTAssertEqual(
+          self.mockStore.actions[0] as! ChatsActions.LoadDialogs,
+          ChatsActions.LoadDialogs()
+        )
+        XCTAssertEqual(
+          self.mockStore.actions[1] as! ChatsActions.SetDialogs,
+          ChatsActions.SetDialogs(dialogs: dialogs)
+        )
+      }
+    }
+  }
+
+  func test_loadDialogs_failed() {
+    let mockService = FirestoreServiceMock(loadDialogsError: NSError.unknowError)
+
+    withEnvironment(firestoreService: mockService) {
+      mockStore.dispatch(action: ChatsActions.LoadDialogs())
+      wait {
+        XCTAssertEqual(self.mockStore.actions.count, 2)
+        XCTAssertEqual(
+          self.mockStore.actions[0] as! ChatsActions.LoadDialogs,
+          ChatsActions.LoadDialogs()
+        )
+        XCTAssertEqual(
+          self.mockStore.actions[1] as! SystemActions.SetErrorMessage,
+          SystemActions.SetErrorMessage(message: NSError.unknowError.localizedDescription)
+        )
+      }
+    }
+  }
+
+  func test_loadMessagesForDialog_success() {
+    let messages: [Message] = [.textTemplate, .textTemplate2]
+    let mockService = FirestoreServiceMock(loadMessagesResponse: messages)
+
+    withEnvironment(firestoreService: mockService) {
+      mockStore.dispatch(action: ChatsActions.LoadMessagesForDialog(dialog: .empty))
+      wait {
+        XCTAssertEqual(self.mockStore.actions.count, 2)
+        XCTAssertEqual(
+          self.mockStore.actions[0] as! ChatsActions.LoadMessagesForDialog,
+          ChatsActions.LoadMessagesForDialog(dialog: .empty)
+        )
+        XCTAssertEqual(
+          self.mockStore.actions[1] as! ChatsActions.SetMessagesForDialog,
+          ChatsActions.SetMessagesForDialog(messages: messages, dialog: .empty)
+        )
+      }
+    }
+  }
+
+  func test_loadMessagesForDialog_failed() {
+    let mockService = FirestoreServiceMock(loadMessagesError: NSError.unknowError)
+
+    withEnvironment(firestoreService: mockService) {
+      mockStore.dispatch(action: ChatsActions.LoadMessagesForDialog(dialog: .empty))
+      wait {
+        XCTAssertEqual(self.mockStore.actions.count, 2)
+        XCTAssertEqual(
+          self.mockStore.actions[0] as! ChatsActions.LoadMessagesForDialog,
+          ChatsActions.LoadMessagesForDialog(dialog: .empty)
+        )
+        XCTAssertEqual(
+          self.mockStore.actions[1] as! SystemActions.SetErrorMessage,
+          SystemActions.SetErrorMessage(message: NSError.unknowError.localizedDescription)
+        )
+      }
+    }
+  }
+
+  func test_sendMessageInDialog_success() {
+    let message = Message(text: "Hello")
+    let sendingMessage = message.setStatus(.sending)
+    let sentMessage = message.setStatus(.sent)
+    let dialog = Dialog(members: [.template1, .template2])
+    let dialogMessages = DialogMessages(dialogId: dialog.id, messages: [message])
+
+    let appState = preparedAppState(dialogs: [dialog], dialogMessages: [dialogMessages])
     mockStore = MockStore(initialState: appState, reducer: appStateReducer)
 
-    let mockService = FirestoreServiceMock(overrideDialogError: nil)
+    let mockService = FirestoreServiceMock(insertMessageError: nil, overrideDialogError: nil)
 
     withEnvironment(firestoreService: mockService) {
       mockStore.dispatch(action: ChatsActions.SendMessageInDialog(message: message, dialog: dialog))
@@ -40,25 +121,25 @@ final class ChatsActionsTests: XCTestCase, ReduxTestCase {
           ChatsActions.InsertMessageToDialog(message: message.setStatus(.sending), dialog: dialog)
         )
         XCTAssertEqual(
-          self.mockStore.actions[2] as! ChatsActions.SetDialogIsSavedToServer,
-          ChatsActions.SetDialogIsSavedToServer(dialog: dialog, isSaved: true)
+          self.mockStore.actions[2] as! ChatsActions.SetMessageStatusInDialog,
+          ChatsActions.SetMessageStatusInDialog(message: sendingMessage, status: .sent, dialog: dialog)
         )
         XCTAssertEqual(
-          self.mockStore.actions[3] as! ChatsActions.SetMessageStatusInDialog,
-          ChatsActions.SetMessageStatusInDialog(message: message, status: .sent, dialog: dialog)
+          self.mockStore.actions[3] as! ChatsActions.SetDialogLastMessage,
+          ChatsActions.SetDialogLastMessage(dialog: dialog, lastMessage: sentMessage)
         )
       }
     }
   }
 
-  func test_sendMessageInDialog_dialogIsSavedToServer() {
+  func test_sendMessageInDialog_failed() {
     let message = Message(text: "Hello")
-    let dialog = Dialog(members: [.template1, .template2], messages: [message], isSavedToServer: true)
-
-    let appState = preparedAppState(with: [dialog])
+    let dialog = Dialog(members: [.template1, .template2])
+    let dialogMessages = DialogMessages(dialogId: dialog.id, messages: [message])
+    let appState = preparedAppState(dialogs: [dialog], dialogMessages: [dialogMessages])
     mockStore = MockStore(initialState: appState, reducer: appStateReducer)
 
-    let mockService = FirestoreServiceMock(insertMessageError: nil)
+    let mockService = FirestoreServiceMock(insertMessageError: NSError.unknowError)
 
     withEnvironment(firestoreService: mockService) {
       mockStore.dispatch(action: ChatsActions.SendMessageInDialog(message: message, dialog: dialog))
@@ -74,8 +155,8 @@ final class ChatsActionsTests: XCTestCase, ReduxTestCase {
           ChatsActions.InsertMessageToDialog(message: message.setStatus(.sending), dialog: dialog)
         )
         XCTAssertEqual(
-          self.mockStore.actions[2] as! ChatsActions.SetMessageStatusInDialog,
-          ChatsActions.SetMessageStatusInDialog(message: message, status: .sent, dialog: dialog)
+          self.mockStore.actions[2] as! SystemActions.SetErrorMessage,
+          SystemActions.SetErrorMessage(message: NSError.unknowError.localizedDescription)
         )
       }
     }

@@ -4,30 +4,27 @@ struct Dialog: Codable, Identifiable, Equatable {
   let id: String
   let name: String?
   let members: [Member]
-  let messages: [Message]
-  let isSavedToServer: Bool
+  let lastMessage: Message?
   let createTime: Date
 
   init(
     id: String,
     name: String?,
     members: [Member],
-    messages: [Message],
-    isSavedToServer: Bool,
+    lastMessage: Message?,
     createTime: Date
   ) {
     self.id = id
     self.name = name
     self.members = members
-    self.messages = messages
-    self.isSavedToServer = isSavedToServer
+    self.lastMessage = lastMessage
     self.createTime = createTime
   }
 
   init(
     members: [Member],
-    messages: [Message] = [],
-    isSavedToServer: Bool = false
+    lastMessage: Message? = nil,
+    createTime: Date = Date()
   ) {
 
     let name: String? = {
@@ -43,9 +40,8 @@ struct Dialog: Codable, Identifiable, Equatable {
       id: generateUUID(),
       name: name,
       members: members,
-      messages: messages,
-      isSavedToServer: isSavedToServer,
-      createTime: Date()
+      lastMessage: lastMessage,
+      createTime: createTime
     )
   }
 }
@@ -83,35 +79,22 @@ extension Dialog {
 
 // MARK: - Mutations
 extension Dialog {
-  func insert(_ message: Message) -> Dialog {
-    guard messages.contains(message) == false else {
+  func updatedLastMessage(_ message: Message) -> Dialog {
+    guard lastMessage == nil || message.createTime > lastMessage!.createTime else {
       return self
     }
-
-    var newMessages = messages
-
-    if let index = newMessages.firstIndex(where: { $0.createTime > message.createTime }) {
-      newMessages.insert(message, at: index)
-    } else {
-      newMessages.append(message)
-    }
-
-    return setMessages(newMessages)
+    return setLastMessage(message)
   }
 }
 
 // MARK: - Getters
 extension Dialog {
   var lastMessageText: String? {
-    messages.last?.text
-  }
-
-  var lastMessageTime: Date? {
-    messages.last?.createTime
+    lastMessage?.text
   }
 
   var lastMessageTimeString: String? {
-    guard let time = lastMessageTime else {
+    guard let time = lastMessage?.createTime else {
       return nil
     }
     // TODO: test for now
@@ -138,10 +121,12 @@ extension Dialog {
 
 extension Dialog: Comparable {
   static func < (lhs: Dialog, rhs: Dialog) -> Bool {
-    if let lhsLastTime = lhs.lastMessageTime, let rhsLastTime = rhs.lastMessageTime {
-      return lhsLastTime > rhsLastTime
+    switch (lhs.lastMessage, rhs.lastMessage) {
+    case (.some(let lm), .some(let rm)):
+      return lm.createTime > rm.createTime
+    default:
+      return lhs.createTime > rhs.createTime
     }
-    return lhs.createTime > rhs.createTime
   }
 }
 
