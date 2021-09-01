@@ -68,7 +68,7 @@ private extension ContactsList {
       .groupedBy { $0.index }
       .sorted(by: { $0.key < $1.key })
 
-    return ScrollViewReader { proxy in
+    return ScrollViewReader { scrollView in
       ZStack {
         groupedContactsList(contactGroups)
         if showLoading {
@@ -76,7 +76,7 @@ private extension ContactsList {
         }
       }
       .overlay(
-        SectionIndexTitles(proxy: proxy, titles: contactGroups.map { $0.key })
+        SectionIndexTitles(scrollView: scrollView, titles: contactGroups.map { $0.key })
           .frame(maxWidth: .infinity, alignment: .trailing)
           .padding(.trailing, 2)
       )

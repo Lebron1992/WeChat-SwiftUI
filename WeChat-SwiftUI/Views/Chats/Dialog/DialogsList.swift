@@ -40,7 +40,9 @@ struct DialogsList: ConnectedView {
 // MARK: - Helper Methods
 private extension DialogsList {
   func handleDialogChanges(_ dialogChanges: [DialogChange]) {
-    store.dispatch(action: ChatsActions.UpdateDialogs(dialogChanges: dialogChanges))
+    withAnimation {
+      store.dispatch(action: ChatsActions.UpdateDialogs(dialogChanges: dialogChanges))
+    }
   }
 }
 

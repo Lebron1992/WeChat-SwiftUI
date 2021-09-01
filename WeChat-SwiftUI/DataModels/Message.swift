@@ -103,6 +103,12 @@ extension Message: Comparable {
   }
 }
 
+extension Message: Hashable {
+  func hash(into hasher: inout Hasher) {
+    hasher.combine(id)
+  }
+}
+
 extension Message: CustomDebugStringConvertible {
   var debugDescription: String {
     if isTextMsg {

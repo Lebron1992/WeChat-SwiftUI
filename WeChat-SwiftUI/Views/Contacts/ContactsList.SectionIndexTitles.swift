@@ -3,7 +3,7 @@ import SwiftUI
 extension ContactsList {
   struct SectionIndexTitles: View {
 
-    let proxy: ScrollViewProxy
+    let scrollView: ScrollViewProxy
     let titles: [String]
 
     @GestureState
@@ -93,7 +93,7 @@ extension ContactsList {
       guard selectedTitle != title else {
         return
       }
-      proxy.scrollTo(title, anchor: .top)
+      scrollView.scrollTo(title, anchor: .top)
       selectedTitle = title
       Haptics.impact(.light)
     }

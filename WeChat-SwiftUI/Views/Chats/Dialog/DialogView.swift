@@ -29,13 +29,22 @@ struct DialogView: ConnectedView {
   }
 
   func body(props: Props) -> some View {
-    VStack(spacing: 0) {
-      messagesList(props: props)
-      chatInputPanel(props: props)
+    ScrollViewReader { scrollView in
+      VStack(spacing: 0) {
+        messagesList(props: props)
+        chatInputPanel(props: props)
+      }
+      .onChange(of: props.messages) { scrollToLastMessage($0.last, with: scrollView) }
+      .onAppear {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.001) {
+          // 不延迟的话，scroll 无效
+          scrollToLastMessage(props.messages.last, with: scrollView, animated: false)
+        }
+      }
     }
     .navigationTitle(props.dialog.name ?? "")
-    .onAppear(perform: { props.loadMessages(viewModel.dialog) })
-    .onChange(of: viewModel.messageChanges, perform: { handleMessageChanges($0, for: props.dialog) })
+    .onAppear { props.loadMessages(viewModel.dialog) }
+    .onChange(of: viewModel.messageChanges) { handleMessageChanges($0, for: props.dialog) }
   }
 }
 
@@ -85,6 +94,23 @@ private extension DialogView {
       messageChanges: messageChanges,
       dialog: dialog
     ))
+  }
+
+  func scrollToLastMessage(
+    _ message: Message?,
+    with scrollView: ScrollViewProxy,
+    animated: Bool = true
+  ) {
+    guard let message = message else {
+      return
+    }
+    if animated {
+      withAnimation {
+        scrollView.scrollTo(message, anchor: .bottom)
+      }
+    } else {
+      scrollView.scrollTo(message, anchor: .bottom)
+    }
   }
 }
 
