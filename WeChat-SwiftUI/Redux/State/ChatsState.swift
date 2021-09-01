@@ -39,6 +39,17 @@ extension ChatsState {
     }
   }
 
+  mutating func updateMessages(with messageChanges: [MessageChange], for dialog: Dialog) {
+    messageChanges.forEach { change in
+      switch change.changeType {
+      case .added, .modified:
+        self.insert(change.message, to: dialog)
+      case .removed:
+        self.remove(change.message, from: dialog)
+      }
+    }
+  }
+
   mutating func insert(_ message: Message, to dialog: Dialog) {
 
     // update dialogs
@@ -82,6 +93,7 @@ private extension ChatsState {
   mutating func insert(_ dialog: Dialog) {
     if let index = dialogs.index(matching: dialog) {
       dialogs[index] = dialog
+      dialogs.sort()
     } else if let index = dialogs.firstIndex(where: { dialog < $0 }) {
       dialogs.insert(dialog, at: index)
     } else {
@@ -91,6 +103,22 @@ private extension ChatsState {
 
   mutating func remove(_ dialog: Dialog) {
     dialogs.removeAll(where: { $0.id == dialog.id })
+  }
+
+  mutating func remove(_ message: Message, from dialog: Dialog) {
+    guard var existingDM = dialogMessages.first(where: { $0.dialogId == dialog.id }) else {
+      return
+    }
+    let newDM = existingDM.removed(message)
+    dialogMessages.update(with: newDM)
+
+    // update dialog's last message
+
+    if let dialogIndex = dialogs.index(matching: dialog),
+       dialogs[dialogIndex].lastMessage == message,
+       let lastMessage = newDM.messages.last {
+      dialogs[dialogIndex] = dialogs[dialogIndex].updatedLastMessage(lastMessage)
+    }
   }
 }
 

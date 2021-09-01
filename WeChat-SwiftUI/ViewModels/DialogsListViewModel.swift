@@ -4,10 +4,10 @@ import FirebaseFirestore
 import SwiftUIRedux
 
 final class DialogsListViewModel: ObservableObject {
-  private var dialogsListener: ListenerRegistration?
 
   @Published
   private(set) var dialogChanges: [DialogChange] = []
+  private var dialogsListener: ListenerRegistration?
 
   init() {
     dialogsListener = FirestoreReferenceFactory

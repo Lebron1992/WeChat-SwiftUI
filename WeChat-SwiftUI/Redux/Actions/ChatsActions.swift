@@ -50,6 +50,11 @@ enum ChatsActions {
     let dialog: Dialog
   }
 
+  struct UpdateMessagesForDialog: Action, Equatable {
+    let messageChanges: [MessageChange]
+    let dialog: Dialog
+  }
+
   struct SendMessageInDialog: AsyncAction, Equatable {
     let message: Message
     let dialog: Dialog

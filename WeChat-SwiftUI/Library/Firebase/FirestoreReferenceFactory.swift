@@ -8,6 +8,7 @@ enum FirestoreReferenceFactory {
 
 enum FirestoreReferenceType {
   case dialogs
+  case dialogMessages(dialogId: String)
   case officialAccounts
   case users
 
@@ -15,6 +16,8 @@ enum FirestoreReferenceType {
     switch self {
     case .dialogs:
       return ["dialogs"]
+    case .dialogMessages(let dialogId):
+      return ["dialogs", dialogId, "messages"]
     case .officialAccounts:
       return ["officialAccounts"]
     case .users:

@@ -126,7 +126,7 @@ private extension ContactDetail {
     return NavigationLink(
       tag: NavigationSelection.messages,
       selection: $navigationSelection,
-      destination: { DialogView(dialog: dialog) }
+      destination: { DialogView(viewModel: .init(dialog: dialog)) }
     ) {
       Button {
         navigationSelection = .messages

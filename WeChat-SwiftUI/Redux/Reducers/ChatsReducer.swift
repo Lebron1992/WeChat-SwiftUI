@@ -13,6 +13,9 @@ func chatsStateReducer(state: ChatsState, action: Action) -> ChatsState {
   case let action as ChatsActions.SetMessagesForDialog:
     newState.set(action.messages.sorted(), for: action.dialog)
 
+  case let action as ChatsActions.UpdateMessagesForDialog:
+    newState.updateMessages(with: action.messageChanges, for: action.dialog)
+
   case let action as ChatsActions.InsertMessageToDialog:
     newState.insert(action.message, to: action.dialog)
 

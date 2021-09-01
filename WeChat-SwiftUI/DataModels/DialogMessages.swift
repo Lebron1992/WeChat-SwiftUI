@@ -16,11 +16,19 @@ extension DialogMessages {
 
   @discardableResult
   mutating func inserted(_ message: Message) -> DialogMessages {
-    if let index = messages.firstIndex(where: { message.createTime < $0.createTime  }) {
+    if let index = messages.index(matching: message) {
+      messages[index] = message
+    } else if let index = messages.firstIndex(where: { message.createTime < $0.createTime  }) {
       messages.insert(message, at: index)
     } else {
       messages.append(message)
     }
+    return self
+  }
+
+  @discardableResult
+  mutating func removed(_ message: Message) -> DialogMessages {
+    messages.removeAll { $0.id == message.id }
     return self
   }
 

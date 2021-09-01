@@ -3,7 +3,11 @@ import SwiftUIRedux
 
 struct DialogView: ConnectedView {
 
-  let dialog: Dialog
+  @StateObject
+  var viewModel: DialogViewModel
+
+  @EnvironmentObject
+  private var store: Store<AppState>
 
   @State
   private var dismissKeyboard = false
@@ -17,8 +21,8 @@ struct DialogView: ConnectedView {
 
   func map(state: AppState, dispatch: @escaping Dispatch) -> Props {
     Props(
-      dialog: state.chatsState.dialogs.element(matching: dialog),
-      messages: state.chatsState.dialogMessages.first(where: { $0.dialogId == dialog.id })?.messages ?? [],
+      dialog: state.chatsState.dialogs.element(matching: viewModel.dialog),
+      messages: state.chatsState.dialogMessages.first(where: { $0.dialogId == viewModel.dialog.id })?.messages ?? [],
       loadMessages: { dispatch(ChatsActions.LoadMessagesForDialog(dialog: $0)) },
       sendMessage: { dispatch(ChatsActions.SendMessageInDialog(message: $0, dialog: $1)) }
     )
@@ -30,7 +34,8 @@ struct DialogView: ConnectedView {
       chatInputPanel(props: props)
     }
     .navigationTitle(props.dialog.name ?? "")
-    .onAppear(perform: { props.loadMessages(dialog) })
+    .onAppear(perform: { props.loadMessages(viewModel.dialog) })
+    .onChange(of: viewModel.messageChanges, perform: { handleMessageChanges($0, for: props.dialog) })
   }
 }
 
@@ -73,9 +78,19 @@ private extension DialogView {
   }
 }
 
+// MARK: - Helper Methods
+private extension DialogView {
+  func handleMessageChanges(_ messageChanges: [MessageChange], for dialog: Dialog) {
+    store.dispatch(action: ChatsActions.UpdateMessagesForDialog(
+      messageChanges: messageChanges,
+      dialog: dialog
+    ))
+  }
+}
+
 struct DialogView_Previews: PreviewProvider {
   static var previews: some View {
-    DialogView(dialog: .template1)
+    DialogView(viewModel: .init(dialog: .template1))
       .onAppear { AppEnvironment.updateCurrentUser(.template) }
   }
 }

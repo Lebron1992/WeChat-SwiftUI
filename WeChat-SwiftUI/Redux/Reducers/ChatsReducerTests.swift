@@ -84,6 +84,53 @@ final class ChatsReducerTests: XCTestCase, AppStateDataSource, MessagesDataSourc
     }
   }
 
+  func test_handleUpdateMessagesForDialog_added() {
+    let (m1, m2, m3) = sortedMessages()
+    let dialog = Dialog(members: [.template2, .template3])
+    let appState = preparedAppState(dialogs: [], dialogMessages: [])
+    store = Store(initialState: appState, reducer: appStateReducer)
+    let messageChanges = [m1, m2, m3].map { MessageChange(message: $0, changeType: .added) }
+    store.dispatch(action: ChatsActions.UpdateMessagesForDialog(messageChanges: messageChanges, dialog: dialog))
+    wait {
+      XCTAssertEqual(
+        self.store.state.chatsState.dialogMessages.first!.messages,
+        [m1, m2, m3]
+      )
+    }
+  }
+
+  func test_handleUpdateMessagesForDialog_modified() {
+    let (m1, m2, m3) = sortedMessages()
+    let dialog = Dialog(members: [.template2, .template3])
+    let dm = DialogMessages(dialogId: dialog.id, messages: [m1, m2, m3])
+    let appState = preparedAppState(dialogs: [dialog], dialogMessages: [dm])
+    store = Store(initialState: appState, reducer: appStateReducer)
+    let mc1 = MessageChange(message: m1.setStatus(.sent), changeType: .modified)
+    store.dispatch(action: ChatsActions.UpdateMessagesForDialog(messageChanges: [mc1], dialog: dialog))
+    wait {
+      XCTAssertEqual(
+        self.store.state.chatsState.dialogMessages.first!.messages,
+        [m1.setStatus(.sent), m2, m3]
+      )
+    }
+  }
+
+  func test_handleUpdateMessagesForDialog_removed() {
+    let (m1, m2, m3) = sortedMessages()
+    let dialog = Dialog(members: [.template2, .template3])
+    let dm = DialogMessages(dialogId: dialog.id, messages: [m1, m2, m3])
+    let appState = preparedAppState(dialogs: [dialog], dialogMessages: [dm])
+    store = Store(initialState: appState, reducer: appStateReducer)
+    let mc1 = MessageChange(message: m1.setStatus(.sent), changeType: .removed)
+    store.dispatch(action: ChatsActions.UpdateMessagesForDialog(messageChanges: [mc1], dialog: dialog))
+    wait {
+      XCTAssertEqual(
+        self.store.state.chatsState.dialogMessages.first!.messages,
+        [m2, m3]
+      )
+    }
+  }
+
   func test_handleSetMessagesForDialog_messagesInserted() {
     let (m1, m2, m3) = sortedMessages()
     let dialog = Dialog(members: [.template1, .template2])

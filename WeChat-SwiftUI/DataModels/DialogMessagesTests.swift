@@ -38,6 +38,13 @@ final class DialogMessagesTests: XCTestCase, MessagesDataSource {
     XCTAssertEqual([m1, m2, m3], dm.messages)
   }
 
+  func test_removedMessage() {
+    let (m1, m2, m3) = sortedMessages()
+    var dm = DialogMessages(dialogId: generateUUID(), messages: [m1, m2, m3])
+    dm.removed(m3)
+    XCTAssertEqual([m1, m2], dm.messages)
+  }
+
   func test_updatedStatusForMessage() {
     let (m1, _, _) = sortedMessages()
     var dm = DialogMessages(dialogId: generateUUID(), messages: [m1])

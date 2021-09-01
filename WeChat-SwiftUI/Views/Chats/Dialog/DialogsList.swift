@@ -24,7 +24,7 @@ struct DialogsList: ConnectedView {
   func body(props: Props) -> some View {
     List {
       ForEach(props.dialogs) { dialog in
-        NavigationRow(destination: DialogView(dialog: dialog)) {
+        NavigationRow(destination: DialogView(viewModel: .init(dialog: dialog))) {
           DialogRow(dialog: dialog)
         }
       }

@@ -71,6 +71,8 @@
 		FD76128226DE358C00D78016 /* FirestoreReferenceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD76128126DE358C00D78016 /* FirestoreReferenceFactory.swift */; };
 		FD76128426DE7AE700D78016 /* DialogChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD76128326DE7AE700D78016 /* DialogChange.swift */; };
 		FD76128626DF0A7E00D78016 /* DialogChangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD76128526DF0A7E00D78016 /* DialogChangeTests.swift */; };
+		FD76128826DF168000D78016 /* DialogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD76128726DF168000D78016 /* DialogViewModel.swift */; };
+		FD76128A26DF17BB00D78016 /* MessageChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD76128926DF17BB00D78016 /* MessageChange.swift */; };
 		FD76764B26A31DBB0050457D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD76764A26A31DBB0050457D /* GoogleService-Info.plist */; };
 		FD76764E26A3C1DF0050457D /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD76764D26A3C1DF0050457D /* OnboardingView.swift */; };
 		FD76765026A3D1DB0050457D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD76764F26A3D1DB0050457D /* ContentView.swift */; };
@@ -213,6 +215,7 @@
 		FDCC729D2673496800A48140 /* CancelBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC729C2673496800A48140 /* CancelBag.swift */; };
 		FDCC729F2673499700A48140 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC729E2673499700A48140 /* APIError.swift */; };
 		FDF568D826B79D9900033094 /* User+Setters.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF568D726B79D9900033094 /* User+Setters.swift */; };
+		FDF98F8326DF5A0100D192F2 /* MessageChangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF98F8226DF5A0100D192F2 /* MessageChangeTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -302,6 +305,8 @@
 		FD76128126DE358C00D78016 /* FirestoreReferenceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreReferenceFactory.swift; sourceTree = "<group>"; };
 		FD76128326DE7AE700D78016 /* DialogChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogChange.swift; sourceTree = "<group>"; };
 		FD76128526DF0A7E00D78016 /* DialogChangeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogChangeTests.swift; sourceTree = "<group>"; };
+		FD76128726DF168000D78016 /* DialogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogViewModel.swift; sourceTree = "<group>"; };
+		FD76128926DF17BB00D78016 /* MessageChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageChange.swift; sourceTree = "<group>"; };
 		FD76764A26A31DBB0050457D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FD76764D26A3C1DF0050457D /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		FD76764F26A3D1DB0050457D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -446,6 +451,7 @@
 		FDCC729C2673496800A48140 /* CancelBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelBag.swift; sourceTree = "<group>"; };
 		FDCC729E2673499700A48140 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		FDF568D726B79D9900033094 /* User+Setters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Setters.swift"; sourceTree = "<group>"; };
+		FDF98F8226DF5A0100D192F2 /* MessageChangeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageChangeTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -550,7 +556,7 @@
 			path = OurOwnBackend;
 			sourceTree = "<group>";
 		};
-		FD76128026DE353700D78016 /* FirebaseFirestore */ = {
+		FD76128026DE353700D78016 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
 				FD703D1926B8E9E200565E4C /* FirebaseStorageService.swift */,
@@ -558,7 +564,7 @@
 				FD9A857D26C8B5F400A39051 /* FirebaseStorageServiceType.swift */,
 				FD76128126DE358C00D78016 /* FirestoreReferenceFactory.swift */,
 			);
-			path = FirebaseFirestore;
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 		FD76764C26A3C1A90050457D /* Onboarding */ = {
@@ -743,6 +749,7 @@
 		FD9A857A26C8B07F00A39051 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				FD76128726DF168000D78016 /* DialogViewModel.swift */,
 				FD76127E26DE348000D78016 /* DialogsListViewModel.swift */,
 				FDC45E8A26D4F61400C44827 /* MyProfileFieldUpdateViewModel.swift */,
 				FDC45E8E26D4FD6600C44827 /* MyProfileFieldUpdateViewModelTests.swift */,
@@ -862,6 +869,8 @@
 				FDA907FD26ABCD1500805584 /* ExpressionStickerTests.swift */,
 				FD8809F8269EDF0F002D3396 /* Message.swift */,
 				FDC45EB826D8CB7700C44827 /* Message+Setters.swift */,
+				FD76128926DF17BB00D78016 /* MessageChange.swift */,
+				FDF98F8226DF5A0100D192F2 /* MessageChangeTests.swift */,
 				FD8809FA269EE76B002D3396 /* MessageTests.swift */,
 				FD6D378C26861A6D0087272F /* OfficialAccount.swift */,
 				FD6D378E268624520087272F /* OfficialAccountTests.swift */,
@@ -926,7 +935,7 @@
 				FD9A858E26C9EA8000A39051 /* ValueUpdateStatusTests.swift */,
 				FD882760267AFAA300BBEAB6 /* Components */,
 				FDCC72812671AC1800A48140 /* Extensions */,
-				FD76128026DE353700D78016 /* FirebaseFirestore */,
+				FD76128026DE353700D78016 /* Firebase */,
 				FD882782267F878500BBEAB6 /* Modifiers */,
 				FD8827942680987700BBEAB6 /* Styles */,
 				FDA9080326ABF62200805584 /* TestHelpers */,
@@ -1366,6 +1375,8 @@
 				FDC45EBF26DC680C00C44827 /* DialogMessages.swift in Sources */,
 				FD8827502679D88F00BBEAB6 /* ContactsView.swift in Sources */,
 				FD5412E726A811970001D199 /* SystemState.swift in Sources */,
+				FD76128A26DF17BB00D78016 /* MessageChange.swift in Sources */,
+				FD76128826DF168000D78016 /* DialogViewModel.swift in Sources */,
 				FD8809F7269EDE6F002D3396 /* MessageRowVideo.swift in Sources */,
 				FD88273E2679A3C300BBEAB6 /* AppReducer.swift in Sources */,
 				FD76127F26DE348000D78016 /* DialogsListViewModel.swift in Sources */,
@@ -1435,6 +1446,7 @@
 				FD9A858F26C9EA8000A39051 /* ValueUpdateStatusTests.swift in Sources */,
 				FDA9081226AD621200805584 /* ContactsStateTests.swift in Sources */,
 				FDCC726B266F650F00A48140 /* ServiceTypeTests.swift in Sources */,
+				FDF98F8326DF5A0100D192F2 /* MessageChangeTests.swift in Sources */,
 				FDA9080226ABEA3B00805584 /* LocalizedStringTests.swift in Sources */,
 				FDCC72852671AC7200A48140 /* Encodable+DictionaryTests.swift in Sources */,
 				FD9A859526CA11A400A39051 /* XCTestCase+Wait.swift in Sources */,
