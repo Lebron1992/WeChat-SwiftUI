@@ -32,7 +32,7 @@ struct DialogView: ConnectedView {
     ScrollViewReader { scrollView in
       VStack(spacing: 0) {
         messagesList(props: props)
-        chatInputPanel(props: props)
+        chatInputPanel(props: props, scrollView: scrollView)
       }
       .onChange(of: props.messages) { scrollToLastMessage($0.last, with: scrollView) }
       .onAppear {
@@ -66,9 +66,14 @@ private extension DialogView {
       }
   }
 
-  func chatInputPanel(props: Props) -> some View {
+  func chatInputPanel(props: Props, scrollView: ScrollViewProxy) -> some View {
     ChatInputPanel(
       dismissKeyboard: dismissKeyboard,
+      onInputStarted: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+          scrollToLastMessage(props.messages.last, with: scrollView)
+        }
+      },
       onSubmitText: { onSubmitText($0, props: props) }
     )
   }
