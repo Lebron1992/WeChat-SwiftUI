@@ -67,6 +67,10 @@
 		FD703D1A26B8E9E200565E4C /* FirebaseStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD703D1926B8E9E200565E4C /* FirebaseStorageService.swift */; };
 		FD703D1C26B8F1FE00565E4C /* MyProfileView.Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD703D1B26B8F1FE00565E4C /* MyProfileView.Row.swift */; };
 		FD703D2026B8F2A900565E4C /* MyProfilePhotoPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD703D1F26B8F2A900565E4C /* MyProfilePhotoPreview.swift */; };
+		FD76127F26DE348000D78016 /* DialogsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD76127E26DE348000D78016 /* DialogsListViewModel.swift */; };
+		FD76128226DE358C00D78016 /* FirestoreReferenceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD76128126DE358C00D78016 /* FirestoreReferenceFactory.swift */; };
+		FD76128426DE7AE700D78016 /* DialogChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD76128326DE7AE700D78016 /* DialogChange.swift */; };
+		FD76128626DF0A7E00D78016 /* DialogChangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD76128526DF0A7E00D78016 /* DialogChangeTests.swift */; };
 		FD76764B26A31DBB0050457D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD76764A26A31DBB0050457D /* GoogleService-Info.plist */; };
 		FD76764E26A3C1DF0050457D /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD76764D26A3C1DF0050457D /* OnboardingView.swift */; };
 		FD76765026A3D1DB0050457D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD76764F26A3D1DB0050457D /* ContentView.swift */; };
@@ -294,6 +298,10 @@
 		FD703D1926B8E9E200565E4C /* FirebaseStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageService.swift; sourceTree = "<group>"; };
 		FD703D1B26B8F1FE00565E4C /* MyProfileView.Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.Row.swift; sourceTree = "<group>"; };
 		FD703D1F26B8F2A900565E4C /* MyProfilePhotoPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfilePhotoPreview.swift; sourceTree = "<group>"; };
+		FD76127E26DE348000D78016 /* DialogsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogsListViewModel.swift; sourceTree = "<group>"; };
+		FD76128126DE358C00D78016 /* FirestoreReferenceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreReferenceFactory.swift; sourceTree = "<group>"; };
+		FD76128326DE7AE700D78016 /* DialogChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogChange.swift; sourceTree = "<group>"; };
+		FD76128526DF0A7E00D78016 /* DialogChangeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogChangeTests.swift; sourceTree = "<group>"; };
 		FD76764A26A31DBB0050457D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FD76764D26A3C1DF0050457D /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		FD76764F26A3D1DB0050457D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -542,6 +550,17 @@
 			path = OurOwnBackend;
 			sourceTree = "<group>";
 		};
+		FD76128026DE353700D78016 /* FirebaseFirestore */ = {
+			isa = PBXGroup;
+			children = (
+				FD703D1926B8E9E200565E4C /* FirebaseStorageService.swift */,
+				FD9A858126C8BAFF00A39051 /* FirebaseStorageServiceMock.swift */,
+				FD9A857D26C8B5F400A39051 /* FirebaseStorageServiceType.swift */,
+				FD76128126DE358C00D78016 /* FirestoreReferenceFactory.swift */,
+			);
+			path = FirebaseFirestore;
+			sourceTree = "<group>";
+		};
 		FD76764C26A3C1A90050457D /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -724,6 +743,7 @@
 		FD9A857A26C8B07F00A39051 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				FD76127E26DE348000D78016 /* DialogsListViewModel.swift */,
 				FDC45E8A26D4F61400C44827 /* MyProfileFieldUpdateViewModel.swift */,
 				FDC45E8E26D4FD6600C44827 /* MyProfileFieldUpdateViewModelTests.swift */,
 				FD9A857B26C8B0A300A39051 /* MyProfilePhotoPreviewViewModel.swift */,
@@ -831,6 +851,8 @@
 				FD6D378A26861A110087272F /* ContactType.swift */,
 				FDAFA49926AEACCC00FD5C33 /* Dialog.swift */,
 				FDC45EAA26D73CA800C44827 /* Dialog+Setters.swift */,
+				FD76128326DE7AE700D78016 /* DialogChange.swift */,
+				FD76128526DF0A7E00D78016 /* DialogChangeTests.swift */,
 				FDC45EBE26DC680C00C44827 /* DialogMessages.swift */,
 				FD46236726DC82330021B397 /* DialogMessagesTests.swift */,
 				FDAFA49D26AEB14F00FD5C33 /* DialogTests.swift */,
@@ -884,9 +906,6 @@
 				FDCC724A266F190700A48140 /* Environment.swift */,
 				FDCC72732671087A00A48140 /* EnvironmentTests.swift */,
 				FD9A859026C9FDE000A39051 /* Errors.swift */,
-				FD703D1926B8E9E200565E4C /* FirebaseStorageService.swift */,
-				FD9A858126C8BAFF00A39051 /* FirebaseStorageServiceMock.swift */,
-				FD9A857D26C8B5F400A39051 /* FirebaseStorageServiceType.swift */,
 				FDC45EB026D7462500C44827 /* GenerateUUID.swift */,
 				FD88279C2681E1F100BBEAB6 /* Haptics.swift */,
 				FD9A857F26C8B62F00A39051 /* ImageFormat.swift */,
@@ -907,6 +926,7 @@
 				FD9A858E26C9EA8000A39051 /* ValueUpdateStatusTests.swift */,
 				FD882760267AFAA300BBEAB6 /* Components */,
 				FDCC72812671AC1800A48140 /* Extensions */,
+				FD76128026DE353700D78016 /* FirebaseFirestore */,
 				FD882782267F878500BBEAB6 /* Modifiers */,
 				FD8827942680987700BBEAB6 /* Styles */,
 				FDA9080326ABF62200805584 /* TestHelpers */,
@@ -1252,6 +1272,7 @@
 				FDCC721D266E254D00A48140 /* RootView.swift in Sources */,
 				FDCC729B2673494B00A48140 /* Loadable.swift in Sources */,
 				FDCC7299267348D300A48140 /* NetworkingHelpers.swift in Sources */,
+				FD76128426DE7AE700D78016 /* DialogChange.swift in Sources */,
 				FDCC7258266F26D200A48140 /* OauthToken.swift in Sources */,
 				FD58C12226B0FABE00BDB0CC /* PresentationStyle.swift in Sources */,
 				FD9A858026C8B62F00A39051 /* ImageFormat.swift in Sources */,
@@ -1308,6 +1329,7 @@
 				FDCC7251266F1B2E00A48140 /* EnvironmentType.swift in Sources */,
 				FD1D01322699B72700A9AF37 /* ExpressionSticker.swift in Sources */,
 				FDC45EC126DC7B7C00C44827 /* DialogMessagesTemplates.swift in Sources */,
+				FD76128226DE358C00D78016 /* FirestoreReferenceFactory.swift in Sources */,
 				FD8809F3269EDE52002D3396 /* MessageRowText.swift in Sources */,
 				FD882764267AFAD000BBEAB6 /* ErrorView.swift in Sources */,
 				FD6D37862685D21A0087272F /* EdgeInsets.swift in Sources */,
@@ -1346,6 +1368,7 @@
 				FD5412E726A811970001D199 /* SystemState.swift in Sources */,
 				FD8809F7269EDE6F002D3396 /* MessageRowVideo.swift in Sources */,
 				FD88273E2679A3C300BBEAB6 /* AppReducer.swift in Sources */,
+				FD76127F26DE348000D78016 /* DialogsListViewModel.swift in Sources */,
 				FD76765026A3D1DB0050457D /* ContentView.swift in Sources */,
 				FD6D377326842C610087272F /* SearchBar.swift in Sources */,
 				FDCC7267266F5CF600A48140 /* Language.swift in Sources */,
@@ -1400,6 +1423,7 @@
 				FD6D378F268624520087272F /* OfficialAccountTests.swift in Sources */,
 				FD8809FB269EE76B002D3396 /* MessageTests.swift in Sources */,
 				FD882778267F1BD500BBEAB6 /* ContactsActionsTests.swift in Sources */,
+				FD76128626DF0A7E00D78016 /* DialogChangeTests.swift in Sources */,
 				FDC45EAD26D73E2400C44827 /* Collection+MatchingTests.swift in Sources */,
 				FDCC7269266F62C900A48140 /* ServiceTests.swift in Sources */,
 				FD5412ED26A812E40001D199 /* SystemReducerTests.swift in Sources */,

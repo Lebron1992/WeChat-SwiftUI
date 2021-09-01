@@ -4,7 +4,7 @@ import SwiftUI
 final class MyProfileFieldUpdateViewModel: ObservableObject {
 
   @Published
-  var userSelfUpdateStatus: ValueUpdateStatus<User> = .idle
+  private(set) var userSelfUpdateStatus: ValueUpdateStatus<User> = .idle
   private var userSelfUpdateCancellable: AnyCancellable?
 
   func updateUserSelf(_ newUser: User) {

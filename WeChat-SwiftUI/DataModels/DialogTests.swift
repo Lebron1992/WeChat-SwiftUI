@@ -156,4 +156,13 @@ final class DialogTests: XCTestCase, MessagesDataSource {
       XCTAssertNil(dialog.individualChatMember)
     }
   }
+
+  func test_isSelfParticipated() {
+    withEnvironment(currentUser: .template) {
+      let d1 = Dialog(members: [.currentUser!, .template1])
+      let d2 = Dialog(members: [.template2, .template3])
+      XCTAssertTrue(d1.isSelfParticipated)
+      XCTAssertFalse(d2.isSelfParticipated)
+    }
+  }
 }

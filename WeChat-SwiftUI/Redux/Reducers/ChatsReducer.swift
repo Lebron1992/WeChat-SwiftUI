@@ -7,6 +7,9 @@ func chatsStateReducer(state: ChatsState, action: Action) -> ChatsState {
     // 为了简便处理，不考虑本地缓存和服务器的数据的差异，直接使用服务器数据
     newState.dialogs = action.dialogs.sorted()
 
+  case let action as ChatsActions.UpdateDialogs:
+    newState.updateDialogs(with: action.dialogChanges)
+
   case let action as ChatsActions.SetMessagesForDialog:
     newState.set(action.messages.sorted(), for: action.dialog)
 

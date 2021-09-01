@@ -117,6 +117,10 @@ extension Dialog {
   func isIndividual(with member: Member) -> Bool {
     members.count == 2 && members.contains(member)
   }
+
+  var isSelfParticipated: Bool {
+    members.contains { $0.id == Member.currentUser?.id }
+  }
 }
 
 extension Dialog: Comparable {

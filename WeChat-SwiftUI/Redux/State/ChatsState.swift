@@ -7,6 +7,17 @@ struct ChatsState: Codable, Equatable {
 
 // MARK: - Mutations
 extension ChatsState {
+  mutating func updateDialogs(with dialogChanges: [DialogChange]) {
+    dialogChanges.forEach { change in
+      switch change.changeType {
+      case .added, .modified:
+        self.insert(change.dialog)
+      case .removed:
+        self.remove(change.dialog)
+      }
+    }
+  }
+
   mutating func set(_ messages: [Message], for dialog: Dialog) {
     guard messages.isEmpty == false else {
       return
@@ -76,6 +87,10 @@ private extension ChatsState {
     } else {
       dialogs.append(dialog)
     }
+  }
+
+  mutating func remove(_ dialog: Dialog) {
+    dialogs.removeAll(where: { $0.id == dialog.id })
   }
 }
 

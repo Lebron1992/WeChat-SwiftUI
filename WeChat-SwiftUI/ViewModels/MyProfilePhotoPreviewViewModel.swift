@@ -10,11 +10,11 @@ final class MyProfilePhotoPreviewViewModel: ObservableObject {
   }
 
   @Published
-  var photoUploadStatus: ValueUpdateStatus<URL> = .idle
+  private(set) var photoUploadStatus: ValueUpdateStatus<URL> = .idle
   private var photoUploadCancellable: AnyCancellable?
 
   @Published
-  var userSelfUpdateStatus: ValueUpdateStatus<User> = .idle
+  private(set) var userSelfUpdateStatus: ValueUpdateStatus<User> = .idle
   private var userSelfUpdateCancellable: AnyCancellable?
 
   func uploadPhoto(_ image: UIImage) {

@@ -2,6 +2,13 @@ import SwiftUI
 import SwiftUIRedux
 
 struct DialogsList: ConnectedView {
+
+  @EnvironmentObject
+  private var store: Store<AppState>
+
+  @StateObject
+  private var viewModel = DialogsListViewModel()
+
   struct Props {
     let dialogs: [Dialog]
     let loadDialogs: () -> Void
@@ -26,6 +33,14 @@ struct DialogsList: ConnectedView {
     .background(.app_bg)
     .listStyle(.plain)
     .onAppear(perform: props.loadDialogs)
+    .onChange(of: viewModel.dialogChanges, perform: handleDialogChanges(_:))
+  }
+}
+
+// MARK: - Helper Methods
+private extension DialogsList {
+  func handleDialogChanges(_ dialogChanges: [DialogChange]) {
+    store.dispatch(action: ChatsActions.UpdateDialogs(dialogChanges: dialogChanges))
   }
 }
 

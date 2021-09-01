@@ -9,10 +9,9 @@ struct FirestoreService: FirestoreServiceType {
   private let usersCollection: CollectionReference
 
   init() {
-    let database = Firestore.firestore()
-    dialogsCollection = database.collection("dialogs")
-    officialAccountsCollection = database.collection("official-accounts")
-    usersCollection = database.collection("users")
+    dialogsCollection = FirestoreReferenceFactory.reference(for: .dialogs)
+    officialAccountsCollection = FirestoreReferenceFactory.reference(for: .officialAccounts)
+    usersCollection = FirestoreReferenceFactory.reference(for: .users)
   }
 
   func insert(_ message: Message, to dialog: Dialog) -> AnyPublisher<Void, Error> {
@@ -59,7 +58,8 @@ struct FirestoreService: FirestoreServiceType {
             promise(Result.failure(err))
 
           } else if let dialogs: [Dialog] = decodeModels(snapshot?.documents) {
-            promise(Result.success(dialogs))
+            let filtered = dialogs.filter { $0.isSelfParticipated }
+            promise(Result.success(filtered))
 
           } else {
             let error = NSError.commonError(description: "Can not decode [Dialog] from snapshot")

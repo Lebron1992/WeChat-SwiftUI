@@ -23,6 +23,10 @@ enum ChatsActions {
     let dialogs: [Dialog]
   }
 
+  struct UpdateDialogs: Action, Equatable {
+    let dialogChanges: [DialogChange]
+  }
+
   struct LoadMessagesForDialog: AsyncAction, Equatable {
     let dialog: Dialog
 

@@ -5,15 +5,15 @@ import FirebaseAuth
 final class OnboardingViewModel: ObservableObject {
 
   @Published
-  var registerStatus: ValueUpdateStatus<AuthDataResult> = .idle
+  private(set) var registerStatus: ValueUpdateStatus<AuthDataResult> = .idle
   private var registerCancellable: AnyCancellable?
 
   @Published
-  var signInStatus: ValueUpdateStatus<User> = .idle
+  private(set) var signInStatus: ValueUpdateStatus<User> = .idle
   private var signInCancellable: AnyCancellable?
 
   @Published
-  var usernameUpdateStatus: ValueUpdateStatus<User> = .idle
+  private(set) var usernameUpdateStatus: ValueUpdateStatus<User> = .idle
   private var usernameUpdateCancellable: AnyCancellable?
 
   @Published

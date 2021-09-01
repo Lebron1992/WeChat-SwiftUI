@@ -27,9 +27,15 @@ extension Dialog.Member {
         avatar: User.template.avatar
     )
 
-    static let template2 = Dialog.Member(
-        id: User.template2.id,
-        name: User.template2.name,
-        avatar: User.template2.avatar
-    )
+  static let template2 = Dialog.Member(
+      id: User.template2.id,
+      name: User.template2.name,
+      avatar: User.template2.avatar
+  )
+
+  static let template3 = Dialog.Member(
+      id: generateUUID(),
+      name: "template2",
+      avatar: "https://cdn.nba.com/headshots/nba/latest/260x190/template3.png"
+  )
 }
