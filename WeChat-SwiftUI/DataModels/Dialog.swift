@@ -97,9 +97,8 @@ extension Dialog {
     guard let time = lastMessage?.createTime else {
       return nil
     }
-    // TODO: test for now
     let formatter = DateFormatter()
-    formatter.dateStyle = .short
+    formatter.dateFormat = Calendar.current.isDateInToday(time) ? "HH:mm" : "yyyy/MM/dd"
     return formatter.string(from: time)
   }
 
