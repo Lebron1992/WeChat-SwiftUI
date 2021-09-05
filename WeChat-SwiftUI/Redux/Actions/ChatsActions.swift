@@ -55,7 +55,7 @@ enum ChatsActions {
     let dialog: Dialog
   }
 
-  struct SendMessageInDialog: AsyncAction, Equatable {
+  struct SendTextMessageInDialog: AsyncAction, Equatable {
     let message: Message
     let dialog: Dialog
 
@@ -97,6 +97,53 @@ enum ChatsActions {
           }
         }
         .store(in: cancelBag)
+    }
+  }
+
+  struct SendImageMessageInDialog: AsyncAction, Equatable {
+    let message: Message
+    let dialog: Dialog
+
+    func async(dispatch: @escaping Dispatch, state: ReduxState?) {
+      let sendingMessage = message.setStatus(.sending)
+      let sentMessage = message.setStatus(.sent)
+
+      dispatch(InsertMessageToDialog(
+        message: sendingMessage,
+        dialog: dialog
+      ))
+
+      // 1. 上传图片；2. 获得图片 URL 后保存 message，最后更新 dialog
+
+//      AppEnvironment.current.firestoreService
+//        .insert(sentMessage, to: dialog)
+//        .sinkToResultForUI { result in
+//          switch result {
+//          case .success:
+//            // 保存 message 成功后再更新 dialog，实际开发中应该通过一个请求完成
+//            let newDialog = dialog.updatedLastMessage(sentMessage)
+//            AppEnvironment.current.firestoreService
+//              .overrideDialog(newDialog)
+//              .sinkToResultForUI { result in
+//                switch result {
+//                case .success:
+//                  dispatch(SetMessageStatusInDialog(
+//                    message: sendingMessage,
+//                    status: .sent,
+//                    dialog: dialog
+//                  ))
+//                  dispatch(SetDialogLastMessage(dialog: dialog, lastMessage: sentMessage))
+//                case .failure(let error):
+//                  dispatch(SystemActions.SetErrorMessage(message: error.localizedDescription))
+//                }
+//              }
+//              .store(in: cancelBag)
+//
+//          case .failure(let error):
+//            dispatch(SystemActions.SetErrorMessage(message: error.localizedDescription))
+//          }
+//        }
+//        .store(in: cancelBag)
     }
   }
 

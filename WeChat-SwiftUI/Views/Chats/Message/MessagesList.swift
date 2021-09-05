@@ -6,7 +6,7 @@ struct MessagesList: View {
   var body: some View {
     List {
       ForEach(messages, id: \.self) {
-        MessageRowText(message: $0)
+        MessageRow(message: $0)
           .listRowInsets(Constant.listRowInset)
           .listRowSeparator(.hidden)
       }

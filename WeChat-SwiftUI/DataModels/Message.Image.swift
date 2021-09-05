@@ -4,6 +4,16 @@ extension Message {
   struct Image {
     let urlImage: URLImage?
     let localImage: LocalImage?
+
+    init(uiImage: UIImage, status: LocalImage.Status = .idle) {
+      urlImage = nil
+      localImage = .init(uiImage: uiImage, status: status)
+    }
+
+    init(urlImage: URLImage? = nil, localImage: LocalImage? = nil) {
+      self.urlImage = urlImage
+      self.localImage = localImage
+    }
   }
 }
 

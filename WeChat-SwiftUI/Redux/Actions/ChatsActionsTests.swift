@@ -95,7 +95,7 @@ final class ChatsActionsTests: XCTestCase, AppStateDataSource {
     }
   }
 
-  func test_sendMessageInDialog_success() {
+  func test_sendTextMessageInDialog_success() {
     let message = Message(text: "Hello")
     let sendingMessage = message.setStatus(.sending)
     let sentMessage = message.setStatus(.sent)
@@ -108,13 +108,13 @@ final class ChatsActionsTests: XCTestCase, AppStateDataSource {
     let mockService = FirestoreServiceMock(insertMessageError: nil, overrideDialogError: nil)
 
     withEnvironment(firestoreService: mockService) {
-      mockStore.dispatch(action: ChatsActions.SendMessageInDialog(message: message, dialog: dialog))
+      mockStore.dispatch(action: ChatsActions.SendTextMessageInDialog(message: message, dialog: dialog))
 
       wait {
         XCTAssertEqual(self.mockStore.actions.count, 4)
         XCTAssertEqual(
-          self.mockStore.actions[0] as! ChatsActions.SendMessageInDialog,
-          ChatsActions.SendMessageInDialog(message: message, dialog: dialog)
+          self.mockStore.actions[0] as! ChatsActions.SendTextMessageInDialog,
+          ChatsActions.SendTextMessageInDialog(message: message, dialog: dialog)
         )
         XCTAssertEqual(
           self.mockStore.actions[1] as! ChatsActions.InsertMessageToDialog,
@@ -132,7 +132,7 @@ final class ChatsActionsTests: XCTestCase, AppStateDataSource {
     }
   }
 
-  func test_sendMessageInDialog_failed() {
+  func test_sendTextMessageInDialog_failed() {
     let message = Message(text: "Hello")
     let dialog = Dialog(members: [.template1, .template2])
     let dialogMessages = DialogMessages(dialogId: dialog.id, messages: [message])
@@ -142,13 +142,13 @@ final class ChatsActionsTests: XCTestCase, AppStateDataSource {
     let mockService = FirestoreServiceMock(insertMessageError: NSError.unknowError)
 
     withEnvironment(firestoreService: mockService) {
-      mockStore.dispatch(action: ChatsActions.SendMessageInDialog(message: message, dialog: dialog))
+      mockStore.dispatch(action: ChatsActions.SendTextMessageInDialog(message: message, dialog: dialog))
 
       wait {
         XCTAssertEqual(self.mockStore.actions.count, 3)
         XCTAssertEqual(
-          self.mockStore.actions[0] as! ChatsActions.SendMessageInDialog,
-          ChatsActions.SendMessageInDialog(message: message, dialog: dialog)
+          self.mockStore.actions[0] as! ChatsActions.SendTextMessageInDialog,
+          ChatsActions.SendTextMessageInDialog(message: message, dialog: dialog)
         )
         XCTAssertEqual(
           self.mockStore.actions[1] as! ChatsActions.InsertMessageToDialog,

@@ -1,21 +1,18 @@
 import SwiftUI
 
-struct MessageRowImage: View {
+struct MessageContentImage: View {
   let message: Message
 
   var body: some View {
-    GeometryReader { geo in
-      let size = image.size.aspectSize(fitsSize: geo.size)
-      ZStack {
-        image(thatFits: size)
-        progressContainer(progress: image.progress, size: size)
-      }
-      .cornerRadius(6)
+    ZStack {
+      image(thatFits: contentSize)
+      progressContainer(progress: image.progress, size: contentSize)
     }
+    .cornerRadius(6)
   }
 }
 
-private extension MessageRowImage {
+private extension MessageContentImage {
   @ViewBuilder
   func image(thatFits size: CGSize) -> some View {
     if let url = image.url {
@@ -46,13 +43,18 @@ private extension MessageRowImage {
   var image: Message.Image {
     message.image!
   }
+
+  var contentSize: CGSize {
+    message.image!.size.aspectSize(fitsSize: Constant.maxImageSize)
+  }
 }
 
-private extension MessageRowImage {
+private extension MessageContentImage {
   enum Constant {
     static let placeholderOpacity = 0.3
-    static let progressSize: CGSize = .init(width: 40, height: 40)
     static let progressCoverOpacity = 0.3
+    static let progressSize: CGSize = .init(width: 40, height: 40)
+    static let maxImageSize: CGSize = .init(width: 155, height: 155)
   }
 }
 
@@ -67,7 +69,7 @@ struct MessageRowImage_Previews: PreviewProvider {
       ForEach(images) { message in
         let maxImageSize = CGSize(width: 155, height: 155)
         let size = message.image!.size.aspectSize(fitsSize: maxImageSize)
-        MessageRowImage(message: message)
+        MessageContentImage(message: message)
           .frame(width: size.width, height: size.height)
       }
     }

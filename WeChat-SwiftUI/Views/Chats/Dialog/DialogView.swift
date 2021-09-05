@@ -30,7 +30,13 @@ struct DialogView: ConnectedView {
       dialog: state.chatsState.dialogs.element(matching: viewModel.dialog),
       messages: state.chatsState.dialogMessages.first(where: { $0.dialogId == viewModel.dialog.id })?.messages ?? [],
       loadMessages: { dispatch(ChatsActions.LoadMessagesForDialog(dialog: $0)) },
-      sendMessage: { dispatch(ChatsActions.SendMessageInDialog(message: $0, dialog: $1)) }
+      sendMessage: { message, dialog in
+        if message.isTextMsg {
+          dispatch(ChatsActions.SendTextMessageInDialog(message: message, dialog: dialog))
+        } else if message.isImageMsg {
+          dispatch(ChatsActions.SendImageMessageInDialog(message: message, dialog: dialog))
+        }
+      }
     )
   }
 
@@ -51,17 +57,13 @@ struct DialogView: ConnectedView {
     .navigationTitle(props.dialog.name ?? "")
     .sheet(item: $photoPicker) { pickerType in
       switch pickerType {
-      case .camera: ImagePicker(sourceType: .camera) { handlePickedImage($0) }
-      case .library: ImagePicker(sourceType: .photoLibrary) { handlePickedImage($0) }
+      case .camera: ImagePicker(sourceType: .camera, allowsEditing: false) { handlePickedImage($0) }
+      case .library: ImagePicker(sourceType: .photoLibrary, allowsEditing: false) { handlePickedImage($0) }
       }
     }
     .onAppear { props.loadMessages(viewModel.dialog) }
     .onChange(of: viewModel.messageChanges) { handleMessageChanges($0, for: props.dialog) }
-    .onChange(of: pickedPhoto) { newImage in
-      if let image = newImage {
-
-      }
-    }
+    .onChange(of: pickedPhoto) { onPickedImage($0, props: props) }
   }
 }
 
@@ -97,13 +99,23 @@ private extension DialogView {
   }
 }
 
-// MARK: - Send Text
+// MARK: - Send
 private extension DialogView {
   func onSubmitText(_ text: String, props: Props) {
     guard text.isEmpty == false else {
       return
     }
     let message = Message(text: text)
+    withAnimation {
+      props.sendMessage(message, props.dialog)
+    }
+  }
+
+  func onPickedImage(_ image: UIImage?, props: Props) {
+    guard let image = image else {
+      return
+    }
+    let message = Message(image: .init(uiImage: image))
     withAnimation {
       props.sendMessage(message, props.dialog)
     }

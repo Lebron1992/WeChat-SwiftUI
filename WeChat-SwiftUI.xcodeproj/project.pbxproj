@@ -40,6 +40,7 @@
 		FD3E98BF26E46A630024D368 /* Message.Image.LocalImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3E98BE26E46A630024D368 /* Message.Image.LocalImageTests.swift */; };
 		FD3E98C126E46AEA0024D368 /* Message.Image.LocalImage+Setters.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3E98C026E46AEA0024D368 /* Message.Image.LocalImage+Setters.swift */; };
 		FD3E98C326E46CCD0024D368 /* PreviewAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD3E98C226E46CCD0024D368 /* PreviewAssets.xcassets */; };
+		FD3E98E026E4B9710024D368 /* MessageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3E98DF26E4B9710024D368 /* MessageRow.swift */; };
 		FD424F90268B050900F11A62 /* Image+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD424F8F268B050900F11A62 /* Image+Constants.swift */; };
 		FD424F92268B059B00F11A62 /* Image+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD424F91268B059B00F11A62 /* Image+Resize.swift */; };
 		FD46236826DC82330021B397 /* DialogMessagesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD46236726DC82330021B397 /* DialogMessagesTests.swift */; };
@@ -86,9 +87,9 @@
 		FD76765026A3D1DB0050457D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD76764F26A3D1DB0050457D /* ContentView.swift */; };
 		FD76765226A3D40A0050457D /* AuthState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD76765126A3D40A0050457D /* AuthState.swift */; };
 		FD76B8C426CE120A00C0A03F /* KeyValueStoreKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD76B8C326CE120A00C0A03F /* KeyValueStoreKey.swift */; };
-		FD8809F3269EDE52002D3396 /* MessageRowText.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8809F2269EDE52002D3396 /* MessageRowText.swift */; };
-		FD8809F5269EDE60002D3396 /* MessageRowImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8809F4269EDE60002D3396 /* MessageRowImage.swift */; };
-		FD8809F7269EDE6F002D3396 /* MessageRowVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8809F6269EDE6E002D3396 /* MessageRowVideo.swift */; };
+		FD8809F3269EDE52002D3396 /* MessageContentText.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8809F2269EDE52002D3396 /* MessageContentText.swift */; };
+		FD8809F5269EDE60002D3396 /* MessageContentImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8809F4269EDE60002D3396 /* MessageContentImage.swift */; };
+		FD8809F7269EDE6F002D3396 /* MessageContentVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8809F6269EDE6E002D3396 /* MessageContentVideo.swift */; };
 		FD8809F9269EDF0F002D3396 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8809F8269EDF0F002D3396 /* Message.swift */; };
 		FD8809FB269EE76B002D3396 /* MessageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8809FA269EE76B002D3396 /* MessageTests.swift */; };
 		FD8809FD269EE852002D3396 /* MessageTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8809FC269EE852002D3396 /* MessageTemplates.swift */; };
@@ -286,6 +287,7 @@
 		FD3E98BE26E46A630024D368 /* Message.Image.LocalImageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.Image.LocalImageTests.swift; sourceTree = "<group>"; };
 		FD3E98C026E46AEA0024D368 /* Message.Image.LocalImage+Setters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message.Image.LocalImage+Setters.swift"; sourceTree = "<group>"; };
 		FD3E98C226E46CCD0024D368 /* PreviewAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PreviewAssets.xcassets; sourceTree = "<group>"; };
+		FD3E98DF26E4B9710024D368 /* MessageRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRow.swift; sourceTree = "<group>"; };
 		FD424F8F268B050900F11A62 /* Image+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Constants.swift"; sourceTree = "<group>"; };
 		FD424F91268B059B00F11A62 /* Image+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Resize.swift"; sourceTree = "<group>"; };
 		FD46236726DC82330021B397 /* DialogMessagesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogMessagesTests.swift; sourceTree = "<group>"; };
@@ -332,9 +334,9 @@
 		FD76764F26A3D1DB0050457D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FD76765126A3D40A0050457D /* AuthState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthState.swift; sourceTree = "<group>"; };
 		FD76B8C326CE120A00C0A03F /* KeyValueStoreKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueStoreKey.swift; sourceTree = "<group>"; };
-		FD8809F2269EDE52002D3396 /* MessageRowText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRowText.swift; sourceTree = "<group>"; };
-		FD8809F4269EDE60002D3396 /* MessageRowImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRowImage.swift; sourceTree = "<group>"; };
-		FD8809F6269EDE6E002D3396 /* MessageRowVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRowVideo.swift; sourceTree = "<group>"; };
+		FD8809F2269EDE52002D3396 /* MessageContentText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageContentText.swift; sourceTree = "<group>"; };
+		FD8809F4269EDE60002D3396 /* MessageContentImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageContentImage.swift; sourceTree = "<group>"; };
+		FD8809F6269EDE6E002D3396 /* MessageContentVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageContentVideo.swift; sourceTree = "<group>"; };
 		FD8809F8269EDF0F002D3396 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		FD8809FA269EE76B002D3396 /* MessageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTests.swift; sourceTree = "<group>"; };
 		FD8809FC269EE852002D3396 /* MessageTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTemplates.swift; sourceTree = "<group>"; };
@@ -610,9 +612,10 @@
 		FD8809EF269EDE28002D3396 /* Message */ = {
 			isa = PBXGroup;
 			children = (
-				FD8809F4269EDE60002D3396 /* MessageRowImage.swift */,
-				FD8809F2269EDE52002D3396 /* MessageRowText.swift */,
-				FD8809F6269EDE6E002D3396 /* MessageRowVideo.swift */,
+				FD8809F4269EDE60002D3396 /* MessageContentImage.swift */,
+				FD8809F2269EDE52002D3396 /* MessageContentText.swift */,
+				FD8809F6269EDE6E002D3396 /* MessageContentVideo.swift */,
+				FD3E98DF26E4B9710024D368 /* MessageRow.swift */,
 				FD880A0026A01EFE002D3396 /* MessagesList.swift */,
 			);
 			path = Message;
@@ -1381,7 +1384,7 @@
 				FDCC727C2671A4DC00A48140 /* AppEnvironment.swift in Sources */,
 				FD6D378B26861A110087272F /* ContactType.swift in Sources */,
 				FDCC72922673448A00A48140 /* Route.swift in Sources */,
-				FD8809F5269EDE60002D3396 /* MessageRowImage.swift in Sources */,
+				FD8809F5269EDE60002D3396 /* MessageContentImage.swift in Sources */,
 				FD6D37752684707A0087272F /* Background.swift in Sources */,
 				FDA6C88526E0D7B900913F48 /* CGSize+AspectSize.swift in Sources */,
 				FD6D37792684803E0087272F /* ResignKeyboardOnDragModifier.swift in Sources */,
@@ -1389,7 +1392,7 @@
 				FD1D01322699B72700A9AF37 /* ExpressionSticker.swift in Sources */,
 				FDC45EC126DC7B7C00C44827 /* DialogMessagesTemplates.swift in Sources */,
 				FD76128226DE358C00D78016 /* FirestoreReferenceFactory.swift in Sources */,
-				FD8809F3269EDE52002D3396 /* MessageRowText.swift in Sources */,
+				FD8809F3269EDE52002D3396 /* MessageContentText.swift in Sources */,
 				FD882764267AFAD000BBEAB6 /* ErrorView.swift in Sources */,
 				FD6D37862685D21A0087272F /* EdgeInsets.swift in Sources */,
 				FDCC7265266F5C5B00A48140 /* Service.swift in Sources */,
@@ -1410,6 +1413,7 @@
 				FD9A858226C8BAFF00A39051 /* FirebaseStorageServiceMock.swift in Sources */,
 				FDB474E726E37AE2001815BB /* Message.ImageTemplates.swift in Sources */,
 				FD6FE99026A9785B0059BF45 /* FirestoreServiceType.swift in Sources */,
+				FD3E98E026E4B9710024D368 /* MessageRow.swift in Sources */,
 				FDC45E8B26D4F61400C44827 /* MyProfileFieldUpdateViewModel.swift in Sources */,
 				FD1F16E12695A6FD009D08DF /* ResignKeyboardOnTapModifier.swift in Sources */,
 				FDC45E9326D501F200C44827 /* MyProfileView.ProfileRow.swift in Sources */,
@@ -1429,7 +1433,7 @@
 				FD5412E726A811970001D199 /* SystemState.swift in Sources */,
 				FD76128A26DF17BB00D78016 /* MessageChange.swift in Sources */,
 				FD76128826DF168000D78016 /* DialogViewModel.swift in Sources */,
-				FD8809F7269EDE6F002D3396 /* MessageRowVideo.swift in Sources */,
+				FD8809F7269EDE6F002D3396 /* MessageContentVideo.swift in Sources */,
 				FD88273E2679A3C300BBEAB6 /* AppReducer.swift in Sources */,
 				FD76127F26DE348000D78016 /* DialogsListViewModel.swift in Sources */,
 				FD76765026A3D1DB0050457D /* ContentView.swift in Sources */,

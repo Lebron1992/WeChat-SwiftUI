@@ -6,17 +6,10 @@ extension Message.Image {
       url: "https://example.com/test.png",
       width: 300,
       height: 200
-    ),
-    localImage: nil
+    )
   )
 
-  static let uiImageTemplateIdle = Message.Image(
-    urlImage: nil,
-    localImage: .init(uiImage: Message.Image.LocalImage.testUIImage1, status: .idle)
-  )
+  static let uiImageTemplateIdle = Message.Image(uiImage: Message.Image.LocalImage.testUIImage1, status: .idle)
 
-  static let uiImageTemplateUploaded = Message.Image(
-    urlImage: nil,
-    localImage: .init(uiImage: Message.Image.LocalImage.testUIImage2, status: .uploaded)
-  )
+  static let uiImageTemplateUploaded = Message.Image(uiImage: Message.Image.LocalImage.testUIImage2, status: .uploaded)
 }

@@ -1,70 +1,10 @@
 import SwiftUI
 import URLImage
 
-struct MessageRowText: View {
+struct MessageContentText: View {
   let message: Message
 
   var body: some View {
-    HStack(spacing: 8) {
-      outgoingSendingIndicator
-      HStack(alignment: .top, spacing: 8) {
-        incomingAvatar
-        messageText
-        outgoingAvatar
-      }
-    }
-    .listRowBackground(Color.app_bg)
-    .transition(.move(edge: .bottom))
-  }
-}
-
-private extension MessageRowText {
-
-  @ViewBuilder
-  var outgoingSendingIndicator: some View {
-    if message.isOutgoingMsg {
-      Spacer(minLength: Constant.spacingOfContentMaxWidthToEdge)
-      sendingIndicator
-    }
-  }
-
-  @ViewBuilder
-  var incomingAvatar: some View {
-    if message.isOutgoingMsg == false {
-      avatar
-    }
-  }
-
-  @ViewBuilder
-  var outgoingAvatar: some View {
-    if message.isOutgoingMsg {
-      avatar
-    } else {
-      Spacer(minLength: Constant.spacingOfContentMaxWidthToEdge)
-    }
-  }
-
-  var sendingIndicator: some View {
-    Group {
-      if message.isSending {
-        ActivityIndicator()
-      } else {
-        Color.clear
-      }
-    }
-    // 让 ActivityIndicator 消失后仍然占据位置，防止 text 的大小发生改变
-    .frame(width: Constant.sendingIndicatorWidth)
-  }
-
-  var avatar: some View {
-    URLPlaceholderImage(message.sender.avatar, size: Constant.avatarSize) {
-      Image.avatarPlaceholder
-    }
-    .background(.app_white)
-    .cornerRadius(Constant.avatarCornerRadius)
-  }
-
-  var messageText: some View {
     HStack(alignment: .top, spacing: -Constant.textBackgroundArrowOverlapWidth) {
       if message.isOutgoingMsg == false {
         textBackgroundArrow
@@ -82,6 +22,9 @@ private extension MessageRowText {
       }
     }
   }
+}
+
+private extension MessageContentText {
 
   var textBackgroundArrow: some View {
     VStack(alignment: .center) {
@@ -118,14 +61,8 @@ private extension MessageRowText {
   }
 }
 
-private extension MessageRowText {
+private extension MessageContentText {
   enum Constant {
-    static let spacingOfContentMaxWidthToEdge: CGFloat = 30
-    static let sendingIndicatorWidth: CGFloat = 20
-
-    static let avatarSize: CGSize = .init(width: 40, height: 40)
-    static let avatarCornerRadius: CGFloat = 4
-
     static let textFont: UIFont = .systemFont(ofSize: 16)
     static let textInsets: EdgeInsets = .init(top: 10, leading: 12, bottom: 10, trailing: 12)
     static let textBackgroundCornerRadius: CGFloat = 4
@@ -141,8 +78,8 @@ private extension MessageRowText {
 struct MessageRowText_Previews: PreviewProvider {
   static var previews: some View {
     Group {
-      MessageRowText(message: .textTemplate)
-      MessageRowText(message: .textTemplate2)
+      MessageContentText(message: .textTemplate)
+      MessageContentText(message: .textTemplate2)
     }
     .padding(50)
     .background(.green)
