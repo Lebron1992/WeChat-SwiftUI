@@ -3,7 +3,7 @@ import Foundation
 struct Message: Codable, Identifiable, Equatable {
   let id: String
   let text: String?
-  let imageUrl: String?
+  let image: Image?
   let videoUrl: String?
   let sender: MessageSender
   let createTime: Date
@@ -12,7 +12,7 @@ struct Message: Codable, Identifiable, Equatable {
   init(
     id: String,
     text: String?,
-    imageUrl: String?,
+    image: Image?,
     videoUrl: String?,
     sender: MessageSender,
     createTime: Date,
@@ -20,7 +20,7 @@ struct Message: Codable, Identifiable, Equatable {
   ) {
     self.id = id
     self.text = text
-    self.imageUrl = imageUrl
+    self.image = image
     self.videoUrl = videoUrl
     self.sender = sender
     self.createTime = createTime
@@ -35,7 +35,23 @@ struct Message: Codable, Identifiable, Equatable {
     self.init(
       id: generateUUID(),
       text: text,
-      imageUrl: nil,
+      image: nil,
+      videoUrl: nil,
+      sender: .currentUser ?? .anonymity,
+      createTime: createTime,
+      status: status
+    )
+  }
+
+  init(
+    image: Image,
+    createTime: Date = Date(),
+    status: Status = .idle
+  ) {
+    self.init(
+      id: generateUUID(),
+      text: nil,
+      image: image,
       videoUrl: nil,
       sender: .currentUser ?? .anonymity,
       createTime: createTime,
@@ -77,7 +93,7 @@ extension Message {
   }
 
   var isImageMsg: Bool {
-    imageUrl != nil
+    image != nil
   }
 
   var isVideoMsg: Bool {
@@ -116,7 +132,7 @@ extension Message: CustomDebugStringConvertible {
     }
 
     if isImageMsg {
-      return "Message(sender: \(sender.name), imageUrl: \"\(imageUrl!)\")"
+      return "Message(sender: \(sender.name), image: \"\(image!)\")"
     }
 
     if isVideoMsg {

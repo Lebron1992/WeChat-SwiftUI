@@ -12,6 +12,12 @@ struct DialogView: ConnectedView {
   @State
   private var dismissKeyboard = false
 
+  @State
+  private var photoPicker: PhotoPickerType?
+
+  @State
+  private var pickedPhoto: UIImage?
+
   struct Props {
     let dialog: Dialog
     let messages: [Message]
@@ -43,8 +49,19 @@ struct DialogView: ConnectedView {
       }
     }
     .navigationTitle(props.dialog.name ?? "")
+    .sheet(item: $photoPicker) { pickerType in
+      switch pickerType {
+      case .camera: ImagePicker(sourceType: .camera) { handlePickedImage($0) }
+      case .library: ImagePicker(sourceType: .photoLibrary) { handlePickedImage($0) }
+      }
+    }
     .onAppear { props.loadMessages(viewModel.dialog) }
     .onChange(of: viewModel.messageChanges) { handleMessageChanges($0, for: props.dialog) }
+    .onChange(of: pickedPhoto) { newImage in
+      if let image = newImage {
+
+      }
+    }
   }
 }
 
@@ -74,7 +91,8 @@ private extension DialogView {
           scrollToLastMessage(props.messages.last, with: scrollView)
         }
       },
-      onSubmitText: { onSubmitText($0, props: props) }
+      onSubmitText: { onSubmitText($0, props: props) },
+      onAddButtonTapped: { photoPicker = .library }
     )
   }
 }
@@ -99,6 +117,11 @@ private extension DialogView {
       messageChanges: messageChanges,
       dialog: dialog
     ))
+  }
+
+  func handlePickedImage(_ image: UIImage?) {
+    pickedPhoto = image
+    photoPicker = nil
   }
 
   func scrollToLastMessage(

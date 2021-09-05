@@ -32,21 +32,9 @@ extension Message {
     """
   )
 
-  static let imageTemplate2: Message! = tryDecode(
-    """
-    {
-    "id": "575e9920-c891-4812-b623-2eefc364067d",
-    "imageUrl": "https://cdn.nba.com/headshots/nba/latest/260x190/2544.png",
-    "sender": {
-      "id": "4d0914d5-b04c-43f1-b37f-b2bb8d177951",
-      "avatar": "https://cdn.nba.com/headshots/nba/latest/260x190/2544.png",
-      "name": "LeBron James",
-    },
-    "createTime": "2021-07-14T09:54:32Z",
-    "status": "sent"
-    }
-    """
-  )
+  static let urlImageTemplate = Message(image: .urlTemplate)
+  static let uiImageTemplateIdle = Message(image: .uiImageTemplateIdle)
+  static let uiImageTemplateUploaded = Message(image: .uiImageTemplateUploaded)
 
   static let videoTemplate3: Message! = tryDecode(
     """

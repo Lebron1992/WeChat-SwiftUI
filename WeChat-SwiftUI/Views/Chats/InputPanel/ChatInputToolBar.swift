@@ -16,6 +16,8 @@ struct ChatInputToolBar: View {
 
   let onSubmit: () -> Void
 
+  let onAddButtonTapped: () -> Void
+
   var body: some View {
     HStack(alignment: .bottom, spacing: Constant.toolBarPadding) {
       voiceButton
@@ -75,7 +77,7 @@ struct ChatInputToolBar: View {
 
   private var addButton: some View {
     Button {
-
+      onAddButtonTapped()
     } label: {
       Image("icons_outlined_add")
         .inputToolBarButtonStyle()
@@ -137,7 +139,8 @@ struct ChatInputToolBar_Previews: PreviewProvider {
       text: .constant(""),
       isVoiceButtonSelected: .constant(false),
       isExpressionButtonSelected: .constant(false),
-      onSubmit: { }
+      onSubmit: { },
+      onAddButtonTapped: { }
     )
   }
 }

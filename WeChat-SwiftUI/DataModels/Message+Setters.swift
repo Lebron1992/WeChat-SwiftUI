@@ -3,7 +3,7 @@ extension Message {
     Message(
       id: id,
       text: text,
-      imageUrl: imageUrl,
+      image: image,
       videoUrl: videoUrl,
       sender: sender,
       createTime: createTime,

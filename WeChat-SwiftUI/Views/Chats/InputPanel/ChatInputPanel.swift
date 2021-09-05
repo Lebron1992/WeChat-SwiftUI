@@ -11,6 +11,7 @@ struct ChatInputPanel: View {
   let dismissKeyboard: Bool
   let onInputStarted: () -> Void
   let onSubmitText: (String) -> Void
+  let onAddButtonTapped: () -> Void
 
   @State
   private var text: String = ""
@@ -47,6 +48,7 @@ struct ChatInputPanel: View {
     .animation(.easeOut(duration: 0.25), value: isExpressionButtonSelected)
     .onChange(of: dismissKeyboard, perform: handleDismissKeyboardChange(_:))
     .onChange(of: isTextEditorFocused) { if $0 { onInputStarted() } }
+    .onChange(of: isExpressionButtonSelected) { if $0 { onInputStarted() } }
     .onChange(of: text) { newValue in
       if newValue.last == "\n" { // 点击发送
         // TODO: 当 onSubmit 可用时移除
@@ -65,7 +67,8 @@ private extension ChatInputPanel {
       isVoiceButtonSelected: $isVoiceButtonSelected,
       isExpressionButtonSelected: $isExpressionButtonSelected,
       isTextEditorFocused: _isTextEditorFocused,
-      onSubmit: { onSubmitText(text) }
+      onSubmit: { onSubmitText(text) },
+      onAddButtonTapped: onAddButtonTapped
     )
   }
 
@@ -126,6 +129,11 @@ private extension ChatInputPanel {
 
 struct ChatInputPanel_Previews: PreviewProvider {
   static var previews: some View {
-    ChatInputPanel(dismissKeyboard: true, onInputStarted: { }, onSubmitText: { _ in })
+    ChatInputPanel(
+      dismissKeyboard: true,
+      onInputStarted: { },
+      onSubmitText: { _ in },
+      onAddButtonTapped: { }
+    )
   }
 }
