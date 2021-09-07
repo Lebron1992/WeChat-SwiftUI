@@ -17,7 +17,7 @@ struct MediaLoadingProgressView: View {
       Circle()
         .stroke(lineWidth: lineWidth)
         .foregroundColor(tintColor)
-        .opacity(progress > 0 ? 0.3 : 1)
+        .opacity(0.3)
 
       Circle()
         .trim(from: 0, to: CGFloat(min(progress, 1)))

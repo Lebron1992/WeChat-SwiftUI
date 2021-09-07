@@ -131,6 +131,45 @@ final class DialogTests: XCTestCase, MessagesDataSource {
     XCTAssertTrue(d2 < d1)
   }
 
+  func test_lastMessageText_textMessage() {
+    let message = Message(text: "hello world")
+    let dialog = Dialog(members: [.template1, .template2], lastMessage: message)
+    XCTAssertEqual(dialog.lastMessageText, message.text)
+  }
+
+  func test_lastMessageText_imageMessage() {
+    let message = Message(image: .urlTemplate)
+    let dialog = Dialog(members: [.template1, .template2], lastMessage: message)
+    XCTAssertEqual(dialog.lastMessageText, "[\(Strings.general_photo())]")
+  }
+
+  func test_lastMessageText_videoMessage() {
+    // TODO: will test when we implement video message
+  }
+
+  func test_lastMessageTime() {
+    let formatForDate: (Date) -> String = { time in
+      Calendar.current.isDateInToday(time) ? "HH:mm" : "yyyy/MM/dd"
+    }
+    let formatter = DateFormatter()
+
+    // today
+    let time1 = Date()
+    let message1 = Message(text: "hello", createTime: time1)
+    let dialog1 = Dialog(members: [.template1, .template2], lastMessage: message1)
+
+    formatter.dateFormat = formatForDate(time1)
+    XCTAssertEqual(dialog1.lastMessageTimeString, formatter.string(from: time1))
+
+    // yesterday
+    let time2 = Date().addingTimeInterval(-60 * 60 * 24)
+    let message2 = Message(text: "world", createTime: time2)
+    let dialog2 = Dialog(members: [.template1, .template2], lastMessage: message2)
+
+    formatter.dateFormat = formatForDate(time2)
+    XCTAssertEqual(dialog2.lastMessageTimeString, formatter.string(from: time2))
+  }
+
   func test_isIndividual() {
     var dialog = Dialog(members: [.template1])
     XCTAssertFalse(dialog.isIndividual)

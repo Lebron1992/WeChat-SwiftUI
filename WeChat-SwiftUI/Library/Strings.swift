@@ -64,6 +64,34 @@ public enum Strings {
     )
   }
   /**
+   "Resend"
+
+   - **en**: "Resend"
+   - **zh**: "重发"
+  */
+  public static func chat_resend() -> String {
+    return localizedString(
+      key: "chat.resend",
+      defaultValue: "Resend",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "Resend?"
+
+   - **en**: "Resend?"
+   - **zh**: "重发该消息？"
+  */
+  public static func chat_resend_message_title() -> String {
+    return localizedString(
+      key: "chat.resend_message_title",
+      defaultValue: "Resend?",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
    "Edit Contact"
 
    - **en**: "Edit Contact"
@@ -484,6 +512,20 @@ public enum Strings {
     )
   }
   /**
+   "Photo"
+
+   - **en**: "Photo"
+   - **zh**: "图片"
+  */
+  public static func general_photo() -> String {
+    return localizedString(
+      key: "general.photo",
+      defaultValue: "Photo",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
    "Region"
 
    - **en**: "Region"
@@ -563,6 +605,20 @@ public enum Strings {
     return localizedString(
       key: "general.unknown_error",
       defaultValue: "Unknown error",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "Video"
+
+   - **en**: "Video"
+   - **zh**: "视频"
+  */
+  public static func general_video() -> String {
+    return localizedString(
+      key: "general.video",
+      defaultValue: "Video",
       count: nil,
       substitutions: [:]
     )

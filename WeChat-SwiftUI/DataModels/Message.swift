@@ -87,6 +87,7 @@ extension Message {
   }
 }
 
+// MARK: - Getters
 extension Message {
   var isTextMsg: Bool {
     text != nil

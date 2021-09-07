@@ -100,9 +100,8 @@ final class ChatsActionsTests: XCTestCase, AppStateDataSource {
     let sendingMessage = message.setStatus(.sending)
     let sentMessage = message.setStatus(.sent)
     let dialog = Dialog(members: [.template1, .template2])
-    let dialogMessages = DialogMessages(dialogId: dialog.id, messages: [message])
 
-    let appState = preparedAppState(dialogs: [dialog], dialogMessages: [dialogMessages])
+    let appState = preparedAppState(dialogs: [dialog], dialogMessages: [])
     mockStore = MockStore(initialState: appState, reducer: appStateReducer)
 
     let mockService = FirestoreServiceMock(insertMessageError: nil, overrideDialogError: nil)
@@ -118,7 +117,7 @@ final class ChatsActionsTests: XCTestCase, AppStateDataSource {
         )
         XCTAssertEqual(
           self.mockStore.actions[1] as! ChatsActions.InsertMessageToDialog,
-          ChatsActions.InsertMessageToDialog(message: message.setStatus(.sending), dialog: dialog)
+          ChatsActions.InsertMessageToDialog(message: sendingMessage, dialog: dialog)
         )
         XCTAssertEqual(
           self.mockStore.actions[2] as! ChatsActions.SetMessageStatusInDialog,
@@ -135,8 +134,7 @@ final class ChatsActionsTests: XCTestCase, AppStateDataSource {
   func test_sendTextMessageInDialog_failed() {
     let message = Message(text: "Hello")
     let dialog = Dialog(members: [.template1, .template2])
-    let dialogMessages = DialogMessages(dialogId: dialog.id, messages: [message])
-    let appState = preparedAppState(dialogs: [dialog], dialogMessages: [dialogMessages])
+    let appState = preparedAppState(dialogs: [dialog], dialogMessages: [])
     mockStore = MockStore(initialState: appState, reducer: appStateReducer)
 
     let mockService = FirestoreServiceMock(insertMessageError: NSError.unknowError)
@@ -159,6 +157,102 @@ final class ChatsActionsTests: XCTestCase, AppStateDataSource {
           SystemActions.SetErrorMessage(message: NSError.unknowError.localizedDescription)
         )
       }
+    }
+  }
+
+  func test_sendImageMessageInDialog_success() {
+    let uploadProgress: Float = 0.5
+    let imageUrl = "https://example.com/test.png"
+
+    let message = Message(image: .uiImageTemplateIdle)
+    let sendingMessage = message.setStatus(.sending)
+    let sendingMessageWithProgress = sendingMessage.setLocalImageStatus(.uploading(progress: uploadProgress))
+    let sentMessage = message
+      .setImage(
+        urlImage: .init(
+          url: imageUrl,
+          width: message.image!.uiImage!.size.width,
+          height: message.image!.uiImage!.size.height
+        ))
+      .setStatus(.sent)
+
+    let dialog = Dialog(members: [.template1, .template2])
+
+    let appState = preparedAppState(dialogs: [dialog], dialogMessages: [])
+    mockStore = MockStore(initialState: appState, reducer: appStateReducer)
+
+    let mockService = FirestoreServiceMock(insertMessageError: nil, overrideDialogError: nil)
+
+    withEnvironment(firestoreService: mockService) {
+      let storageService = FirebaseStorageServiceMock(
+        uploadMessageImageProgress: uploadProgress,
+        uploadMessageImageResponse: URL(string: imageUrl)
+      )
+      let action = ChatsActions.SendImageMessageInDialog(
+        message: message,
+        dialog: dialog,
+        storageService: storageService
+      )
+      mockStore.dispatch(action: action)
+
+      wait(interval: 4) {
+        XCTAssertEqual(self.mockStore.actions.count, 5)
+        XCTAssertEqual(
+          self.mockStore.actions[0] as! ChatsActions.SendImageMessageInDialog,
+          action
+        )
+        XCTAssertEqual(
+          self.mockStore.actions[1] as! ChatsActions.InsertMessageToDialog,
+          ChatsActions.InsertMessageToDialog(message: sendingMessage, dialog: dialog)
+        )
+        XCTAssertEqual(
+          self.mockStore.actions[2] as! ChatsActions.InsertMessageToDialog,
+          ChatsActions.InsertMessageToDialog(message: sendingMessageWithProgress, dialog: dialog)
+        )
+        XCTAssertEqual(
+          self.mockStore.actions[3] as! ChatsActions.InsertMessageToDialog,
+          ChatsActions.InsertMessageToDialog(message: sentMessage, dialog: dialog)
+        )
+        XCTAssertEqual(
+          self.mockStore.actions[4] as! ChatsActions.SetDialogLastMessage,
+          ChatsActions.SetDialogLastMessage(dialog: dialog, lastMessage: sentMessage)
+        )
+      }
+    }
+  }
+
+  func test_sendImageMessageInDialog_failed() {
+    let message = Message(image: .uiImageTemplateIdle)
+    let sendingMessage = message.setStatus(.sending)
+    let failedImage = message.setLocalImageStatus(.failed(NSError.unknowError))
+
+    let dialog = Dialog(members: [.template1, .template2])
+
+    let appState = preparedAppState(dialogs: [dialog], dialogMessages: [])
+    mockStore = MockStore(initialState: appState, reducer: appStateReducer)
+
+    let storageService = FirebaseStorageServiceMock(uploadMessageImageError: NSError.unknowError)
+    let action = ChatsActions.SendImageMessageInDialog(
+      message: message,
+      dialog: dialog,
+      storageService: storageService
+    )
+    mockStore.dispatch(action: action)
+
+    wait(interval: 3) {
+      XCTAssertEqual(self.mockStore.actions.count, 3)
+      XCTAssertEqual(
+        self.mockStore.actions[0] as! ChatsActions.SendImageMessageInDialog,
+        ChatsActions.SendImageMessageInDialog(message: message, dialog: dialog)
+      )
+      XCTAssertEqual(
+        self.mockStore.actions[1] as! ChatsActions.InsertMessageToDialog,
+        ChatsActions.InsertMessageToDialog(message: sendingMessage, dialog: dialog)
+      )
+      XCTAssertEqual(
+        self.mockStore.actions[2] as! ChatsActions.InsertMessageToDialog,
+        ChatsActions.InsertMessageToDialog(message: failedImage, dialog: dialog)
+      )
     }
   }
 }

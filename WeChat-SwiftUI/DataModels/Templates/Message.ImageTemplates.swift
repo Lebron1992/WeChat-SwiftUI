@@ -9,7 +9,18 @@ extension Message.Image {
     )
   )
 
-  static let uiImageTemplateIdle = Message.Image(uiImage: Message.Image.LocalImage.testUIImage1, status: .idle)
+  static let uiImageTemplateIdle = Message.Image(
+    uiImage: Message.Image.LocalImage.testUIImage1,
+    status: .idle
+  )
 
-  static let uiImageTemplateUploaded = Message.Image(uiImage: Message.Image.LocalImage.testUIImage2, status: .uploaded)
+  static let uiImageTemplateUploaded = Message.Image(
+    uiImage: Message.Image.LocalImage.testUIImage2,
+    status: .uploaded
+  )
+
+  static let uiImageTemplateError = Message.Image(
+    uiImage: Message.Image.LocalImage.testUIImage2,
+    status: .failed(NSError.unknowError)
+  )
 }

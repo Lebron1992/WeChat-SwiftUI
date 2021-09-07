@@ -90,7 +90,23 @@ extension Dialog {
 // MARK: - Getters
 extension Dialog {
   var lastMessageText: String? {
-    lastMessage?.text
+    guard let last = lastMessage else {
+      return nil
+    }
+
+    if last.isTextMsg {
+      return last.text
+    }
+
+    if last.isImageMsg {
+      return "[\(Strings.general_photo())]"
+    }
+
+    if last.isVideoMsg {
+      return "[\(Strings.general_video())]"
+    }
+
+    return nil
   }
 
   var lastMessageTimeString: String? {

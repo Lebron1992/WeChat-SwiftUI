@@ -39,7 +39,7 @@ final class MyProfilePhotoPreviewViewModelTests: XCTestCase {
 
   func test_uploadPhoto_finished() {
     let url = URL(string: "https://example.com/image.png")!
-    let fsService = FirebaseStorageServiceMock(uploadImageResponse: url)
+    let fsService = FirebaseStorageServiceMock(uploadAvatarResponse: url)
 
     viewModel.replaceFirebaseStorageService(with: fsService)
     viewModel.uploadPhoto(testImage)
@@ -50,7 +50,7 @@ final class MyProfilePhotoPreviewViewModelTests: XCTestCase {
   }
 
   func test_uploadPhoto_failed() {
-    let fsService = FirebaseStorageServiceMock(uploadImageError: NSError.unknowError)
+    let fsService = FirebaseStorageServiceMock(uploadAvatarError: NSError.unknowError)
 
     viewModel.replaceFirebaseStorageService(with: fsService)
     viewModel.uploadPhoto(testImage)

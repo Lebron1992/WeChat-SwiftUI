@@ -64,6 +64,7 @@ struct DialogView: ConnectedView {
     .onAppear { props.loadMessages(viewModel.dialog) }
     .onChange(of: viewModel.messageChanges) { handleMessageChanges($0, for: props.dialog) }
     .onChange(of: pickedPhoto) { onPickedImage($0, props: props) }
+    .environmentObject(ObjectBox(value: props.dialog))
   }
 }
 

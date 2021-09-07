@@ -2,6 +2,8 @@
 "api.error.invalid_url" = "Invalid URL: %{url}";
 "api.error.unexpected_response" = "Unexpected response: %{response}";
 "chat.hold_to_talk" = "Hold to Talk";
+"chat.resend" = "Resend";
+"chat.resend_message_title" = "Resend?";
 "contact_detail.edit_contact" = "Edit Contact";
 "contact_detail.messages" = "Messages";
 "contact_detail.moments" = "Moments";
@@ -32,12 +34,14 @@
 "general.name" = "Name";
 "general.not_set" = "Not Set";
 "general.ok" = "OK";
+"general.photo" = "Photo";
 "general.region" = "Region";
 "general.retry" = "Retry";
 "general.search" = "Search";
 "general.set" = " Set";
 "general.something_went_wrong" = "Something went wrong";
 "general.unknown_error" = "Unknown error";
+"general.video" = "Video";
 "general.wechat_id" = "WeChat ID";
 "general.whats_up" = "What's Up";
 "me.favorites" = "Favorites";

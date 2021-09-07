@@ -190,6 +190,7 @@
 		FDC45EBD26D923F000C44827 /* AppStateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC45EBC26D923F000C44827 /* AppStateDataSource.swift */; };
 		FDC45EBF26DC680C00C44827 /* DialogMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC45EBE26DC680C00C44827 /* DialogMessages.swift */; };
 		FDC45EC126DC7B7C00C44827 /* DialogMessagesTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC45EC026DC7B7C00C44827 /* DialogMessagesTemplates.swift */; };
+		FDC540EF26E61FE700B5FDBA /* ObjectBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC540EE26E61FE700B5FDBA /* ObjectBox.swift */; };
 		FDCC721B266E254D00A48140 /* WeChat_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */; };
 		FDCC721D266E254D00A48140 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC721C266E254D00A48140 /* RootView.swift */; };
 		FDCC721F266E254E00A48140 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDCC721E266E254E00A48140 /* Assets.xcassets */; };
@@ -226,6 +227,7 @@
 		FDCC729B2673494B00A48140 /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC729A2673494B00A48140 /* Loadable.swift */; };
 		FDCC729D2673496800A48140 /* CancelBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC729C2673496800A48140 /* CancelBag.swift */; };
 		FDCC729F2673499700A48140 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC729E2673499700A48140 /* APIError.swift */; };
+		FDE6CBE926E707F700041570 /* WaitAndExecute.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE6CBE826E707F700041570 /* WaitAndExecute.swift */; };
 		FDF568D826B79D9900033094 /* User+Setters.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF568D726B79D9900033094 /* User+Setters.swift */; };
 		FDF98F8326DF5A0100D192F2 /* MessageChangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF98F8226DF5A0100D192F2 /* MessageChangeTests.swift */; };
 		FDF98F8526DF755800D192F2 /* Message.Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF98F8426DF755800D192F2 /* Message.Image.swift */; };
@@ -434,6 +436,7 @@
 		FDC45EBC26D923F000C44827 /* AppStateDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateDataSource.swift; sourceTree = "<group>"; };
 		FDC45EBE26DC680C00C44827 /* DialogMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogMessages.swift; sourceTree = "<group>"; };
 		FDC45EC026DC7B7C00C44827 /* DialogMessagesTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogMessagesTemplates.swift; sourceTree = "<group>"; };
+		FDC540EE26E61FE700B5FDBA /* ObjectBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectBox.swift; sourceTree = "<group>"; };
 		FDCC7217266E254D00A48140 /* WeChat-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WeChat-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDCC721A266E254D00A48140 /* WeChat_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeChat_SwiftUIApp.swift; sourceTree = "<group>"; };
 		FDCC721C266E254D00A48140 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -475,6 +478,7 @@
 		FDCC729A2673494B00A48140 /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
 		FDCC729C2673496800A48140 /* CancelBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelBag.swift; sourceTree = "<group>"; };
 		FDCC729E2673499700A48140 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		FDE6CBE826E707F700041570 /* WaitAndExecute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitAndExecute.swift; sourceTree = "<group>"; };
 		FDF568D726B79D9900033094 /* User+Setters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Setters.swift"; sourceTree = "<group>"; };
 		FDF98F8226DF5A0100D192F2 /* MessageChangeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageChangeTests.swift; sourceTree = "<group>"; };
 		FDF98F8426DF755800D192F2 /* Message.Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.Image.swift; sourceTree = "<group>"; };
@@ -971,6 +975,7 @@
 				FD1E4CEA2674A47200BD2C34 /* LocalizedString.swift */,
 				FDA9080126ABEA3B00805584 /* LocalizedStringTests.swift */,
 				FDA9080626ABF98F00805584 /* NSBundleType.swift */,
+				FDC540EE26E61FE700B5FDBA /* ObjectBox.swift */,
 				FDC45E9026D5005B00C44827 /* PhotoPickerType.swift */,
 				FD58C12126B0FABE00BDB0CC /* PresentationStyle.swift */,
 				FD1E4CE82674780600BD2C34 /* Strings.swift */,
@@ -983,6 +988,7 @@
 				FD882782267F878500BBEAB6 /* Modifiers */,
 				FD8827942680987700BBEAB6 /* Styles */,
 				FDA9080326ABF62200805584 /* TestHelpers */,
+				FDE6CBE826E707F700041570 /* WaitAndExecute.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -1313,9 +1319,11 @@
 				FDB07F1326D22D6100FF7B43 /* URLPlaceholderImage.swift in Sources */,
 				FDF568D826B79D9900033094 /* User+Setters.swift in Sources */,
 				FDA9080E26AD551200805584 /* Dictionary+Data.swift in Sources */,
+				FDE6CBE926E707F700041570 /* WaitAndExecute.swift in Sources */,
 				FD1F16E32695A743009D08DF /* UIApplication+EndEditing.swift in Sources */,
 				FD5412F126A81CB60001D199 /* AuthReducer.swift in Sources */,
 				FD5412E926A8122E0001D199 /* SystemReducer.swift in Sources */,
+				FDC540EF26E61FE700B5FDBA /* ObjectBox.swift in Sources */,
 				FD882759267AF24500BBEAB6 /* ContactsList.swift in Sources */,
 				FDCC728C2671C34200A48140 /* UserTemplates.swift in Sources */,
 				FD1F16D52692FB99009D08DF /* ImageTitleRow.swift in Sources */,

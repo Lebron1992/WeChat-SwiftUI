@@ -35,6 +35,7 @@ extension Message {
   static let urlImageTemplate = Message(image: .urlTemplate)
   static let uiImageTemplateIdle = Message(image: .uiImageTemplateIdle)
   static let uiImageTemplateUploaded = Message(image: .uiImageTemplateUploaded)
+  static let uiImageTemplateError = Message(image: .uiImageTemplateError)
 
   static let videoTemplate3: Message! = tryDecode(
     """

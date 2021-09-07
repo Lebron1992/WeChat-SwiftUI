@@ -26,6 +26,18 @@ extension Message.Image {
     localImage?.uiImage
   }
 
+  var isUploadFailed: Bool {
+    guard let localImage = localImage else {
+      return false
+    }
+    switch localImage.status {
+    case .failed:
+      return true
+    default:
+      return false
+    }
+  }
+
   var size: CGSize {
     if let urlImage = urlImage {
       return .init(width: urlImage.width, height: urlImage.height)

@@ -1,33 +1,86 @@
 import SwiftUI
+import SwiftUIRedux
 
 struct MessageContentImage: View {
   let message: Message
 
+  @EnvironmentObject
+  private var store: Store<AppState>
+
+  @EnvironmentObject
+  private var dialogBox: ObjectBox<Dialog>
+
+  @State
+  private var errorMessage: String?
+
   var body: some View {
-    ZStack {
-      image(thatFits: contentSize)
-      progressContainer(progress: image.progress, size: contentSize)
+    HStack {
+      errorIndicator
+      ZStack {
+        image(thatFits: contentSize)
+        progressContainer(progress: image.progress, size: contentSize)
+      }
+      .cornerRadius(6)
     }
-    .cornerRadius(6)
+    .alert(item: $errorMessage) {
+      Alert(
+        title: Text(Strings.chat_resend_message_title()),
+        message: Text($0),
+        primaryButton: .cancel(Text(Strings.general_cancel())),
+        secondaryButton: resendButton
+      )
+    }
   }
 }
 
 private extension MessageContentImage {
   @ViewBuilder
-  func image(thatFits size: CGSize) -> some View {
-    if let url = image.url {
-      URLPlaceholderImage(url, size: size) {
-        Color.black.opacity(Constant.placeholderOpacity)
+  var errorIndicator: some View {
+    if let status = message.image?.localImage?.status,
+       case let .failed(error) = status {
+      Button {
+        errorMessage = error.localizedDescription
+      } label: {
+        Image("icons_filled_error")
+          .foregroundColor(.red)
       }
-    } else if let image = image.uiImage {
+      .buttonStyle(.plain)
+    }
+  }
+
+  var resendButton: Alert.Button {
+    Alert.Button.default(
+      Text(Strings.chat_resend()).foregroundColor(.link)
+    ) {
+      store.dispatch(action: ChatsActions.SendImageMessageInDialog(message: message, dialog: dialogBox.value))
+    }
+  }
+
+  @ViewBuilder
+  func image(thatFits size: CGSize) -> some View {
+    if let image = image.uiImage {
       Image(uiImage: image)
         .resize(.fill, size)
+    } else if let url = image.url {
+      URLPlaceholderImage(url, size: size) {
+        urlImagePlaceholder(with: size)
+      }
+    }
+  }
+
+  @ViewBuilder
+  func urlImagePlaceholder(with size: CGSize) -> some View {
+    if let image = image.uiImage {
+      Image(uiImage: image)
+        .resize(.fill, size)
+    } else {
+      Color.black.opacity(Constant.placeholderOpacity)
     }
   }
 
   @ViewBuilder
   func progressContainer(progress: Float, size: CGSize) -> some View {
-    if progress < 1 {
+    if image.isUploadFailed == false && progress < 1 {
       ZStack {
         Color.black.opacity(Constant.progressCoverOpacity)
         MediaLoadingProgressView(progress: progress)
@@ -64,13 +117,11 @@ struct MessageRowImage_Previews: PreviewProvider {
       let images = [
         Message.urlImageTemplate,
         Message.uiImageTemplateIdle,
-        Message.uiImageTemplateUploaded
+        Message.uiImageTemplateUploaded,
+        Message.uiImageTemplateError
       ]
       ForEach(images) { message in
-        let maxImageSize = CGSize(width: 155, height: 155)
-        let size = message.image!.size.aspectSize(fitsSize: maxImageSize)
         MessageContentImage(message: message)
-          .frame(width: size.width, height: size.height)
       }
     }
   }

@@ -25,7 +25,7 @@ final class MyProfilePhotoPreviewViewModel: ObservableObject {
     photoUploadStatus = .updating
     photoUploadCancellable?.cancel()
 
-    photoUploadCancellable = fsService.uploadImage(data: data, format: .png)
+    photoUploadCancellable = fsService.uploadAvatar(data: data, format: .png)
       .sinkForUI(
         receiveCompletion: { [weak self] completion in
           switch completion {

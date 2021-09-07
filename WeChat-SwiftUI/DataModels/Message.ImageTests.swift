@@ -15,6 +15,23 @@ final class MessageImageTests: XCTestCase {
       Message.Image.uiImageTemplateIdle.uiImage, Message.Image.LocalImage.testUIImage1)
   }
 
+  func test_isUploadFailed() {
+    var image = Message.Image()
+    XCTAssertFalse(image.isUploadFailed)
+
+    image = .urlTemplate
+    XCTAssertFalse(image.isUploadFailed)
+
+    image = .uiImageTemplateIdle
+    XCTAssertFalse(image.isUploadFailed)
+
+    image = .uiImageTemplateUploaded
+    XCTAssertFalse(image.isUploadFailed)
+
+    image = .uiImageTemplateError
+    XCTAssertTrue(image.isUploadFailed)
+  }
+
   func test_size() {
     var image = Message.Image(
       urlImage: .init(url: "", width: 300, height: 200),
