@@ -1,5 +1,6 @@
 import SwiftUI
 import SwiftUIRedux
+import LBJImagePreviewer
 
 struct MessageContentImage: View {
   let message: Message
@@ -13,6 +14,9 @@ struct MessageContentImage: View {
   @State
   private var errorMessage: String?
 
+  @State
+  private var showPreview = false
+
   var body: some View {
     HStack {
       errorIndicator
@@ -21,6 +25,7 @@ struct MessageContentImage: View {
         progressContainer(progress: image.progress, size: contentSize)
       }
       .cornerRadius(6)
+      .onTapGesture { showPreview = true }
     }
     .alert(item: $errorMessage) {
       Alert(
@@ -30,6 +35,7 @@ struct MessageContentImage: View {
         secondaryButton: resendButton
       )
     }
+    .fullScreenCover(isPresented: $showPreview) { imagePreview }
   }
 }
 
@@ -69,7 +75,22 @@ private extension MessageContentImage {
   }
 
   @ViewBuilder
-  func urlImagePlaceholder(with size: CGSize) -> some View {
+  var imagePreview: some View {
+    Group {
+      if let uiImage = image.uiImage {
+        LBJImagePreviewer(uiImage: uiImage)
+      } else if let url = image.url {
+        let urlImage = URLPlaceholderImage(url) {
+          urlImagePlaceholder()
+        }
+        LBJViewZoomer(content: urlImage, aspectRatio: image.size.width / image.size.height)
+      }
+    }
+    .onTapGesture { showPreview = false }
+  }
+
+  @ViewBuilder
+  func urlImagePlaceholder(with size: CGSize? = nil) -> some View {
     if let image = image.uiImage {
       Image(uiImage: image)
         .resize(.fill, size)

@@ -5,18 +5,27 @@
         "package": "Kickstarter-Prelude",
         "repositoryURL": "https://github.com/Lebron1992/Kickstarter-Prelude.git",
         "state": {
-          "branch": null,
+          "branch": "main",
           "revision": "7dfaa2a8d2aa5768aceb9f8114b6a0b91957dee5",
-          "version": "0.0.1"
+          "version": null
+        }
+      },
+      {
+        "package": "LBJImagePreviewer",
+        "repositoryURL": "https://github.com/Lebron1992/LBJImagePreviewer",
+        "state": {
+          "branch": "main",
+          "revision": "2cac8f9ab21f28160bda2766a8e44492e6421646",
+          "version": null
         }
       },
       {
         "package": "SwiftUIRedux",
         "repositoryURL": "/Users/lebron/Documents/Lebron/my-projects/SwiftUIRedux",
         "state": {
-          "branch": null,
+          "branch": "main",
           "revision": "f5e52895ecab757200c7bc61928f9f0d58ed7b00",
-          "version": "0.0.11"
+          "version": null
         }
       },
       {

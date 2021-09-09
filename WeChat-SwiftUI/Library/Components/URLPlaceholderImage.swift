@@ -50,15 +50,14 @@ struct URLPlaceholderImage<Placeholder: View>: View {
     }
   }
 
+  @ViewBuilder
   private var styledPlaceholder: some View {
     if let image = placeholder() as? Image {
-      return image
+      image
         .resize(contentMode, size)
-        .asAnyView()
     } else {
-      return placeholder()
+      placeholder()
         .frame(width: size?.width, height: size?.height)
-        .asAnyView()
     }
   }
 }

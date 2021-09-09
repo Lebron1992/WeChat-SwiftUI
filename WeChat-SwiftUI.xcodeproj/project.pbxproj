@@ -52,6 +52,7 @@
 		FD5412F126A81CB60001D199 /* AuthReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5412F026A81CB60001D199 /* AuthReducer.swift */; };
 		FD5412F326A81D040001D199 /* AuthActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5412F226A81D040001D199 /* AuthActions.swift */; };
 		FD5412F626A81D850001D199 /* AuthReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5412F426A81D690001D199 /* AuthReducerTests.swift */; };
+		FD585F0826E9AE9D00A9E05F /* LBJImagePreviewer in Frameworks */ = {isa = PBXBuildFile; productRef = FD585F0726E9AE9D00A9E05F /* LBJImagePreviewer */; };
 		FD58C12226B0FABE00BDB0CC /* PresentationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58C12126B0FABE00BDB0CC /* PresentationStyle.swift */; };
 		FD58C12426B1429200BDB0CC /* MyProfileView.RowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58C12326B1429200BDB0CC /* MyProfileView.RowTests.swift */; };
 		FD58C12626B2430D00BDB0CC /* MyProfileFieldUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58C12526B2430D00BDB0CC /* MyProfileFieldUpdateView.swift */; };
@@ -492,6 +493,7 @@
 				FDCC7263266F59EC00A48140 /* Kickstarter-Prelude in Frameworks */,
 				FD88279926809C2D00BBEAB6 /* URLImageStore in Frameworks */,
 				FD88279B26809C2D00BBEAB6 /* URLImage in Frameworks */,
+				FD585F0826E9AE9D00A9E05F /* LBJImagePreviewer in Frameworks */,
 				FD88277B267F305800BBEAB6 /* SwiftUIRedux in Frameworks */,
 				AFE1BCADF2EFD2AB694A33A2 /* Pods_WeChat_SwiftUI.framework in Frameworks */,
 			);
@@ -1071,6 +1073,7 @@
 				FD88277A267F305800BBEAB6 /* SwiftUIRedux */,
 				FD88279826809C2D00BBEAB6 /* URLImageStore */,
 				FD88279A26809C2D00BBEAB6 /* URLImage */,
+				FD585F0726E9AE9D00A9E05F /* LBJImagePreviewer */,
 			);
 			productName = "WeChat-SwiftUI";
 			productReference = FDCC7217266E254D00A48140 /* WeChat-SwiftUI.app */;
@@ -1152,6 +1155,7 @@
 				FDCC7261266F59EC00A48140 /* XCRemoteSwiftPackageReference "Kickstarter-Prelude" */,
 				FD882779267F305800BBEAB6 /* XCRemoteSwiftPackageReference "SwiftUIRedux" */,
 				FD88279726809C2D00BBEAB6 /* XCRemoteSwiftPackageReference "url-image" */,
+				FD585F0626E9AE9D00A9E05F /* XCRemoteSwiftPackageReference "LBJImagePreviewer" */,
 			);
 			productRefGroup = FDCC7218266E254D00A48140 /* Products */;
 			projectDirPath = "";
@@ -1868,12 +1872,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		FD585F0626E9AE9D00A9E05F /* XCRemoteSwiftPackageReference "LBJImagePreviewer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Lebron1992/LBJImagePreviewer";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		FD882779267F305800BBEAB6 /* XCRemoteSwiftPackageReference "SwiftUIRedux" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "file:///Users/lebron/Documents/Lebron/my-projects/SwiftUIRedux";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.11;
+				branch = main;
+				kind = branch;
 			};
 		};
 		FD88279726809C2D00BBEAB6 /* XCRemoteSwiftPackageReference "url-image" */ = {
@@ -1888,13 +1900,18 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Lebron1992/Kickstarter-Prelude.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.1;
+				branch = main;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		FD585F0726E9AE9D00A9E05F /* LBJImagePreviewer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FD585F0626E9AE9D00A9E05F /* XCRemoteSwiftPackageReference "LBJImagePreviewer" */;
+			productName = LBJImagePreviewer;
+		};
 		FD88277A267F305800BBEAB6 /* SwiftUIRedux */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FD882779267F305800BBEAB6 /* XCRemoteSwiftPackageReference "SwiftUIRedux" */;
