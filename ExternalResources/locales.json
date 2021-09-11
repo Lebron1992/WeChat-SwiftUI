@@ -63,6 +63,10 @@
       },
       "me": {
         "favorites": "Favorites",
+        "my_profile": {
+          "title": "My Profile",
+          "photo": "Photo"
+        },
         "my_qr_code": "My QR Code",
         "pay": "Pay",
         "profile_photo": "Profile Photo",
@@ -149,6 +153,10 @@
       },
       "me": {
         "favorites": " 收藏",
+        "my_profile": {
+          "title": "个人信息",
+          "photo": "个人头像"
+        },
         "my_qr_code": "我的二维码",
         "pay": "支付",
         "profile_photo": "头像",

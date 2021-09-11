@@ -23,6 +23,7 @@ struct MyProfileView: ConnectedView {
         }
         .background(.app_bg)
         .listStyle(.plain)
+        .navigationTitle(Strings.me_my_profile_title())
     } else {
       EmptyView()
     }

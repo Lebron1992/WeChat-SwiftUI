@@ -19,6 +19,7 @@ struct MyProfilePhotoPreview: View {
   var body: some View {
     avatar
       .navigationBarItems(trailing: moreButton)
+      .navigationTitle(Strings.me_my_profile_photo())
       .sheet(item: $photoPicker) { pickerType in
         switch pickerType {
         case .camera: ImagePicker(sourceType: .camera) { handlePickedImage($0) }

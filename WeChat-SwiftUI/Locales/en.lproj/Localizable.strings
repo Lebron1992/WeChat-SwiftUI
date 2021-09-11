@@ -45,6 +45,8 @@
 "general.wechat_id" = "WeChat ID";
 "general.whats_up" = "What's Up";
 "me.favorites" = "Favorites";
+"me.my_profile.photo" = "Photo";
+"me.my_profile.title" = "My Profile";
 "me.my_qr_code" = "My QR Code";
 "me.pay" = "Pay";
 "me.profile_photo" = "Profile Photo";

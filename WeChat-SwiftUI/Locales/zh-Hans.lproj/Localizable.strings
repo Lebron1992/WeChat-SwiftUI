@@ -45,6 +45,8 @@
 "general.wechat_id" = "微信号";
 "general.whats_up" = "个性签名";
 "me.favorites" = " 收藏";
+"me.my_profile.photo" = "个人头像";
+"me.my_profile.title" = "个人信息";
 "me.my_qr_code" = "我的二维码";
 "me.pay" = "支付";
 "me.profile_photo" = "头像";

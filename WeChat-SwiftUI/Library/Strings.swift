@@ -666,6 +666,34 @@ public enum Strings {
     )
   }
   /**
+   "Photo"
+
+   - **en**: "Photo"
+   - **zh**: "个人头像"
+  */
+  public static func me_my_profile_photo() -> String {
+    return localizedString(
+      key: "me.my_profile.photo",
+      defaultValue: "Photo",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
+   "My Profile"
+
+   - **en**: "My Profile"
+   - **zh**: "个人信息"
+  */
+  public static func me_my_profile_title() -> String {
+    return localizedString(
+      key: "me.my_profile.title",
+      defaultValue: "My Profile",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
    "My QR Code"
 
    - **en**: "My QR Code"
