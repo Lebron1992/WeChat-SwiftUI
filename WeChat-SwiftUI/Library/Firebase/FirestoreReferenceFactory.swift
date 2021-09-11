@@ -19,7 +19,7 @@ enum FirestoreReferenceType {
     case .dialogMessages(let dialogId):
       return ["dialogs", dialogId, "messages"]
     case .officialAccounts:
-      return ["officialAccounts"]
+      return ["official-accounts"]
     case .users:
       return ["users"]
     }

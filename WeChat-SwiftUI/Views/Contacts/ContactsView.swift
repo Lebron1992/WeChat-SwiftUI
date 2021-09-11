@@ -24,6 +24,7 @@ struct ContactsView: ConnectedView {
   func body(props: Props) -> some View {
     NavigationView {
       VStack(spacing: 0) {
+        // TODO: 加上搜索框后，底部的 tab 背景变成透明，估计是 SwiftUI 的 bug
         SearchBar(
           searchText: $searchText,
           onEditingChanged: {
@@ -52,7 +53,6 @@ struct ContactsView: ConnectedView {
 
         Spacer(minLength: 0)
       }
-      .background(.app_bg)
       .navigationTitle(Strings.tabbar_contacts())
       .navigationBarTitleDisplayMode(.inline)
       .navigationBarItems(trailing: Image("icons_outlined_add_friends"))

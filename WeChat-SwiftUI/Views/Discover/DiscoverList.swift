@@ -22,7 +22,6 @@ struct DiscoverList: ConnectedView {
         discoverSection(section: $0)
       }
     }
-    .background(.app_bg)
     .listStyle(.plain)
     .environment(\.defaultMinListRowHeight, 10)
   }

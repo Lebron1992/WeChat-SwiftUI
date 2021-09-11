@@ -42,7 +42,6 @@ private extension MeView {
           SectionHeaderBackground()
           sectionSettings
         }
-        .background(.app_bg)
         .listStyle(.plain)
         .environment(\.defaultMinListRowHeight, 10)
 
@@ -71,6 +70,7 @@ private extension MeView {
       }
     }
     .listRowBackground(Color.app_white)
+    .listRowSeparator(.hidden)
   }
 
   func usernameView(user: User) -> some View {

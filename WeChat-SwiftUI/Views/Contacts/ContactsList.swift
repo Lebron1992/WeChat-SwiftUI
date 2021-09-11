@@ -29,19 +29,20 @@ struct ContactsList<Contact: ContactType, Header: View, Destination: View>: View
     self.selectionDestination = selectionDestination
   }
 
+  @ViewBuilder
   var body: some View {
     switch contacts {
     case .notRequested:
-      return Text("").onAppear(perform: loadContacts).asAnyView()
+      Text("").onAppear(perform: loadContacts)
 
     case let .isLoading(last, _):
-      return loadingView(contacts: last, searchText: searchText).asAnyView()
+      loadingView(contacts: last, searchText: searchText)
 
     case let .loaded(contacts):
-      return loadedView(contacts: contacts, searchText: searchText, showLoading: false).asAnyView()
+      loadedView(contacts: contacts, searchText: searchText, showLoading: false)
 
     case let .failed(error):
-      return ErrorView(error: error, retryAction: loadContacts).asAnyView()
+      ErrorView(error: error, retryAction: loadContacts)
     }
   }
 }

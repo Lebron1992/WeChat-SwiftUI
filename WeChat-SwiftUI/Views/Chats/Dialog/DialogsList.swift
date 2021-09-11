@@ -30,7 +30,6 @@ struct DialogsList: ConnectedView {
       }
       .listRowInsets(.zero)
     }
-    .background(.app_bg)
     .listStyle(.plain)
     .onAppear(perform: props.loadDialogs)
     .onChange(of: viewModel.dialogChanges, perform: handleDialogChanges(_:))
