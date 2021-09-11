@@ -78,7 +78,7 @@ private extension MessageContentImage {
   var imagePreview: some View {
     Group {
       if let uiImage = image.uiImage {
-        LBJImagePreviewer(uiImage: uiImage)
+        LBJUIImagePreviewer(uiImage: uiImage)
       } else if let url = image.url {
         let urlImage = URLPlaceholderImage(url) {
           urlImagePlaceholder()
