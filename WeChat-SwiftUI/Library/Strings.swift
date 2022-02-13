@@ -190,15 +190,15 @@ public enum Strings {
     )
   }
   /**
-   "Official Account"
+   "Official Accounts"
 
-   - **en**: "Official Account"
+   - **en**: "Official Accounts"
    - **zh**: "公众号"
   */
   public static func contacts_offical_account() -> String {
     return localizedString(
       key: "contacts.offical_account",
-      defaultValue: "Official Account",
+      defaultValue: "Official Accounts",
       count: nil,
       substitutions: [:]
     )

@@ -1,6 +1,6 @@
 import SwiftUI
 import SwiftUIRedux
-import LBJImagePreviewer
+import LBJMediaBrowser
 
 struct MessageContentImage: View {
   let message: Message
@@ -76,17 +76,28 @@ private extension MessageContentImage {
 
   @ViewBuilder
   var imagePreview: some View {
-    Group {
-      if let uiImage = image.uiImage {
-        LBJUIImagePreviewer(uiImage: uiImage)
-      } else if let url = image.url {
-        let urlImage = URLPlaceholderImage(url) {
-          urlImagePlaceholder()
+    let imageMessages = store.state.chatsState.dialogMessages
+      .first(where: { $0.dialogId == dialogBox.value.id })?
+      .messages
+      .filter { $0.isImageMsg }
+      ?? []
+
+    let medias: [Media] = imageMessages.compactMap { message in
+        if let uiImage = message.image?.localImage?.uiImage {
+          return MediaUIImage(uiImage: uiImage)
         }
-        LBJViewZoomer(content: urlImage, aspectRatio: image.size.width / image.size.height)
+        if let url = URL(string: message.image?.urlImage?.url ?? "") {
+          return MediaURLImage(imageUrl: url)
+        }
+        return nil
       }
-    }
-    .onTapGesture { showPreview = false }
+    let currentPage = imageMessages.firstIndex(of: message) ?? 0
+    let browser = LBJPagingBrowser(medias: medias, currentPage: currentPage)
+
+    LBJPagingMediaBrowser(browser: browser)
+      .onTapMedia { _ in
+        showPreview = false
+      }
   }
 
   @ViewBuilder

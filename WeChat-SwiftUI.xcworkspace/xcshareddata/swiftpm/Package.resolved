@@ -2,6 +2,24 @@
   "object": {
     "pins": [
       {
+        "package": "Alamofire",
+        "repositoryURL": "https://github.com/Alamofire/Alamofire.git",
+        "state": {
+          "branch": null,
+          "revision": "d120af1e8638c7da36c8481fd61a66c0c08dc4fc",
+          "version": "5.4.4"
+        }
+      },
+      {
+        "package": "AlamofireImage",
+        "repositoryURL": "https://github.com/Alamofire/AlamofireImage.git",
+        "state": {
+          "branch": null,
+          "revision": "98cbb00ce0ec5fc8e52a5b50a6bfc08d3e5aee10",
+          "version": "4.2.0"
+        }
+      },
+      {
         "package": "Kickstarter-Prelude",
         "repositoryURL": "https://github.com/Lebron1992/Kickstarter-Prelude.git",
         "state": {
@@ -15,7 +33,16 @@
         "repositoryURL": "https://github.com/Lebron1992/LBJImagePreviewer",
         "state": {
           "branch": "main",
-          "revision": "3156c7721e7836979a80095da581caf11fb26e52",
+          "revision": "1bbbbc67ca05c133dee7526e233e3161adcabcd9",
+          "version": null
+        }
+      },
+      {
+        "package": "LBJMediaBrowser",
+        "repositoryURL": "https://github.com/Lebron1992/LBJMediaBrowser",
+        "state": {
+          "branch": "main",
+          "revision": "092d803ca32d6eb9ea3feaf4d53cb38bdcd075c3",
           "version": null
         }
       },
