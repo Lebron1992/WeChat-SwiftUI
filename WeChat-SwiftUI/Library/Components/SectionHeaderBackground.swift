@@ -10,6 +10,7 @@ struct SectionHeaderBackground: View {
   var body: some View {
     color
       .listRowInsets(.zero)
+      .listRowSeparator(.hidden)
   }
 }
 

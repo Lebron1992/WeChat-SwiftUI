@@ -2,10 +2,6 @@ import SwiftUI
 import SwiftUIRedux
 import URLImage
 
-/* TODO:
- --- 因为暂时无法改变 header 的高度，所以 SectionHeader 使用 cell 代替
- */
-
 struct MeView: ConnectedView {
   struct Props {
     let signedInUser: User?
@@ -35,12 +31,22 @@ private extension MeView {
       ZStack(alignment: .topTrailing) {
         List {
           sectionMyInfo(user: user)
-          SectionHeaderBackground()
-          sectionPay
-          SectionHeaderBackground()
-          sectionFavoritesSticker
-          SectionHeaderBackground()
-          sectionSettings
+
+          ForEach([
+            [MeItem.pay],
+            [MeItem.favorites, MeItem.stickerGallery],
+            [MeItem.settings]
+          ], id: \.self) { items in
+
+            SectionHeaderBackground()
+            Section {
+              ForEach(items, id: \.self) {
+                meItemRow(for: $0)
+              }
+            }
+            .listRowBackground(Color.app_white)
+            .listSectionSeparator(.hidden)
+          }
         }
         .listStyle(.plain)
         .environment(\.defaultMinListRowHeight, 10)
@@ -71,6 +77,7 @@ private extension MeView {
     }
     .listRowBackground(Color.app_white)
     .listRowSeparator(.hidden)
+    .listSectionSeparator(.hidden)
   }
 
   func usernameView(user: User) -> some View {
@@ -91,29 +98,6 @@ private extension MeView {
         .font(.system(size: Constant.rightArrowFontSize, weight: .medium))
     }
     .foregroundColor(.text_info_200)
-  }
-
-  var sectionPay: some View {
-    Section {
-      meItemRow(for: .pay)
-    }
-    .listRowBackground(Color.app_white)
-  }
-
-  var sectionFavoritesSticker: some View {
-    Section {
-      ForEach([MeItem.favorites, MeItem.stickerGallery], id: \.self) {
-        meItemRow(for: $0)
-      }
-    }
-    .listRowBackground(Color.app_white)
-  }
-
-  var sectionSettings: some View {
-    Section {
-      meItemRow(for: .settings)
-    }
-    .listRowBackground(Color.app_white)
   }
 
   var cameraButton: some View {

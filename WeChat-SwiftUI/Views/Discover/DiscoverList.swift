@@ -23,25 +23,25 @@ struct DiscoverList: ConnectedView {
       }
     }
     .listStyle(.plain)
-    .environment(\.defaultMinListRowHeight, 10)
+    .background(.app_bg)
+    .environment(\.defaultMinListHeaderHeight, 0)
   }
 }
 
 private extension DiscoverList {
 
+  @ViewBuilder
   func discoverSection(section: DiscoverSection) -> some View {
 
     let header = section.isFirstSection ? EmptyView().asAnyView() : SectionHeaderBackground().asAnyView()
 
-    return Group {
-      header
-      Section {
-        ForEach(section.items, id: \.self) {
-          discoverItemRow(item: $0)
-            .listRowBackground(Color.app_white)
-        }
+    Section(header: header) {
+      ForEach(section.items, id: \.self) {
+        discoverItemRow(item: $0)
+          .listRowBackground(Color.app_white)
       }
     }
+    .listSectionSeparator(.hidden)
   }
 
   func discoverItemRow(item: DiscoverItem) -> some View {

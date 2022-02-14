@@ -102,6 +102,7 @@ private extension ContactsList {
             )
           }
           .listRowBackground(Color.app_white)
+          .listSectionSeparator(.hidden)
           .frame(height: ContactsListConstant.contactRowHeight)
         }
       }

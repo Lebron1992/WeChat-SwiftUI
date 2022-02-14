@@ -10,6 +10,7 @@ struct SectionHeaderTitle: View {
       .padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 0))
       .frame(width: UIScreen.main.bounds.width, alignment: .leading)
       .background(.app_bg)
+      .padding(.vertical, -7) // remove the vertical margin
   }
 }
 

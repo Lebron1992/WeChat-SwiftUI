@@ -55,5 +55,6 @@ struct WeChat_SwiftUIApp: App {
     navBar.titleTextAttributes = [.foregroundColor: navBar.tintColor as Any]
 
     UITabBar.appearance().unselectedItemTintColor = .text_primary
+    UITableView.appearance().sectionHeaderTopPadding = 0
   }
 }
