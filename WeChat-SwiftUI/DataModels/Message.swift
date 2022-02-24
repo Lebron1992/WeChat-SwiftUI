@@ -5,7 +5,7 @@ struct Message: Codable, Identifiable, Equatable {
   let text: String?
   let image: Image?
   let videoUrl: String?
-  let sender: MessageSender
+  let sender: Sender
   let createTime: Date
   let status: Status
 
@@ -14,7 +14,7 @@ struct Message: Codable, Identifiable, Equatable {
     text: String?,
     image: Image?,
     videoUrl: String?,
-    sender: MessageSender,
+    sender: Sender,
     createTime: Date,
     status: Status
   ) {
@@ -61,7 +61,7 @@ struct Message: Codable, Identifiable, Equatable {
 }
 
 extension Message {
-  struct MessageSender: Codable, Equatable {
+  struct Sender: Codable, Equatable {
     let id: String
     let name: String
     let avatar: String

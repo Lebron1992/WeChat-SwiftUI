@@ -24,10 +24,10 @@ struct ContactCategoriesList: ConnectedView {
 private extension ContactCategoriesList {
   func destination(for category: ContactCategory) -> AnyView {
     switch category {
-    case .officalAccount:
-      return AnyView(ContactOfficialAccountsList())
+    case .officalAccounts:
+      return ContactOfficialAccountsList().asAnyView()
     default:
-      return AnyView(Text(category.title))
+      return Text(category.title).asAnyView()
     }
   }
 }

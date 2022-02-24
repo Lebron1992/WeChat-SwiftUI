@@ -34,7 +34,7 @@ struct ContactRowCategory_Previews: PreviewProvider {
       Group {
         ContactCategoryRow(category: .groupChats)
         ContactCategoryRow(category: .tags)
-        ContactCategoryRow(category: .officalAccount)
+        ContactCategoryRow(category: .officalAccounts)
         ContactCategoryRow(category: .weChatWorkContacts)
       }
       .background(.blue)

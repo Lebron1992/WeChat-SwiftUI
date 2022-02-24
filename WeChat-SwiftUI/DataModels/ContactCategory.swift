@@ -3,7 +3,7 @@ import SwiftUI
 enum ContactCategory: CaseIterable {
   case groupChats
   case tags
-  case officalAccount
+  case officalAccounts
   case weChatWorkContacts
 
   var icon: String {
@@ -14,7 +14,7 @@ enum ContactCategory: CaseIterable {
     case .tags:
       return "icons_filled_tag"
 
-    case .officalAccount:
+    case .officalAccounts:
       return "icons_filled_official_accounts"
 
     case .weChatWorkContacts:
@@ -28,7 +28,7 @@ enum ContactCategory: CaseIterable {
     switch self {
     case .groupChats:
       hex = "57BD6A"
-    case .tags, .officalAccount:
+    case .tags, .officalAccounts:
       hex = "3C85E6"
     case .weChatWorkContacts:
       hex = "4182D0"
@@ -45,7 +45,7 @@ enum ContactCategory: CaseIterable {
     case .tags:
       return Strings.contacts_tags()
 
-    case .officalAccount:
+    case .officalAccounts:
       return Strings.contacts_offical_account()
 
     case .weChatWorkContacts:

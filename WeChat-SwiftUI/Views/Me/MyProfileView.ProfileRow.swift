@@ -10,36 +10,39 @@ extension MyProfileView {
     private var showingSheet = false
 
     var body: some View {
-      let view: AnyView
-      let presentation = row.destinationPresentation(user: user)
+      let destination = row.navigateDestination(with: user)
+      Group {
+        switch destination.style {
+        case .modal:
+          modalContent(destination: destination)
+        case .push:
+          pushContent(destination: destination)
+        }
+      }
+      .padding(.vertical, Constant.rowVerticalPadding)
+    }
 
-      switch presentation.style {
-      case .modal:
-        view = HStack {
+    private func modalContent(destination: MyProfileRowType.Destination) -> some View {
+      HStack {
+        rowTitle
+        Spacer()
+        rowDetail
+        rightArrow
+      }
+      .onTapGesture {
+        showingSheet = true
+      }
+      .fullScreenCover(isPresented: $showingSheet, content: { destination.content })
+    }
+
+    private func pushContent(destination: MyProfileRowType.Destination) -> some View {
+      NavigationLink(destination: destination.content) {
+        HStack {
           rowTitle
           Spacer()
           rowDetail
-          rightArrow
         }
-        .onTapGesture {
-          showingSheet = true
-        }
-        .fullScreenCover(isPresented: $showingSheet, content: { presentation.destination })
-        .asAnyView()
-
-      case .push:
-        view = NavigationLink(destination: presentation.destination) {
-          HStack {
-            rowTitle
-            Spacer()
-            rowDetail
-          }
-        }
-        .asAnyView()
       }
-
-      return view
-        .padding(.vertical, Constant.rowVerticalPadding)
     }
 
     private var rowTitle: some View {
@@ -49,7 +52,7 @@ extension MyProfileView {
     }
 
     private var rowDetail: some View {
-      row.detailView(user: user)
+      row.detailView(with: user)
     }
 
     private var rightArrow: some View {

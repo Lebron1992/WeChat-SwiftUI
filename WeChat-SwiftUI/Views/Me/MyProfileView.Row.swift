@@ -33,7 +33,7 @@ extension MyProfileView {
       }
     }
 
-    func detailView(user: User) -> AnyView {
+    func detailView(with user: User) -> AnyView {
       switch self {
       case .photo:
         return URLPlaceholderImage(user.avatar, size: Constant.avatarSize) {
@@ -67,7 +67,7 @@ extension MyProfileView {
       }
     }
 
-    func destinationPresentation(user: User) -> (style: PresentationStyle, destination: AnyView) {
+    func navigateDestination(with user: User) -> MyProfileRowType.Destination {
       switch self {
       case .photo:
         return (.push, MyProfilePhotoPreview(photoUrl: user.avatar).asAnyView())
@@ -110,7 +110,7 @@ extension MyProfileView.Row {
       }
     }
 
-    func detailView(user: User) -> AnyView {
+    func detailView(with user: User) -> AnyView {
       let text: String
       switch self {
       case .gender:
@@ -126,7 +126,7 @@ extension MyProfileView.Row {
           .asAnyView()
     }
 
-    func destinationPresentation(user: User) -> (style: PresentationStyle, destination: AnyView) {
+    func navigateDestination(with user: User) -> MyProfileRowType.Destination {
       switch self {
       case .gender:
         return (.modal, MyProfileFieldUpdateView(field: .gender(user.gender)).asAnyView())
@@ -140,9 +140,11 @@ extension MyProfileView.Row {
 }
 
 protocol MyProfileRowType {
+  typealias Destination = (style: PresentationStyle, content: AnyView)
+
   var title: String { get }
-  func detailView(user: User) -> AnyView
-  func destinationPresentation(user: User) -> (style: PresentationStyle, destination: AnyView)
+  func detailView(with user: User) -> AnyView
+  func navigateDestination(with user: User) -> Destination
 }
 
 private extension MyProfileView.Row {

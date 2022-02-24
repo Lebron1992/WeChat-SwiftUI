@@ -17,31 +17,31 @@ final class DialogMessagesTests: XCTestCase, MessagesDataSource {
     let (m1, m2, m3) = sortedMessages()
     var dm = DialogMessages(dialogId: generateUUID(), messages: [])
 
-    dm.set([m1, m2])
+    dm.setMessages([m1, m2])
     XCTAssertEqual([m1, m2], dm.messages)
 
-    dm.set([m3])
+    dm.setMessages([m3])
     XCTAssertEqual([m3], dm.messages)
   }
 
   func test_insertedMessage_insert() {
     let (m1, m2, m3) = sortedMessages()
     var dm = DialogMessages(dialogId: generateUUID(), messages: [m1, m3])
-    dm.inserted(m2)
+    dm.insertedMessage(m2)
     XCTAssertEqual([m1, m2, m3], dm.messages)
   }
 
   func test_insertedMessage_append() {
     let (m1, m2, m3) = sortedMessages()
     var dm = DialogMessages(dialogId: generateUUID(), messages: [m1, m2])
-    dm.inserted(m3)
+    dm.insertedMessage(m3)
     XCTAssertEqual([m1, m2, m3], dm.messages)
   }
 
   func test_removedMessage() {
     let (m1, m2, m3) = sortedMessages()
     var dm = DialogMessages(dialogId: generateUUID(), messages: [m1, m2, m3])
-    dm.removed(m3)
+    dm.removedMessage(m3)
     XCTAssertEqual([m1, m2], dm.messages)
   }
 

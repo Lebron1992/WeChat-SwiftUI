@@ -20,7 +20,7 @@ func localizedString(
     .flatMap { key + "." + keySuffixForCount($0) }
     .coalesceWith(key)
 
-  let lprojName = lprojFileNameForLanguage(env.language)
+  let lprojName = lprojFileName(for: env.language)
   let localized = bundle.path(forResource: lprojName, ofType: "lproj")
     .flatMap(type(of: bundle).create(path:))
     .flatMap { $0.localizedString(forKey: augmentedKey, value: nil, table: nil) }
@@ -35,7 +35,7 @@ func localizedString(
   return substitute(localized, with: substitutions)
 }
 
-private func lprojFileNameForLanguage(_ language: Language) -> String {
+private func lprojFileName(for language: Language) -> String {
   return language.rawValue == "zh" ? "zh-Hans" : language.rawValue
 }
 

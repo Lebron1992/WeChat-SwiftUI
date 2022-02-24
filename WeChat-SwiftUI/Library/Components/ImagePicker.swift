@@ -32,9 +32,7 @@ struct ImagePicker: UIViewControllerRepresentable {
     return picker
   }
 
-  func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {
-    // nothing to do
-  }
+  func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) { }
 
   func makeCoordinator() -> Coordinator {
     Coordinator(handlePickedImage: handlePickedImage)

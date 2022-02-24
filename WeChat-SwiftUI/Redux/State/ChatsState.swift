@@ -33,7 +33,7 @@ extension ChatsState {
     // update dialogMessages
 
     if var existingDM = dialogMessages.first(where: { $0.dialogId == dialog.id }) {
-      dialogMessages.update(with: existingDM.set(messages))
+      dialogMessages.update(with: existingDM.setMessages(messages))
     } else {
       dialogMessages.insert(.init(dialogId: dialog.id, messages: messages))
     }
@@ -62,7 +62,7 @@ extension ChatsState {
     // update dialogMessages
 
     if var existingDM = dialogMessages.first(where: { $0.dialogId == dialog.id }) {
-      dialogMessages.update(with: existingDM.inserted(message))
+      dialogMessages.update(with: existingDM.insertedMessage(message))
     } else {
       dialogMessages.insert(.init(dialogId: dialog.id, messages: [message]))
     }
@@ -109,7 +109,7 @@ private extension ChatsState {
     guard var existingDM = dialogMessages.first(where: { $0.dialogId == dialog.id }) else {
       return
     }
-    let newDM = existingDM.removed(message)
+    let newDM = existingDM.removedMessage(message)
     dialogMessages.update(with: newDM)
 
     // update dialog's last message

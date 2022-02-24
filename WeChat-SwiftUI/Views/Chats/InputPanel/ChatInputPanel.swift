@@ -38,7 +38,8 @@ struct ChatInputPanel: View {
   var body: some View {
     ZStack(alignment: .topLeading) {
       VStack(spacing: 0) {
-        Background(.bg_info_300).frame(height: Constant.topLineHeight)
+        Color.bg_info_300
+          .frame(height: Constant.topLineHeight)
         inputToolBar
         expressionKeyboard
       }

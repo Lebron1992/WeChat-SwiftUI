@@ -13,7 +13,7 @@ struct ErrorView: View {
         .multilineTextAlignment(.center)
         .padding(.bottom, 40)
         .padding()
-      Button(action: retryAction, label: { Text(Strings.general_retry()).bold() })
+      Button(action: retryAction) { Text(Strings.general_retry()).bold() }
     }
   }
 }

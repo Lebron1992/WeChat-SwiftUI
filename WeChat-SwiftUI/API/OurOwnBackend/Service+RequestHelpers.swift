@@ -6,10 +6,11 @@ extension Service {
 
   func request<M: Decodable>(_ route: Route) -> AnyPublisher<M, Error> {
     let properties = route.requestProperties
+    let urlString = serverConfig.apiBaseUrl.absoluteString + properties.path
 
-    guard let url = URL(string: "\(serverConfig.apiBaseUrl.absoluteString)\(properties.path)") else {
-      let error = APIError.invalidURL(serverConfig.apiBaseUrl.absoluteString + properties.path)
-      return Fail<M, Error>(error: error).eraseToAnyPublisher()
+    guard let url = URL(string: urlString) else {
+      return Fail<M, Error>(error: APIError.invalidURL(urlString))
+        .eraseToAnyPublisher()
     }
 
     print("\(url): \(properties.method) \(properties.query)")

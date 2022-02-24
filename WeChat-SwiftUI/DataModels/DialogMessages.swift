@@ -9,16 +9,16 @@ struct DialogMessages: Codable {
 extension DialogMessages {
 
   @discardableResult
-  mutating func set(_ messages: [Message]) -> DialogMessages {
+  mutating func setMessages(_ messages: [Message]) -> DialogMessages {
     self.messages = messages
     return self
   }
 
   @discardableResult
-  mutating func inserted(_ message: Message) -> DialogMessages {
+  mutating func insertedMessage(_ message: Message) -> DialogMessages {
     if let index = messages.index(matching: message) {
       messages[index] = message
-    } else if let index = messages.firstIndex(where: { message.createTime < $0.createTime  }) {
+    } else if let index = messages.firstIndex(where: { message.createTime < $0.createTime }) {
       messages.insert(message, at: index)
     } else {
       messages.append(message)
@@ -27,7 +27,7 @@ extension DialogMessages {
   }
 
   @discardableResult
-  mutating func removed(_ message: Message) -> DialogMessages {
+  mutating func removedMessage(_ message: Message) -> DialogMessages {
     messages.removeAll { $0.id == message.id }
     return self
   }

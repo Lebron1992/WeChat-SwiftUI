@@ -18,11 +18,15 @@ struct ContactDetail: View {
 
   var body: some View {
     List {
-      sectionInfoEditPrivacy
-      SectionHeaderBackground()
-      sectionMomentsMore
-      SectionHeaderBackground()
-      sectionMessagesCall
+      Group {
+        sectionInfoEditPrivacy
+        SectionHeaderBackground()
+        sectionMomentsMore
+        SectionHeaderBackground()
+        sectionMessagesCall
+      }
+      .listRowBackground(Color.app_white)
+      .listSectionSeparator(.hidden)
     }
     .background(.app_bg)
     .listStyle(.plain)
@@ -39,7 +43,6 @@ private extension ContactDetail {
         rowTitle(item.title)
       }
     }
-    .listRowBackground(Color.app_white)
   }
 
   var sectionMomentsMore: some View {
@@ -48,7 +51,6 @@ private extension ContactDetail {
         rowTitle(item.title)
       }
     }
-    .listRowBackground(Color.app_white)
   }
 
   var sectionMessagesCall: some View {
@@ -63,7 +65,6 @@ private extension ContactDetail {
       .buttonStyle(BorderlessButtonStyle()) // 解决：点击其中一个按钮导致两个按钮触发点击事件和 cell 被点击选中
       .listRowInsets(.zero)
     }
-    .listRowBackground(Color.app_white)
   }
 
   var infoRow: some View {

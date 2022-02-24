@@ -1,10 +1,6 @@
 import SwiftUI
 import SwiftUIRedux
 
-/* TODO:
---- 因为暂时无法改变 header 的高度，所以 SectionHeader 使用 cell 代替
- */
-
 struct DiscoverList: ConnectedView {
   struct Props {
     let discoverSections: [DiscoverSection]
@@ -18,13 +14,16 @@ struct DiscoverList: ConnectedView {
 
   func body(props: Props) -> some View {
     List {
-      ForEach(props.discoverSections, id: \.self) {
-        discoverSection(section: $0)
+      ForEach(props.discoverSections, id: \.self) { section in
+        if section.isFirstSection == false {
+          SectionHeaderBackground()
+        }
+        discoverSection(section: section)
       }
     }
     .listStyle(.plain)
     .background(.app_bg)
-    .environment(\.defaultMinListHeaderHeight, 0)
+    .environment(\.defaultMinListRowHeight, 10)
   }
 }
 
@@ -32,10 +31,7 @@ private extension DiscoverList {
 
   @ViewBuilder
   func discoverSection(section: DiscoverSection) -> some View {
-
-    let header = section.isFirstSection ? EmptyView().asAnyView() : SectionHeaderBackground().asAnyView()
-
-    Section(header: header) {
+    Section {
       ForEach(section.items, id: \.self) {
         discoverItemRow(item: $0)
           .listRowBackground(Color.app_white)

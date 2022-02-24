@@ -568,15 +568,15 @@ public enum Strings {
     )
   }
   /**
-   " Set"
+   "Set"
 
-   - **en**: " Set"
+   - **en**: "Set"
    - **zh**: "设置"
   */
   public static func general_set() -> String {
     return localizedString(
       key: "general.set",
-      defaultValue: " Set",
+      defaultValue: "Set",
       count: nil,
       substitutions: [:]
     )

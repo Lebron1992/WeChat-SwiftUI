@@ -56,7 +56,6 @@
 		FD58C12426B1429200BDB0CC /* MyProfileView.RowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58C12326B1429200BDB0CC /* MyProfileView.RowTests.swift */; };
 		FD58C12626B2430D00BDB0CC /* MyProfileFieldUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58C12526B2430D00BDB0CC /* MyProfileFieldUpdateView.swift */; };
 		FD6D377326842C610087272F /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D377226842C610087272F /* SearchBar.swift */; };
-		FD6D37752684707A0087272F /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D37742684707A0087272F /* Background.swift */; };
 		FD6D37792684803E0087272F /* ResignKeyboardOnDragModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D37782684803E0087272F /* ResignKeyboardOnDragModifier.swift */; };
 		FD6D37802684D6DD0087272F /* ContactCategoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D377F2684D6DD0087272F /* ContactCategoryRow.swift */; };
 		FD6D378226856E310087272F /* ContactCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6D378126856E310087272F /* ContactCategory.swift */; };
@@ -165,7 +164,7 @@
 		FDB07F1526D3449F00FF7B43 /* ContactsList.SectionIndexTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB07F1426D3449F00FF7B43 /* ContactsList.SectionIndexTitles.swift */; };
 		FDB474E726E37AE2001815BB /* Message.ImageTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB474E626E37AE2001815BB /* Message.ImageTemplates.swift */; };
 		FDB6257026E1C9C0008585A9 /* MediaLoadingProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB6256F26E1C9C0008585A9 /* MediaLoadingProgressView.swift */; };
-		FDC45E8926D4EF7B00C44827 /* MeView.MeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC45E8826D4EF7B00C44827 /* MeView.MeItem.swift */; };
+		FDC45E8926D4EF7B00C44827 /* MeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC45E8826D4EF7B00C44827 /* MeItem.swift */; };
 		FDC45E8B26D4F61400C44827 /* MyProfileFieldUpdateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC45E8A26D4F61400C44827 /* MyProfileFieldUpdateViewModel.swift */; };
 		FDC45E8D26D4F8A800C44827 /* MyProfileFieldUpdateView.Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC45E8C26D4F8A800C44827 /* MyProfileFieldUpdateView.Field.swift */; };
 		FDC45E8F26D4FD6600C44827 /* MyProfileFieldUpdateViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC45E8E26D4FD6600C44827 /* MyProfileFieldUpdateViewModelTests.swift */; };
@@ -196,7 +195,7 @@
 		FDCC721F266E254E00A48140 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDCC721E266E254E00A48140 /* Assets.xcassets */; };
 		FDCC724B266F190700A48140 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC724A266F190700A48140 /* Environment.swift */; };
 		FDCC724D266F19CF00A48140 /* ServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC724C266F19CF00A48140 /* ServiceType.swift */; };
-		FDCC724F266F1A3400A48140 /* ServerConfigType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC724E266F1A3400A48140 /* ServerConfigType.swift */; };
+		FDCC724F266F1A3400A48140 /* ServerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC724E266F1A3400A48140 /* ServerConfig.swift */; };
 		FDCC7251266F1B2E00A48140 /* EnvironmentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC7250266F1B2E00A48140 /* EnvironmentType.swift */; };
 		FDCC7253266F1FB800A48140 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC7252266F1FB800A48140 /* Secrets.swift */; };
 		FDCC7255266F212B00A48140 /* ServerConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC7254266F212B00A48140 /* ServerConfigTests.swift */; };
@@ -306,7 +305,6 @@
 		FD58C12326B1429200BDB0CC /* MyProfileView.RowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.RowTests.swift; sourceTree = "<group>"; };
 		FD58C12526B2430D00BDB0CC /* MyProfileFieldUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileFieldUpdateView.swift; sourceTree = "<group>"; };
 		FD6D377226842C610087272F /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
-		FD6D37742684707A0087272F /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		FD6D37782684803E0087272F /* ResignKeyboardOnDragModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResignKeyboardOnDragModifier.swift; sourceTree = "<group>"; };
 		FD6D377F2684D6DD0087272F /* ContactCategoryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCategoryRow.swift; sourceTree = "<group>"; };
 		FD6D378126856E310087272F /* ContactCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCategory.swift; sourceTree = "<group>"; };
@@ -412,7 +410,7 @@
 		FDB07F1426D3449F00FF7B43 /* ContactsList.SectionIndexTitles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsList.SectionIndexTitles.swift; sourceTree = "<group>"; };
 		FDB474E626E37AE2001815BB /* Message.ImageTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.ImageTemplates.swift; sourceTree = "<group>"; };
 		FDB6256F26E1C9C0008585A9 /* MediaLoadingProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaLoadingProgressView.swift; sourceTree = "<group>"; };
-		FDC45E8826D4EF7B00C44827 /* MeView.MeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeView.MeItem.swift; sourceTree = "<group>"; };
+		FDC45E8826D4EF7B00C44827 /* MeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeItem.swift; sourceTree = "<group>"; };
 		FDC45E8A26D4F61400C44827 /* MyProfileFieldUpdateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileFieldUpdateViewModel.swift; sourceTree = "<group>"; };
 		FDC45E8C26D4F8A800C44827 /* MyProfileFieldUpdateView.Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileFieldUpdateView.Field.swift; sourceTree = "<group>"; };
 		FDC45E8E26D4FD6600C44827 /* MyProfileFieldUpdateViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileFieldUpdateViewModelTests.swift; sourceTree = "<group>"; };
@@ -449,7 +447,7 @@
 		FDCC7239266E254E00A48140 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FDCC724A266F190700A48140 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		FDCC724C266F19CF00A48140 /* ServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceType.swift; sourceTree = "<group>"; };
-		FDCC724E266F1A3400A48140 /* ServerConfigType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerConfigType.swift; sourceTree = "<group>"; };
+		FDCC724E266F1A3400A48140 /* ServerConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerConfig.swift; sourceTree = "<group>"; };
 		FDCC7250266F1B2E00A48140 /* EnvironmentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentType.swift; sourceTree = "<group>"; };
 		FDCC7252266F1FB800A48140 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		FDCC7254266F212B00A48140 /* ServerConfigTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerConfigTests.swift; sourceTree = "<group>"; };
@@ -584,8 +582,8 @@
 			isa = PBXGroup;
 			children = (
 				FDCC726C266F70EA00A48140 /* MockService.swift */,
+				FDCC724E266F1A3400A48140 /* ServerConfig.swift */,
 				FDCC7254266F212B00A48140 /* ServerConfigTests.swift */,
-				FDCC724E266F1A3400A48140 /* ServerConfigType.swift */,
 				FDCC7264266F5C5B00A48140 /* Service.swift */,
 				FDCC728F267343A800A48140 /* Service+RequestHelpers.swift */,
 				FDCC7268266F62C900A48140 /* ServiceTests.swift */,
@@ -730,7 +728,6 @@
 		FD88274C2679D84F00BBEAB6 /* Me */ = {
 			isa = PBXGroup;
 			children = (
-				FDC45E8826D4EF7B00C44827 /* MeView.MeItem.swift */,
 				FD8827532679D8A600BBEAB6 /* MeView.swift */,
 				FDC45E8C26D4F8A800C44827 /* MyProfileFieldUpdateView.Field.swift */,
 				FD58C12526B2430D00BDB0CC /* MyProfileFieldUpdateView.swift */,
@@ -747,7 +744,6 @@
 			isa = PBXGroup;
 			children = (
 				FD882761267AFAAF00BBEAB6 /* ActivityIndicator.swift */,
-				FD6D37742684707A0087272F /* Background.swift */,
 				FD882763267AFAD000BBEAB6 /* ErrorView.swift */,
 				FD9A857426C8991F00A39051 /* ImagePicker.swift */,
 				FD1F16D42692FB99009D08DF /* ImageTitleRow.swift */,
@@ -910,6 +906,7 @@
 				FDA907FB26ABCC6000805584 /* DiscoverSectionTests.swift */,
 				FD1D01312699B72700A9AF37 /* ExpressionSticker.swift */,
 				FDA907FD26ABCD1500805584 /* ExpressionStickerTests.swift */,
+				FDC45E8826D4EF7B00C44827 /* MeItem.swift */,
 				FD3E98BC26E461F10024D368 /* Message.Image.LocalImage.swift */,
 				FD3E98C026E46AEA0024D368 /* Message.Image.LocalImage+Setters.swift */,
 				FD3E98BE26E46A630024D368 /* Message.Image.LocalImageTests.swift */,
@@ -984,13 +981,13 @@
 				FDCC72862671AD7B00A48140 /* TryDecodable.swift */,
 				FD9A858C26C962B100A39051 /* ValueUpdateStatus.swift */,
 				FD9A858E26C9EA8000A39051 /* ValueUpdateStatusTests.swift */,
+				FDE6CBE826E707F700041570 /* WaitAndExecute.swift */,
 				FD882760267AFAA300BBEAB6 /* Components */,
 				FDCC72812671AC1800A48140 /* Extensions */,
 				FD76128026DE353700D78016 /* Firebase */,
 				FD882782267F878500BBEAB6 /* Modifiers */,
 				FD8827942680987700BBEAB6 /* Styles */,
 				FDA9080326ABF62200805584 /* TestHelpers */,
-				FDE6CBE826E707F700041570 /* WaitAndExecute.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -1358,7 +1355,7 @@
 				FD1D01342699BC6700A9AF37 /* ExpressionPreview.swift in Sources */,
 				FD9A857C26C8B0A300A39051 /* MyProfilePhotoPreviewViewModel.swift in Sources */,
 				FD6D3784268576BE0087272F /* ContactCategoriesList.swift in Sources */,
-				FDC45E8926D4EF7B00C44827 /* MeView.MeItem.swift in Sources */,
+				FDC45E8926D4EF7B00C44827 /* MeItem.swift in Sources */,
 				FDC45E9D26D5EA9000C44827 /* FirebaseAuthServiceMock.swift in Sources */,
 				FD1F16DF26959F83009D08DF /* ChatInputPanel.swift in Sources */,
 				FD1F16D32692F8FB009D08DF /* SectionHeaderTitle.swift in Sources */,
@@ -1377,7 +1374,7 @@
 				FD88278E26808F5500BBEAB6 /* ContactDetail.swift in Sources */,
 				FD3E98BD26E461F10024D368 /* Message.Image.LocalImage.swift in Sources */,
 				FDCC72872671AD7B00A48140 /* TryDecodable.swift in Sources */,
-				FDCC724F266F1A3400A48140 /* ServerConfigType.swift in Sources */,
+				FDCC724F266F1A3400A48140 /* ServerConfig.swift in Sources */,
 				FD6D37802684D6DD0087272F /* ContactCategoryRow.swift in Sources */,
 				FD1D013A269AFFA800A9AF37 /* ChatInputToolBar.swift in Sources */,
 				FDCC7253266F1FB800A48140 /* Secrets.swift in Sources */,
@@ -1397,7 +1394,6 @@
 				FD6D378B26861A110087272F /* ContactType.swift in Sources */,
 				FDCC72922673448A00A48140 /* Route.swift in Sources */,
 				FD8809F5269EDE60002D3396 /* MessageContentImage.swift in Sources */,
-				FD6D37752684707A0087272F /* Background.swift in Sources */,
 				FDA6C88526E0D7B900913F48 /* CGSize+AspectSize.swift in Sources */,
 				FD6D37792684803E0087272F /* ResignKeyboardOnDragModifier.swift in Sources */,
 				FDCC7251266F1B2E00A48140 /* EnvironmentType.swift in Sources */,

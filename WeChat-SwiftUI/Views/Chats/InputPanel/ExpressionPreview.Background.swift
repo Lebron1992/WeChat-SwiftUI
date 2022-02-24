@@ -5,10 +5,11 @@ extension ExpressionPreview {
   struct Bckground: View {
 
     var body: some View {
-      GeometryReader { geoy in
+      GeometryReader { geometry in
         Path { path in
-          let width: CGFloat = geoy.size.width
-          let height = geoy.size.height
+          let width = geometry.size.width
+          let height = geometry.size.height
+
           path.move(
             to: CGPoint(
               x: width * 0.8,
@@ -16,7 +17,7 @@ extension ExpressionPreview {
             )
           )
 
-          segments(for: geoy.size).forEach { segment in
+          segments(for: geometry.size).forEach { segment in
             path.addLine(
               to: CGPoint(
                 x: width * segment.line.x,

@@ -4,8 +4,6 @@ import SwiftUIRedux
 /* TODO:
 --- section header 吸到顶部时，背景色改为白色，title 颜色改为 highlighted
 --- 滚动列表时，右边的索引切换到对应的 section
---- Header 高度无法调整
---- 每个 Section 下面有多余的空白，需要去掉（目前看来是 SwiftUI 的 bug）
 */
 
 struct ContactsList<Contact: ContactType, Header: View, Destination: View>: View {
