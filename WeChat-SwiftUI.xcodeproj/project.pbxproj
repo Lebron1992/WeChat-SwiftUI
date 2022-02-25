@@ -114,7 +114,6 @@
 		FD882771267EE4E500BBEAB6 /* ContactsReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD882770267EE4E500BBEAB6 /* ContactsReducerTests.swift */; };
 		FD882773267EFA7400BBEAB6 /* MockStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD882772267EFA7400BBEAB6 /* MockStore.swift */; };
 		FD882778267F1BD500BBEAB6 /* ContactsActionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD882777267F1BD500BBEAB6 /* ContactsActionsTests.swift */; };
-		FD88277B267F305800BBEAB6 /* SwiftUIRedux in Frameworks */ = {isa = PBXBuildFile; productRef = FD88277A267F305800BBEAB6 /* SwiftUIRedux */; };
 		FD88277D267F314000BBEAB6 /* RootReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88277C267F314000BBEAB6 /* RootReducerTests.swift */; };
 		FD88278E26808F5500BBEAB6 /* ContactDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD88278D26808F5500BBEAB6 /* ContactDetail.swift */; };
 		FD8827962680988100BBEAB6 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8827952680988100BBEAB6 /* Colors.swift */; };
@@ -201,7 +200,6 @@
 		FDCC7255266F212B00A48140 /* ServerConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC7254266F212B00A48140 /* ServerConfigTests.swift */; };
 		FDCC7258266F26D200A48140 /* OauthToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC7257266F26D200A48140 /* OauthToken.swift */; };
 		FDCC725F266F4DFF00A48140 /* Method.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC725E266F4DFF00A48140 /* Method.swift */; };
-		FDCC7263266F59EC00A48140 /* Kickstarter-Prelude in Frameworks */ = {isa = PBXBuildFile; productRef = FDCC7262266F59EC00A48140 /* Kickstarter-Prelude */; };
 		FDCC7265266F5C5B00A48140 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC7264266F5C5B00A48140 /* Service.swift */; };
 		FDCC7267266F5CF600A48140 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC7266266F5CF600A48140 /* Language.swift */; };
 		FDCC7269266F62C900A48140 /* ServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC7268266F62C900A48140 /* ServiceTests.swift */; };
@@ -226,6 +224,8 @@
 		FDCC729B2673494B00A48140 /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC729A2673494B00A48140 /* Loadable.swift */; };
 		FDCC729D2673496800A48140 /* CancelBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC729C2673496800A48140 /* CancelBag.swift */; };
 		FDCC729F2673499700A48140 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC729E2673499700A48140 /* APIError.swift */; };
+		FDE050A527C7D80B0007BC21 /* Kickstarter-Prelude in Frameworks */ = {isa = PBXBuildFile; productRef = FDE050A427C7D80B0007BC21 /* Kickstarter-Prelude */; };
+		FDE050AA27C87C850007BC21 /* SwiftUIRedux in Frameworks */ = {isa = PBXBuildFile; productRef = FDE050A927C87C850007BC21 /* SwiftUIRedux */; };
 		FDE6CBE926E707F700041570 /* WaitAndExecute.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE6CBE826E707F700041570 /* WaitAndExecute.swift */; };
 		FDF568D826B79D9900033094 /* User+Setters.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF568D726B79D9900033094 /* User+Setters.swift */; };
 		FDF98F8326DF5A0100D192F2 /* MessageChangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF98F8226DF5A0100D192F2 /* MessageChangeTests.swift */; };
@@ -488,11 +488,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FDCC7263266F59EC00A48140 /* Kickstarter-Prelude in Frameworks */,
 				FD88279926809C2D00BBEAB6 /* URLImageStore in Frameworks */,
+				FDE050AA27C87C850007BC21 /* SwiftUIRedux in Frameworks */,
 				FD88279B26809C2D00BBEAB6 /* URLImage in Frameworks */,
+				FDE050A527C7D80B0007BC21 /* Kickstarter-Prelude in Frameworks */,
 				FDFCE8E9272FD7D50051A97F /* LBJMediaBrowser in Frameworks */,
-				FD88277B267F305800BBEAB6 /* SwiftUIRedux in Frameworks */,
 				AFE1BCADF2EFD2AB694A33A2 /* Pods_WeChat_SwiftUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1066,11 +1066,11 @@
 			);
 			name = "WeChat-SwiftUI";
 			packageProductDependencies = (
-				FDCC7262266F59EC00A48140 /* Kickstarter-Prelude */,
-				FD88277A267F305800BBEAB6 /* SwiftUIRedux */,
 				FD88279826809C2D00BBEAB6 /* URLImageStore */,
 				FD88279A26809C2D00BBEAB6 /* URLImage */,
 				FDFCE8E8272FD7D50051A97F /* LBJMediaBrowser */,
+				FDE050A427C7D80B0007BC21 /* Kickstarter-Prelude */,
+				FDE050A927C87C850007BC21 /* SwiftUIRedux */,
 			);
 			productName = "WeChat-SwiftUI";
 			productReference = FDCC7217266E254D00A48140 /* WeChat-SwiftUI.app */;
@@ -1149,10 +1149,10 @@
 			);
 			mainGroup = FDCC720E266E254D00A48140;
 			packageReferences = (
-				FDCC7261266F59EC00A48140 /* XCRemoteSwiftPackageReference "Kickstarter-Prelude" */,
-				FD882779267F305800BBEAB6 /* XCRemoteSwiftPackageReference "SwiftUIRedux" */,
 				FD88279726809C2D00BBEAB6 /* XCRemoteSwiftPackageReference "url-image" */,
 				FDFCE8E7272FD7D50051A97F /* XCRemoteSwiftPackageReference "LBJMediaBrowser" */,
+				FDE050A327C7D80B0007BC21 /* XCRemoteSwiftPackageReference "Kickstarter-Prelude" */,
+				FDE050A827C87C850007BC21 /* XCRemoteSwiftPackageReference "SwiftUIRedux" */,
 			);
 			productRefGroup = FDCC7218266E254D00A48140 /* Products */;
 			projectDirPath = "";
@@ -1868,14 +1868,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		FD882779267F305800BBEAB6 /* XCRemoteSwiftPackageReference "SwiftUIRedux" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "file:///Users/lebron/Documents/Lebron/my-projects/SwiftUIRedux";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 		FD88279726809C2D00BBEAB6 /* XCRemoteSwiftPackageReference "url-image" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/dmytro-anokhin/url-image.git";
@@ -1884,9 +1876,17 @@
 				minimumVersion = 3.1.0;
 			};
 		};
-		FDCC7261266F59EC00A48140 /* XCRemoteSwiftPackageReference "Kickstarter-Prelude" */ = {
+		FDE050A327C7D80B0007BC21 /* XCRemoteSwiftPackageReference "Kickstarter-Prelude" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Lebron1992/Kickstarter-Prelude.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		FDE050A827C87C850007BC21 /* XCRemoteSwiftPackageReference "SwiftUIRedux" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Lebron1992/SwiftUIRedux.git";
 			requirement = {
 				branch = main;
 				kind = branch;
@@ -1903,11 +1903,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		FD88277A267F305800BBEAB6 /* SwiftUIRedux */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FD882779267F305800BBEAB6 /* XCRemoteSwiftPackageReference "SwiftUIRedux" */;
-			productName = SwiftUIRedux;
-		};
 		FD88279826809C2D00BBEAB6 /* URLImageStore */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FD88279726809C2D00BBEAB6 /* XCRemoteSwiftPackageReference "url-image" */;
@@ -1918,10 +1913,15 @@
 			package = FD88279726809C2D00BBEAB6 /* XCRemoteSwiftPackageReference "url-image" */;
 			productName = URLImage;
 		};
-		FDCC7262266F59EC00A48140 /* Kickstarter-Prelude */ = {
+		FDE050A427C7D80B0007BC21 /* Kickstarter-Prelude */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = FDCC7261266F59EC00A48140 /* XCRemoteSwiftPackageReference "Kickstarter-Prelude" */;
+			package = FDE050A327C7D80B0007BC21 /* XCRemoteSwiftPackageReference "Kickstarter-Prelude" */;
 			productName = "Kickstarter-Prelude";
+		};
+		FDE050A927C87C850007BC21 /* SwiftUIRedux */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FDE050A827C87C850007BC21 /* XCRemoteSwiftPackageReference "SwiftUIRedux" */;
+			productName = SwiftUIRedux;
 		};
 		FDFCE8E8272FD7D50051A97F /* LBJMediaBrowser */ = {
 			isa = XCSwiftPackageProductDependency;
