@@ -91,5 +91,3 @@ fastlane/test_output
 iOSInjectionProject/
 
 # Secret files
-
-WeChat-SwiftUI/Resources/GoogleService-Info.plist
