@@ -88,7 +88,10 @@ extension User: CustomDebugStringConvertible {
 
 extension User: ContactType {
   var index: String {
-    String(name.first ?? Character("")).uppercased()
+    guard name.isEmpty == false else {
+      return ""
+    }
+    return String(name.first!).uppercased()
   }
 
   func match(_ query: String) -> Bool {
