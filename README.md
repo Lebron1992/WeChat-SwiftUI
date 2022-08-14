@@ -64,6 +64,8 @@ Redux 在 React 项目中使用非常广泛。而 SwiftUI 声明式编程的理�
 
 本项目因为使用了 Google 的 Firebase，所以中国大陆用户运行前请连接 VPN。
 
+测试账号：wechatswiftuitest@lebron.com / 11111111。
+
 ## 添加新功能
 
 如果您乐意为本项目添加新功能，我非常欢迎。请使用 GitHub Issues 写出自己想要做的功能，实现以后提交 PR。
