@@ -80,10 +80,17 @@ extension Dialog {
 // MARK: - Mutations
 extension Dialog {
   func updatedLastMessage(_ message: Message) -> Dialog {
-    guard lastMessage == nil || message.createTime > lastMessage!.createTime else {
-      return self
+    if let lastMessage = lastMessage {
+
+      if message.createTime > lastMessage.createTime || message.id == lastMessage.id {
+        return setLastMessage(message)
+      }
+
+    } else {
+      return setLastMessage(message)
     }
-    return setLastMessage(message)
+
+    return self
   }
 }
 

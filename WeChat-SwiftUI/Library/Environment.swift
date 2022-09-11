@@ -14,6 +14,9 @@ struct Environment {
   /// 代替 apiService 用于模拟真实开发，用于从 Firebase 的 Firestore Database 获取数据的类型。
   let firestoreService: FirestoreServiceType
 
+  /// 用于上传数据到 Firebase Storage
+  let firebaseStorageService: FirebaseStorageServiceType
+
   /// 用户的当前语言，用于确定要加载哪个本地化字符串包。
   let language: Language
 
@@ -25,12 +28,14 @@ struct Environment {
     authService: FirebaseAuthServiceType =  FirebaseAuthService(),
     currentUser: User? = nil,
     firestoreService: FirestoreServiceType = FirestoreService(),
+    firebaseStorageService: FirebaseStorageServiceType = FirebaseStorageService(),
     language: Language = Language(languageStrings: Locale.preferredLanguages) ?? .zh,
     userDefaults: KeyValueStoreType = UserDefaults.standard
   ) {
     self.apiService = apiService
     self.authService = authService
     self.firestoreService = firestoreService
+    self.firebaseStorageService = firebaseStorageService
     self.currentUser = currentUser
     self.language = language
     self.userDefaults = userDefaults

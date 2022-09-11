@@ -1,12 +1,34 @@
 import SwiftUI
-import SwiftUIRedux
+import ComposableArchitecture
 import LBJMediaBrowser
 
 struct MessageContentImage: View {
-  let message: Message
 
-  @EnvironmentObject
-  private var store: Store<AppState>
+  var body: some View {
+    WithViewStore(store) { viewStore in
+      HStack {
+        errorIndicator
+        ZStack {
+          image(thatFits: contentSize)
+          progressContainer(progress: image.progress, size: contentSize)
+        }
+        .cornerRadius(6)
+        .onTapGesture { showPreview = true }
+      }
+      .alert(item: $errorMessage) {
+        Alert(
+          title: Text(Strings.chat_resend_message_title()),
+          message: Text($0),
+          primaryButton: .cancel(Text(Strings.general_cancel())),
+          secondaryButton: resendButton(viewStore)
+        )
+      }
+      .fullScreenCover(isPresented: $showPreview) { imagePreview(viewStore) }
+    }
+  }
+
+  let store: Store<AppState, AppAction>
+  let message: Message
 
   @EnvironmentObject
   private var dialogBox: ObjectBox<Dialog>
@@ -16,27 +38,6 @@ struct MessageContentImage: View {
 
   @State
   private var showPreview = false
-
-  var body: some View {
-    HStack {
-      errorIndicator
-      ZStack {
-        image(thatFits: contentSize)
-        progressContainer(progress: image.progress, size: contentSize)
-      }
-      .cornerRadius(6)
-      .onTapGesture { showPreview = true }
-    }
-    .alert(item: $errorMessage) {
-      Alert(
-        title: Text(Strings.chat_resend_message_title()),
-        message: Text($0),
-        primaryButton: .cancel(Text(Strings.general_cancel())),
-        secondaryButton: resendButton
-      )
-    }
-    .fullScreenCover(isPresented: $showPreview) { imagePreview }
-  }
 }
 
 private extension MessageContentImage {
@@ -54,11 +55,11 @@ private extension MessageContentImage {
     }
   }
 
-  var resendButton: Alert.Button {
+  func resendButton(_ viewStore: ViewStore<AppState, AppAction>) -> Alert.Button {
     Alert.Button.default(
       Text(Strings.chat_resend()).foregroundColor(.link)
     ) {
-      store.dispatch(action: ChatsActions.SendImageMessageInDialog(message: message, dialog: dialogBox.value))
+      viewStore.send(.chats(.sendImageMessageInDialog(message, dialogBox.value)))
     }
   }
 
@@ -75,8 +76,8 @@ private extension MessageContentImage {
   }
 
   @ViewBuilder
-  var imagePreview: some View {
-    let imageMessages = store.state.chatsState.dialogMessages
+  func imagePreview(_ viewStore: ViewStore<AppState, AppAction>) -> some View {
+    let imageMessages = viewStore.chatsState.dialogMessages
       .first(where: { $0.dialogId == dialogBox.value.id })?
       .messages
       .filter { $0.isImageMsg }
@@ -145,6 +146,11 @@ private extension MessageContentImage {
 
 struct MessageRowImage_Previews: PreviewProvider {
   static var previews: some View {
+    let store = Store(
+      initialState: AppState(),
+      reducer: appReducer,
+      environment: AppEnvironment.current
+    )
     VStack(alignment: .trailing, spacing: 10) {
       let images = [
         Message.urlImageTemplate,
@@ -153,7 +159,7 @@ struct MessageRowImage_Previews: PreviewProvider {
         Message.uiImageTemplateError
       ]
       ForEach(images) { message in
-        MessageContentImage(message: message)
+        MessageContentImage(store: store, message: message)
       }
     }
   }

@@ -3,12 +3,12 @@ import XCTest
 
 final class UserTests: XCTestCase {
   func test_equatable() {
-    XCTAssertEqual(User.template, User.template)
-    XCTAssertNotEqual(User.template, User.template2)
+    XCTAssertEqual(User.template1, User.template1)
+    XCTAssertNotEqual(User.template1, User.template2)
   }
 
   func test_description() {
-    XCTAssertNotEqual("", User.template.debugDescription)
+    XCTAssertNotEqual("", User.template1.debugDescription)
   }
 
   func test_jsonParsing() {
@@ -36,12 +36,12 @@ final class UserTests: XCTestCase {
   }
 
   func test_index() {
-    let account = User.template
+    let account = User.template1
     XCTAssertEqual(account?.index, "J")
   }
 
   func test_match() {
-    let account = User.template!
+    let account = User.template1!
 
     XCTAssertTrue(account.match("M"))
     XCTAssertTrue(account.match("m"))

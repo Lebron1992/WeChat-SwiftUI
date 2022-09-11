@@ -1,5 +1,5 @@
 extension User {
-  static let template: User! = tryDecode(
+  static let template1: User! = tryDecode(
     """
     {
     "id": "112ec2a2-68d3-4949-9ce9-82ec80db9c60",

@@ -1,18 +1,28 @@
 import SwiftUI
+import ComposableArchitecture
 
 struct DiscoverView: View {
   var body: some View {
     NavigationView {
-      DiscoverList()
+      DiscoverList(store: store)
         .navigationTitle(Strings.tabbar_discover())
         .navigationBarTitleDisplayMode(.inline)
     }
     .navigationViewStyle(.stack)
   }
+
+  let store: Store<DiscoverState, Never>
 }
 
 struct DiscoverView_Previews: PreviewProvider {
   static var previews: some View {
-    DiscoverView()
+    let store = Store(
+      initialState: AppState(),
+      reducer: appReducer,
+      environment: AppEnvironment.current
+    )
+      .scope(state: \.discoverState)
+      .actionless
+    DiscoverView(store: store)
   }
 }

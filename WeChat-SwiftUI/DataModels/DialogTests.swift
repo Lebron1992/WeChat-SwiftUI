@@ -5,7 +5,7 @@ final class DialogTests: XCTestCase, MessagesDataSource {
 
   func test_equatable() {
     XCTAssertEqual(Dialog.template1, Dialog.template1)
-    XCTAssertNotEqual(Dialog.template1, Dialog.empty)
+    XCTAssertNotEqual(Dialog.template1, Dialog.template2)
   }
 
   func test_description() {
@@ -57,8 +57,8 @@ final class DialogTests: XCTestCase, MessagesDataSource {
     var dialog = Dialog(members: [.template1, .template2], lastMessage: nil)
     XCTAssertNil(dialog.lastMessage)
 
-    dialog = dialog.updatedLastMessage(.textTemplate)
-    XCTAssertEqual(dialog.lastMessage, .textTemplate)
+    dialog = dialog.updatedLastMessage(.textTemplate1)
+    XCTAssertEqual(dialog.lastMessage, .textTemplate1)
   }
 
   func test_updatedLastMessage_lastMessageUpdated() {
@@ -183,7 +183,7 @@ final class DialogTests: XCTestCase, MessagesDataSource {
   }
 
   func test_individualChatMember() {
-    withEnvironment(currentUser: .template) {
+    withEnvironment(currentUser: .template1) {
       var dialog = Dialog(members: [.template1])
       XCTAssertNil(dialog.individualChatMember)
 
@@ -197,7 +197,7 @@ final class DialogTests: XCTestCase, MessagesDataSource {
   }
 
   func test_isSelfParticipated() {
-    withEnvironment(currentUser: .template) {
+    withEnvironment(currentUser: .template1) {
       let d1 = Dialog(members: [.currentUser!, .template1])
       let d2 = Dialog(members: [.template2, .template3])
       XCTAssertTrue(d1.isSelfParticipated)

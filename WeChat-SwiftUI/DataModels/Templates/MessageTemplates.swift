@@ -1,6 +1,6 @@
 // swiftlint:disable line_length
 extension Message {
-  static let textTemplate: Message! = tryDecode(
+  static let textTemplate1: Message! = tryDecode(
     """
     {
     "id": "d6a696da-2c7a-4d27-87e3-6f63fd3e597f",

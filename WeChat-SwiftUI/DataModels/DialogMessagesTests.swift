@@ -5,9 +5,9 @@ final class DialogMessagesTests: XCTestCase, MessagesDataSource {
 
   func test_equatable() {
     let id = generateUUID()
-    let d1 = DialogMessages(dialogId: id, messages: [.textTemplate])
+    let d1 = DialogMessages(dialogId: id, messages: [.textTemplate1])
     let d2 = DialogMessages(dialogId: id, messages: [.textTemplate2])
-    let d3 = DialogMessages(dialogId: generateUUID(), messages: [.textTemplate])
+    let d3 = DialogMessages(dialogId: generateUUID(), messages: [.textTemplate1])
     XCTAssertEqual(d1, d1)
     XCTAssertEqual(d1, d2)
     XCTAssertNotEqual(d1, d3)

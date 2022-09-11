@@ -1,33 +1,28 @@
 import SwiftUI
-import SwiftUIRedux
+import ComposableArchitecture
 import URLImage
 
-struct MeView: ConnectedView {
-  struct Props {
-    let signedInUser: User?
-  }
+struct MeView: View {
 
-  func map(state: AppState, dispatch: @escaping (Action) -> Void) -> Props {
-    Props(
-      signedInUser: state.authState.signedInUser
-    )
-  }
-
-  func body(props: Props) -> some View {
-    NavigationView {
-      content(props)
-        .navigationBarHidden(true)
-        .navigationBarTitleDisplayMode(.inline)
+  var body: some View {
+    WithViewStore(store) { viewStore in
+      NavigationView {
+        content(viewStore)
+          .navigationBarHidden(true)
+          .navigationBarTitleDisplayMode(.inline)
+      }
+      .navigationViewStyle(.stack)
     }
-    .navigationViewStyle(.stack)
   }
+
+  let store: Store<AppState, AppAction>
 }
 
 private extension MeView {
 
   @ViewBuilder
-  func content(_ props: Props) -> some View {
-    if let user = props.signedInUser {
+  func content(_ viewStore: ViewStore<AppState, AppAction>) -> some View {
+    if let user = viewStore.authState.signedInUser {
       ZStack(alignment: .topTrailing) {
         List {
           sectionMyInfo(user: user)
@@ -58,7 +53,7 @@ private extension MeView {
 
   func sectionMyInfo(user: User) -> some View {
     Section {
-      NavigationRow(destination: MyProfileView()) {
+      NavigationRow(destination: MyProfileView(store: store)) {
         HStack(spacing: 16) {
           URLPlaceholderImage(user.avatar, size: Constant.avatarSize) {
             Image.avatarPlaceholder
@@ -134,6 +129,11 @@ private extension MeView {
 
 struct MeView_Previews: PreviewProvider {
   static var previews: some View {
-    MeView()
+    let store = Store(
+      initialState: AppState(authState: .init(signedInUser: .template1)),
+      reducer: appReducer,
+      environment: AppEnvironment.current
+    )
+    MeView(store: store)
   }
 }

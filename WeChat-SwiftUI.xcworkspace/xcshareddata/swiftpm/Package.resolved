@@ -1,70 +1,131 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "Alamofire",
-        "repositoryURL": "https://github.com/Alamofire/Alamofire.git",
-        "state": {
-          "branch": null,
-          "revision": "d120af1e8638c7da36c8481fd61a66c0c08dc4fc",
-          "version": "5.4.4"
-        }
-      },
-      {
-        "package": "AlamofireImage",
-        "repositoryURL": "https://github.com/Alamofire/AlamofireImage.git",
-        "state": {
-          "branch": null,
-          "revision": "98cbb00ce0ec5fc8e52a5b50a6bfc08d3e5aee10",
-          "version": "4.2.0"
-        }
-      },
-      {
-        "package": "Kickstarter-Prelude",
-        "repositoryURL": "https://github.com/Lebron1992/Kickstarter-Prelude.git",
-        "state": {
-          "branch": "main",
-          "revision": "7dfaa2a8d2aa5768aceb9f8114b6a0b91957dee5",
-          "version": null
-        }
-      },
-      {
-        "package": "LBJImagePreviewer",
-        "repositoryURL": "https://github.com/Lebron1992/LBJImagePreviewer",
-        "state": {
-          "branch": "main",
-          "revision": "1bbbbc67ca05c133dee7526e233e3161adcabcd9",
-          "version": null
-        }
-      },
-      {
-        "package": "LBJMediaBrowser",
-        "repositoryURL": "https://github.com/Lebron1992/LBJMediaBrowser",
-        "state": {
-          "branch": "main",
-          "revision": "092d803ca32d6eb9ea3feaf4d53cb38bdcd075c3",
-          "version": null
-        }
-      },
-      {
-        "package": "SwiftUIRedux",
-        "repositoryURL": "https://github.com/Lebron1992/SwiftUIRedux.git",
-        "state": {
-          "branch": "main",
-          "revision": "f5e52895ecab757200c7bc61928f9f0d58ed7b00",
-          "version": null
-        }
-      },
-      {
-        "package": "URLImage",
-        "repositoryURL": "https://github.com/dmytro-anokhin/url-image.git",
-        "state": {
-          "branch": null,
-          "revision": "a55b6597f6ce67dfbdc136ecfb8c8436b14ca41d",
-          "version": "3.1.0"
-        }
+  "pins" : [
+    {
+      "identity" : "alamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/Alamofire.git",
+      "state" : {
+        "revision" : "d120af1e8638c7da36c8481fd61a66c0c08dc4fc",
+        "version" : "5.4.4"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "alamofireimage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/AlamofireImage.git",
+      "state" : {
+        "revision" : "98cbb00ce0ec5fc8e52a5b50a6bfc08d3e5aee10",
+        "version" : "4.2.0"
+      }
+    },
+    {
+      "identity" : "combine-schedulers",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/combine-schedulers",
+      "state" : {
+        "revision" : "f7c8277f05f27a5bfb2f6ecccb0bad126ffcf472",
+        "version" : "0.7.0"
+      }
+    },
+    {
+      "identity" : "kickstarter-prelude",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Lebron1992/Kickstarter-Prelude.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "7dfaa2a8d2aa5768aceb9f8114b6a0b91957dee5"
+      }
+    },
+    {
+      "identity" : "lbjimagepreviewer",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Lebron1992/LBJImagePreviewer",
+      "state" : {
+        "branch" : "main",
+        "revision" : "1bbbbc67ca05c133dee7526e233e3161adcabcd9"
+      }
+    },
+    {
+      "identity" : "lbjmediabrowser",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Lebron1992/LBJMediaBrowser",
+      "state" : {
+        "branch" : "main",
+        "revision" : "092d803ca32d6eb9ea3feaf4d53cb38bdcd075c3"
+      }
+    },
+    {
+      "identity" : "swift-case-paths",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-case-paths",
+      "state" : {
+        "revision" : "a09839348486db8866f85a727b8550be1d671c50",
+        "version" : "0.9.1"
+      }
+    },
+    {
+      "identity" : "swift-collections",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-collections",
+      "state" : {
+        "revision" : "48254824bb4248676bf7ce56014ff57b142b77eb",
+        "version" : "1.0.2"
+      }
+    },
+    {
+      "identity" : "swift-composable-architecture",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-composable-architecture",
+      "state" : {
+        "branch" : "main",
+        "revision" : "d6ecd69295698617b9ff855918d80bc9ea8b6c76"
+      }
+    },
+    {
+      "identity" : "swift-custom-dump",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-custom-dump",
+      "state" : {
+        "revision" : "21ec1d717c07cea5a026979cb0471dd95c7087e7",
+        "version" : "0.5.0"
+      }
+    },
+    {
+      "identity" : "swift-identified-collections",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-identified-collections",
+      "state" : {
+        "revision" : "2d6b7ffcc67afd9077fac5e5a29bcd6d39b71076",
+        "version" : "0.4.0"
+      }
+    },
+    {
+      "identity" : "swiftuiredux",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Lebron1992/SwiftUIRedux.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "f5e52895ecab757200c7bc61928f9f0d58ed7b00"
+      }
+    },
+    {
+      "identity" : "url-image",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/dmytro-anokhin/url-image.git",
+      "state" : {
+        "revision" : "a55b6597f6ce67dfbdc136ecfb8c8436b14ca41d",
+        "version" : "3.1.0"
+      }
+    },
+    {
+      "identity" : "xctest-dynamic-overlay",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/xctest-dynamic-overlay",
+      "state" : {
+        "revision" : "38bc9242e4388b80bd23ddfdf3071428859e3260",
+        "version" : "0.4.0"
+      }
+    }
+  ],
+  "version" : 2
 }

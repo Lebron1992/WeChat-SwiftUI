@@ -64,9 +64,9 @@ final class MyProfilePhotoPreviewViewModelTests: XCTestCase {
     let expectation = XCTestExpectation(description: "Wait for response")
 
     withEnvironment(firestoreService: FirestoreServiceMock()) {
-      viewModel.updateUserSelf(.template)
+      viewModel.updateUserSelf(.template1)
       DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-        self.userSelfUpdateStatus.assertValues([.idle, .updating, .finished(.template)])
+        self.userSelfUpdateStatus.assertValues([.idle, .updating, .finished(.template1)])
         expectation.fulfill()
       }
     }
@@ -79,7 +79,7 @@ final class MyProfilePhotoPreviewViewModelTests: XCTestCase {
     let service = FirestoreServiceMock(overrideUserError: NSError.unknowError)
 
     withEnvironment(firestoreService: service) {
-      viewModel.updateUserSelf(.template)
+      viewModel.updateUserSelf(.template1)
       DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
         self.userSelfUpdateStatus.assertValues([.idle, .updating, .failed(NSError.unknowError)])
         expectation.fulfill()

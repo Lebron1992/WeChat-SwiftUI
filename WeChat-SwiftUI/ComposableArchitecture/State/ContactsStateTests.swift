@@ -11,8 +11,8 @@ final class ContactsStateTests: XCTestCase {
     )
     let state2 = ContactsState(
       categories: [],
-      contacts: .isLoading(last: nil, cancelBag: CancelBag()),
-      officialAccounts: .isLoading(last: nil, cancelBag: CancelBag())
+      contacts: .isLoading(last: nil),
+      officialAccounts: .isLoading(last: nil)
     )
     XCTAssertEqual(state1, state1)
     XCTAssertEqual(state2, state2)

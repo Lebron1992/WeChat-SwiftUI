@@ -1,27 +1,8 @@
 import SwiftUI
-import SwiftUIRedux
 
-struct ContactOfficialAccountsList: ConnectedView {
+struct ContactOfficialAccountsList: View {
 
-  @State
-  private var isSearching = false
-
-  @State
-  private var searchText = ""
-
-  struct Props {
-    let accounts: Loadable<[OfficialAccount]>
-    let loadAccounts: () -> Void
-  }
-
-  func map(state: AppState, dispatch: @escaping (Action) -> Void) -> Props {
-    Props(
-      accounts: state.contactsState.officialAccounts,
-      loadAccounts: { dispatch(ContactsActions.LoadOfficialAccounts()) }
-    )
-  }
-
-  func body(props: Props) -> some View {
+  var body: some View {
     VStack(spacing: 0) {
       SearchBar(
         searchText: $searchText,
@@ -34,9 +15,9 @@ struct ContactOfficialAccountsList: ConnectedView {
       )
 
       ContactsList(
-        contacts: props.accounts,
+        contacts: accounts,
         searchText: searchText,
-        loadContacts: props.loadAccounts,
+        loadContacts: loadAccounts,
         header: { EmptyView() },
         selectionDestination: { contact in
           Text(contact.name)
@@ -51,10 +32,22 @@ struct ContactOfficialAccountsList: ConnectedView {
     .navigationBarItems(trailing: Image("icons_outlined_add2"))
     .navigationBarHidden(isSearching)
   }
+
+  let accounts: Loadable<[OfficialAccount]>
+  let loadAccounts: () -> Void
+
+  @State
+  private var isSearching = false
+
+  @State
+  private var searchText = ""
 }
 
 struct ContactOfficialAccountsList_Previews: PreviewProvider {
   static var previews: some View {
-    ContactOfficialAccountsList()
+    ContactOfficialAccountsList(
+      accounts: .loaded([.template1, .template2]),
+      loadAccounts: {}
+    )
   }
 }

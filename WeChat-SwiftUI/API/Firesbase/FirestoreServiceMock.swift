@@ -1,4 +1,5 @@
 import Combine
+import ComposableArchitecture
 
 struct FirestoreServiceMock: FirestoreServiceType {
 
@@ -58,53 +59,53 @@ struct FirestoreServiceMock: FirestoreServiceType {
     self.overrideUserError = overrideUserError
   }
 
-  func insert(_ message: Message, to dialog: Dialog) -> AnyPublisher<Void, Error> {
+  func insert(_ message: Message, to dialog: Dialog) -> Effect<Success, ErrorEnvelope> {
     if let error = insertMessageError {
-      return .publisher(failure: error)
+      return .init(error: error.toEnvelope())
     }
-    return .publisher(output: ())
+    return .init(value: .init())
   }
 
-  func loadContacts() -> AnyPublisher<[User], Error> {
+  func loadContacts() -> Effect<[User], ErrorEnvelope> {
     if let error = loadContactsError {
-      return .publisher(failure: error)
+      return .init(error: error.toEnvelope())
     }
-    return .publisher(output: loadContactsResponse ?? [.template, .template2])
+    return .init(value: loadContactsResponse ?? [.template1, .template2])
   }
 
-  func loadDialogs() -> AnyPublisher<[Dialog], Error> {
+  func loadDialogs() -> Effect<[Dialog], ErrorEnvelope> {
     if let error = loadDialogsError {
-      return .publisher(failure: error)
+      return .init(error: error.toEnvelope())
     }
-    return .publisher(output: loadDialogsResponse ?? [.template1])
+    return .init(value: loadDialogsResponse ?? [.template1])
   }
 
-  func loadMessages(for dialog: Dialog) -> AnyPublisher<[Message], Error> {
+  func loadMessages(for dialog: Dialog) -> Effect<[Message], ErrorEnvelope> {
     if let error = loadMessagesError {
-      return .publisher(failure: error)
+      return .init(error: error.toEnvelope())
     }
-    return .publisher(output: loadMessagesResponse ?? [.textTemplate])
+    return .init(value: loadMessagesResponse ?? [.textTemplate1])
   }
 
-  func loadOfficialAccounts() -> AnyPublisher<[OfficialAccount], Error> {
+  func loadOfficialAccounts() -> Effect<[OfficialAccount], ErrorEnvelope> {
     if let error = loadOfficialAccountsError {
-      return .publisher(failure: error)
+      return .init(error: error.toEnvelope())
     }
-    return .publisher(output: loadOfficialAccountsResponse ?? [.template, .template2])
+    return .init(value: loadOfficialAccountsResponse ?? [.template1, .template2])
   }
 
-  func loadUserSelf() -> AnyPublisher<User, Error> {
+  func loadUserSelf() -> Effect<User, ErrorEnvelope> {
     if let error = loadUserSelfError {
-      return .publisher(failure: error)
+      return .init(error: error.toEnvelope())
     }
-    return .publisher(output: loadUserSelfResponse ?? .template)
+    return .init(value: loadUserSelfResponse ?? .template1)
   }
 
-  func overrideDialog(_ dialog: Dialog) -> AnyPublisher<Void, Error> {
+  func overrideDialog(_ dialog: Dialog) -> Effect<Success, ErrorEnvelope> {
     if let error = overrideDialogError {
-      return .publisher(failure: error)
+      return .init(error: error.toEnvelope())
     }
-    return .publisher(output: ())
+    return .init(value: .init())
   }
 
   func overrideUser(_ user: User) -> AnyPublisher<Void, Error> {

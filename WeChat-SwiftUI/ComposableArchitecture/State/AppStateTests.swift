@@ -2,7 +2,7 @@ import XCTest
 @testable import WeChat_SwiftUI
 
 private let authStateKey = AppState.ArchiveKeys.authState.rawValue
-private let templateAuthState = AuthState(signedInUser: .template)
+private let templateAuthState = AuthState(signedInUser: .template1)
 
 private let chatsStateKey = AppState.ArchiveKeys.chatsState.rawValue
 private let templateChatsState = ChatsState(dialogs: [.template1], dialogMessages: [.template1])
@@ -69,8 +69,8 @@ final class AppStateTests: XCTestCase {
       appState.chatsState = templateChatsState
       appState.archive()
       XCTAssertEqual(
-        userDefaults.data(forKey: .appState),
-        templateDataJSON.data
+        userDefaults.data(forKey: .appState)?.count,
+        templateDataJSON.data?.count
       )
 
       let newAuthState = AuthState(signedInUser: nil)
@@ -152,15 +152,15 @@ private extension AppStateTests {
     var state1: AppState = .preview
     var state2: AppState = .preview
     state1.authState = AuthState(signedInUser: nil)
-    state2.authState = AuthState(signedInUser: .template)
+    state2.authState = AuthState(signedInUser: .template1)
     return (state1, state2)
   }
 
   func appStatesWithDifferentChatsState() -> (AppState, AppState) {
     var state1: AppState = .preview
     var state2: AppState = .preview
-    state1.chatsState = ChatsState(dialogs: [.empty], dialogMessages: [.template1])
-    state2.chatsState = ChatsState(dialogs: [.empty, .template1], dialogMessages: [.template2])
+    state1.chatsState = ChatsState(dialogs: [.template2], dialogMessages: [.template1])
+    state2.chatsState = ChatsState(dialogs: [.template1, .template2], dialogMessages: [.template2])
     return (state1, state2)
   }
 
@@ -174,8 +174,8 @@ private extension AppStateTests {
     )
     state2.contactsState = ContactsState(
       categories: [],
-      contacts: .isLoading(last: nil, cancelBag: CancelBag()),
-      officialAccounts: .isLoading(last: nil, cancelBag: CancelBag())
+      contacts: .isLoading(last: nil),
+      officialAccounts: .isLoading(last: nil)
     )
     return (state1, state2)
   }

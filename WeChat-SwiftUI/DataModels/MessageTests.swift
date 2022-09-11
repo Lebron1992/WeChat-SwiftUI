@@ -3,12 +3,12 @@ import XCTest
 
 final class MessageTests: XCTestCase {
   func test_equatable() {
-    XCTAssertEqual(Message.textTemplate, Message.textTemplate)
-    XCTAssertNotEqual(Message.textTemplate, Message.textTemplate2)
+    XCTAssertEqual(Message.textTemplate1, Message.textTemplate1)
+    XCTAssertNotEqual(Message.textTemplate1, Message.textTemplate2)
   }
 
   func test_description() {
-    XCTAssertNotEqual("", Message.textTemplate.debugDescription)
+    XCTAssertNotEqual("", Message.textTemplate1.debugDescription)
   }
 
   func test_jsonParsingTextMessage() {
@@ -69,19 +69,19 @@ final class MessageTests: XCTestCase {
   }
 
   func test_isTextMsg() {
-    XCTAssertTrue(Message.textTemplate.isTextMsg)
+    XCTAssertTrue(Message.textTemplate1.isTextMsg)
     XCTAssertFalse(Message.urlImageTemplate.isTextMsg)
     XCTAssertFalse(Message.videoTemplate3.isTextMsg)
   }
 
   func test_isImageMsg() {
-    XCTAssertFalse(Message.textTemplate.isImageMsg)
+    XCTAssertFalse(Message.textTemplate1.isImageMsg)
     XCTAssertTrue(Message.urlImageTemplate.isImageMsg)
     XCTAssertFalse(Message.videoTemplate3.isImageMsg)
   }
 
   func test_isVideoMsg() {
-    XCTAssertFalse(Message.textTemplate.isVideoMsg)
+    XCTAssertFalse(Message.textTemplate1.isVideoMsg)
     XCTAssertFalse(Message.urlImageTemplate.isVideoMsg)
     XCTAssertTrue(Message.videoTemplate3.isVideoMsg)
   }

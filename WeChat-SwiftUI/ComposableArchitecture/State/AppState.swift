@@ -99,12 +99,12 @@ extension AppState {
 #if DEBUG
 extension AppState {
   init(
-    authState: AuthState,
-    chatsState: ChatsState,
-    contactsState: ContactsState,
-    discoverState: DiscoverState,
-    rootState: RootState,
-    systemState: SystemState
+    authState: AuthState = .preview,
+    chatsState: ChatsState = .preview,
+    contactsState: ContactsState = .preview,
+    discoverState: DiscoverState = .preview,
+    rootState: RootState = .preview,
+    systemState: SystemState = .preview
   ) {
     self.authState = authState
     self.chatsState = chatsState

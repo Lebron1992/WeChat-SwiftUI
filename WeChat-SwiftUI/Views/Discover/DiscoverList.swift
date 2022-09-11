@@ -1,30 +1,25 @@
 import SwiftUI
-import SwiftUIRedux
+import ComposableArchitecture
 
-struct DiscoverList: ConnectedView {
-  struct Props {
-    let discoverSections: [DiscoverSection]
-  }
+struct DiscoverList: View {
 
-  func map(state: AppState, dispatch: @escaping (Action) -> Void) -> Props {
-    Props(
-      discoverSections: state.discoverState.discoverSections
-    )
-  }
-
-  func body(props: Props) -> some View {
-    List {
-      ForEach(props.discoverSections, id: \.self) { section in
-        if section.isFirstSection == false {
-          SectionHeaderBackground()
+  var body: some View {
+    WithViewStore(store) { viewStore in
+      List {
+        ForEach(viewStore.discoverSections, id: \.self) { section in
+          if section.isFirstSection == false {
+            SectionHeaderBackground()
+          }
+          discoverSection(section: section)
         }
-        discoverSection(section: section)
       }
+      .listStyle(.plain)
+      .background(.app_bg)
+      .environment(\.defaultMinListRowHeight, 10)
     }
-    .listStyle(.plain)
-    .background(.app_bg)
-    .environment(\.defaultMinListRowHeight, 10)
   }
+
+  let store: Store<DiscoverState, Never>
 }
 
 private extension DiscoverList {
@@ -59,6 +54,13 @@ private extension DiscoverList {
 
 struct DiscoverList_Previews: PreviewProvider {
   static var previews: some View {
-    DiscoverList()
+    let store = Store(
+      initialState: AppState(),
+      reducer: appReducer,
+      environment: AppEnvironment.current
+    )
+      .scope(state: \.discoverState)
+      .actionless
+    DiscoverList(store: store)
   }
 }

@@ -1,5 +1,5 @@
 import SwiftUI
-import SwiftUIRedux
+import ComposableArchitecture
 
 /* TODO:
 --- 暗黑模式时，TextEditor 的背景颜色不对
@@ -7,10 +7,34 @@ import SwiftUIRedux
 
 struct MyProfileFieldUpdateView: View {
 
-  let field: Field
+  var body: some View {
+    WithViewStore(store) { viewStore in
+      NavigationView {
+        List {
+          switch field {
+          case .name:    nameEditor
+          case .gender:  genderEditor
+          case .whatsUp: whatsUpEditor
+          case .region:  EmptyView()
+          }
+        }
+        .listStyle(.plain)
+        .background(.app_bg)
+        .navigationTitle(field.navigationBarTitle)
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarItems(leading: cancelButton, trailing: doneButton)
+        .showLoading(showLoading)
+        .onChange(of: viewModel.userSelfUpdateStatus) {
+          handleUserSelfUpdateStatusChange($0, viewStore: viewStore)
+        }
+      }
+      .onAppear(perform: setDefaultValues)
+    }
+  }
 
-  @EnvironmentObject
-  private var store: Store<AppState>
+  let store: Store<AppState, AppAction>
+
+  let field: Field
 
   @SwiftUI.Environment(\.dismiss)
   private var dismiss
@@ -26,27 +50,6 @@ struct MyProfileFieldUpdateView: View {
 
   @StateObject
   private var viewModel = MyProfileFieldUpdateViewModel()
-
-  var body: some View {
-    NavigationView {
-      List {
-        switch field {
-        case .name:    nameEditor
-        case .gender:  genderEditor
-        case .whatsUp: whatsUpEditor
-        case .region:  EmptyView()
-        }
-      }
-      .listStyle(.plain)
-      .background(.app_bg)
-      .navigationTitle(field.navigationBarTitle)
-      .navigationBarTitleDisplayMode(.inline)
-      .navigationBarItems(leading: cancelButton, trailing: doneButton)
-      .showLoading(showLoading)
-      .onChange(of: viewModel.userSelfUpdateStatus, perform: handleUserSelfUpdateStatusChange(_:))
-    }
-    .onAppear(perform: setDefaultValues)
-  }
 }
 
 // MARK: - Views
@@ -141,18 +144,18 @@ private extension MyProfileFieldUpdateView {
 // MARK: - Helper Methods
 private extension MyProfileFieldUpdateView {
 
-  func handleUserSelfUpdateStatusChange(_ status: ValueUpdateStatus<User>) {
+  func handleUserSelfUpdateStatusChange(_ status: ValueUpdateStatus<User>, viewStore: ViewStore<AppState, AppAction>) {
     switch status {
     case .updating:
       showLoading = true
 
     case .finished(let user):
-      updateSignedInUser(user)
+      viewStore.send(.auth(.setSignedInUser(user)))
       showLoading = false
       dismiss()
 
     case .failed(let error):
-      setErrorMessage(error.localizedDescription)
+      viewStore.send(.system(.setErrorMessage(error.localizedDescription)))
       showLoading = false
     default:
       showLoading = false
@@ -234,15 +237,20 @@ private extension MyProfileFieldUpdateView {
 
 struct MyProfileFieldUpdateView_Previews: PreviewProvider {
   static var previews: some View {
+    let store = Store(
+      initialState: AppState(),
+      reducer: appReducer,
+      environment: AppEnvironment.current
+    )
     Group {
-      MyProfileFieldUpdateView(field: .name("Lebron"))
-      MyProfileFieldUpdateView(field: .gender(.male))
-      MyProfileFieldUpdateView(field: .whatsUp("Hello, SwiftUI!"))
+      MyProfileFieldUpdateView(store: store, field: .name("Lebron"))
+      MyProfileFieldUpdateView(store: store, field: .gender(.male))
+      MyProfileFieldUpdateView(store: store, field: .whatsUp("Hello, SwiftUI!"))
     }
     Group {
-      MyProfileFieldUpdateView(field: .name("Lebron"))
-      MyProfileFieldUpdateView(field: .gender(.male))
-      MyProfileFieldUpdateView(field: .whatsUp("Hello, SwiftUI!"))
+      MyProfileFieldUpdateView(store: store, field: .name("Lebron"))
+      MyProfileFieldUpdateView(store: store, field: .gender(.male))
+      MyProfileFieldUpdateView(store: store, field: .whatsUp("Hello, SwiftUI!"))
     }
     .colorScheme(.dark)
   }

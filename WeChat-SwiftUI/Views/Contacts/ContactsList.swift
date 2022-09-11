@@ -34,7 +34,7 @@ struct ContactsList<Contact: ContactType, Header: View, Destination: View>: View
     case .notRequested:
       Text("").onAppear(perform: loadContacts)
 
-    case let .isLoading(last, _):
+    case let .isLoading(last):
       loadingView(contacts: last, searchText: searchText)
 
     case let .loaded(contacts):
@@ -121,7 +121,7 @@ private enum ContactsListConstant {
 struct ContactsList_Previews: PreviewProvider {
   static var previews: some View {
     ContactsList(
-      contacts: .loaded([User.template, User.template2]),
+      contacts: .loaded([User.template1, User.template2]),
       searchText: "",
       loadContacts: { },
       header: { EmptyView() },

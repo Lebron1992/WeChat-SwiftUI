@@ -1,16 +1,11 @@
 import SwiftUI
+import ComposableArchitecture
 
 extension MyProfileView {
   struct ProfileRow: View {
 
-    let row: MyProfileRowType
-    let user: User
-
-    @State
-    private var showingSheet = false
-
     var body: some View {
-      let destination = row.navigateDestination(with: user)
+      let destination = row.navigateDestination(with: user, store: store)
       Group {
         switch destination.style {
         case .modal:
@@ -60,6 +55,13 @@ extension MyProfileView {
         .font(.system(size: Constant.rightArrowFontSize, weight: .medium))
         .foregroundColor(.text_info_200)
     }
+
+    let store: Store<AppState, AppAction>
+    let row: MyProfileRowType
+    let user: User
+
+    @State
+    private var showingSheet = false
   }
 }
 

@@ -1,5 +1,5 @@
 import Combine
-import Foundation
+import ComposableArchitecture
 import FirebaseFirestore
 
 struct FirestoreService: FirestoreServiceType {
@@ -14,48 +14,46 @@ struct FirestoreService: FirestoreServiceType {
     usersCollection = FirestoreReferenceFactory.reference(for: .users)
   }
 
-  func insert(_ message: Message, to dialog: Dialog) -> AnyPublisher<Void, Error> {
-    Future { promise in
+  func insert(_ message: Message, to dialog: Dialog) -> Effect<Success, ErrorEnvelope> {
+    Effect.future { promise in
       dialogsCollection
         .document(dialog.id)
         .collection("messages")
         .document(message.id)
         .setData(message.dictionaryRepresentation ?? [:]) { error in
           if let e = error {
-            promise(Result.failure(e))
+            promise(Result.failure(e.toEnvelope()))
           } else {
-            promise(Result.success(()))
+            promise(Result.success(.init()))
           }
         }
     }
-    .eraseToAnyPublisher()
   }
 
-  func loadContacts() -> AnyPublisher<[User], Error> {
-    Future { promise in
+  func loadContacts() -> Effect<[User], ErrorEnvelope> {
+    Effect.future { promise in
       usersCollection
         .getDocuments { snapshot, error in
           if let err = error {
-            promise(Result.failure(err))
+            promise(Result.failure(err.toEnvelope()))
 
           } else if let users: [User] = decodeModels(snapshot?.documents) {
             promise(Result.success(users))
 
           } else {
             let error = NSError.commonError(description: "Can not decode [User] from snapshot")
-            promise(Result.failure(error as Error))
+            promise(Result.failure(error.toEnvelope()))
           }
         }
     }
-    .eraseToAnyPublisher()
   }
 
-  func loadDialogs() -> AnyPublisher<[Dialog], Error> {
-    Future { promise in
+  func loadDialogs() -> Effect<[Dialog], ErrorEnvelope> {
+    Effect.future { promise in
       dialogsCollection
         .getDocuments { snapshot, error in
           if let err = error {
-            promise(Result.failure(err))
+            promise(Result.failure(err.toEnvelope()))
 
           } else if let dialogs: [Dialog] = decodeModels(snapshot?.documents) {
             let filtered = dialogs.filter { $0.isSelfParticipated }
@@ -63,93 +61,88 @@ struct FirestoreService: FirestoreServiceType {
 
           } else {
             let error = NSError.commonError(description: "Can not decode [Dialog] from snapshot")
-            promise(Result.failure(error))
+            promise(Result.failure(error.toEnvelope()))
           }
         }
     }
-    .eraseToAnyPublisher()
   }
 
-  func loadMessages(for dialog: Dialog) -> AnyPublisher<[Message], Error> {
-    Future { promise in
+  func loadMessages(for dialog: Dialog) -> Effect<[Message], ErrorEnvelope> {
+    Effect.future { promise in
       dialogsCollection
         .document(dialog.id)
         .collection("messages")
         .getDocuments { snapshot, error in
           if let err = error {
-            promise(Result.failure(err))
+            promise(Result.failure(err.toEnvelope()))
 
           } else if let messages: [Message] = decodeModels(snapshot?.documents) {
             promise(Result.success(messages))
 
           } else {
             let error = NSError.commonError(description: "Can not decode [Message] from snapshot")
-            promise(Result.failure(error as Error))
+            promise(Result.failure(error.toEnvelope()))
           }
         }
     }
-    .eraseToAnyPublisher()
   }
 
-  func loadOfficialAccounts() -> AnyPublisher<[OfficialAccount], Error> {
-    Future { promise in
+  func loadOfficialAccounts() -> Effect<[OfficialAccount], ErrorEnvelope> {
+    Effect.future { promise in
       officialAccountsCollection
         .getDocuments { snapshot, error in
           if let err = error {
-            promise(Result.failure(err))
+            promise(Result.failure(err.toEnvelope()))
 
           } else if let accounts: [OfficialAccount] = decodeModels(snapshot?.documents) {
             promise(Result.success(accounts))
 
           } else {
             let error = NSError.commonError(description: "Can not decode [OfficialAccount] from snapshot")
-            promise(Result.failure(error as Error))
+            promise(Result.failure(error.toEnvelope()))
           }
         }
     }
-    .eraseToAnyPublisher()
   }
 
-  func loadUserSelf() -> AnyPublisher<User, Error> {
+  func loadUserSelf() -> Effect<User, ErrorEnvelope> {
 
     guard let userId = AppEnvironment.current.currentUser?.id else {
       let error = NSError.commonError(description: "currentUser is nil")
-      return .publisher(failure: error)
+      return .init(error: error.toEnvelope())
     }
 
-    return Future { promise in
+    return Effect.future { promise in
       usersCollection
         .document(userId)
         .getDocument { snapshot, error in
 
           if let err = error {
-            promise(Result.failure(err))
+            promise(Result.failure(err.toEnvelope()))
 
           } else if let user: User = decodeModel(snapshot) {
             promise(Result.success(user))
 
           } else {
             let error = NSError.commonError(description: "Can not decode user from snapshot")
-            promise(Result.failure(error as Error))
+            promise(Result.failure(error.toEnvelope()))
           }
         }
     }
-    .eraseToAnyPublisher()
   }
 
-  func overrideDialog(_ dialog: Dialog) -> AnyPublisher<Void, Error> {
-    Future { promise in
+  func overrideDialog(_ dialog: Dialog) -> Effect<Success, ErrorEnvelope> {
+    Effect.future { promise in
       dialogsCollection
         .document(dialog.id)
         .setData(dialog.dictionaryRepresentation ?? [:]) { error in
           if let e = error {
-            promise(Result.failure(e))
+            promise(Result.failure(e.toEnvelope()))
           } else {
-            promise(Result.success(()))
+            promise(Result.success(.init()))
           }
         }
     }
-    .eraseToAnyPublisher()
   }
 
   func overrideUser(_ user: User) -> AnyPublisher<Void, Error> {

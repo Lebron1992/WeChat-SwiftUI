@@ -1,4 +1,5 @@
 import Combine
+import ComposableArchitecture
 import FirebaseAuth
 import FirebaseStorage
 
@@ -6,7 +7,7 @@ struct FirebaseStorageService: FirebaseStorageServiceType {
 
   private static let storage = Storage.storage(url: "gs://wechat-swiftui.appspot.com")
 
-  func uploadAvatar(data: Data, format: ImageFormat) -> AnyPublisher<URL, Error> {
+  func uploadAvatar(data: Data, format: ImageFormat) -> Effect<URL, ErrorEnvelope> {
     uploadImageData(
       data,
       toPath: ["images", "avatars", "\(generateUUID()).\(format.fileExtension)"].joined(separator: "/"),
@@ -19,7 +20,7 @@ struct FirebaseStorageService: FirebaseStorageServiceType {
     for message: Message,
     in format: ImageFormat,
     progress: @escaping ((Double) -> Void)
-  ) -> AnyPublisher<URL, Error> {
+  ) -> Effect<URL, ErrorEnvelope> {
 
     uploadImageData(
       data,
@@ -37,9 +38,9 @@ private extension FirebaseStorageService {
     toPath path: String,
     in format: ImageFormat,
     progress: ((Double) -> Void)? = nil
-  ) -> AnyPublisher<URL, Error> {
+  ) -> Effect<URL, ErrorEnvelope> {
 
-    Future { promise in
+    Effect.future { promise in
       let imageRef = Self.storage.reference().child(path)
       let metadata = StorageMetadata()
       metadata.contentType = format.contentType
@@ -48,9 +49,9 @@ private extension FirebaseStorageService {
 
         guard metadata != nil else {
           if let err = error {
-            promise(.failure(err))
+            promise(.failure(err.toEnvelope()))
           } else {
-            promise(.failure(NSError.unknowError))
+            promise(.failure(NSError.unknowError.toEnvelope()))
           }
           return
         }
@@ -59,9 +60,9 @@ private extension FirebaseStorageService {
           if let url = url {
             promise(.success(url))
           } else if let err = error {
-            promise(.failure(err))
+            promise(.failure(err.toEnvelope()))
           } else {
-            promise(.failure(NSError.unknowError))
+            promise(.failure(NSError.unknowError.toEnvelope()))
           }
         }
       }
@@ -73,6 +74,5 @@ private extension FirebaseStorageService {
         }
       }
     }
-    .eraseToAnyPublisher()
   }
 }

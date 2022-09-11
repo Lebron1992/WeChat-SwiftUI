@@ -67,20 +67,20 @@ struct MockService: ServiceType {
     if let error = loadContactsError {
       return .publisher(failure: error)
     }
-    return .publisher(output: loadContactsResponse ?? [User.template])
+    return .publisher(output: loadContactsResponse ?? [User.template1])
   }
 
   func loadOfficialAccounts() -> AnyPublisher<[OfficialAccount], Error> {
     if let error = loadOfficialAccountsError {
       return .publisher(failure: error)
     }
-    return .publisher(output: loadOfficialAccountsResponse ?? [OfficialAccount.template])
+    return .publisher(output: loadOfficialAccountsResponse ?? [OfficialAccount.template1])
   }
 
   func loadUserSelf() -> AnyPublisher<User, Error> {
     if let error = loadUserSelfError {
       return .publisher(failure: error)
     }
-    return .publisher(output: loadUserSelfResponse ?? User.template)
+    return .publisher(output: loadUserSelfResponse ?? User.template1)
   }
 }

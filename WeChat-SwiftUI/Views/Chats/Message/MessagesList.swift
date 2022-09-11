@@ -1,12 +1,12 @@
 import SwiftUI
+import ComposableArchitecture
 
 struct MessagesList: View {
-  let messages: [Message]
 
   var body: some View {
     List {
       ForEach(messages, id: \.self) {
-        MessageRow(message: $0)
+        MessageRow(store: store, message: $0)
           .listRowInsets(Constant.listRowInset)
           .listRowSeparator(.hidden)
       }
@@ -14,6 +14,9 @@ struct MessagesList: View {
     .background(.app_bg)
     .listStyle(.plain)
   }
+
+  let store: Store<AppState, AppAction>
+  let messages: [Message]
 }
 
 private extension MessagesList {
@@ -24,6 +27,11 @@ private extension MessagesList {
 
 struct MessagesList_Previews: PreviewProvider {
   static var previews: some View {
-    MessagesList(messages: [Message.textTemplate, Message.textTemplate2])
+    let store = Store(
+      initialState: AppState(),
+      reducer: appReducer,
+      environment: AppEnvironment.current
+    )
+    MessagesList(store: store, messages: [Message.textTemplate1, Message.textTemplate2])
   }
 }

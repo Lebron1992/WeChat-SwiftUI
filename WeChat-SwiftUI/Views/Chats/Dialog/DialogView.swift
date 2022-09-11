@@ -1,13 +1,52 @@
 import SwiftUI
-import SwiftUIRedux
+import ComposableArchitecture
 
-struct DialogView: ConnectedView {
+struct DialogView: View {
+
+  var body: some View {
+    WithViewStore(store) { viewStore in
+      let messages = viewStore.chatsState.dialogMessages
+        .first(where: { $0.dialogId == viewModel.dialog.id })?
+        .messages ?? []
+      let dialog = viewStore.chatsState.dialogs.element(matching: viewModel.dialog)
+
+      ScrollViewReader { scrollView in
+        VStack(spacing: 0) {
+          messagesList(messages: messages, store: store)
+          chatInputPanel(
+            lastMessage: messages.last,
+            scrollView: scrollView,
+            sendText: { viewStore.send(.chats(.sendTextMessageInDialog($0, dialog))) }
+          )
+        }
+        .onChange(of: messages) { scrollToLastMessage($0.last, with: scrollView) }
+        .onAppear {
+          DispatchQueue.main.asyncAfter(deadline: .now() + 0.001) {
+            // 不延迟的话，scroll 无效
+            scrollToLastMessage(messages.last, with: scrollView, animated: false)
+          }
+        }
+      }
+      .navigationTitle(dialog.name ?? "")
+      .sheet(item: $photoPicker) { pickerType in
+        switch pickerType {
+        case .camera: ImagePicker(sourceType: .camera, allowsEditing: false) { handlePickedImage($0) }
+        case .library: ImagePicker(sourceType: .photoLibrary, allowsEditing: false) { handlePickedImage($0) }
+        }
+      }
+      .onAppear { viewStore.send(.chats(.loadMessagesForDialog(dialog))) }
+      .onChange(of: viewModel.messageChanges) { viewStore.send(.chats(.updateMessagesForDialog($0, dialog))) }
+      .onChange(of: pickedPhoto) { onPickedImage($0, send: {
+        viewStore.send(.chats(.sendImageMessageInDialog($0, dialog)))
+      }) }
+      .environmentObject(ObjectBox(value: dialog))
+    }
+  }
+
+  let store: Store<AppState, AppAction>
 
   @StateObject
   var viewModel: DialogViewModel
-
-  @EnvironmentObject
-  private var store: Store<AppState>
 
   @State
   private var dismissKeyboard = false
@@ -17,61 +56,12 @@ struct DialogView: ConnectedView {
 
   @State
   private var pickedPhoto: UIImage?
-
-  struct Props {
-    let dialog: Dialog
-    let messages: [Message]
-    let loadMessages: (Dialog) -> Void
-    let sendMessage: (Message, Dialog) -> Void
-  }
-
-  func map(state: AppState, dispatch: @escaping Dispatch) -> Props {
-    Props(
-      dialog: state.chatsState.dialogs.element(matching: viewModel.dialog),
-      messages: state.chatsState.dialogMessages.first(where: { $0.dialogId == viewModel.dialog.id })?.messages ?? [],
-      loadMessages: { dispatch(ChatsActions.LoadMessagesForDialog(dialog: $0)) },
-      sendMessage: { message, dialog in
-        if message.isTextMsg {
-          dispatch(ChatsActions.SendTextMessageInDialog(message: message, dialog: dialog))
-        } else if message.isImageMsg {
-          dispatch(ChatsActions.SendImageMessageInDialog(message: message, dialog: dialog))
-        }
-      }
-    )
-  }
-
-  func body(props: Props) -> some View {
-    ScrollViewReader { scrollView in
-      VStack(spacing: 0) {
-        messagesList(props: props)
-        chatInputPanel(props: props, scrollView: scrollView)
-      }
-      .onChange(of: props.messages) { scrollToLastMessage($0.last, with: scrollView) }
-      .onAppear {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.001) {
-          // 不延迟的话，scroll 无效
-          scrollToLastMessage(props.messages.last, with: scrollView, animated: false)
-        }
-      }
-    }
-    .navigationTitle(props.dialog.name ?? "")
-    .sheet(item: $photoPicker) { pickerType in
-      switch pickerType {
-      case .camera: ImagePicker(sourceType: .camera, allowsEditing: false) { handlePickedImage($0) }
-      case .library: ImagePicker(sourceType: .photoLibrary, allowsEditing: false) { handlePickedImage($0) }
-      }
-    }
-    .onAppear { props.loadMessages(viewModel.dialog) }
-    .onChange(of: viewModel.messageChanges) { handleMessageChanges($0, for: props.dialog) }
-    .onChange(of: pickedPhoto) { onPickedImage($0, props: props) }
-    .environmentObject(ObjectBox(value: props.dialog))
-  }
 }
 
 // MARK: - Views
 private extension DialogView {
-  func messagesList(props: Props) -> some View {
-    MessagesList(messages: props.messages)
+  func messagesList(messages: [Message], store: Store<AppState, AppAction>) -> some View {
+    MessagesList(store: store, messages: messages)
       .resignKeyboardOnDrag {
         dismissKeyboard = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -86,15 +76,19 @@ private extension DialogView {
       }
   }
 
-  func chatInputPanel(props: Props, scrollView: ScrollViewProxy) -> some View {
+  func chatInputPanel(
+    lastMessage: Message?,
+    scrollView: ScrollViewProxy,
+    sendText: @escaping (Message) -> Void
+  ) -> some View {
     ChatInputPanel(
       dismissKeyboard: dismissKeyboard,
       onInputStarted: {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-          scrollToLastMessage(props.messages.last, with: scrollView)
+          scrollToLastMessage(lastMessage, with: scrollView)
         }
       },
-      onSubmitText: { onSubmitText($0, props: props) },
+      onSubmitText: { onSubmitText($0, send: sendText) },
       onAddButtonTapped: { photoPicker = .library }
     )
   }
@@ -102,36 +96,29 @@ private extension DialogView {
 
 // MARK: - Send
 private extension DialogView {
-  func onSubmitText(_ text: String, props: Props) {
+  func onSubmitText(_ text: String, send: (Message) -> Void) {
     guard text.isEmpty == false else {
       return
     }
     let message = Message(text: text)
     withAnimation {
-      props.sendMessage(message, props.dialog)
+      send(message)
     }
   }
 
-  func onPickedImage(_ image: UIImage?, props: Props) {
+  func onPickedImage(_ image: UIImage?, send: (Message) -> Void) {
     guard let image = image else {
       return
     }
     let message = Message(image: .init(uiImage: image))
     withAnimation {
-      props.sendMessage(message, props.dialog)
+      send(message)
     }
   }
 }
 
 // MARK: - Helper Methods
 private extension DialogView {
-  func handleMessageChanges(_ messageChanges: [MessageChange], for dialog: Dialog) {
-    store.dispatch(action: ChatsActions.UpdateMessagesForDialog(
-      messageChanges: messageChanges,
-      dialog: dialog
-    ))
-  }
-
   func handlePickedImage(_ image: UIImage?) {
     pickedPhoto = image
     photoPicker = nil
@@ -157,7 +144,20 @@ private extension DialogView {
 
 struct DialogView_Previews: PreviewProvider {
   static var previews: some View {
-    DialogView(viewModel: .init(dialog: .template1))
-      .onAppear { AppEnvironment.updateCurrentUser(.template) }
+    let store = Store(
+      initialState: AppState(chatsState: .init(
+        dialogs: [.template1],
+        dialogMessages: [.init(
+          dialogId: Dialog.template1.id,
+          messages: [.textTemplate1, .urlImageTemplate, .textTemplate2])]
+      )),
+      reducer: appReducer,
+      environment: AppEnvironment.current
+    )
+    DialogView(
+      store: store,
+      viewModel: .init(dialog: .template1)
+    )
+      .onAppear { AppEnvironment.updateCurrentUser(.template1) }
   }
 }

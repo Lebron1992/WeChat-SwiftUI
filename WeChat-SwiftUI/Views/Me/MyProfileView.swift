@@ -1,37 +1,36 @@
 import SwiftUI
-import SwiftUIRedux
+import ComposableArchitecture
 
-struct MyProfileView: ConnectedView {
-  struct Props {
-    let signedInUser: User?
-  }
+struct MyProfileView: View {
 
-  func map(state: AppState, dispatch: @escaping (Action) -> Void) -> Props {
-    Props(
-      signedInUser: state.authState.signedInUser
-    )
-  }
-
-  @ViewBuilder
-  func body(props: Props) -> some View {
-    if let user = props.signedInUser {
+  var body: some View {
+    WithViewStore(store) { viewStore in
+      if let user = viewStore.authState.signedInUser {
         List {
           ForEach(Row.allCases, id: \.self) { row in
-            ProfileRow(row: row, user: user)
+            ProfileRow(store: store, row: row, user: user)
           }
           .listRowBackground(Color.app_white)
         }
         .background(.app_bg)
         .listStyle(.plain)
         .navigationTitle(Strings.me_my_profile_title())
-    } else {
-      EmptyView()
+      } else {
+        EmptyView()
+      }
     }
   }
+
+  let store: Store<AppState, AppAction>
 }
 
 struct MyProfileView_Previews: PreviewProvider {
   static var previews: some View {
-    MyProfileView()
+    let store = Store(
+      initialState: AppState(authState: .init(signedInUser: .template1)),
+      reducer: appReducer,
+      environment: AppEnvironment.current
+    )
+    MyProfileView(store: store)
   }
 }

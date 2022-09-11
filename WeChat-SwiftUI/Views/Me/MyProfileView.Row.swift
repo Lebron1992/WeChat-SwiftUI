@@ -1,4 +1,5 @@
 import SwiftUI
+import ComposableArchitecture
 import URLImage
 
 extension MyProfileView {
@@ -67,12 +68,12 @@ extension MyProfileView {
       }
     }
 
-    func navigateDestination(with user: User) -> MyProfileRowType.Destination {
+    func navigateDestination(with user: User, store: Store<AppState, AppAction>) -> MyProfileRowType.Destination {
       switch self {
       case .photo:
-        return (.push, MyProfilePhotoPreview(photoUrl: user.avatar).asAnyView())
+        return (.push, MyProfilePhotoPreview(store: store, photoUrl: user.avatar).asAnyView())
       case .name:
-        return (.modal, MyProfileFieldUpdateView(field: .name(user.name)).asAnyView())
+        return (.modal, MyProfileFieldUpdateView(store: store, field: .name(user.name)).asAnyView())
       case .wechatId:
         return (.push, Text("wechatId").asAnyView())
       case .qrCode:
@@ -80,7 +81,7 @@ extension MyProfileView {
       case .more:
         let list = List {
           ForEach(subRows, id: \.self) { subRow in
-            ProfileRow(row: subRow, user: user)
+            ProfileRow(store: store, row: subRow, user: user)
           }
           .listRowBackground(Color.app_white)
         }
@@ -126,14 +127,14 @@ extension MyProfileView.Row {
           .asAnyView()
     }
 
-    func navigateDestination(with user: User) -> MyProfileRowType.Destination {
+    func navigateDestination(with user: User, store: Store<AppState, AppAction>) -> MyProfileRowType.Destination {
       switch self {
       case .gender:
-        return (.modal, MyProfileFieldUpdateView(field: .gender(user.gender)).asAnyView())
+        return (.modal, MyProfileFieldUpdateView(store: store, field: .gender(user.gender)).asAnyView())
       case .region:
-        return (.modal, MyProfileFieldUpdateView(field: .region).asAnyView())
+        return (.modal, MyProfileFieldUpdateView(store: store, field: .region).asAnyView())
       case .whatsUp:
-        return (.modal, MyProfileFieldUpdateView(field: .whatsUp(user.whatsUp)).asAnyView())
+        return (.modal, MyProfileFieldUpdateView(store: store, field: .whatsUp(user.whatsUp)).asAnyView())
       }
     }
   }
@@ -144,7 +145,7 @@ protocol MyProfileRowType {
 
   var title: String { get }
   func detailView(with user: User) -> AnyView
-  func navigateDestination(with user: User) -> Destination
+  func navigateDestination(with user: User, store: Store<AppState, AppAction>) -> Destination
 }
 
 private extension MyProfileView.Row {

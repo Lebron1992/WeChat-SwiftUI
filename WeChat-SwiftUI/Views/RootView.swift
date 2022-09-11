@@ -1,5 +1,5 @@
 import SwiftUI
-import SwiftUIRedux
+import ComposableArchitecture
 
 /* TODO:
 --- push ViewController 时，TabBar 不会隐藏，等待苹果的解决方案。（可选方案：可以把整个 TabView 包装在 NavigationView 内，此方案不方便进行导航栏按钮的控制。）
@@ -7,42 +7,41 @@ import SwiftUIRedux
 
 struct RootView: View {
 
-  @EnvironmentObject
-  private var store: Store<AppState>
-
   var body: some View {
-    TabView(selection: selectedTab) {
-      ChatsView()
-        .tabItem { tabItem(for: .chats) }
-        .tag(TabBarItem.chats.rawValue)
+    WithViewStore(store) { viewStore in
+      let selection = Binding(
+        get: { viewStore.rootState.selectedTab.rawValue },
+        set: {
+          let tab = TabBarItem(rawValue: $0)!
+          viewStore.send(.root(.setSelectedTab(tab)))
+        }
+      )
+      TabView(selection: selection) {
+        ChatsView(store: store)
+          .tabItem { tabItem(for: .chats, isSelected: TabBarItem.chats == viewStore.rootState.selectedTab) }
+          .tag(TabBarItem.chats.rawValue)
 
-      ContactsView()
-        .tabItem { tabItem(for: .contacts) }
-        .tag(TabBarItem.contacts.rawValue)
+        ContactsView(store: store)
+          .tabItem { tabItem(for: .contacts, isSelected: TabBarItem.contacts == viewStore.rootState.selectedTab) }
+          .tag(TabBarItem.contacts.rawValue)
 
-      DiscoverView()
-        .tabItem { tabItem(for: .discover) }
-        .tag(TabBarItem.discover.rawValue)
+        DiscoverView(store: store.actionless.scope(state: \.discoverState))
+          .tabItem { tabItem(for: .discover, isSelected: TabBarItem.discover == viewStore.rootState.selectedTab) }
+          .tag(TabBarItem.discover.rawValue)
 
-      MeView()
-        .tabItem { tabItem(for: .me) }
-        .tag(TabBarItem.me.rawValue)
+        MeView(store: store)
+          .tabItem { tabItem(for: .me, isSelected: TabBarItem.me == viewStore.rootState.selectedTab) }
+          .tag(TabBarItem.me.rawValue)
+      }
+      .accentColor(.highlighted) // 设置 tab bar 选中颜色
     }
-    .accentColor(.highlighted) // 设置 tab bar 选中颜色
   }
 
-  private var selectedTab: Binding<Int> {
-    Binding(
-      get: { store.state.rootState.selectedTab.rawValue },
-      set: {
-        let tab = TabBarItem(rawValue: $0)!
-        store.dispatch(action: RootActions.SetSelectedTab(tab: tab)) }
-    )
-  }
+  let store: Store<AppState, AppAction>
 
-  private func tabItem(for tab: TabBarItem) -> some View {
+  private func tabItem(for tab: TabBarItem, isSelected: Bool) -> some View {
     VStack {
-      tab.rawValue == selectedTab.wrappedValue ? tab.selectedImage : tab.defaultImage
+      isSelected ? tab.selectedImage : tab.defaultImage
       Text(tab.title)
     }
   }
@@ -50,6 +49,19 @@ struct RootView: View {
 
 struct RootView_Previews: PreviewProvider {
   static var previews: some View {
-    RootView()
+    let store = Store(
+      initialState: AppState(
+        authState: .init(signedInUser: .template1),
+        chatsState: .init(dialogs: [.template1, .template2], dialogMessages: []),
+        contactsState: .init(
+          categories: ContactCategory.allCases,
+          contacts: .loaded([.template1, .template2]),
+          officialAccounts: .loaded([.template1, .template2])
+        )
+      ),
+      reducer: appReducer,
+      environment: AppEnvironment.current
+    )
+    RootView(store: store)
   }
 }

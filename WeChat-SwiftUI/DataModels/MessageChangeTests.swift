@@ -3,8 +3,8 @@ import XCTest
 
 final class MessageChangeTests: XCTestCase {
   func test_equatable() {
-    let mc1 = MessageChange(message: .textTemplate, changeType: .added)
-    let mc2 = MessageChange(message: .textTemplate, changeType: .modified)
+    let mc1 = MessageChange(message: .textTemplate1, changeType: .added)
+    let mc2 = MessageChange(message: .textTemplate1, changeType: .modified)
     let mc3 = MessageChange(message: .textTemplate2, changeType: .modified)
     XCTAssertEqual(mc1, mc1)
     XCTAssertEqual(mc2, mc2)

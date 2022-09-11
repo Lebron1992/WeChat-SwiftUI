@@ -26,12 +26,12 @@ final class AppEnvironmentTests: XCTestCase {
 
     let env2 = Environment(
       apiService: Service(serverConfig: ServerConfig.production, oauthToken: OauthToken(token: "cafebeef")),
-      currentUser: .template,
+      currentUser: .template1,
       language: .en
     )
     AppEnvironment.pushEnvironment(env2)
     XCTAssertTrue(env2.apiService == AppEnvironment.current.apiService)
-    XCTAssertEqual(env2.currentUser, .template)
+    XCTAssertEqual(env2.currentUser, .template1)
     XCTAssertEqual(env2.language, .en)
 
     AppEnvironment.popEnvironment()
@@ -56,8 +56,8 @@ final class AppEnvironmentTests: XCTestCase {
     AppEnvironment.replaceCurrentEnvironment(apiService: apiService)
     XCTAssertTrue(AppEnvironment.current.apiService == apiService)
 
-    AppEnvironment.replaceCurrentEnvironment(currentUser: .template)
-    XCTAssertEqual(AppEnvironment.current.currentUser, .template)
+    AppEnvironment.replaceCurrentEnvironment(currentUser: .template1)
+    XCTAssertEqual(AppEnvironment.current.currentUser, .template1)
 
     AppEnvironment.popEnvironment()
   }
@@ -75,15 +75,15 @@ final class AppEnvironmentTests: XCTestCase {
     XCTAssertNil(AppEnvironment.current.apiService.oauthToken)
     XCTAssertNil(AppEnvironment.current.currentUser)
 
-    AppEnvironment.login(AccessTokenEnvelope(accessToken: "deadbeef", user: .template))
+    AppEnvironment.login(AccessTokenEnvelope(accessToken: "deadbeef", user: .template1))
 
     XCTAssertEqual("deadbeef", AppEnvironment.current.apiService.oauthToken?.token)
-    XCTAssertEqual(User.template, AppEnvironment.current.currentUser)
+    XCTAssertEqual(User.template1, AppEnvironment.current.currentUser)
 
-    AppEnvironment.updateCurrentUser(User.template)
+    AppEnvironment.updateCurrentUser(User.template1)
 
     XCTAssertEqual("deadbeef", AppEnvironment.current.apiService.oauthToken?.token)
-    XCTAssertEqual(User.template, AppEnvironment.current.currentUser)
+    XCTAssertEqual(User.template1, AppEnvironment.current.currentUser)
 
     AppEnvironment.logout()
 
@@ -103,7 +103,7 @@ final class AppEnvironmentTests: XCTestCase {
 
   func test_fromStorage_WithFullDataStored() {
     let userDefaults = MockKeyValueStore()
-    let user = User.template
+    let user = User.template1
 
     userDefaults.set(
       [
@@ -128,7 +128,7 @@ final class AppEnvironmentTests: XCTestCase {
       serverConfig: ServerConfig.production,
       oauthToken: OauthToken(token: "deadbeef")
     )
-    let currentUser = User.template
+    let currentUser = User.template1
     let userDefaults = MockKeyValueStore()
 
     AppEnvironment.saveEnvironment(
@@ -148,7 +148,7 @@ final class AppEnvironmentTests: XCTestCase {
       oauthToken: OauthToken(token: "deadbeef")
     )
 
-    let currentUser = User.template
+    let currentUser = User.template1
     let userDefaults = MockKeyValueStore()
 
     AppEnvironment.saveEnvironment(
@@ -169,13 +169,13 @@ final class AppEnvironmentTests: XCTestCase {
 
   func test_pushPopSave() {
     AppEnvironment.pushEnvironment(userDefaults: MockKeyValueStore())
-    AppEnvironment.pushEnvironment(currentUser: .template)
+    AppEnvironment.pushEnvironment(currentUser: .template1)
 
     var currentUserId = AppEnvironment.current.userDefaults
       .dictionary(forKey: .appEnvironment)
       .flatMap { $0["currentUser"] as? [String: Any] }
       .flatMap { $0["id"] as? String }
-    XCTAssertEqual(User.template.id, currentUserId, "当前用户已保存。")
+    XCTAssertEqual(User.template1.id, currentUserId, "当前用户已保存。")
 
     AppEnvironment.popEnvironment()
 

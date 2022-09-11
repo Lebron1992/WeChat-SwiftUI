@@ -1,5 +1,5 @@
 import SwiftUI
-import SwiftUIRedux
+import ComposableArchitecture
 import URLImage
 
 /* TODO:
@@ -8,30 +8,31 @@ import URLImage
  */
 
 struct ContactDetail: View {
-  let contact: User
 
-  @EnvironmentObject
-  private var store: Store<AppState>
+  var body: some View {
+    WithViewStore(store) { viewStore in
+      List {
+        Group {
+          sectionInfoEditPrivacy
+          SectionHeaderBackground()
+          sectionMomentsMore
+          SectionHeaderBackground()
+          sectionMessagesCall(viewStore)
+        }
+        .listRowBackground(Color.app_white)
+        .listSectionSeparator(.hidden)
+      }
+      .background(.app_bg)
+      .listStyle(.plain)
+      .environment(\.defaultMinListRowHeight, 10)
+    }
+  }
+
+  let store: Store<AppState, AppAction>
+  let contact: User
 
   @State
   private var navigationSelection: NavigationSelection?
-
-  var body: some View {
-    List {
-      Group {
-        sectionInfoEditPrivacy
-        SectionHeaderBackground()
-        sectionMomentsMore
-        SectionHeaderBackground()
-        sectionMessagesCall
-      }
-      .listRowBackground(Color.app_white)
-      .listSectionSeparator(.hidden)
-    }
-    .background(.app_bg)
-    .listStyle(.plain)
-    .environment(\.defaultMinListRowHeight, 10)
-  }
 }
 
 private extension ContactDetail {
@@ -53,17 +54,16 @@ private extension ContactDetail {
     }
   }
 
-  var sectionMessagesCall: some View {
+  func sectionMessagesCall(_ viewStore: ViewStore<AppState, AppAction>) -> some View {
     Section {
       VStack(spacing: 0) {
-        sendMessageButton
+        sendMessageButton(viewStore)
         Color.bg_info_200.frame(height: 0.8)
         callButton
       }
       .foregroundColor(.link)
       .font(.system(size: Constant.actionButtonFontSize, weight: .medium))
       .buttonStyle(BorderlessButtonStyle()) // 解决：点击其中一个按钮导致两个按钮触发点击事件和 cell 被点击选中
-      .listRowInsets(.zero)
     }
   }
 
@@ -116,18 +116,23 @@ private extension ContactDetail {
     )
   }
 
-  var sendMessageButton: some View {
-    let cachedDialog = store.state.chatsState.dialogs
+  func sendMessageButton(_ viewStore: ViewStore<AppState, AppAction>) -> some View {
+    let cachedDialog = viewStore.chatsState.dialogs
       .first { $0.isIndividual(with: .init(user: contact)) }
     let dialog = cachedDialog ?? Dialog(members: [
       .init(user: contact),
       .currentUser!
     ])
 
-    return NavigationLink(
+    return NavigationRow(
       tag: NavigationSelection.messages,
       selection: $navigationSelection,
-      destination: { DialogView(viewModel: .init(dialog: dialog)) }
+      destination: {
+          DialogView(
+            store: store,
+            viewModel: .init(dialog: dialog)
+          )
+      }
     ) {
       Button {
         navigationSelection = .messages
@@ -197,6 +202,12 @@ extension ContactDetail {
 
 struct ContactDetail_Previews: PreviewProvider {
   static var previews: some View {
-    ContactDetail(contact: .template)
+    AppEnvironment.updateCurrentUser(.template1)
+    let store = Store(
+      initialState: AppState(),
+      reducer: appReducer,
+      environment: AppEnvironment.current
+    )
+    return ContactDetail(store: store, contact: .template1)
   }
 }

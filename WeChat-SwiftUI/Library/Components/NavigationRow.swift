@@ -2,28 +2,46 @@ import SwiftUI
 
 struct NavigationRow<Destination: View, Label: View>: View {
 
-  let showRightArrow: Bool
-  let destination: Destination
-  let label: () -> Label
+  let content: AnyView
 
   init(
-  showRightArrow: Bool = false,
-  destination: Destination,
-  @ViewBuilder label: @escaping () -> Label
+    showRightArrow: Bool = false,
+    destination: Destination,
+    @ViewBuilder label: @escaping () -> Label
   ) {
-    self.showRightArrow = showRightArrow
-    self.destination = destination
-    self.label = label
-  }
-
-  var body: some View {
-    ZStack(alignment: .leading) {
+    content = ZStack(alignment: .leading) {
       NavigationLink(destination: destination) {
         EmptyView()
       }
       .opacity(showRightArrow ? 1 : 0)
       label()
     }
+    .asAnyView()
+  }
+
+  init<V>(
+    tag: V,
+    selection: Binding<V?>,
+    showRightArrow: Bool = false,
+    destination: () -> Destination,
+    label: () -> Label
+  ) where V: Hashable {
+    content = ZStack(alignment: .leading) {
+      NavigationLink(
+        tag: tag,
+        selection: selection,
+        destination: destination
+      ) {
+        EmptyView()
+      }
+      .opacity(showRightArrow ? 1 : 0)
+      label()
+    }
+    .asAnyView()
+  }
+
+  var body: some View {
+    content
   }
 }
 

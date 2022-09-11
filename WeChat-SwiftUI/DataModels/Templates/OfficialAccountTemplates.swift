@@ -1,5 +1,5 @@
 extension OfficialAccount {
-  static let template: OfficialAccount! = tryDecode(
+  static let template1: OfficialAccount! = tryDecode(
     """
     {
     "id": "cf73ed17-20b5-4254-b67c-c6539acb4d81",

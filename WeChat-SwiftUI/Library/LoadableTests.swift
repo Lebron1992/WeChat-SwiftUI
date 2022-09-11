@@ -19,8 +19,8 @@ final class LoadableTests: XCTestCase {
 
   private let notRequested = ModelLoadable.notRequested
   private let loaded = ModelLoadable.loaded(model)
-  private let isLoadingWithValue = ModelLoadable.isLoading(last: model, cancelBag: CancelBag())
-  private let isLoadingWithNoValue = ModelLoadable.isLoading(last: nil, cancelBag: CancelBag())
+  private let isLoadingWithValue = ModelLoadable.isLoading(last: model)
+  private let isLoadingWithNoValue = ModelLoadable.isLoading(last: nil)
   private let failed = ModelLoadable.failed(cancelError)
 
   func test_value() {
@@ -39,25 +39,6 @@ final class LoadableTests: XCTestCase {
     XCTAssertNotNil(failed.error)
   }
 
-  func test_setIsLoading() {
-    var value = notRequested
-    XCTAssertEqual(value, notRequested)
-
-    let cancelBag = CancelBag()
-    value.setIsLoading(cancelBag: cancelBag)
-    XCTAssertEqual(value, .isLoading(last: nil, cancelBag: cancelBag))
-  }
-
-  func test_cancelLoading() {
-    var value = isLoadingWithValue
-    value.cancelLoading()
-    XCTAssertEqual(value, .loaded(isLoadingWithValue.value!))
-
-    value = isLoadingWithNoValue
-    value.cancelLoading()
-    XCTAssertEqual(value, .failed(cancelError))
-  }
-
   func test_map() {
     var value = notRequested
     XCTAssertEqual(
@@ -74,13 +55,13 @@ final class LoadableTests: XCTestCase {
     value = isLoadingWithValue
     XCTAssertEqual(
       value.map { $0.prop },
-      StringLoadable.isLoading(last: model.prop, cancelBag: CancelBag())
+      StringLoadable.isLoading(last: model.prop)
     )
 
     value = isLoadingWithNoValue
     XCTAssertEqual(
       value.map { $0.prop },
-      StringLoadable.isLoading(last: nil, cancelBag: CancelBag())
+      StringLoadable.isLoading(last: nil)
     )
 
     value = failed

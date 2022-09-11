@@ -5,12 +5,12 @@ import XCTest
 final class OfficialAccountTests: XCTestCase {
 
   func test_equatable() {
-    XCTAssertEqual(OfficialAccount.template, OfficialAccount.template)
-    XCTAssertNotEqual(OfficialAccount.template, OfficialAccount.template2)
+    XCTAssertEqual(OfficialAccount.template1, OfficialAccount.template1)
+    XCTAssertNotEqual(OfficialAccount.template1, OfficialAccount.template2)
   }
 
   func test_description() {
-    XCTAssertNotEqual("", OfficialAccount.template.debugDescription)
+    XCTAssertNotEqual("", OfficialAccount.template1.debugDescription)
   }
 
   func test_jsonParsing() {
@@ -32,12 +32,12 @@ final class OfficialAccountTests: XCTestCase {
   }
 
   func test_index() {
-    let account = OfficialAccount.template
+    let account = OfficialAccount.template1
     XCTAssertEqual(account?.index, "G")
   }
 
   func test_match() {
-    let account = OfficialAccount.template!
+    let account = OfficialAccount.template1!
 
     XCTAssertTrue(account.match("广"))
     XCTAssertFalse(account.match("北"))

@@ -1,53 +1,56 @@
 import SwiftUI
-import SwiftUIRedux
+import ComposableArchitecture
 
-struct ContentView: ConnectedView {
+struct ContentView: View {
 
-  @EnvironmentObject
-  private var store: Store<AppState>
-
-  struct Props {
-    let signedInUser: User?
-    let loadUserSelf: () -> Void
-  }
-
-  func map(state: AppState, dispatch: @escaping Dispatch) -> Props {
-    Props(
-      signedInUser: state.authState.signedInUser,
-      loadUserSelf: { dispatch(AuthActions.LoadUserSelf()) }
-    )
-  }
-
-  func body(props: Props) -> some View {
-    Group {
-      if props.signedInUser == nil {
-        OnboardingView()
-      } else {
-        RootView()
-          .onAppear(perform: props.loadUserSelf)
+  var body: some View {
+    WithViewStore(store) { viewStore in
+      let errorMessage = Binding<String?>(
+        get: { viewStore.systemState.errorMessage },
+        set: { _ in viewStore.send(AppAction.system(.setErrorMessage(nil))) }
+      )
+      Group {
+        if viewStore.authState.signedInUser == nil {
+          OnboardingView(store: store)
+        } else {
+          RootView(store: store)
+            .onAppear { viewStore.send(AppAction.auth(.loadUserSelf)) }
+        }
+      }
+      .alert(item: errorMessage) {
+        Alert(
+          title: Text(""),
+          message: Text($0),
+          dismissButton: .cancel(Text(Strings.general_ok()))
+        )
       }
     }
-    .alert(item: errorMessage) {
-      Alert(
-        title: Text(""),
-        message: Text($0),
-        dismissButton: .cancel(Text(Strings.general_ok()))
-      )
-    }
   }
-}
 
-private extension ContentView {
-  var errorMessage: Binding<String?> {
-    Binding(
-      get: { store.state.systemState.errorMessage },
-      set: { _ in store.dispatch(action: SystemActions.SetErrorMessage(message: nil)) }
-    )
-  }
+  let store: Store<AppState, AppAction>
 }
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView()
+    Group {
+      ContentView(store: Store(
+        initialState: AppState(),
+        reducer: appReducer,
+        environment: AppEnvironment.current
+      ))
+      ContentView(store: Store(
+        initialState: AppState(
+          authState: .init(signedInUser: .template1),
+          chatsState: .init(dialogs: [.template1, .template2], dialogMessages: []),
+          contactsState: .init(
+            categories: ContactCategory.allCases,
+            contacts: .loaded([.template1, .template2]),
+            officialAccounts: .loaded([.template1, .template2])
+          )
+        ),
+        reducer: appReducer,
+        environment: AppEnvironment.current
+      ))
+    }
   }
 }
