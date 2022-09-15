@@ -55,6 +55,15 @@
       }
     },
     {
+      "identity" : "lbjpublishers",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Lebron1992/LBJPublishers.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "c0b3aab6e0c2de331f6bd73e69285ffc8298aac2"
+      }
+    },
+    {
       "identity" : "swift-case-paths",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-case-paths",

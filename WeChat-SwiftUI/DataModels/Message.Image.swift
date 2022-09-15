@@ -69,6 +69,15 @@ extension Message.Image: Equatable { }
 
 extension Message.Image: CustomDebugStringConvertible {
   var debugDescription: String {
-    urlImage?.url ?? "UIImage"
+    switch (urlImage?.url, uiImage) {
+    case let (.some(url), .some):
+      return "URLImage: \(url); UIImage"
+    case let (.some(url), .none):
+      return "URLImage: \(url)"
+    case (.none, .some):
+      return "UIImage"
+    default:
+      return "No image"
+    }
   }
 }

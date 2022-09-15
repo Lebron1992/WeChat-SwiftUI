@@ -255,17 +255,50 @@ final class ChatsTests: XCTestCase, AppStateDataSource {
     }
   }
 
+  func test_sendImageMessageInDialog_inProgress() async {
+    let progress = 0.5
+    let uploadingResult = UploadResult(progress: progress, url: nil)
+
+    let message = Message(image: .uiImageTemplateIdle)
+    let sendingMessage = message.setStatus(.sending)
+    let sendingMessageWithProgress = sendingMessage
+      .setLocalImageStatus(.uploading(progress: Float(progress)))
+
+    let dialog = Dialog(members: [.template1, .template2])
+
+    let mockStorageService = FirebaseStorageServiceMock(
+      uploadMessageImageResponse: uploadingResult
+    )
+
+    await withEnvironmentAsync(firebaseStorageService: mockStorageService) {
+
+      let store = TestStore(
+        initialState: AppState(chatsState: .init(dialogs: [dialog], dialogMessages: [])),
+        reducer: appReducer,
+        environment: AppEnvironment.current
+      )
+
+      await store.send(.chats(.sendImageMessageInDialog(message, dialog))) {
+        $0.chatsState.dialogs = [dialog.setLastMessage(sendingMessage)]
+        $0.chatsState.dialogMessages = [.init(dialogId: dialog.id, messages: [sendingMessage])]
+      }
+
+      await store.receive(.chats(.uploadImageForMessageInDialogResponse(
+        message, dialog, .success(uploadingResult)
+      ))) {
+        $0.chatsState.dialogs = [dialog.setLastMessage(sendingMessageWithProgress)]
+        $0.chatsState.dialogMessages = [.init(dialogId: dialog.id, messages: [sendingMessageWithProgress])]
+      }
+    }
+  }
+
   func test_sendImageMessageInDialog_success() async {
-    let uploadProgress: Float = 0.5
     let imageUrl = "https://example.com/test.png"
     let messageImage = Message.Image.uiImageTemplateIdle
+    let uploadedResult = UploadResult(progress: 1, url: URL(string: imageUrl)!)
 
     let message = Message(image: messageImage)
     let sendingMessage = message.setStatus(.sending)
-
-    // TODO: 处理上传进度
-    let sendingMessageWithProgress = sendingMessage
-      .setLocalImageStatus(.uploading(progress: uploadProgress))
     let sentMessage = message
       .setImage(
         urlImage: .init(
@@ -279,8 +312,7 @@ final class ChatsTests: XCTestCase, AppStateDataSource {
 
     let mockService = FirestoreServiceMock(insertMessageError: nil, overrideDialogError: nil)
     let mockStorageService = FirebaseStorageServiceMock(
-      uploadMessageImageProgress: uploadProgress,
-      uploadMessageImageResponse: URL(string: imageUrl)
+      uploadMessageImageResponse: uploadedResult
     )
 
     await withEnvironmentAsync(firestoreService: mockService, firebaseStorageService: mockStorageService) {
@@ -297,7 +329,7 @@ final class ChatsTests: XCTestCase, AppStateDataSource {
       }
 
       await store.receive(.chats(.uploadImageForMessageInDialogResponse(
-        message, dialog, .success(URL(string: imageUrl)!)
+        message, dialog, .success(uploadedResult)
       )))
 
       await store.receive(.chats(.sendMessageInDialogResponse(sentMessage, dialog, .success(Success())))) {

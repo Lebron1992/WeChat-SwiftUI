@@ -6,21 +6,18 @@ struct FirebaseStorageServiceMock: FirebaseStorageServiceType {
   let uploadAvatarResponse: URL?
   let uploadAvatarError: Error?
 
-  let uploadMessageImageProgress: Float?
-  let uploadMessageImageResponse: URL?
+  let uploadMessageImageResponse: UploadResult?
   let uploadMessageImageError: Error?
 
   init(
     uploadAvatarResponse: URL? = nil,
     uploadAvatarError: Error? = nil,
-    uploadMessageImageProgress: Float? = nil,
-    uploadMessageImageResponse: URL? = nil,
+    uploadMessageImageResponse: UploadResult? = nil,
     uploadMessageImageError: Error? = nil
   ) {
     self.uploadAvatarResponse = uploadAvatarResponse
     self.uploadAvatarError = uploadAvatarError
 
-    self.uploadMessageImageProgress = uploadMessageImageProgress
     self.uploadMessageImageResponse = uploadMessageImageResponse
     self.uploadMessageImageError = uploadMessageImageError
   }
@@ -35,13 +32,11 @@ struct FirebaseStorageServiceMock: FirebaseStorageServiceType {
   func uploadImageData(
     _ data: Data,
     for message: Message,
-    in format: ImageFormat,
-    progress: @escaping ((Double) -> Void)
-  ) -> Effect<URL, ErrorEnvelope> {
-    // TODO: 支持进度
+    in format: ImageFormat
+  ) -> Effect<UploadResult, ErrorEnvelope> {
     if let error = uploadMessageImageError {
       return .init(error: error.toEnvelope())
     }
-    return .init(value: uploadMessageImageResponse ?? URL(string: "https://example.com/image.png")!)
+    return .init(value: uploadMessageImageResponse ?? .imageFinished)
   }
 }

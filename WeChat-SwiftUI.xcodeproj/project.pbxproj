@@ -129,6 +129,7 @@
 		FD9A859726CA181D00A39051 /* UIImage+InitWithColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9A859626CA181D00A39051 /* UIImage+InitWithColor.swift */; };
 		FD9B70A428B0D239005E1580 /* ErrorEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9B70A328B0D239005E1580 /* ErrorEnvelope.swift */; };
 		FD9B70A628B0DA12005E1580 /* Success.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9B70A528B0DA12005E1580 /* Success.swift */; };
+		FD9C0D7B28CECCE300D8E827 /* UploadResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9C0D7A28CECCE300D8E827 /* UploadResult.swift */; };
 		FDA6C88526E0D7B900913F48 /* CGSize+AspectSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA6C88426E0D7B900913F48 /* CGSize+AspectSize.swift */; };
 		FDA907FC26ABCC6000805584 /* DiscoverSectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA907FB26ABCC6000805584 /* DiscoverSectionTests.swift */; };
 		FDA907FE26ABCD1500805584 /* ExpressionStickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA907FD26ABCD1500805584 /* ExpressionStickerTests.swift */; };
@@ -220,6 +221,7 @@
 		FDEFC93F28B36CB9000E6437 /* SystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDEFC93E28B36CB9000E6437 /* SystemTests.swift */; };
 		FDEFC94128B36D2D000E6437 /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDEFC94028B36D2D000E6437 /* Contacts.swift */; };
 		FDEFC94328B36FEE000E6437 /* Chats.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDEFC94228B36FEE000E6437 /* Chats.swift */; };
+		FDF2F34828D2C5780091B456 /* LBJPublishers in Frameworks */ = {isa = PBXBuildFile; productRef = FDF2F34728D2C5780091B456 /* LBJPublishers */; };
 		FDF568D826B79D9900033094 /* User+Setters.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF568D726B79D9900033094 /* User+Setters.swift */; };
 		FDF98F8326DF5A0100D192F2 /* MessageChangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF98F8226DF5A0100D192F2 /* MessageChangeTests.swift */; };
 		FDF98F8526DF755800D192F2 /* Message.Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF98F8426DF755800D192F2 /* Message.Image.swift */; };
@@ -367,6 +369,7 @@
 		FD9A859626CA181D00A39051 /* UIImage+InitWithColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+InitWithColor.swift"; sourceTree = "<group>"; };
 		FD9B70A328B0D239005E1580 /* ErrorEnvelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorEnvelope.swift; sourceTree = "<group>"; };
 		FD9B70A528B0DA12005E1580 /* Success.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Success.swift; sourceTree = "<group>"; };
+		FD9C0D7A28CECCE300D8E827 /* UploadResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadResult.swift; sourceTree = "<group>"; };
 		FDA6C88426E0D7B900913F48 /* CGSize+AspectSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+AspectSize.swift"; sourceTree = "<group>"; };
 		FDA907FB26ABCC6000805584 /* DiscoverSectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverSectionTests.swift; sourceTree = "<group>"; };
 		FDA907FD26ABCD1500805584 /* ExpressionStickerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressionStickerTests.swift; sourceTree = "<group>"; };
@@ -479,6 +482,7 @@
 				FD88279B26809C2D00BBEAB6 /* URLImage in Frameworks */,
 				FDE050A527C7D80B0007BC21 /* Kickstarter-Prelude in Frameworks */,
 				FDFCE8E9272FD7D50051A97F /* LBJMediaBrowser in Frameworks */,
+				FDF2F34828D2C5780091B456 /* LBJPublishers in Frameworks */,
 				AFE1BCADF2EFD2AB694A33A2 /* Pods_WeChat_SwiftUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -883,6 +887,7 @@
 				FD6D378C26861A6D0087272F /* OfficialAccount.swift */,
 				FD6D378E268624520087272F /* OfficialAccountTests.swift */,
 				FD8827432679A80900BBEAB6 /* TabBarItem.swift */,
+				FD9C0D7A28CECCE300D8E827 /* UploadResult.swift */,
 				FDCC726E2670882D00A48140 /* User.swift */,
 				FDF568D726B79D9900033094 /* User+Setters.swift */,
 				FD882768267B499700BBEAB6 /* UserTests.swift */,
@@ -1034,6 +1039,7 @@
 				FDE050A427C7D80B0007BC21 /* Kickstarter-Prelude */,
 				FD2010C828A940A500DC82EB /* SwiftUIRedux */,
 				FD2010CA28A9488200DC82EB /* ComposableArchitecture */,
+				FDF2F34728D2C5780091B456 /* LBJPublishers */,
 			);
 			productName = "WeChat-SwiftUI";
 			productReference = FDCC7217266E254D00A48140 /* WeChat-SwiftUI.app */;
@@ -1117,6 +1123,7 @@
 				FDE050A327C7D80B0007BC21 /* XCRemoteSwiftPackageReference "Kickstarter-Prelude" */,
 				FDE4F67C28996AC600A3B481 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				FD2010C728A940A500DC82EB /* XCRemoteSwiftPackageReference "SwiftUIRedux" */,
+				FDF2F34628D2C5780091B456 /* XCRemoteSwiftPackageReference "LBJPublishers" */,
 			);
 			productRefGroup = FDCC7218266E254D00A48140 /* Products */;
 			projectDirPath = "";
@@ -1307,6 +1314,7 @@
 				FD58C12226B0FABE00BDB0CC /* PresentationStyle.swift in Sources */,
 				FD9A858026C8B62F00A39051 /* ImageFormat.swift in Sources */,
 				FD1F16C1269162A6009D08DF /* DiscoverItem.swift in Sources */,
+				FD9C0D7B28CECCE300D8E827 /* UploadResult.swift in Sources */,
 				FDCC7297267348A600A48140 /* Constants.swift in Sources */,
 				FDAFA49A26AEACCC00FD5C33 /* Dialog.swift in Sources */,
 				FD9A859126C9FDE000A39051 /* Errors.swift in Sources */,
@@ -1856,6 +1864,14 @@
 				kind = branch;
 			};
 		};
+		FDF2F34628D2C5780091B456 /* XCRemoteSwiftPackageReference "LBJPublishers" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Lebron1992/LBJPublishers.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		FDFCE8E7272FD7D50051A97F /* XCRemoteSwiftPackageReference "LBJMediaBrowser" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Lebron1992/LBJMediaBrowser";
@@ -1891,6 +1907,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FDE050A327C7D80B0007BC21 /* XCRemoteSwiftPackageReference "Kickstarter-Prelude" */;
 			productName = "Kickstarter-Prelude";
+		};
+		FDF2F34728D2C5780091B456 /* LBJPublishers */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FDF2F34628D2C5780091B456 /* XCRemoteSwiftPackageReference "LBJPublishers" */;
+			productName = LBJPublishers;
 		};
 		FDFCE8E8272FD7D50051A97F /* LBJMediaBrowser */ = {
 			isa = XCSwiftPackageProductDependency;

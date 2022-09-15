@@ -1,5 +1,6 @@
 import UIKit
 import ComposableArchitecture
+import LBJPublishers
 
 enum ChatsAction: Equatable {
   case loadDialogs
@@ -14,7 +15,7 @@ enum ChatsAction: Equatable {
   case sendImageMessageInDialog(Message, Dialog)
   case sendMessageInDialogResponse(Message, Dialog, Result<Success, ErrorEnvelope>)
   case overrideDialogResponse(Dialog, Message, Result<Success, ErrorEnvelope>)
-  case uploadImageForMessageInDialogResponse(Message, Dialog, Result<URL, ErrorEnvelope>)
+  case uploadImageForMessageInDialogResponse(Message, Dialog, Result<UploadResult, ErrorEnvelope>)
 }
 
 let chatsReducer = Reducer<ChatsState, ChatsAction, Environment> { state, action, _ in
@@ -87,14 +88,7 @@ let chatsReducer = Reducer<ChatsState, ChatsAction, Environment> { state, action
     state.insert(sendingMessage, to: dialog)
 
     return AppEnvironment.current.firebaseStorageService
-      .uploadImageData(
-        imageData,
-        for: message,
-        in: .png,
-        progress: { progress in
-          // TODO: how to handle this?
-        }
-      )
+      .uploadImageData(imageData, for: message, in: .png)
       .catchToEffect { ChatsAction.uploadImageForMessageInDialogResponse(message, dialog, $0) }
       .cancellable(
         id: SendImageMessageInDialog(data: imageData, messageId: message.id, dialogId: dialog.id),
@@ -103,19 +97,29 @@ let chatsReducer = Reducer<ChatsState, ChatsAction, Environment> { state, action
 
   case let .uploadImageForMessageInDialogResponse(message, dialog, result):
     switch result {
-    case .success(let url):
-      let sentMessage = message
-        .setImage(
-          urlImage: .init(
-            url: url.absoluteString,
-            width: message.image!.size.width,
-            height: message.image!.size.height
-          ))
-        .setStatus(.sent)
-      return AppEnvironment.current.firestoreService
-        .insert(sentMessage, to: dialog)
-        .catchToEffect { ChatsAction.sendMessageInDialogResponse(sentMessage, dialog, $0) }
-        .cancellable(id: SendMessageInDialogId(messageId: message.id, dialogId: dialog.id), cancelInFlight: true)
+    case .success(let pgsResult):
+      if let url = pgsResult.url {
+        let sentMessage = message
+          .setImage(
+            urlImage: .init(
+              url: url.absoluteString,
+              width: message.image!.size.width,
+              height: message.image!.size.height
+            ))
+          .setStatus(.sent)
+
+        return AppEnvironment.current.firestoreService
+          .insert(sentMessage, to: dialog)
+          .catchToEffect { ChatsAction.sendMessageInDialogResponse(sentMessage, dialog, $0) }
+          .cancellable(id: SendMessageInDialogId(messageId: message.id, dialogId: dialog.id), cancelInFlight: true)
+
+      } else {
+        let sendingMessage = message
+          .setStatus(.sending)
+          .setLocalImageStatus(.uploading(progress: Float(pgsResult.progress)))
+        state.insert(sendingMessage, to: dialog)
+        return .none
+      }
 
     case .failure(let error):
       let failedMessage = message

@@ -56,7 +56,7 @@ final class MyProfilePhotoPreviewViewModelTests: XCTestCase {
     viewModel.uploadPhoto(testImage)
 
     wait {
-      self.photoUploadStatus.assertValues([.idle, .updating, .failed(NSError.unknowError)])
+      self.photoUploadStatus.assertValues([.idle, .updating, .failed(NSError.unknowError.toEnvelope())])
     }
   }
 
