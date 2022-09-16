@@ -145,7 +145,7 @@ let chatsReducer = Reducer<ChatsState, ChatsAction, Environment> { state, action
         .catchToEffect { ChatsAction.overrideDialogResponse(dialog, message, $0) }
         .cancellable(id: OverrideDialogId(dialogId: dialog.id), cancelInFlight: true)
     case .failure:
-      // TODO: 把消息标记为发送失败
+      // 忽略错误处理
       return .none
     }
 

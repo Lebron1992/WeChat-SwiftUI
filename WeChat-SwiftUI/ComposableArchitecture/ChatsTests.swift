@@ -248,7 +248,6 @@ final class ChatsTests: XCTestCase, AppStateDataSource {
       }
 
       await store.receive(.chats(.sendMessageInDialogResponse(sentMessage, dialog, .failure(error.toEnvelope())))) {
-        // TODO: 正确的应该为 failedMessage，暂时没有处理
         $0.chatsState.dialogs = [dialog.setLastMessage(sendingMessage)]
         $0.systemState.errorMessage = error.localizedDescription
       }
