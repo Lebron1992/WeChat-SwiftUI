@@ -4,7 +4,7 @@ import ComposableArchitecture
 struct ContactsView: View {
 
   var body: some View {
-    WithViewStore(store) { viewStore in
+    WithViewStore(store, observe: { $0.contactsState.contacts }) { viewStore in
       NavigationView {
         VStack(spacing: 0) {
           SearchBar(
@@ -18,7 +18,7 @@ struct ContactsView: View {
           )
 
           ContactsList(
-            contacts: viewStore.contactsState.contacts,
+            contacts: viewStore.state,
             searchText: searchText,
             loadContacts: { viewStore.send(.contacts(.loadContacts)) },
             header: { () -> ContactCategoriesList? in

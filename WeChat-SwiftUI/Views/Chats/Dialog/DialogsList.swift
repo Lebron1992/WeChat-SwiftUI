@@ -4,9 +4,9 @@ import ComposableArchitecture
 struct DialogsList: View {
 
   var body: some View {
-    WithViewStore(store.wrappedValue) { viewStore in
+    WithViewStore(store.wrappedValue, observe: { $0.chatsState.dialogs }) { viewStore in
       List {
-        ForEach(viewStore.chatsState.dialogs) { dialog in
+        ForEach(viewStore.state) { dialog in
           NavigationRow(destination: DialogView(viewModel: .init(dialog: dialog))) {
             DialogRow(dialog: dialog)
           }

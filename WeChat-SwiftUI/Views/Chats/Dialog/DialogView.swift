@@ -4,11 +4,11 @@ import ComposableArchitecture
 struct DialogView: View {
 
   var body: some View {
-    WithViewStore(store.wrappedValue) { viewStore in
-      let messages = viewStore.chatsState.dialogMessages
+    WithViewStore(store.wrappedValue, observe: { $0.chatsState }) { viewStore in
+      let messages = viewStore.dialogMessages
         .first(where: { $0.dialogId == viewModel.dialog.id })?
         .messages ?? []
-      let dialog = viewStore.chatsState.dialogs.element(matching: viewModel.dialog)
+      let dialog = viewStore.dialogs.element(matching: viewModel.dialog)
 
       ScrollViewReader { scrollView in
         VStack(spacing: 0) {

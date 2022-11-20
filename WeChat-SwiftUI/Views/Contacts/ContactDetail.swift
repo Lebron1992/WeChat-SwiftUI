@@ -10,7 +10,7 @@ import URLImage
 struct ContactDetail: View {
 
   var body: some View {
-    WithViewStore(store.wrappedValue) { viewStore in
+    WithViewStore(store.wrappedValue, observe: { $0.chatsState.dialogs }) { viewStore in
       List {
         Group {
           sectionInfoEditPrivacy
@@ -56,7 +56,7 @@ private extension ContactDetail {
     }
   }
 
-  func sectionMessagesCall(_ viewStore: ViewStore<AppState, AppAction>) -> some View {
+  func sectionMessagesCall(_ viewStore: ViewStore<[Dialog], AppAction>) -> some View {
     Section {
       VStack(spacing: 0) {
         sendMessageButton(viewStore)
@@ -118,8 +118,8 @@ private extension ContactDetail {
     )
   }
 
-  func sendMessageButton(_ viewStore: ViewStore<AppState, AppAction>) -> some View {
-    let cachedDialog = viewStore.chatsState.dialogs
+  func sendMessageButton(_ viewStore: ViewStore<[Dialog], AppAction>) -> some View {
+    let cachedDialog = viewStore.state
       .first { $0.isIndividual(with: .init(user: contact)) }
     let dialog = cachedDialog ?? Dialog(members: [
       .init(user: contact),

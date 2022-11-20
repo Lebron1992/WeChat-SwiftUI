@@ -4,8 +4,8 @@ import ComposableArchitecture
 struct ContactCategoriesList: View {
 
   var body: some View {
-    WithViewStore(store.wrappedValue) { viewStore in
-      ForEach(viewStore.contactsState.categories, id: \.title) { category in
+    WithViewStore(store.wrappedValue, observe: { $0.contactsState }) { viewStore in
+      ForEach(viewStore.categories, id: \.title) { category in
         NavigationRow(destination: destination(for: category, viewStore: viewStore)) {
           ContactCategoryRow(category: category)
         }
@@ -20,11 +20,11 @@ struct ContactCategoriesList: View {
 
 private extension ContactCategoriesList {
 
-  func destination(for category: ContactCategory, viewStore: ViewStore<AppState, AppAction>) -> AnyView {
+  func destination(for category: ContactCategory, viewStore: ViewStore<ContactsState, AppAction>) -> AnyView {
     switch category {
     case .officalAccounts:
       return ContactOfficialAccountsList(
-        accounts: viewStore.contactsState.officialAccounts,
+        accounts: viewStore.officialAccounts,
         loadAccounts: { viewStore.send(.contacts(.loadOfficialAccounts)) }
       ).asAnyView()
     default:

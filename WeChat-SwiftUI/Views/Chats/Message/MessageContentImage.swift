@@ -5,7 +5,7 @@ import LBJMediaBrowser
 struct MessageContentImage: View {
 
   var body: some View {
-    WithViewStore(store.wrappedValue) { viewStore in
+    WithViewStore(store.wrappedValue, observe: { $0.chatsState.dialogMessages }) { viewStore in
       HStack {
         errorIndicator
         ZStack {
@@ -57,7 +57,7 @@ private extension MessageContentImage {
     }
   }
 
-  func resendButton(_ viewStore: ViewStore<AppState, AppAction>) -> Alert.Button {
+  func resendButton(_ viewStore: ViewStore<Set<DialogMessages>, AppAction>) -> Alert.Button {
     Alert.Button.default(
       Text(Strings.chat_resend()).foregroundColor(.link)
     ) {
@@ -78,8 +78,8 @@ private extension MessageContentImage {
   }
 
   @ViewBuilder
-  func imagePreview(_ viewStore: ViewStore<AppState, AppAction>) -> some View {
-    let imageMessages = viewStore.chatsState.dialogMessages
+  func imagePreview(_ viewStore: ViewStore<Set<DialogMessages>, AppAction>) -> some View {
+    let imageMessages = viewStore.state
       .first(where: { $0.dialogId == dialogBox.value.id })?
       .messages
       .filter { $0.isImageMsg }
