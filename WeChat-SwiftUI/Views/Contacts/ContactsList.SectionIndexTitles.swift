@@ -3,18 +3,6 @@ import SwiftUI
 extension ContactsList {
   struct SectionIndexTitles: View {
 
-    let scrollView: ScrollViewProxy
-    let titles: [String]
-
-    @GestureState
-    private var dragLocation: CGPoint = .zero
-
-    @State
-    private var selectedTitle: String?
-
-    @State
-    private var showSelectionBubble = false
-
     var body: some View {
       VStack {
         ForEach(titles, id: \.self) { title in
@@ -63,6 +51,20 @@ extension ContactsList {
           })
       )
     }
+
+    let scrollView: ScrollViewProxy
+    let titles: [String]
+
+    @GestureState
+    private var dragLocation: CGPoint = .zero
+
+    @State
+    private var selectedTitle: String?
+
+    @State
+    private var showSelectionBubble = false
+
+    // MARK: - Helper Methods
 
     private func isSelectedIndex(withTitle title: String) -> Bool? {
       selectedTitle == nil ? nil : selectedTitle! == title

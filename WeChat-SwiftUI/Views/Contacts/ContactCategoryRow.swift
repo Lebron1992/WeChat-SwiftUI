@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct ContactCategoryRow: View {
-  let category: ContactCategory
 
   var body: some View {
     HStack(spacing: Constant.imageTitleSpacing) {
@@ -17,6 +16,8 @@ struct ContactCategoryRow: View {
         .foregroundColor(.text_primary)
     }
   }
+
+  let category: ContactCategory
 }
 
 private extension ContactCategoryRow {

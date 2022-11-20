@@ -8,26 +8,6 @@ import SwiftUIRedux
 
 struct ContactsList<Contact: ContactType, Header: View, Destination: View>: View {
 
-  let contacts: Loadable<[Contact]>
-  let searchText: String
-  let loadContacts: () -> Void
-  let header: () -> Header?
-  let selectionDestination: (Contact) -> Destination?
-
-  init(
-    contacts: Loadable<[Contact]>,
-    searchText: String,
-    loadContacts: @escaping () -> Void,
-    header: @escaping () -> Header?,
-    selectionDestination: @escaping (Contact) -> Destination?
-  ) {
-    self.contacts = contacts
-    self.searchText = searchText
-    self.loadContacts = loadContacts
-    self.header = header
-    self.selectionDestination = selectionDestination
-  }
-
   @ViewBuilder
   var body: some View {
     switch contacts {
@@ -44,6 +24,12 @@ struct ContactsList<Contact: ContactType, Header: View, Destination: View>: View
       ErrorView(error: error, retryAction: loadContacts)
     }
   }
+
+  let contacts: Loadable<[Contact]>
+  let searchText: String
+  let loadContacts: () -> Void
+  let header: () -> Header?
+  let selectionDestination: (Contact) -> Destination?
 }
 
 private extension ContactsList {
@@ -115,8 +101,6 @@ private enum ContactsListConstant {
   static let contactAvatarCornerRadius: CGFloat = 4
   static let contactRowHeight: CGFloat = 44
 }
-
-// MARK: - Helper Types
 
 struct ContactsList_Previews: PreviewProvider {
   static var previews: some View {

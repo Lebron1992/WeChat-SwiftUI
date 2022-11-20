@@ -10,7 +10,7 @@ import URLImage
 struct ContactDetail: View {
 
   var body: some View {
-    WithViewStore(store) { viewStore in
+    WithViewStore(store.wrappedValue) { viewStore in
       List {
         Group {
           sectionInfoEditPrivacy
@@ -28,8 +28,10 @@ struct ContactDetail: View {
     }
   }
 
-  let store: Store<AppState, AppAction>
   let contact: User
+
+  @EnvironmentObject
+  private var store: StoreObservableObject<AppState, AppAction>
 
   @State
   private var navigationSelection: NavigationSelection?
@@ -203,6 +205,7 @@ struct ContactDetail_Previews: PreviewProvider {
       reducer: appReducer,
       environment: AppEnvironment.current
     )
-    return ContactDetail(store: store, contact: .template1)
+    return ContactDetail(contact: .template1)
+      .environmentObject(StoreObservableObject(store: store))
   }
 }

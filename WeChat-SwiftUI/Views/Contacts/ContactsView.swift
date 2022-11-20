@@ -25,11 +25,11 @@ struct ContactsView: View {
               if isSearching {
                 return nil
               } else {
-                return ContactCategoriesList(store: store)
+                return ContactCategoriesList()
               }
             },
             selectionDestination: {
-              ContactDetail(store: store, contact: $0)
+              ContactDetail(contact: $0)
             }
           )
 
@@ -41,6 +41,7 @@ struct ContactsView: View {
         .navigationBarHidden(isSearching)
       }
       .navigationViewStyle(.stack)
+      .environmentObject(StoreObservableObject(store: store))
     }
   }
 

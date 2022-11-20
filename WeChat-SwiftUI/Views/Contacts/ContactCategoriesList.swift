@@ -2,8 +2,9 @@ import SwiftUI
 import ComposableArchitecture
 
 struct ContactCategoriesList: View {
+
   var body: some View {
-    WithViewStore(store) { viewStore in
+    WithViewStore(store.wrappedValue) { viewStore in
       ForEach(viewStore.contactsState.categories, id: \.title) { category in
         NavigationRow(destination: destination(for: category, viewStore: viewStore)) {
           ContactCategoryRow(category: category)
@@ -12,6 +13,12 @@ struct ContactCategoriesList: View {
       .listRowBackground(Color.app_white)
     }
   }
+
+  @EnvironmentObject
+  private var store: StoreObservableObject<AppState, AppAction>
+}
+
+private extension ContactCategoriesList {
 
   func destination(for category: ContactCategory, viewStore: ViewStore<AppState, AppAction>) -> AnyView {
     switch category {
@@ -24,8 +31,6 @@ struct ContactCategoriesList: View {
       return Text(category.title).asAnyView()
     }
   }
-
-  let store: Store<AppState, AppAction>
 }
 
 struct ContactRowCategoriesList_Previews: PreviewProvider {
@@ -36,7 +41,8 @@ struct ContactRowCategoriesList_Previews: PreviewProvider {
         environment: AppEnvironment.current
       )
       VStack(alignment: .leading) {
-        ContactCategoriesList(store: store)
+        ContactCategoriesList()
+          .environmentObject(StoreObservableObject(store: store))
       }
     }
 }
