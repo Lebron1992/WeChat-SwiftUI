@@ -5,12 +5,13 @@ struct ChatsView: View {
 
   var body: some View {
     NavigationView {
-      DialogsList(store: store)
+      DialogsList()
         .navigationTitle(Strings.tabbar_chats())
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(trailing: Image("icons_outlined_add"))
     }
     .navigationViewStyle(.stack)
+    .environmentObject(StoreObservableObject(store: store))
   }
 
   let store: Store<AppState, AppAction>

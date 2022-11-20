@@ -127,12 +127,7 @@ private extension ContactDetail {
     return NavigationRow(
       tag: NavigationSelection.messages,
       selection: $navigationSelection,
-      destination: {
-          DialogView(
-            store: store,
-            viewModel: .init(dialog: dialog)
-          )
-      }
+      destination: { DialogView(viewModel: .init(dialog: dialog)) }
     ) {
       Button {
         navigationSelection = .messages

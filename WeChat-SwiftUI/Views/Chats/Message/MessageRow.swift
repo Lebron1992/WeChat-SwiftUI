@@ -17,7 +17,6 @@ struct MessageRow: View {
     .transition(.move(edge: .bottom))
   }
 
-  let store: Store<AppState, AppAction>
   let message: Message
 }
 
@@ -72,7 +71,7 @@ private extension MessageRow {
     if message.isTextMsg {
       MessageContentText(message: message)
     } else if message.isImageMsg {
-      MessageContentImage(store: store, message: message)
+      MessageContentImage(message: message)
     }
   }
 }
@@ -95,12 +94,13 @@ struct MessageRow_Previews: PreviewProvider {
       environment: AppEnvironment.current
     )
     VStack {
-      MessageRow(store: store, message: .textTemplate1)
-      MessageRow(store: store, message: .textTemplate2)
+      MessageRow(message: .textTemplate1)
+      MessageRow(message: .textTemplate2)
       Spacer()
     }
     .padding(10)
     .background(.green)
     .onAppear { AppEnvironment.updateCurrentUser(.template1) }
+    .environmentObject(StoreObservableObject(store: store))
   }
 }

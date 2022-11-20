@@ -5,7 +5,7 @@ import LBJMediaBrowser
 struct MessageContentImage: View {
 
   var body: some View {
-    WithViewStore(store) { viewStore in
+    WithViewStore(store.wrappedValue) { viewStore in
       HStack {
         errorIndicator
         ZStack {
@@ -27,8 +27,10 @@ struct MessageContentImage: View {
     }
   }
 
-  let store: Store<AppState, AppAction>
   let message: Message
+
+  @EnvironmentObject
+  private var store: StoreObservableObject<AppState, AppAction>
 
   @EnvironmentObject
   private var dialogBox: ObjectBox<Dialog>
@@ -159,8 +161,9 @@ struct MessageRowImage_Previews: PreviewProvider {
         Message.uiImageTemplateError
       ]
       ForEach(images) { message in
-        MessageContentImage(store: store, message: message)
+        MessageContentImage(message: message)
       }
     }
+    .environmentObject(StoreObservableObject(store: store))
   }
 }

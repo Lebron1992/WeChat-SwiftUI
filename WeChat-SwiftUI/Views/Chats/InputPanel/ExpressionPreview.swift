@@ -2,8 +2,6 @@ import SwiftUI
 
 struct ExpressionPreview: View {
 
-  let expression: ExpressionSticker
-
   var body: some View {
       ZStack(alignment: .top) {
         ExpressionPreview.Bckground()
@@ -15,6 +13,11 @@ struct ExpressionPreview: View {
         .padding(.horizontal, Constant.horizontalPadding)
       }
   }
+
+  let expression: ExpressionSticker
+}
+
+private extension ExpressionPreview {
 
   private var image: some View {
     Image(expression.image)

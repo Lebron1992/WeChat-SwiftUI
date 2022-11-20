@@ -2,6 +2,27 @@ import SwiftUI
 
 struct ExpressionKeyboard: View {
 
+  var body: some View {
+    ScrollView {
+      expressionGrid
+        .coordinateSpace(name: Self.CoordinateSpace.expressionsGrid.rawValue)
+        .delayTouches(for: 0.25)
+        .gesture(
+          DragGesture(minimumDistance: 0, coordinateSpace: .local)
+            .updating($dragLocation) { value, state, _ in
+              state = value.location
+            }
+            .onEnded({ _ in
+              selectedExpression = nil
+              selectedExpressionFrame = nil
+            })
+        )
+        .padding(.horizontal, Constant.expressionsGridHorizontalPadding)
+        .padding(.vertical, Constant.expressionsGridVerticalPadding)
+    }
+    .background(.bg_info_170)
+  }
+
   @Binding
   var selectedExpression: ExpressionSticker?
 
@@ -24,27 +45,9 @@ struct ExpressionKeyboard: View {
     )
     return array ?? []
   }()
+}
 
-  var body: some View {
-    ScrollView {
-      expressionGrid
-        .coordinateSpace(name: Self.CoordinateSpace.expressionsGrid.rawValue)
-        .delayTouches(for: 0.25)
-        .gesture(
-          DragGesture(minimumDistance: 0, coordinateSpace: .local)
-            .updating($dragLocation) { value, state, _ in
-              state = value.location
-            }
-            .onEnded({ _ in
-              selectedExpression = nil
-              selectedExpressionFrame = nil
-            })
-        )
-        .padding(.horizontal, Constant.expressionsGridHorizontalPadding)
-        .padding(.vertical, Constant.expressionsGridVerticalPadding)
-    }
-    .background(.bg_info_170)
-  }
+private extension ExpressionKeyboard {
 
   @ViewBuilder
   private var expressionGrid: some View {

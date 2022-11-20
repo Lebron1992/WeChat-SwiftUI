@@ -8,6 +8,30 @@ import SwiftUI
 
 struct ChatInputPanel: View {
 
+  var body: some View {
+    ZStack(alignment: .topLeading) {
+      VStack(spacing: 0) {
+        Color.bg_info_300
+          .frame(height: Constant.topLineHeight)
+        inputToolBar
+        expressionKeyboard
+      }
+      expressionPreview
+    }
+    .coordinateSpace(name: Self.CoordinateSpace.panel.rawValue)
+    .animation(.easeOut(duration: 0.25), value: isExpressionButtonSelected)
+    .onChange(of: dismissKeyboard, perform: handleDismissKeyboardChange(_:))
+    .onChange(of: isTextEditorFocused) { if $0 { onInputStarted() } }
+    .onChange(of: isExpressionButtonSelected) { if $0 { onInputStarted() } }
+    .onChange(of: text) { newValue in
+      if newValue.last == "\n" { // 点击发送
+        // TODO: 当 onSubmit 可用时移除
+        onSubmitText(newValue.trimmingCharacters(in: .whitespacesAndNewlines))
+        text = ""
+      }
+    }
+  }
+
   let dismissKeyboard: Bool
   let onInputStarted: () -> Void
   let onSubmitText: (String) -> Void
@@ -32,35 +56,8 @@ struct ChatInputPanel: View {
 
   @State
   private var selectedExpressionFrame: CGRect?
-
-  // MARK: - Body
-
-  var body: some View {
-    ZStack(alignment: .topLeading) {
-      VStack(spacing: 0) {
-        Color.bg_info_300
-          .frame(height: Constant.topLineHeight)
-        inputToolBar
-        expressionKeyboard
-      }
-      expressionPreview
-    }
-    .coordinateSpace(name: Self.CoordinateSpace.panel.rawValue)
-    .animation(.easeOut(duration: 0.25), value: isExpressionButtonSelected)
-    .onChange(of: dismissKeyboard, perform: handleDismissKeyboardChange(_:))
-    .onChange(of: isTextEditorFocused) { if $0 { onInputStarted() } }
-    .onChange(of: isExpressionButtonSelected) { if $0 { onInputStarted() } }
-    .onChange(of: text) { newValue in
-      if newValue.last == "\n" { // 点击发送
-        // TODO: 当 onSubmit 可用时移除
-        onSubmitText(newValue.trimmingCharacters(in: .whitespacesAndNewlines))
-        text = ""
-      }
-    }
-  }
 }
 
-// MARK: - Helpers
 private extension ChatInputPanel {
   var inputToolBar: some View {
     ChatInputToolBar(
@@ -104,9 +101,7 @@ private extension ChatInputPanel {
   }
 
   func handleDismissKeyboardChange(_ dismiss: Bool) {
-    guard dismiss else {
-      return
-    }
+    guard dismiss else { return }
     if isTextEditorFocused || isExpressionButtonSelected {
       isVoiceButtonSelected = false
       isExpressionButtonSelected = false

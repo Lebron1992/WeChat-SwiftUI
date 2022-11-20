@@ -4,10 +4,10 @@ import ComposableArchitecture
 struct DialogsList: View {
 
   var body: some View {
-    WithViewStore(store) { viewStore in
+    WithViewStore(store.wrappedValue) { viewStore in
       List {
         ForEach(viewStore.chatsState.dialogs) { dialog in
-          NavigationRow(destination: DialogView(store: store, viewModel: .init(dialog: dialog))) {
+          NavigationRow(destination: DialogView(viewModel: .init(dialog: dialog))) {
             DialogRow(dialog: dialog)
           }
         }
@@ -21,7 +21,8 @@ struct DialogsList: View {
     }
   }
 
-  let store: Store<AppState, AppAction>
+  @EnvironmentObject
+  private var store: StoreObservableObject<AppState, AppAction>
 
   @StateObject
   private var viewModel = DialogsListViewModel()
@@ -34,6 +35,7 @@ struct DialogsList_Previews: PreviewProvider {
       reducer: appReducer,
       environment: AppEnvironment.current
     )
-    DialogsList(store: store)
+    DialogsList()
+      .environmentObject(StoreObservableObject(store: store))
   }
 }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0F1C2F9A6170C31AFC9188B3 /* Pods_WeChat_SwiftUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F962857C9287D203FA8877 /* Pods_WeChat_SwiftUITests.framework */; };
 		AFE1BCADF2EFD2AB694A33A2 /* Pods_WeChat_SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB854DDD9775BEBC15DDB6F /* Pods_WeChat_SwiftUI.framework */; };
+		FD0EF414292A683F00FA4E5E /* StoreObservableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0EF413292A683F00FA4E5E /* StoreObservableObject.swift */; };
 		FD1D013026999A7A00A9AF37 /* expressions.json in Resources */ = {isa = PBXBuildFile; fileRef = FD1D012F26999A7A00A9AF37 /* expressions.json */; };
 		FD1D01322699B72700A9AF37 /* ExpressionSticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1D01312699B72700A9AF37 /* ExpressionSticker.swift */; };
 		FD1D01342699BC6700A9AF37 /* ExpressionPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1D01332699BC6700A9AF37 /* ExpressionPreview.swift */; };
@@ -213,7 +214,6 @@
 		FDCC7297267348A600A48140 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC7296267348A600A48140 /* Constants.swift */; };
 		FDCC7299267348D300A48140 /* NetworkingHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC7298267348D300A48140 /* NetworkingHelpers.swift */; };
 		FDCC729B2673494B00A48140 /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC729A2673494B00A48140 /* Loadable.swift */; };
-		FDCC729D2673496800A48140 /* CancelBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC729C2673496800A48140 /* CancelBag.swift */; };
 		FDCC729F2673499700A48140 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCC729E2673499700A48140 /* APIError.swift */; };
 		FDE050A527C7D80B0007BC21 /* Kickstarter-Prelude in Frameworks */ = {isa = PBXBuildFile; productRef = FDE050A427C7D80B0007BC21 /* Kickstarter-Prelude */; };
 		FDE6CBE926E707F700041570 /* WaitAndExecute.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE6CBE826E707F700041570 /* WaitAndExecute.swift */; };
@@ -252,6 +252,7 @@
 		705D3EF5AFF8B88FA29229A6 /* Pods-WeChat-SwiftUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChat-SwiftUI.release.xcconfig"; path = "Target Support Files/Pods-WeChat-SwiftUI/Pods-WeChat-SwiftUI.release.xcconfig"; sourceTree = "<group>"; };
 		9CB854DDD9775BEBC15DDB6F /* Pods_WeChat_SwiftUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeChat_SwiftUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D74E8DA1C37B8DF975B82FD4 /* Pods-WeChat-SwiftUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChat-SwiftUITests.release.xcconfig"; path = "Target Support Files/Pods-WeChat-SwiftUITests/Pods-WeChat-SwiftUITests.release.xcconfig"; sourceTree = "<group>"; };
+		FD0EF413292A683F00FA4E5E /* StoreObservableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreObservableObject.swift; sourceTree = "<group>"; };
 		FD1D012F26999A7A00A9AF37 /* expressions.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = expressions.json; sourceTree = "<group>"; };
 		FD1D01312699B72700A9AF37 /* ExpressionSticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressionSticker.swift; sourceTree = "<group>"; };
 		FD1D01332699BC6700A9AF37 /* ExpressionPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressionPreview.swift; sourceTree = "<group>"; };
@@ -459,7 +460,6 @@
 		FDCC7296267348A600A48140 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FDCC7298267348D300A48140 /* NetworkingHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingHelpers.swift; sourceTree = "<group>"; };
 		FDCC729A2673494B00A48140 /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
-		FDCC729C2673496800A48140 /* CancelBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelBag.swift; sourceTree = "<group>"; };
 		FDCC729E2673499700A48140 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		FDE6CBE826E707F700041570 /* WaitAndExecute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitAndExecute.swift; sourceTree = "<group>"; };
 		FDEFC93C28B36C73000E6437 /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
@@ -523,6 +523,14 @@
 				D74E8DA1C37B8DF975B82FD4 /* Pods-WeChat-SwiftUITests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		FD0EF412292A683000FA4E5E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FD0EF413292A683F00FA4E5E /* StoreObservableObject.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		FD1F16E82697444E009D08DF /* InputPanel */ = {
@@ -618,6 +626,7 @@
 		FD8827362679A24C00BBEAB6 /* ComposableArchitecture */ = {
 			isa = PBXGroup;
 			children = (
+				FD0EF412292A683000FA4E5E /* Helpers */,
 				FD2010C528A8FFCA00DC82EB /* App.swift */,
 				FD5412F226A81D040001D199 /* Auth.swift */,
 				FD703D1726B83A3000565E4C /* AuthTests.swift */,
@@ -923,7 +932,6 @@
 			children = (
 				FDCC727B2671A4DC00A48140 /* AppEnvironment.swift */,
 				FDCC72882671C14800A48140 /* AppEnvironmentTests.swift */,
-				FDCC729C2673496800A48140 /* CancelBag.swift */,
 				FDCC7296267348A600A48140 /* Constants.swift */,
 				FDCC724A266F190700A48140 /* Environment.swift */,
 				FDCC72732671087A00A48140 /* EnvironmentTests.swift */,
@@ -1299,7 +1307,6 @@
 				FD1F16D52692FB99009D08DF /* ImageTitleRow.swift in Sources */,
 				FDC45EB126D7462500C44827 /* GenerateUUID.swift in Sources */,
 				FD1D0136269A8C6B00A9AF37 /* ExpressionStickerTemplates.swift in Sources */,
-				FDCC729D2673496800A48140 /* CancelBag.swift in Sources */,
 				FDCC726F2670882D00A48140 /* User.swift in Sources */,
 				FDC45EA926D738BC00C44827 /* Collection+Matching.swift in Sources */,
 				FDCC725F266F4DFF00A48140 /* Method.swift in Sources */,
@@ -1381,6 +1388,7 @@
 				FDEFC94328B36FEE000E6437 /* Chats.swift in Sources */,
 				FDC45E9126D5005B00C44827 /* PhotoPickerType.swift in Sources */,
 				FDC45EAB26D73CA800C44827 /* Dialog+Setters.swift in Sources */,
+				FD0EF414292A683F00FA4E5E /* StoreObservableObject.swift in Sources */,
 				FD9A858D26C962B100A39051 /* ValueUpdateStatus.swift in Sources */,
 				FDCC72832671AC2B00A48140 /* Encodable+Dictionary.swift in Sources */,
 				FD3E98BB26E461200024D368 /* Message.Image.URLImage.swift in Sources */,

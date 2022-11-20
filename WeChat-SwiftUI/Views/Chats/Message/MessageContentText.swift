@@ -2,7 +2,6 @@ import SwiftUI
 import URLImage
 
 struct MessageContentText: View {
-  let message: Message
 
   var body: some View {
     HStack(alignment: .top, spacing: -Constant.textBackgroundArrowOverlapWidth) {
@@ -22,6 +21,8 @@ struct MessageContentText: View {
       }
     }
   }
+
+  let message: Message
 }
 
 private extension MessageContentText {

@@ -2,22 +2,6 @@ import SwiftUI
 
 struct ChatInputToolBar: View {
 
-  @Binding
-  var text: String
-
-  @Binding
-  var isVoiceButtonSelected: Bool
-
-  @Binding
-  var isExpressionButtonSelected: Bool
-
-  @FocusState
-  var isTextEditorFocused: Bool
-
-  let onSubmit: () -> Void
-
-  let onAddButtonTapped: () -> Void
-
   var body: some View {
     HStack(alignment: .bottom, spacing: Constant.toolBarPadding) {
       voiceButton
@@ -34,6 +18,25 @@ struct ChatInputToolBar: View {
       }
     }
   }
+
+  @Binding
+  var text: String
+
+  @Binding
+  var isVoiceButtonSelected: Bool
+
+  @Binding
+  var isExpressionButtonSelected: Bool
+
+  @FocusState
+  var isTextEditorFocused: Bool
+
+  let onSubmit: () -> Void
+
+  let onAddButtonTapped: () -> Void
+}
+
+private extension ChatInputToolBar {
 
   private var voiceButton: some View {
     Button {
@@ -119,7 +122,6 @@ private extension Image {
 }
 
 // MARK: - Constants
-
 private extension ChatInputToolBar {
   enum Constant {
     static let maxLinesOfTextToDisplay: CGFloat = 4
@@ -132,7 +134,6 @@ private extension ChatInputToolBar {
 }
 
 // MARK: - Previews
-
 struct ChatInputToolBar_Previews: PreviewProvider {
   static var previews: some View {
     ChatInputToolBar(

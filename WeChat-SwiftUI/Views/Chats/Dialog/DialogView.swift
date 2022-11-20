@@ -4,7 +4,7 @@ import ComposableArchitecture
 struct DialogView: View {
 
   var body: some View {
-    WithViewStore(store) { viewStore in
+    WithViewStore(store.wrappedValue) { viewStore in
       let messages = viewStore.chatsState.dialogMessages
         .first(where: { $0.dialogId == viewModel.dialog.id })?
         .messages ?? []
@@ -12,7 +12,7 @@ struct DialogView: View {
 
       ScrollViewReader { scrollView in
         VStack(spacing: 0) {
-          messagesList(messages: messages, store: store)
+          messagesList(messages: messages)
           chatInputPanel(
             lastMessage: messages.last,
             scrollView: scrollView,
@@ -43,10 +43,11 @@ struct DialogView: View {
     }
   }
 
-  let store: Store<AppState, AppAction>
-
   @StateObject
   var viewModel: DialogViewModel
+
+  @EnvironmentObject
+  private var store: StoreObservableObject<AppState, AppAction>
 
   @State
   private var dismissKeyboard = false
@@ -60,8 +61,8 @@ struct DialogView: View {
 
 // MARK: - Views
 private extension DialogView {
-  func messagesList(messages: [Message], store: Store<AppState, AppAction>) -> some View {
-    MessagesList(store: store, messages: messages)
+  func messagesList(messages: [Message]) -> some View {
+    MessagesList(messages: messages)
       .resignKeyboardOnDrag {
         dismissKeyboard = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -155,9 +156,9 @@ struct DialogView_Previews: PreviewProvider {
       environment: AppEnvironment.current
     )
     DialogView(
-      store: store,
       viewModel: .init(dialog: .template1)
     )
       .onAppear { AppEnvironment.updateCurrentUser(.template1) }
+      .environmentObject(StoreObservableObject(store: store))
   }
 }

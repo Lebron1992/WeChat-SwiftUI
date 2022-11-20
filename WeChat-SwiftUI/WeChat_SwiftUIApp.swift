@@ -7,8 +7,6 @@ import URLImageStore
 @main
 struct WeChat_SwiftUIApp: App {
 
-  private let cancelBag = CancelBag()
-
   private let store: Store<AppState, AppAction>
 
   private let urlImageService = URLImageService(
