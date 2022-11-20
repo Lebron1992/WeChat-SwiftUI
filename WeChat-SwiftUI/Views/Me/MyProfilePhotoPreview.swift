@@ -5,7 +5,7 @@ import URLImage
 struct MyProfilePhotoPreview: View {
 
   var body: some View {
-    WithViewStore(store) { viewStore in
+    WithViewStore(store.wrappedValue) { viewStore in
       avatar
         .navigationBarItems(trailing: moreButton)
         .navigationTitle(Strings.me_my_profile_photo())
@@ -30,8 +30,10 @@ struct MyProfilePhotoPreview: View {
     }
   }
 
-  let store: Store<AppState, AppAction>
   let photoUrl: String?
+
+  @EnvironmentObject
+  private var store: StoreObservableObject<Void, AppAction>
 
   @State
   private var photoPicker: PhotoPickerType?
@@ -83,7 +85,7 @@ private extension MyProfilePhotoPreview {
 // MARK: - Helper Methods
 private extension MyProfilePhotoPreview {
 
-  func handlePhotoUploadStatusChange(_ status: ValueUpdateStatus<URL>, viewStore: ViewStore<AppState, AppAction>) {
+  func handlePhotoUploadStatusChange(_ status: ValueUpdateStatus<URL>, viewStore: ViewStore<Void, AppAction>) {
     switch status {
     case .updating:
       showLoading = true
@@ -101,7 +103,7 @@ private extension MyProfilePhotoPreview {
     }
   }
 
-  func handleUserSelfUpdateStatusChange(_ status: ValueUpdateStatus<User>, viewStore: ViewStore<AppState, AppAction>) {
+  func handleUserSelfUpdateStatusChange(_ status: ValueUpdateStatus<User>, viewStore: ViewStore<Void, AppAction>) {
     switch status {
     case .updating:
       showLoading = true
@@ -131,6 +133,8 @@ struct MyProfilePhotoPreview_Previews: PreviewProvider {
       reducer: appReducer,
       environment: AppEnvironment.current
     )
-    MyProfilePhotoPreview(store: store, photoUrl: User.template1.avatar)
+      .stateless
+    MyProfilePhotoPreview(photoUrl: User.template1.avatar)
+      .environmentObject(StoreObservableObject(store: store))
   }
 }

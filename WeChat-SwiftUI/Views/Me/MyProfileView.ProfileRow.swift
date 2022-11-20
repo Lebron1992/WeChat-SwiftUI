@@ -5,7 +5,7 @@ extension MyProfileView {
   struct ProfileRow: View {
 
     var body: some View {
-      let destination = row.navigateDestination(with: user, store: store)
+      let destination = row.navigateDestination(with: user)
       Group {
         switch destination.style {
         case .modal:
@@ -56,9 +56,11 @@ extension MyProfileView {
         .foregroundColor(.text_info_200)
     }
 
-    let store: Store<AppState, AppAction>
     let row: MyProfileRowType
     let user: User
+
+    @EnvironmentObject
+    private var store: StoreObservableObject<Void, AppAction>
 
     @State
     private var showingSheet = false

@@ -5,10 +5,10 @@ struct MyProfileView: View {
 
   var body: some View {
     WithViewStore(store) { viewStore in
-      if let user = viewStore.authState.signedInUser {
+      if let user = viewStore.signedInUser {
         List {
           ForEach(Row.allCases, id: \.self) { row in
-            ProfileRow(store: store, row: row, user: user)
+            ProfileRow(row: row, user: user)
           }
           .listRowBackground(Color.app_white)
         }
@@ -21,7 +21,7 @@ struct MyProfileView: View {
     }
   }
 
-  let store: Store<AppState, AppAction>
+  let store: Store<AuthState, AppAction>
 }
 
 struct MyProfileView_Previews: PreviewProvider {
@@ -31,6 +31,7 @@ struct MyProfileView_Previews: PreviewProvider {
       reducer: appReducer,
       environment: AppEnvironment.current
     )
+      .scope(state: \.authState)
     MyProfileView(store: store)
   }
 }

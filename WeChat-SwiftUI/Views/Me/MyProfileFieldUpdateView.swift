@@ -8,7 +8,7 @@ import ComposableArchitecture
 struct MyProfileFieldUpdateView: View {
 
   var body: some View {
-    WithViewStore(store) { viewStore in
+    WithViewStore(store.wrappedValue) { viewStore in
       NavigationView {
         List {
           switch field {
@@ -32,9 +32,10 @@ struct MyProfileFieldUpdateView: View {
     }
   }
 
-  let store: Store<AppState, AppAction>
-
   let field: Field
+
+  @EnvironmentObject
+  private var store: StoreObservableObject<Void, AppAction>
 
   @SwiftUI.Environment(\.dismiss)
   private var dismiss
@@ -144,7 +145,7 @@ private extension MyProfileFieldUpdateView {
 // MARK: - Helper Methods
 private extension MyProfileFieldUpdateView {
 
-  func handleUserSelfUpdateStatusChange(_ status: ValueUpdateStatus<User>, viewStore: ViewStore<AppState, AppAction>) {
+  func handleUserSelfUpdateStatusChange(_ status: ValueUpdateStatus<User>, viewStore: ViewStore<Void, AppAction>) {
     switch status {
     case .updating:
       showLoading = true
@@ -242,16 +243,18 @@ struct MyProfileFieldUpdateView_Previews: PreviewProvider {
       reducer: appReducer,
       environment: AppEnvironment.current
     )
+      .stateless
     Group {
-      MyProfileFieldUpdateView(store: store, field: .name("Lebron"))
-      MyProfileFieldUpdateView(store: store, field: .gender(.male))
-      MyProfileFieldUpdateView(store: store, field: .whatsUp("Hello, SwiftUI!"))
+      MyProfileFieldUpdateView(field: .name("Lebron"))
+      MyProfileFieldUpdateView(field: .gender(.male))
+      MyProfileFieldUpdateView(field: .whatsUp("Hello, SwiftUI!"))
     }
     Group {
-      MyProfileFieldUpdateView(store: store, field: .name("Lebron"))
-      MyProfileFieldUpdateView(store: store, field: .gender(.male))
-      MyProfileFieldUpdateView(store: store, field: .whatsUp("Hello, SwiftUI!"))
+      MyProfileFieldUpdateView(field: .name("Lebron"))
+      MyProfileFieldUpdateView(field: .gender(.male))
+      MyProfileFieldUpdateView(field: .whatsUp("Hello, SwiftUI!"))
     }
     .colorScheme(.dark)
+    .environmentObject(StoreObservableObject(store: store))
   }
 }

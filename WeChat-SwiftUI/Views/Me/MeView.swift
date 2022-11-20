@@ -12,17 +12,18 @@ struct MeView: View {
           .navigationBarTitleDisplayMode(.inline)
       }
       .navigationViewStyle(.stack)
+      .environmentObject(StoreObservableObject(store: store.stateless))
     }
   }
 
-  let store: Store<AppState, AppAction>
+  let store: Store<AuthState, AppAction>
 }
 
 private extension MeView {
 
   @ViewBuilder
-  func content(_ viewStore: ViewStore<AppState, AppAction>) -> some View {
-    if let user = viewStore.authState.signedInUser {
+  func content(_ viewStore: ViewStore<AuthState, AppAction>) -> some View {
+    if let user = viewStore.signedInUser {
       ZStack(alignment: .topTrailing) {
         List {
           sectionMyInfo(user: user)
@@ -134,6 +135,7 @@ struct MeView_Previews: PreviewProvider {
       reducer: appReducer,
       environment: AppEnvironment.current
     )
+      .scope(state: \.authState)
     MeView(store: store)
   }
 }

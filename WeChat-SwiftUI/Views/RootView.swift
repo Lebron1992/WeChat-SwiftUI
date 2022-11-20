@@ -22,7 +22,7 @@ struct RootView: View {
           .tabItem { tabItem(for: .discover, isSelected: TabBarItem.discover == viewStore.state) }
           .tag(TabBarItem.discover)
 
-        MeView(store: store)
+        MeView(store: store.scope(state: \.authState))
           .tabItem { tabItem(for: .me, isSelected: TabBarItem.me == viewStore.state) }
           .tag(TabBarItem.me)
       }
