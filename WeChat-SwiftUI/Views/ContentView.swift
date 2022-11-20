@@ -4,7 +4,7 @@ import ComposableArchitecture
 struct ContentView: View {
 
   var body: some View {
-    WithViewStore(store) { viewStore in
+    WithViewStore(store, observe: { $0 }) { viewStore in
       let errorMessage = Binding<String?>(
         get: { viewStore.systemState.errorMessage },
         set: { _ in viewStore.send(AppAction.system(.setErrorMessage(nil))) }

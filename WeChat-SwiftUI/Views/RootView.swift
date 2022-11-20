@@ -8,30 +8,23 @@ import ComposableArchitecture
 struct RootView: View {
 
   var body: some View {
-    WithViewStore(store) { viewStore in
-      let selection = Binding(
-        get: { viewStore.rootState.selectedTab.rawValue },
-        set: {
-          let tab = TabBarItem(rawValue: $0)!
-          viewStore.send(.root(.setSelectedTab(tab)))
-        }
-      )
-      TabView(selection: selection) {
+    WithViewStore(store, observe: \.rootState.selectedTab) { viewStore in
+      TabView(selection: viewStore.binding(send: { AppAction.root(.setSelectedTab($0)) })) {
         ChatsView(store: store)
-          .tabItem { tabItem(for: .chats, isSelected: TabBarItem.chats == viewStore.rootState.selectedTab) }
-          .tag(TabBarItem.chats.rawValue)
+          .tabItem { tabItem(for: .chats, isSelected: TabBarItem.chats == viewStore.state) }
+          .tag(TabBarItem.chats)
 
         ContactsView(store: store)
-          .tabItem { tabItem(for: .contacts, isSelected: TabBarItem.contacts == viewStore.rootState.selectedTab) }
-          .tag(TabBarItem.contacts.rawValue)
+          .tabItem { tabItem(for: .contacts, isSelected: TabBarItem.contacts == viewStore.state) }
+          .tag(TabBarItem.contacts)
 
         DiscoverView(store: store.actionless.scope(state: \.discoverState))
-          .tabItem { tabItem(for: .discover, isSelected: TabBarItem.discover == viewStore.rootState.selectedTab) }
-          .tag(TabBarItem.discover.rawValue)
+          .tabItem { tabItem(for: .discover, isSelected: TabBarItem.discover == viewStore.state) }
+          .tag(TabBarItem.discover)
 
         MeView(store: store)
-          .tabItem { tabItem(for: .me, isSelected: TabBarItem.me == viewStore.rootState.selectedTab) }
-          .tag(TabBarItem.me.rawValue)
+          .tabItem { tabItem(for: .me, isSelected: TabBarItem.me == viewStore.state) }
+          .tag(TabBarItem.me)
       }
       .accentColor(.highlighted) // 设置 tab bar 选中颜色
     }
