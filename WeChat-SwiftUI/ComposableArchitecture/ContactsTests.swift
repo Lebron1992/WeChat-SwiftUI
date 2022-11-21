@@ -12,8 +12,7 @@ final class ContactsTests: XCTestCase {
     await withEnvironmentAsync(firestoreService: mockService) {
       let store = TestStore(
         initialState: AppState(contactsState: .preview),
-        reducer: appReducer,
-        environment: AppEnvironment.current
+        reducer: appReducer
       )
 
       await store.send(.contacts(.loadContacts)) {
@@ -33,8 +32,7 @@ final class ContactsTests: XCTestCase {
     await withEnvironmentAsync(firestoreService: mockService) {
       let store = TestStore(
         initialState: AppState(authState: .preview),
-        reducer: appReducer,
-        environment: AppEnvironment.current
+        reducer: appReducer
       )
 
       await store.send(.contacts(.loadContacts)) {
@@ -54,8 +52,7 @@ final class ContactsTests: XCTestCase {
     await withEnvironmentAsync(firestoreService: mockService) {
       let store = TestStore(
         initialState: AppState(contactsState: .preview),
-        reducer: appReducer,
-        environment: AppEnvironment.current
+        reducer: appReducer
       )
 
       await store.send(.contacts(.loadOfficialAccounts)) {
@@ -75,8 +72,7 @@ final class ContactsTests: XCTestCase {
     await withEnvironmentAsync(firestoreService: mockService) {
       let store = TestStore(
         initialState: AppState(authState: .preview),
-        reducer: appReducer,
-        environment: AppEnvironment.current
+        reducer: appReducer
       )
 
       await store.send(.contacts(.loadOfficialAccounts)) {

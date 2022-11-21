@@ -8,8 +8,7 @@ final class RootTests: XCTestCase {
   func test_setSelectedTab() async {
     let store = TestStore(
       initialState: AppState(rootState: .init(selectedTab: .chats)),
-      reducer: appReducer,
-      environment: AppEnvironment.current
+      reducer: appReducer
     )
 
     await store.send(AppAction.root(.setSelectedTab(.contacts))) {

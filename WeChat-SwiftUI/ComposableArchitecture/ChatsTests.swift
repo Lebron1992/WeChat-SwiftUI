@@ -12,8 +12,7 @@ final class ChatsTests: XCTestCase, AppStateDataSource {
     await withEnvironmentAsync(firestoreService: mockService) {
       let store = TestStore(
         initialState: AppState(chatsState: .preview),
-        reducer: appReducer,
-        environment: AppEnvironment.current
+        reducer: appReducer
       )
 
       await store.send(.chats(.loadDialogs))
@@ -31,8 +30,7 @@ final class ChatsTests: XCTestCase, AppStateDataSource {
     await withEnvironmentAsync(firestoreService: mockService) {
       let store = TestStore(
         initialState: AppState(chatsState: .preview),
-        reducer: appReducer,
-        environment: AppEnvironment.current
+        reducer: appReducer
       )
 
       await store.send(.chats(.loadDialogs))
@@ -48,8 +46,7 @@ final class ChatsTests: XCTestCase, AppStateDataSource {
     let changes: [DialogChange] = dialogs.map { .init(dialog: $0, changeType: .added) }
     let store = TestStore(
       initialState: AppState(chatsState: .preview),
-      reducer: appReducer,
-      environment: AppEnvironment.current
+      reducer: appReducer
     )
 
     await store.send(.chats(.updateDialogs(changes))) {
@@ -66,8 +63,7 @@ final class ChatsTests: XCTestCase, AppStateDataSource {
 
     let store = TestStore(
       initialState: AppState(chatsState: .init(dialogs: [toBeUpdated, untouched], dialogMessages: [])),
-      reducer: appReducer,
-      environment: AppEnvironment.current
+      reducer: appReducer
     )
 
     await store.send(.chats(.updateDialogs([updated]))) {
@@ -82,8 +78,7 @@ final class ChatsTests: XCTestCase, AppStateDataSource {
 
     let store = TestStore(
       initialState: AppState(chatsState: .init(dialogs: [toBeRemoved, untouched], dialogMessages: [])),
-      reducer: appReducer,
-      environment: AppEnvironment.current
+      reducer: appReducer
     )
 
     await store.send(.chats(.updateDialogs([removed]))) {
@@ -99,8 +94,7 @@ final class ChatsTests: XCTestCase, AppStateDataSource {
     await withEnvironmentAsync(firestoreService: mockService) {
       let store = TestStore(
         initialState: AppState(chatsState: .init(dialogs: [dialog], dialogMessages: [])),
-        reducer: appReducer,
-        environment: AppEnvironment.current
+        reducer: appReducer
       )
 
       await store.send(.chats(.loadMessagesForDialog(dialog)))
@@ -120,8 +114,7 @@ final class ChatsTests: XCTestCase, AppStateDataSource {
     await withEnvironmentAsync(firestoreService: mockService) {
       let store = TestStore(
         initialState: AppState(),
-        reducer: appReducer,
-        environment: AppEnvironment.current
+        reducer: appReducer
       )
 
       await store.send(.chats(.loadMessagesForDialog(dialog)))
@@ -138,8 +131,7 @@ final class ChatsTests: XCTestCase, AppStateDataSource {
     let changes: [MessageChange] = messages.map { .init(message: $0, changeType: .added) }
     let store = TestStore(
       initialState: AppState(chatsState: .init(dialogs: [dialog], dialogMessages: [])),
-      reducer: appReducer,
-      environment: AppEnvironment.current
+      reducer: appReducer
     )
 
     await store.send(.chats(.updateMessagesForDialog(changes, dialog))) {
@@ -162,8 +154,7 @@ final class ChatsTests: XCTestCase, AppStateDataSource {
           dialogs: [dialog],
           dialogMessages: [.init(dialogId: dialog.id, messages: messages)])
       ),
-      reducer: appReducer,
-      environment: AppEnvironment.current
+      reducer: appReducer
     )
 
     await store.send(.chats(.updateMessagesForDialog(changes, dialog))) {
@@ -185,8 +176,7 @@ final class ChatsTests: XCTestCase, AppStateDataSource {
           dialogs: [dialog],
           dialogMessages: [.init(dialogId: dialog.id, messages: messages)])
       ),
-      reducer: appReducer,
-      environment: AppEnvironment.current
+      reducer: appReducer
     )
 
     await store.send(.chats(.updateMessagesForDialog(changes, dialog))) {
@@ -206,8 +196,7 @@ final class ChatsTests: XCTestCase, AppStateDataSource {
     await withEnvironmentAsync(firestoreService: mockService) {
       let store = TestStore(
         initialState: AppState(chatsState: .init(dialogs: [dialog], dialogMessages: [])),
-        reducer: appReducer,
-        environment: AppEnvironment.current
+        reducer: appReducer
       )
 
       // 保存 text message 到服务器
@@ -237,8 +226,7 @@ final class ChatsTests: XCTestCase, AppStateDataSource {
     await withEnvironmentAsync(firestoreService: mockService) {
       let store = TestStore(
         initialState: AppState(chatsState: .init(dialogs: [dialog], dialogMessages: [])),
-        reducer: appReducer,
-        environment: AppEnvironment.current
+        reducer: appReducer
       )
 
       // 保存 text message 到服务器
@@ -273,8 +261,7 @@ final class ChatsTests: XCTestCase, AppStateDataSource {
 
       let store = TestStore(
         initialState: AppState(chatsState: .init(dialogs: [dialog], dialogMessages: [])),
-        reducer: appReducer,
-        environment: AppEnvironment.current
+        reducer: appReducer
       )
 
       await store.send(.chats(.sendImageMessageInDialog(message, dialog))) {
@@ -318,8 +305,7 @@ final class ChatsTests: XCTestCase, AppStateDataSource {
 
       let store = TestStore(
         initialState: AppState(chatsState: .init(dialogs: [dialog], dialogMessages: [])),
-        reducer: appReducer,
-        environment: AppEnvironment.current
+        reducer: appReducer
       )
 
       await store.send(.chats(.sendImageMessageInDialog(message, dialog))) {
@@ -354,8 +340,7 @@ final class ChatsTests: XCTestCase, AppStateDataSource {
 
       let store = TestStore(
         initialState: AppState(chatsState: .init(dialogs: [dialog], dialogMessages: [])),
-        reducer: appReducer,
-        environment: AppEnvironment.current
+        reducer: appReducer
       )
 
       await store.send(.chats(.sendImageMessageInDialog(message, dialog))) {

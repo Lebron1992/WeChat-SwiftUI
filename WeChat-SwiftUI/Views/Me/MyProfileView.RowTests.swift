@@ -10,8 +10,7 @@ final class MyProfileView_RowTests: XCTestCase {
   let user = User.template1!
   let store = Store(
     initialState: AppState(),
-    reducer: appReducer,
-    environment: AppEnvironment.current
+    reducer: appReducer
   )
 
   func test_row_subRows() {
@@ -31,11 +30,11 @@ final class MyProfileView_RowTests: XCTestCase {
   }
 
   func test_row_navigateDestination() {
-    XCTAssertEqual(Row.photo.navigateDestination(with: user, store: store).style, .push)
-    XCTAssertEqual(Row.name.navigateDestination(with: user, store: store).style, .modal)
-    XCTAssertEqual(Row.wechatId.navigateDestination(with: user, store: store).style, .push)
-    XCTAssertEqual(Row.qrCode.navigateDestination(with: user, store: store).style, .push)
-    XCTAssertEqual(Row.more.navigateDestination(with: user, store: store).style, .push)
+    XCTAssertEqual(Row.photo.navigateDestination(with: user).style, .push)
+    XCTAssertEqual(Row.name.navigateDestination(with: user).style, .modal)
+    XCTAssertEqual(Row.wechatId.navigateDestination(with: user).style, .push)
+    XCTAssertEqual(Row.qrCode.navigateDestination(with: user).style, .push)
+    XCTAssertEqual(Row.more.navigateDestination(with: user).style, .push)
   }
 
   func test_subRow_title() {
@@ -45,8 +44,8 @@ final class MyProfileView_RowTests: XCTestCase {
   }
 
   func test_subRow_navigateDestination() {
-    XCTAssertEqual(SubRow.gender.navigateDestination(with: user, store: store).style, .modal)
-    XCTAssertEqual(SubRow.region.navigateDestination(with: user, store: store).style, .modal)
-    XCTAssertEqual(SubRow.whatsUp.navigateDestination(with: user, store: store).style, .modal)
+    XCTAssertEqual(SubRow.gender.navigateDestination(with: user).style, .modal)
+    XCTAssertEqual(SubRow.region.navigateDestination(with: user).style, .modal)
+    XCTAssertEqual(SubRow.whatsUp.navigateDestination(with: user).style, .modal)
   }
 }

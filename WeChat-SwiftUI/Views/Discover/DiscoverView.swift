@@ -18,8 +18,7 @@ struct DiscoverView_Previews: PreviewProvider {
   static var previews: some View {
     let store = Store(
       initialState: AppState(),
-      reducer: appReducer,
-      environment: AppEnvironment.current
+      reducer: appReducer
     )
       .scope(state: \.discoverState)
       .actionless

@@ -21,8 +21,7 @@ struct ChatsView_Previews: PreviewProvider {
     static var previews: some View {
       let store = Store(
         initialState: AppState(chatsState: .init(dialogs: [.template1, .template2], dialogMessages: [])),
-        reducer: appReducer,
-        environment: AppEnvironment.current
+        reducer: appReducer
       )
       ChatsView(store: store)
     }

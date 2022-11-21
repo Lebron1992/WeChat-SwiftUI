@@ -152,8 +152,7 @@ struct DialogView_Previews: PreviewProvider {
           dialogId: Dialog.template1.id,
           messages: [.textTemplate1, .urlImageTemplate, .textTemplate2])]
       )),
-      reducer: appReducer,
-      environment: AppEnvironment.current
+      reducer: appReducer
     )
     DialogView(
       viewModel: .init(dialog: .template1)

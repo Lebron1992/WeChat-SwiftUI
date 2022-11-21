@@ -52,8 +52,7 @@ struct RootView_Previews: PreviewProvider {
           officialAccounts: .loaded([.template1, .template2])
         )
       ),
-      reducer: appReducer,
-      environment: AppEnvironment.current
+      reducer: appReducer
     )
     RootView(store: store)
   }

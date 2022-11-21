@@ -35,8 +35,7 @@ struct ContentView_Previews: PreviewProvider {
     Group {
       ContentView(store: Store(
         initialState: AppState(),
-        reducer: appReducer,
-        environment: AppEnvironment.current
+        reducer: appReducer
       ))
       ContentView(store: Store(
         initialState: AppState(
@@ -48,8 +47,7 @@ struct ContentView_Previews: PreviewProvider {
             officialAccounts: .loaded([.template1, .template2])
           )
         ),
-        reducer: appReducer,
-        environment: AppEnvironment.current
+        reducer: appReducer
       ))
     }
   }

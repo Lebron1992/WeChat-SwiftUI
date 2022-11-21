@@ -62,8 +62,7 @@ struct ContactsView_Previews: PreviewProvider {
         contacts: .loaded([.template1, .template2]),
         officialAccounts: .notRequested
       )),
-      reducer: appReducer,
-      environment: AppEnvironment.current
+      reducer: appReducer
     )
     ContactsView(store: store)
   }

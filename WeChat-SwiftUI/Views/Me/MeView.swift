@@ -132,8 +132,7 @@ struct MeView_Previews: PreviewProvider {
   static var previews: some View {
     let store = Store(
       initialState: AppState(authState: .init(signedInUser: .template1)),
-      reducer: appReducer,
-      environment: AppEnvironment.current
+      reducer: appReducer
     )
       .scope(state: \.authState)
     MeView(store: store)

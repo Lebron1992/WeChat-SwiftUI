@@ -12,8 +12,7 @@ final class AuthActionsTests: XCTestCase {
     await withEnvironmentAsync(firestoreService: mockService) {
       let store = TestStore(
         initialState: AppState(authState: .preview),
-        reducer: appReducer,
-        environment: AppEnvironment.current
+        reducer: appReducer
       )
 
       await store.send(.auth(.loadUserSelf))
@@ -30,8 +29,7 @@ final class AuthActionsTests: XCTestCase {
     await withEnvironmentAsync(currentUser: nil) {
       let store = TestStore(
         initialState: AppState(authState: .preview),
-        reducer: appReducer,
-        environment: AppEnvironment.current
+        reducer: appReducer
       )
 
       await store.send(.auth(.setSignedInUser(user))) {

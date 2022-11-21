@@ -32,8 +32,7 @@ struct DialogsList_Previews: PreviewProvider {
   static var previews: some View {
     let store = Store(
       initialState: AppState(chatsState: .init(dialogs: [.template1], dialogMessages: [])),
-      reducer: appReducer,
-      environment: AppEnvironment.current
+      reducer: appReducer
     )
     DialogsList()
       .environmentObject(StoreObservableObject(store: store))

@@ -202,8 +202,7 @@ struct ContactDetail_Previews: PreviewProvider {
     AppEnvironment.updateCurrentUser(.template1)
     let store = Store(
       initialState: AppState(),
-      reducer: appReducer,
-      environment: AppEnvironment.current
+      reducer: appReducer
     )
     return ContactDetail(contact: .template1)
       .environmentObject(StoreObservableObject(store: store))

@@ -23,8 +23,7 @@ struct WeChat_SwiftUIApp: App {
     // 放在 FirebaseApp.configure() 之后初始化
     store = Store(
       initialState: AppState(),
-      reducer: appReducer,
-      environment: AppEnvironment.current // 仅仅是一个占位，我们在每个 reducer 里直接调用 `AppEnvironment.current`，以便访问最新的 Environment。
+      reducer: appReducer
     )
 
     styleApp()

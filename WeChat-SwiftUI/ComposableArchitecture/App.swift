@@ -8,33 +8,27 @@ enum AppAction: Equatable {
   case system(SystemAction)
 }
 
-let appReducer: Reducer<AppState, AppAction, Environment> = .combine(
-  authReducer.pullback(
-    state: \.authState,
-    action: /AppAction.auth,
-    environment: { $0 }
-  ),
-  chatsReducer.pullback(
-    state: \.chatsState,
-    action: /AppAction.chats,
-    environment: { $0 }
-  ),
-  contactsReducer.pullback(
-    state: \.contactsState,
-    action: /AppAction.contacts,
-    environment: { $0 }
-  ),
-  rootReducer.pullback(
-    state: \.rootState,
-    action: /AppAction.root,
-    environment: { $0 }
-  ),
-  systemReducer.pullback(
-    state: \.systemState,
-    action: /AppAction.system,
-    environment: { $0 }
-  ),
-  Reducer { state, action, _ in
+let appReducer = CombineReducers {
+  Scope(state: \AppState.authState, action: /AppAction.auth) {
+    AuthReducer()
+  }
+  Scope(state: \AppState.chatsState, action: /AppAction.chats) {
+    ChatsReducer()
+  }
+  Scope(state: \AppState.contactsState, action: /AppAction.contacts) {
+    ContactsReducer()
+  }
+  Scope(state: \AppState.rootState, action: /AppAction.root) {
+    RootReducer()
+  }
+  Scope(state: \AppState.systemState, action: /AppAction.system) {
+    SystemReducer()
+  }
+  CommonReducer()
+}
+
+struct CommonReducer: ReducerProtocol {
+  func reduce(into state: inout AppState, action: AppAction) -> EffectTask<AppAction> {
     switch action {
       // chats
     case let .chats(.loadDialogsResponse(result)):
@@ -71,4 +65,4 @@ let appReducer: Reducer<AppState, AppAction, Environment> = .combine(
       return .none
     }
   }
-)
+}
