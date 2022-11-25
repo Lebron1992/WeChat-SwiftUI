@@ -626,7 +626,6 @@
 		FD8827362679A24C00BBEAB6 /* ComposableArchitecture */ = {
 			isa = PBXGroup;
 			children = (
-				FD0EF412292A683000FA4E5E /* Helpers */,
 				FD2010C528A8FFCA00DC82EB /* App.swift */,
 				FD5412F226A81D040001D199 /* Auth.swift */,
 				FD703D1726B83A3000565E4C /* AuthTests.swift */,
@@ -638,6 +637,7 @@
 				FD88277C267F314000BBEAB6 /* RootTests.swift */,
 				FDEFC93C28B36C73000E6437 /* System.swift */,
 				FDEFC93E28B36CB9000E6437 /* SystemTests.swift */,
+				FD0EF412292A683000FA4E5E /* Helpers */,
 				FD88273A2679A26D00BBEAB6 /* State */,
 			);
 			path = ComposableArchitecture;

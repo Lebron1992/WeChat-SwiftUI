@@ -2,10 +2,10 @@ import ComposableArchitecture
 
 enum ContactsAction: Equatable {
   case loadContacts
-  case loadContactsResponse(Result<[User], ErrorEnvelope>)
+  case loadContactsResponse(TaskResult<[User]>)
 
   case loadOfficialAccounts
-  case loadOfficialAccountsResponse(Result<[OfficialAccount], ErrorEnvelope>)
+  case loadOfficialAccountsResponse(TaskResult<[OfficialAccount]>)
 }
 
 struct ContactsReducer: ReducerProtocol {
@@ -14,10 +14,12 @@ struct ContactsReducer: ReducerProtocol {
     case .loadContacts:
       struct LoadContactsId: Hashable {}
       state.contacts = .isLoading(last: state.contacts.value)
-      return AppEnvironment.current.firestoreService
-        .loadContacts()
-        .catchToEffect(ContactsAction.loadContactsResponse)
-        .cancellable(id: LoadContactsId(), cancelInFlight: true)
+      return .task {
+       await .loadContactsResponse(TaskResult {
+          try await AppEnvironment.current.firestoreService.loadContacts()
+        })
+      }
+      .cancellable(id: LoadContactsId(), cancelInFlight: true)
 
     case let .loadContactsResponse(result):
       switch result {
@@ -31,10 +33,12 @@ struct ContactsReducer: ReducerProtocol {
     case .loadOfficialAccounts:
       struct LoadOfficialAccountsId: Hashable {}
       state.officialAccounts = .isLoading(last: state.officialAccounts.value)
-      return AppEnvironment.current.firestoreService
-        .loadOfficialAccounts()
-        .catchToEffect(ContactsAction.loadOfficialAccountsResponse)
-        .cancellable(id: LoadOfficialAccountsId(), cancelInFlight: true)
+      return .task {
+        await .loadOfficialAccountsResponse(TaskResult {
+          try await AppEnvironment.current.firestoreService.loadOfficialAccounts()
+        })
+      }
+      .cancellable(id: LoadOfficialAccountsId(), cancelInFlight: true)
 
     case let .loadOfficialAccountsResponse(result):
       switch result {

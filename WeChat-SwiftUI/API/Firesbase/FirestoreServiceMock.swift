@@ -59,53 +59,53 @@ struct FirestoreServiceMock: FirestoreServiceType {
     self.overrideUserError = overrideUserError
   }
 
-  func insert(_ message: Message, to dialog: Dialog) -> Effect<Success, ErrorEnvelope> {
+  func insert(_ message: Message, to dialog: Dialog) async throws -> Success {
     if let error = insertMessageError {
-      return .init(error: error.toEnvelope())
+      throw error
     }
-    return .init(value: .init())
+    return .init()
   }
 
-  func loadContacts() -> Effect<[User], ErrorEnvelope> {
+  func loadContacts() async throws -> [User] {
     if let error = loadContactsError {
-      return .init(error: error.toEnvelope())
+      throw error
     }
-    return .init(value: loadContactsResponse ?? [.template1, .template2])
+    return loadContactsResponse ?? [.template1, .template2]
   }
 
-  func loadDialogs() -> Effect<[Dialog], ErrorEnvelope> {
+  func loadDialogs() async throws -> [Dialog] {
     if let error = loadDialogsError {
-      return .init(error: error.toEnvelope())
+      throw error
     }
-    return .init(value: loadDialogsResponse ?? [.template1])
+    return loadDialogsResponse ?? [.template1]
   }
 
-  func loadMessages(for dialog: Dialog) -> Effect<[Message], ErrorEnvelope> {
+  func loadMessages(for dialog: Dialog) async throws -> [Message] {
     if let error = loadMessagesError {
-      return .init(error: error.toEnvelope())
+      throw error
     }
-    return .init(value: loadMessagesResponse ?? [.textTemplate1])
+    return loadMessagesResponse ?? [.textTemplate1]
   }
 
-  func loadOfficialAccounts() -> Effect<[OfficialAccount], ErrorEnvelope> {
+  func loadOfficialAccounts() async throws -> [OfficialAccount] {
     if let error = loadOfficialAccountsError {
-      return .init(error: error.toEnvelope())
+      throw error
     }
-    return .init(value: loadOfficialAccountsResponse ?? [.template1, .template2])
+    return loadOfficialAccountsResponse ?? [.template1, .template2]
   }
 
-  func loadUserSelf() -> Effect<User, ErrorEnvelope> {
+  func loadUserSelf() async throws -> User {
     if let error = loadUserSelfError {
-      return .init(error: error.toEnvelope())
+      throw error
     }
-    return .init(value: loadUserSelfResponse ?? .template1)
+    return loadUserSelfResponse ?? .template1
   }
 
-  func overrideDialog(_ dialog: Dialog) -> Effect<Success, ErrorEnvelope> {
+  func overrideDialog(_ dialog: Dialog) async throws -> Success {
     if let error = overrideDialogError {
-      return .init(error: error.toEnvelope())
+      throw error
     }
-    return .init(value: .init())
+    return .init()
   }
 
   func overrideUser(_ user: User) -> AnyPublisher<Void, Error> {

@@ -2,7 +2,7 @@ import ComposableArchitecture
 
 enum AuthAction: Equatable {
   case loadUserSelf
-  case loadUserSelfResponse(Result<User, ErrorEnvelope>)
+  case loadUserSelfResponse(TaskResult<User>)
   case setSignedInUser(User?)
 }
 
@@ -11,13 +11,15 @@ struct AuthReducer: ReducerProtocol {
     switch action {
     case .loadUserSelf:
       struct LoadUserSelfId: Hashable {}
-      return AppEnvironment.current.firestoreService
-        .loadUserSelf()
-        .catchToEffect(AuthAction.loadUserSelfResponse)
-        .cancellable(id: LoadUserSelfId(), cancelInFlight: true)
+      return .task {
+        await .loadUserSelfResponse(TaskResult {
+          try await AppEnvironment.current.firestoreService.loadUserSelf()
+        })
+      }
+      .cancellable(id: LoadUserSelfId(), cancelInFlight: true)
 
     case let .loadUserSelfResponse(result):
-      if let user = try? result.get() {
+      if let user = try? result.value {
         state.signedInUser = user
         AppEnvironment.updateCurrentUser(user)
       }

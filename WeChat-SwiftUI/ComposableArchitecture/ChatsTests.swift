@@ -35,7 +35,7 @@ final class ChatsTests: XCTestCase, AppStateDataSource {
 
       await store.send(.chats(.loadDialogs))
 
-      await store.receive(.chats(.loadDialogsResponse(.failure(error.toEnvelope())))) {
+      await store.receive(.chats(.loadDialogsResponse(.failure(error)))) {
         $0.systemState.errorMessage = error.localizedDescription
       }
     }
@@ -119,7 +119,7 @@ final class ChatsTests: XCTestCase, AppStateDataSource {
 
       await store.send(.chats(.loadMessagesForDialog(dialog)))
 
-      await store.receive(.chats(.loadMessagesForDialogResponse(dialog, .failure(error.toEnvelope())))) {
+      await store.receive(.chats(.loadMessagesForDialogResponse(dialog, .failure(error)))) {
         $0.systemState.errorMessage = error.localizedDescription
       }
     }
@@ -235,7 +235,7 @@ final class ChatsTests: XCTestCase, AppStateDataSource {
         $0.chatsState.dialogMessages = [.init(dialogId: dialog.id, messages: [sendingMessage])]
       }
 
-      await store.receive(.chats(.sendMessageInDialogResponse(sentMessage, dialog, .failure(error.toEnvelope())))) {
+      await store.receive(.chats(.sendMessageInDialogResponse(sentMessage, dialog, .failure(error)))) {
         $0.chatsState.dialogs = [dialog.setLastMessage(sendingMessage)]
         $0.systemState.errorMessage = error.localizedDescription
       }

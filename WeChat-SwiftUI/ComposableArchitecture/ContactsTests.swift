@@ -39,8 +39,8 @@ final class ContactsTests: XCTestCase {
         $0.contactsState.contacts = .isLoading(last: nil)
       }
 
-      await store.receive(.contacts(.loadContactsResponse(.failure(error.toEnvelope())))) {
-        $0.contactsState.contacts = .failed(error.toEnvelope())
+      await store.receive(.contacts(.loadContactsResponse(.failure(error)))) {
+        $0.contactsState.contacts = .failed(error)
       }
     }
   }
@@ -79,8 +79,8 @@ final class ContactsTests: XCTestCase {
         $0.contactsState.officialAccounts = .isLoading(last: nil)
       }
 
-      await store.receive(.contacts(.loadOfficialAccountsResponse(.failure(error.toEnvelope())))) {
-        $0.contactsState.officialAccounts = .failed(error.toEnvelope())
+      await store.receive(.contacts(.loadOfficialAccountsResponse(.failure(error)))) {
+        $0.contactsState.officialAccounts = .failed(error)
       }
     }
   }

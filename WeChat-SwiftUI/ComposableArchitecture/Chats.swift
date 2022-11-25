@@ -4,17 +4,17 @@ import LBJPublishers
 
 enum ChatsAction: Equatable {
   case loadDialogs
-  case loadDialogsResponse(Result<[Dialog], ErrorEnvelope>)
+  case loadDialogsResponse(TaskResult<[Dialog]>)
   case updateDialogs([DialogChange])
 
   case loadMessagesForDialog(Dialog)
-  case loadMessagesForDialogResponse(Dialog, Result<[Message], ErrorEnvelope>)
+  case loadMessagesForDialogResponse(Dialog, TaskResult<[Message]>)
   case updateMessagesForDialog([MessageChange], Dialog)
 
   case sendTextMessageInDialog(Message, Dialog)
   case sendImageMessageInDialog(Message, Dialog)
-  case sendMessageInDialogResponse(Message, Dialog, Result<Success, ErrorEnvelope>)
-  case overrideDialogResponse(Dialog, Message, Result<Success, ErrorEnvelope>)
+  case sendMessageInDialogResponse(Message, Dialog, TaskResult<Success>)
+  case overrideDialogResponse(Dialog, Message, TaskResult<Success>)
   case uploadImageForMessageInDialogResponse(Message, Dialog, Result<UploadResult, ErrorEnvelope>)
 }
 
@@ -24,13 +24,15 @@ struct ChatsReducer: ReducerProtocol {
     switch action {
     case .loadDialogs:
       struct LoadDialogsId: Hashable {}
-      return AppEnvironment.current.firestoreService
-        .loadDialogs()
-        .catchToEffect(ChatsAction.loadDialogsResponse)
-        .cancellable(id: LoadDialogsId(), cancelInFlight: true)
+      return .task {
+        await .loadDialogsResponse(TaskResult {
+          try await AppEnvironment.current.firestoreService.loadDialogs()
+        })
+      }
+      .cancellable(id: LoadDialogsId(), cancelInFlight: true)
 
     case let .loadDialogsResponse(result):
-      if let dialogs = try? result.get(), dialogs.isEmpty == false {
+      if let dialogs = try? result.value, dialogs.isEmpty == false {
         state.dialogs = dialogs.sorted()
       }
       return .none
@@ -43,13 +45,15 @@ struct ChatsReducer: ReducerProtocol {
       struct LoadMessagesForDialogId: Hashable {
         let dialogId: String
       }
-      return AppEnvironment.current.firestoreService
-        .loadMessages(for: dialog)
-        .catchToEffect { ChatsAction.loadMessagesForDialogResponse(dialog, $0) }
-        .cancellable(id: LoadMessagesForDialogId(dialogId: dialog.id), cancelInFlight: true)
+      return .task {
+        await .loadMessagesForDialogResponse(dialog, TaskResult {
+          try await AppEnvironment.current.firestoreService.loadMessages(for: dialog)
+        })
+      }
+      .cancellable(id: LoadMessagesForDialogId(dialogId: dialog.id), cancelInFlight: true)
 
     case let .loadMessagesForDialogResponse(dialog, result):
-      if let messages = try? result.get(), messages.isEmpty == false {
+      if let messages = try? result.value, messages.isEmpty == false {
         state.set(messages.sorted(), for: dialog)
       }
       return .none
@@ -65,10 +69,12 @@ struct ChatsReducer: ReducerProtocol {
       // 把新的 message 插入到缓存中
       state.insert(sendingMessage, to: dialog)
 
-      return AppEnvironment.current.firestoreService
-        .insert(sentMessage, to: dialog)
-        .catchToEffect { ChatsAction.sendMessageInDialogResponse(sentMessage, dialog, $0) }
-        .cancellable(id: SendMessageInDialogId(messageId: message.id, dialogId: dialog.id), cancelInFlight: true)
+      return .task {
+        await .sendMessageInDialogResponse(sentMessage, dialog, TaskResult {
+          try await AppEnvironment.current.firestoreService.insert(sentMessage, to: dialog)
+        })
+      }
+      .cancellable(id: SendMessageInDialogId(messageId: message.id, dialogId: dialog.id), cancelInFlight: true)
 
     case let .sendImageMessageInDialog(message, dialog):
       guard let uiImage = message.image?.uiImage,
@@ -110,10 +116,12 @@ struct ChatsReducer: ReducerProtocol {
               ))
             .setStatus(.sent)
 
-          return AppEnvironment.current.firestoreService
-            .insert(sentMessage, to: dialog)
-            .catchToEffect { ChatsAction.sendMessageInDialogResponse(sentMessage, dialog, $0) }
-            .cancellable(id: SendMessageInDialogId(messageId: message.id, dialogId: dialog.id), cancelInFlight: true)
+          return .task {
+            await .sendMessageInDialogResponse(sentMessage, dialog, TaskResult {
+              try await AppEnvironment.current.firestoreService.insert(sentMessage, to: dialog)
+            })
+          }
+          .cancellable(id: SendMessageInDialogId(messageId: message.id, dialogId: dialog.id), cancelInFlight: true)
 
         } else {
           let sendingMessage = message
@@ -142,10 +150,12 @@ struct ChatsReducer: ReducerProtocol {
         state.setLastMessage(message, for: dialog)
 
         let newDialog = dialog.updatedLastMessage(message)
-        return AppEnvironment.current.firestoreService
-          .overrideDialog(newDialog)
-          .catchToEffect { ChatsAction.overrideDialogResponse(dialog, message, $0) }
-          .cancellable(id: OverrideDialogId(dialogId: dialog.id), cancelInFlight: true)
+        return .task {
+          await .overrideDialogResponse(dialog, message, TaskResult {
+            try await AppEnvironment.current.firestoreService.overrideDialog(newDialog)
+          })
+        }
+        .cancellable(id: OverrideDialogId(dialogId: dialog.id), cancelInFlight: true)
       case .failure:
         // 忽略错误处理
         return .none

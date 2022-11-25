@@ -14,135 +14,124 @@ struct FirestoreService: FirestoreServiceType {
     usersCollection = FirestoreReferenceFactory.reference(for: .users)
   }
 
-  func insert(_ message: Message, to dialog: Dialog) -> Effect<Success, ErrorEnvelope> {
-    Effect.future { promise in
+  func insert(_ message: Message, to dialog: Dialog) async throws -> Success {
+    try await withCheckedThrowingContinuation({ continuation in
       dialogsCollection
         .document(dialog.id)
         .collection("messages")
         .document(message.id)
         .setData(message.dictionaryRepresentation ?? [:]) { error in
           if let e = error {
-            promise(Result.failure(e.toEnvelope()))
+            continuation.resume(throwing: e.toEnvelope())
           } else {
-            promise(Result.success(.init()))
+            continuation.resume(returning: .init())
           }
         }
-    }
+    })
   }
 
-  func loadContacts() -> Effect<[User], ErrorEnvelope> {
-    Effect.future { promise in
+  func loadContacts() async throws -> [User] {
+    try await withCheckedThrowingContinuation({ continuation in
       usersCollection
         .getDocuments { snapshot, error in
           if let err = error {
-            promise(Result.failure(err.toEnvelope()))
-
+            continuation.resume(throwing: err)
           } else if let users: [User] = decodeModels(snapshot?.documents) {
-            promise(Result.success(users))
-
+            continuation.resume(returning: users)
           } else {
             let error = NSError.commonError(description: "Can not decode [User] from snapshot")
-            promise(Result.failure(error.toEnvelope()))
+            continuation.resume(throwing: error)
           }
         }
-    }
+    })
   }
 
-  func loadDialogs() -> Effect<[Dialog], ErrorEnvelope> {
-    Effect.future { promise in
+  func loadDialogs() async throws -> [Dialog] {
+    try await withCheckedThrowingContinuation({ continuation in
       dialogsCollection
         .getDocuments { snapshot, error in
           if let err = error {
-            promise(Result.failure(err.toEnvelope()))
-
+            continuation.resume(throwing: err)
           } else if let dialogs: [Dialog] = decodeModels(snapshot?.documents) {
             let filtered = dialogs.filter { $0.isSelfParticipated }
-            promise(Result.success(filtered))
-
+            continuation.resume(returning: filtered)
           } else {
             let error = NSError.commonError(description: "Can not decode [Dialog] from snapshot")
-            promise(Result.failure(error.toEnvelope()))
+            continuation.resume(throwing: error)
           }
         }
-    }
+    })
   }
 
-  func loadMessages(for dialog: Dialog) -> Effect<[Message], ErrorEnvelope> {
-    Effect.future { promise in
+  func loadMessages(for dialog: Dialog) async throws -> [Message] {
+    try await withCheckedThrowingContinuation({ continuation in
       dialogsCollection
         .document(dialog.id)
         .collection("messages")
         .getDocuments { snapshot, error in
           if let err = error {
-            promise(Result.failure(err.toEnvelope()))
-
+            continuation.resume(throwing: err)
           } else if let messages: [Message] = decodeModels(snapshot?.documents) {
-            promise(Result.success(messages))
-
+            continuation.resume(returning: messages)
           } else {
             let error = NSError.commonError(description: "Can not decode [Message] from snapshot")
-            promise(Result.failure(error.toEnvelope()))
+            continuation.resume(throwing: error)
           }
         }
-    }
+    })
   }
 
-  func loadOfficialAccounts() -> Effect<[OfficialAccount], ErrorEnvelope> {
-    Effect.future { promise in
+  func loadOfficialAccounts() async throws -> [OfficialAccount] {
+    try await withCheckedThrowingContinuation({ continuation in
       officialAccountsCollection
         .getDocuments { snapshot, error in
           if let err = error {
-            promise(Result.failure(err.toEnvelope()))
-
+            continuation.resume(throwing: err)
           } else if let accounts: [OfficialAccount] = decodeModels(snapshot?.documents) {
-            promise(Result.success(accounts))
-
+            continuation.resume(returning: accounts)
           } else {
             let error = NSError.commonError(description: "Can not decode [OfficialAccount] from snapshot")
-            promise(Result.failure(error.toEnvelope()))
+            continuation.resume(throwing: error)
           }
         }
-    }
+    })
   }
 
-  func loadUserSelf() -> Effect<User, ErrorEnvelope> {
+  func loadUserSelf() async throws -> User {
 
     guard let userId = AppEnvironment.current.currentUser?.id else {
       let error = NSError.commonError(description: "currentUser is nil")
-      return .init(error: error.toEnvelope())
+      throw error
     }
 
-    return Effect.future { promise in
+    return try await withCheckedThrowingContinuation({ continuation in
       usersCollection
         .document(userId)
         .getDocument { snapshot, error in
-
           if let err = error {
-            promise(Result.failure(err.toEnvelope()))
-
+            continuation.resume(throwing: err)
           } else if let user: User = decodeModel(snapshot) {
-            promise(Result.success(user))
-
+            continuation.resume(returning: user)
           } else {
             let error = NSError.commonError(description: "Can not decode user from snapshot")
-            promise(Result.failure(error.toEnvelope()))
+            continuation.resume(throwing: error)
           }
         }
-    }
+    })
   }
 
-  func overrideDialog(_ dialog: Dialog) -> Effect<Success, ErrorEnvelope> {
-    Effect.future { promise in
+  func overrideDialog(_ dialog: Dialog) async throws -> Success {
+    try await withCheckedThrowingContinuation({ continuation in
       dialogsCollection
         .document(dialog.id)
         .setData(dialog.dictionaryRepresentation ?? [:]) { error in
-          if let e = error {
-            promise(Result.failure(e.toEnvelope()))
+          if let err = error {
+            continuation.resume(throwing: err)
           } else {
-            promise(Result.success(.init()))
+            continuation.resume(returning: .init())
           }
         }
-    }
+    })
   }
 
   func overrideUser(_ user: User) -> AnyPublisher<Void, Error> {
