@@ -1,5 +1,7 @@
 # WeChat-SwiftUI
 
+> 本项目已使用 [The Composable Architecture](https://github.com/pointfreeco/swift-composable-architecture) 重构，最新代码在 [composable-architecture](https://github.com/Lebron1992/WeChat-SwiftUI/tree/composable-architecture) 分支。
+
 用 SwiftUI 仿写的微信。
 
 虽然只是一个仿写的项目，但我还是按照实际生产开发的要求去编写，而不仅仅是停留在简单的 UI 层面。
