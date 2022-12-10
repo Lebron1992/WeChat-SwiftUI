@@ -1,7 +1,7 @@
 import Combine
 import SwiftUI
 
-final class MyProfilePhotoPreviewViewModel: ObservableObject {
+final class MyProfilePhotoPreviewViewModel: UserSelfUpdateViewModel {
 
   private var fsService: FirebaseStorageServiceType
 
@@ -12,10 +12,6 @@ final class MyProfilePhotoPreviewViewModel: ObservableObject {
   @Published
   private(set) var photoUploadStatus: ValueUpdateStatus<URL> = .idle
   private var photoUploadCancellable: AnyCancellable?
-
-  @Published
-  private(set) var userSelfUpdateStatus: ValueUpdateStatus<User> = .idle
-  private var userSelfUpdateCancellable: AnyCancellable?
 
   func uploadPhoto(_ image: UIImage) {
     guard let data = image.jpegData(compressionQuality: 0.5) else {
@@ -40,27 +36,11 @@ final class MyProfilePhotoPreviewViewModel: ObservableObject {
         }
       )
   }
-
-  func updateUserSelf(_ newUser: User) {
-    userSelfUpdateStatus = .updating
-    userSelfUpdateCancellable?.cancel()
-
-    userSelfUpdateCancellable = AppEnvironment.current.firestoreService
-      .overrideUser(newUser)
-      .sinkForUI(receiveCompletion: { [weak self] completion in
-
-        switch completion {
-        case .finished:
-          self?.userSelfUpdateStatus = .finished(newUser)
-        case let .failure(error):
-          self?.userSelfUpdateStatus = .failed(error)
-        }
-      })
-  }
 }
 
 // MARK: - Getters
 extension MyProfilePhotoPreviewViewModel {
+  @MainActor
   var isUserSelfUpdated: Bool {
     userSelfUpdateStatus.value != nil
   }

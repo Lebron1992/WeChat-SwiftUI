@@ -50,7 +50,7 @@ struct MyProfileFieldUpdateView: View {
   private var showLoading = false
 
   @StateObject
-  private var viewModel = MyProfileFieldUpdateViewModel()
+  private var viewModel = UserSelfUpdateViewModel()
 }
 
 // MARK: - Views
@@ -116,6 +116,7 @@ private extension MyProfileFieldUpdateView {
 
   var cancelButton: some View {
     Button {
+      Task { await viewModel.cancelUpdateUserSelf() }
       dismiss()
     } label: {
       Text(Strings.general_cancel())
@@ -126,10 +127,8 @@ private extension MyProfileFieldUpdateView {
 
   var doneButton: some View {
     Button {
-      guard isValueChanged else {
-        return
-      }
-      viewModel.updateUserSelf(newUser)
+      guard isValueChanged else { return }
+      Task { await viewModel.updateUserSelf(newUser) }
     } label: {
       Text(Strings.general_done())
         .font(.system(size: Constant.actionButtonFontSize, weight: .medium))

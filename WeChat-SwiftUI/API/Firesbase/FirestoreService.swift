@@ -134,19 +134,19 @@ struct FirestoreService: FirestoreServiceType {
     })
   }
 
-  func overrideUser(_ user: User) -> AnyPublisher<Void, Error> {
-    Future { promise in
+  func overrideUser(_ user: User) async throws {
+    // `_: ()` fixes the issue where Generic parameter 'T' could not be inferred
+    let _: () = try await withCheckedThrowingContinuation({ continuation in
       usersCollection
         .document(user.id)
         .setData(user.dictionaryRepresentation ?? [:]) { error in
-          if let e = error {
-            promise(Result.failure(e))
+          if let err = error {
+            continuation.resume(throwing: err)
           } else {
-            promise(Result.success(()))
+            continuation.resume()
           }
         }
-    }
-    .eraseToAnyPublisher()
+    })
   }
 }
 

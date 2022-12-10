@@ -4,87 +4,75 @@ import FirebaseAuth
 
 final class OnboardingViewModel: ObservableObject {
 
-  @Published
+  @Published @MainActor
   private(set) var registerStatus: ValueUpdateStatus<AuthDataResult> = .idle
-  private var registerCancellable: AnyCancellable?
 
-  @Published
+  @Published @MainActor
   private(set) var signInStatus: ValueUpdateStatus<User> = .idle
-  private var signInCancellable: AnyCancellable?
 
-  @Published
+  @Published @MainActor
   private(set) var usernameUpdateStatus: ValueUpdateStatus<User> = .idle
-  private var usernameUpdateCancellable: AnyCancellable?
 
-  @Published
-  var userSelfUpdateStatus: ValueUpdateStatus<User> = .idle
-  private var userSelfUpdateCancellable: AnyCancellable?
+  @Published @MainActor
+  private(set) var userSelfUpdateStatus: ValueUpdateStatus<User> = .idle
 
-  func register(email: String, password: String) {
-    registerStatus = .updating
-    registerCancellable?.cancel()
-
-    registerCancellable = AppEnvironment.current.authService.register(
-      email: email,
-      password: password
-    )
-      .sinkToResultForUI { [weak self] result in
-        switch result {
-        case .success(let authResult):
-          self?.registerStatus = .finished(authResult)
-        case let .failure(error):
-          self?.registerStatus = .failed(error)
+  func register(email: String, password: String) async {
+    await MainActor.run { registerStatus = .updating }
+    await Task {
+      do {
+        let result = try await AppEnvironment.current.authService
+          .register(email: email, password: password)
+        if !Task.isCancelled {
+          await MainActor.run { registerStatus = .finished(result) }
         }
+      } catch {
+        await MainActor.run { registerStatus = .failed(error) }
       }
+    }.value
   }
 
-  func signIn(email: String, password: String) {
-    signInStatus = .updating
-    signInCancellable?.cancel()
-
-    signInCancellable = AppEnvironment.current.authService.signIn(
-      email: email,
-      password: password
-    )
-      .sinkToResultForUI { [weak self] result in
-        switch result {
-        case .success(let firUser):
-          self?.signInStatus = .finished(User(firUser: firUser))
-        case let .failure(error):
-          self?.signInStatus = .failed(error)
+  func signIn(email: String, password: String) async {
+    await MainActor.run { signInStatus = .updating }
+    await Task {
+      do {
+        let firUser = try await AppEnvironment.current.authService
+          .signIn(email: email, password: password)
+        if !Task.isCancelled {
+          await MainActor.run { signInStatus = .finished(User(firUser: firUser)) }
         }
+      } catch {
+        await MainActor.run { signInStatus = .failed(error) }
       }
+    }.value
   }
 
-  func updateUsername(authResult: AuthDataResult, username: String) {
-    usernameUpdateStatus = .updating
-    usernameUpdateCancellable?.cancel()
-
-    usernameUpdateCancellable = AppEnvironment.current.authService.updateUsername(
-      authResult: authResult,
-      username: username
-    )
-      .sinkToResultForUI { [weak self] result in
-        switch result {
-        case .success(let firUser):
-          self?.usernameUpdateStatus = .finished(User(firUser: firUser))
-        case .failure:
-          // 改名失败，仍然返回 authResult.user
-          self?.usernameUpdateStatus = .finished(User(firUser: authResult.user))
+  func updateUsername(authResult: AuthDataResult, username: String) async {
+    await MainActor.run { usernameUpdateStatus = .updating }
+    await Task {
+      do {
+        let firUser = try await AppEnvironment.current.authService
+          .updateUsername(authResult: authResult, username: username)
+        if !Task.isCancelled {
+          await MainActor.run { usernameUpdateStatus = .finished(User(firUser: firUser)) }
         }
+      } catch {
+        // 改名失败，仍然返回 authResult.user
+        await MainActor.run { usernameUpdateStatus = .finished(User(firUser: authResult.user)) }
       }
+    }.value
   }
 
-  func updateUserSelf(_ newUser: User) {
-    userSelfUpdateStatus = .updating
-    userSelfUpdateCancellable?.cancel()
-
-    userSelfUpdateCancellable = AppEnvironment.current.firestoreService
-      .overrideUser(newUser)
-      .sinkForUI(receiveCompletion: { [weak self] _ in
+  func updateUserSelf(_ newUser: User) async {
+    await MainActor.run { userSelfUpdateStatus = .updating }
+    await Task {
+      do {
+        try await AppEnvironment.current.firestoreService.overrideUser(newUser)
+        await MainActor.run { userSelfUpdateStatus = .finished(newUser) }
+      } catch {
         // 未考虑错误的情况：因为实际情况中只有把用户保存到数据库中才算注册成功；
         // 这里使用 Firebase 注册，注册成功之后才把用户保存到数据库中，在保存出错的情况下，不方便把已注册的用户删除
-        self?.userSelfUpdateStatus = .finished(newUser)
-      })
+        await MainActor.run { userSelfUpdateStatus = .finished(newUser) }
+      }
+    }.value
   }
 }

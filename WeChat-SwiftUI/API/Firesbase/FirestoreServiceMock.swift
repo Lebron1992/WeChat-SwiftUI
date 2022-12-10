@@ -108,10 +108,9 @@ struct FirestoreServiceMock: FirestoreServiceType {
     return .init()
   }
 
-  func overrideUser(_ user: User) -> AnyPublisher<Void, Error> {
+  func overrideUser(_ user: User) async throws {
     if let error = overrideUserError {
-      return .publisher(failure: error)
+      throw error
     }
-    return .publisher(output: ())
   }
 }

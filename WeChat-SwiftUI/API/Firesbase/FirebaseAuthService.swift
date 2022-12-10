@@ -3,48 +3,45 @@ import FirebaseAuth
 
 struct FirebaseAuthService: FirebaseAuthServiceType {
 
-  func register(email: String, password: String) -> AnyPublisher<AuthDataResult, Error> {
-    Future { promise in
+  func register(email: String, password: String) async throws -> AuthDataResult {
+    try await withCheckedThrowingContinuation({ continuation in
       Auth.auth().createUser(withEmail: email, password: password) { result, error in
         if let error = error {
-          promise(.failure(error))
+          continuation.resume(throwing: error)
         } else if let result = result {
-          promise(.success(result))
+          continuation.resume(returning: result)
         } else {
-          promise(.failure(NSError.unknowError))
+          continuation.resume(throwing: NSError.unknowError)
         }
       }
-    }
-    .eraseToAnyPublisher()
+    })
   }
 
-  func signIn(email: String, password: String) -> AnyPublisher<FirebaseAuth.User, Error> {
-    Future { promise in
+  func signIn(email: String, password: String) async throws -> FirebaseAuth.User {
+    try await withCheckedThrowingContinuation({ continuation in
       Auth.auth().signIn(withEmail: email, password: password) { result, error in
         if let error = error {
-          promise(.failure(error))
+          continuation.resume(throwing: error)
         } else if let result = result {
-          promise(.success(result.user))
+          continuation.resume(returning: result.user)
         } else {
-          promise(.failure(NSError.unknowError))
+          continuation.resume(throwing: NSError.unknowError)
         }
       }
-    }
-    .eraseToAnyPublisher()
+    })
   }
 
-  func updateUsername(authResult: AuthDataResult, username: String) -> AnyPublisher<FirebaseAuth.User, Error> {
-    Future { promise in
+  func updateUsername(authResult: AuthDataResult, username: String) async throws -> FirebaseAuth.User {
+      try await withCheckedThrowingContinuation({ continuation in
       let request = authResult.user.createProfileChangeRequest()
       request.displayName = username
       request.commitChanges { error in
         if let error = error {
-          promise(.failure(error))
+          continuation.resume(throwing: error)
         } else {
-          promise(.success(authResult.user))
+          continuation.resume(returning: authResult.user)
         }
       }
-    }
-    .eraseToAnyPublisher()
+    })
   }
 }

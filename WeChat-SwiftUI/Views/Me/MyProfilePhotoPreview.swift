@@ -16,8 +16,8 @@ struct MyProfilePhotoPreview: View {
           }
         }
         .showLoading(showLoading)
-        .onChange(of: viewModel.photoUploadStatus) {
-          handlePhotoUploadStatusChange($0, viewStore: viewStore)
+        .onChange(of: viewModel.photoUploadStatus) { status in
+          Task { await handlePhotoUploadStatusChange(status, viewStore: viewStore) }
         }
         .onChange(of: viewModel.userSelfUpdateStatus) {
           handleUserSelfUpdateStatusChange($0, viewStore: viewStore)
@@ -85,14 +85,14 @@ private extension MyProfilePhotoPreview {
 // MARK: - Helper Methods
 private extension MyProfilePhotoPreview {
 
-  func handlePhotoUploadStatusChange(_ status: ValueUpdateStatus<URL>, viewStore: ViewStore<Void, AppAction>) {
+  func handlePhotoUploadStatusChange(_ status: ValueUpdateStatus<URL>, viewStore: ViewStore<Void, AppAction>) async {
     switch status {
     case .updating:
       showLoading = true
 
     case .finished(let url):
       let newUser = AppEnvironment.current.currentUser!.setAvatar(url.absoluteString)
-      viewModel.updateUserSelf(newUser)
+      await viewModel.updateUserSelf(newUser)
       showLoading = false
 
     case .failed(let error):

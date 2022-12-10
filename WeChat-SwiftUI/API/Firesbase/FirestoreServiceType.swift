@@ -9,5 +9,5 @@ protocol FirestoreServiceType {
   func loadOfficialAccounts() async throws -> [OfficialAccount]
   func loadUserSelf() async throws -> User
   func overrideDialog(_ dialog: Dialog) async throws -> Success
-  func overrideUser(_ user: User) -> AnyPublisher<Void, Error>
+  func overrideUser(_ user: User) async throws
 }

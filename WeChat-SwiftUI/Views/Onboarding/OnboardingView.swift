@@ -57,8 +57,8 @@ struct OnboardingView: View {
       .onChange(of: viewModel.signInStatus) {
         handleSignInStatusChange($0, viewStore: viewStore)
       }
-      .onChange(of: viewModel.usernameUpdateStatus) {
-        handleUsernameUpdateStatusChange($0, viewStore: viewStore)
+      .onChange(of: viewModel.usernameUpdateStatus) { status in
+        Task { await handleUsernameUpdateStatusChange(status, viewStore: viewStore) }
       }
       .onChange(of: viewModel.userSelfUpdateStatus) {
         handleUserSelfUpdateStatusChange($0, viewStore: viewStore)
@@ -94,7 +94,7 @@ private extension OnboardingView {
       viewStore.send(.system(.setErrorMessage(Strings.onboarding_email_password_cannot_empty())))
       return
     }
-    viewModel.signIn(email: email, password: password)
+    Task { await viewModel.signIn(email: email, password: password) }
   }
 
   func register(_ viewStore: ViewStore<AppState, AppAction>) {
@@ -102,7 +102,7 @@ private extension OnboardingView {
       viewStore.send(.system(.setErrorMessage(Strings.onboarding_name_email_password_cannot_empty())))
       return
     }
-    viewModel.register(email: email, password: password)
+    Task { await viewModel.register(email: email, password: password) }
   }
 
   func allFieldsAreValid() -> Bool {
@@ -134,7 +134,7 @@ private extension OnboardingView {
       setShowLoading(true)
     case .finished(let result):
       setShowLoading(false)
-      viewModel.updateUsername(authResult: result, username: name)
+      Task { await viewModel.updateUsername(authResult: result, username: name) }
     case .failed(let error):
       setShowLoading(false)
       viewStore.send(.system(.setErrorMessage(error.localizedDescription)))
@@ -156,7 +156,10 @@ private extension OnboardingView {
     }
   }
 
-  func handleUsernameUpdateStatusChange(_ status: ValueUpdateStatus<User>, viewStore: ViewStore<AppState, AppAction>) {
+  func handleUsernameUpdateStatusChange(
+    _ status: ValueUpdateStatus<User>,
+    viewStore: ViewStore<AppState, AppAction>
+  ) async {
     switch status {
     case .idle:
       setShowLoading(false)
@@ -164,7 +167,7 @@ private extension OnboardingView {
       setShowLoading(true)
     case .finished(let user):
       setShowLoading(false)
-      viewModel.updateUserSelf(user)
+      await viewModel.updateUserSelf(user)
     case .failed(let error):
       setShowLoading(false)
       viewStore.send(.system(.setErrorMessage(error.localizedDescription)))
