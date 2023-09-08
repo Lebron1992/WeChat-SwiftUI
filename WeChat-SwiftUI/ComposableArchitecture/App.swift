@@ -8,7 +8,7 @@ enum AppAction: Equatable {
   case system(SystemAction)
 }
 
-let appReducer = CombineReducers {
+let appReducer: some ReducerProtocol<AppState, AppAction> = CombineReducers {
   Scope(state: \AppState.authState, action: /AppAction.auth) {
     AuthReducer()
   }
